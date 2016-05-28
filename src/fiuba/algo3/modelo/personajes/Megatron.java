@@ -1,32 +1,31 @@
 package fiuba.algo3.modelo.personajes;
 
-public class Optimus extends Autobot {
+public class Megatron extends Desepticon {
 
-	public Optimus(){
-		this.puntosDeVida = 500;
-		this.ataque = 50;
+	public Megatron(){
+		this.puntosDeVida = 550;
+		this.ataque = 55;
 		this.distanciaDeAtaque = 2;
-		this.velocidad = 2;
-		this.estado = EstadoAlgoformer.HUMANOIDE;
+		this.velocidad = 8;
+		this.estado = EstadoAlgoformer.ALTERNO;
 	}
 	
 	@Override
 	public void transformacionModoHumanoide() {
 		if (!this.estado.equals(EstadoAlgoformer.HUMANOIDE)){
-			this.ataque = 50;
-			this.distanciaDeAtaque = 2;
-			this.velocidad = 2;
+			this.ataque = 10;
+			this.distanciaDeAtaque = 3;
+			this.velocidad = 1;
 			this.estado = EstadoAlgoformer.HUMANOIDE;
 		}
 	}
 	@Override
 	public void transformacionModoAlterno() {
 		if (!this.estado.equals(EstadoAlgoformer.ALTERNO)){
-			this.ataque = 15;
-			this.distanciaDeAtaque = 4;
-			this.velocidad = 5;
+			this.ataque = 55;
+			this.distanciaDeAtaque = 2;
+			this.velocidad = 8;
 			this.estado = EstadoAlgoformer.ALTERNO;
 		}
 	}
-
 }

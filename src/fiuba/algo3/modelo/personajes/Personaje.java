@@ -40,6 +40,10 @@ public abstract class Personaje {
 		return this.estado.equals(EstadoAlgoformer.MODO_UNICO);
 	}
 	
+	public void recibirAtaque(int ataqueRecibido){
+		this.puntosDeVida = this.puntosDeVida - ataqueRecibido;
+	}
+	
 	public abstract void atacarA (Personaje personaje);
 	public abstract void transformacionModoHumanoide();
 	public abstract void transformacionModoAlterno();

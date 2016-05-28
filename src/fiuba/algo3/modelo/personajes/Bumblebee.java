@@ -1,11 +1,11 @@
 package fiuba.algo3.modelo.personajes;
 
-public class Optimus extends Autobot {
+public class Bumblebee extends Autobot {
 
-	public Optimus(){
-		this.puntosDeVida = 500;
-		this.ataque = 50;
-		this.distanciaDeAtaque = 2;
+	public Bumblebee(){
+		this.puntosDeVida = 350;
+		this.ataque = 40;
+		this.distanciaDeAtaque = 1;
 		this.velocidad = 2;
 		this.estado = EstadoAlgoformer.HUMANOIDE;
 	}
@@ -13,8 +13,8 @@ public class Optimus extends Autobot {
 	@Override
 	public void transformacionModoHumanoide() {
 		if (!this.estado.equals(EstadoAlgoformer.HUMANOIDE)){
-			this.ataque = 50;
-			this.distanciaDeAtaque = 2;
+			this.ataque = 40;
+			this.distanciaDeAtaque = 1;
 			this.velocidad = 2;
 			this.estado = EstadoAlgoformer.HUMANOIDE;
 		}
@@ -22,11 +22,10 @@ public class Optimus extends Autobot {
 	@Override
 	public void transformacionModoAlterno() {
 		if (!this.estado.equals(EstadoAlgoformer.ALTERNO)){
-			this.ataque = 15;
-			this.distanciaDeAtaque = 4;
+			this.ataque = 20;
+			this.distanciaDeAtaque = 3;
 			this.velocidad = 5;
 			this.estado = EstadoAlgoformer.ALTERNO;
 		}
 	}
-
 }
