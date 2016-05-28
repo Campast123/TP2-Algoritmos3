@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.personajes;
 
-import fiuba.algo3.modelo.excepciones.PosicionInvalidaException;
 import fiuba.algo3.modelo.tablero.Posicion;
 
 public abstract class Personaje {
@@ -10,6 +9,7 @@ public abstract class Personaje {
 	protected int velocidad;
 	protected int distanciaDeAtaque;
 	protected int puntosDeVida;
+	protected EstadoAlgoformer estado;
 	
 	public Personaje(){
 		this.posicion  = new Posicion(-1,-1);
@@ -17,30 +17,34 @@ public abstract class Personaje {
 		this.velocidad = 0;
 		this.distanciaDeAtaque = 0;
 		this.puntosDeVida = 0;
+		this.estado = EstadoAlgoformer.HUMANOIDE;
 	}
 	
-	//Precondicion posicon != null, puede romper el mensaje del throw
-	public void moverA (Posicion posicion) throws PosicionInvalidaException{
-		if (this.posicionValida(posicion)){
-			int distanciaX =  Math.abs(posicion.getCoordenadaX() - this.posicion.getCoordenadaX());
-			int distanciaY =  Math.abs(posicion.getCoordenadaY() - this.posicion.getCoordenadaY());
-			if ((distanciaX <= velocidad) && (distanciaY <= velocidad)){
-				this.posicion = posicion;
-			}			
-		}
-		throw new PosicionInvalidaException("La posicion en X:" + posicion.getCoordenadaX() + " e Y:" + posicion.getCoordenadaY() + " es invalida");
+	public void ubicarEnPosicion (Posicion posicion){
+		this.posicion = posicion;
 	}
 	
-	private boolean posicionValida(Posicion posicion){
-		if (posicion != null){
-			if (posicion.getCoordenadaX() >= 0 && posicion.getCoordenadaX() <= 50){
-				return (posicion.getCoordenadaY() >= 0 && posicion.getCoordenadaY() <= 50);
-			}
-		}
-		return false;
+	public Posicion obtenerPosicion (){
+		return this.posicion;
+	}
+	
+	public boolean esHumanoide(){
+		return this.estado.equals(EstadoAlgoformer.HUMANOIDE);
+	}
+	
+	public boolean esAlterno(){
+		return this.estado.equals(EstadoAlgoformer.ALTERNO);
+	}
+	
+	public boolean esModoUnico(){
+		return this.estado.equals(EstadoAlgoformer.MODO_UNICO);
 	}
 	
 	public abstract void atacarA (Personaje personaje);
+	public abstract void transformacionModoHumanoide();
+	public abstract void transformacionModoAlterno();
 
+	public abstract boolean esAutobot();
+	public abstract boolean esDecepticon();
 
 }

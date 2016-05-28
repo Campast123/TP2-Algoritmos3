@@ -3,12 +3,16 @@ package fiuba.algo3.integracion;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.modelo.excepciones.PosicionInvalidaException;
+import fiuba.algo3.modelo.personajes.Optimus;
 import fiuba.algo3.modelo.personajes.Personaje;
+import fiuba.algo3.modelo.tablero.Posicion;
+import fiuba.algo3.modelo.tablero.Tablero;
 
 public class IntegrationTests {
 
 	@Test
-	public void AlgoformerEnTableroSeMueve(){
+	public void AlgoformerEnTableroSeMueve() throws PosicionInvalidaException{
 		// La estructura seria:
 		// 						Interfaz Personaje -->
 		//							Objeto Autobot
@@ -43,7 +47,7 @@ public class IntegrationTests {
 		// que ne el eje y se mueva < = a la distancia maxima
 		Posicion posicionFinal = new Posicion(8,4);
 		Assert.assertFalse(tablero.estaOcupado(posicionFinal));
-		algoformerHumanoide.moverA(posicionFinal);
+		tablero.moverAlgoformer(algoformerHumanoide,posicionFinal);
 		Assert.assertTrue(tablero.estaOcupado(posicionFinal));
 		Assert.assertEquals(algoformerHumanoide.obtenerPosicion(),posicionFinal);
 

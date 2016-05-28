@@ -15,11 +15,17 @@ public class Casillero {
 	}
 	
 	public void agregarPersonaje(Personaje personaje){
-		personaje.setPosicion(this.posicion);
+		personaje.ubicarEnPosicion(this.posicion);
 		this.personaje = personaje;
+		this.ocupado = true;
+	}
+	
+	public void retirarPersonaje(){
+		this.personaje = null;
+		this.ocupado = false;
 	}
 
-	public boolean isOcupado() {
+	public boolean estaOcupado() {
 		return ocupado;
 	}
 

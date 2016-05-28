@@ -11,6 +11,14 @@ public class Posicion {
 		this.coordenadaY = coordenadaY;
 	}
 	
+
+    @Override
+    public int hashCode() {
+	    int hash = 0;
+	    hash = (this.coordenadaX * 1000) +this.coordenadaY;
+        return hash;
+    }
+	
 	@Override
 	public boolean equals(Object o){
 		Posicion posicionRecibida = (Posicion) o;
@@ -21,6 +29,7 @@ public class Posicion {
 		}
 		return false;
 	}
+	
 
 	public int getCoordenadaX() {
 		return coordenadaX;
