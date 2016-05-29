@@ -30,11 +30,8 @@ public class Tablero {
 	}
 	
 	public boolean posicionValida(Posicion posicion) {
-		if (this.tablero.get(posicion) != null){
-			return true;
-		}
+		return (this.tablero.containsKey(posicion));
 //		throw new PosicionInvalidaException("La posicion en X:" + posicion.getCoordenadaX() + " e Y:" + posicion.getCoordenadaY() + " es invalida");
-		return false;
 	}
 	
 	public void agregarAlgoformer(Personaje algoformer , Posicion posicionInicial){
