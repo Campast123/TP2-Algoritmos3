@@ -75,4 +75,29 @@ public class IntegrationTests {
 
 
 	}
+	@Test
+	public void AlgoformerAlternoSeUbicaEnTableroYSeMueve(){
+		Personaje algoformer = new Optimus();
+		Assert.assertTrue(algoformer.esHumanoide());
+		algoformer.transformacionModoAlterno();
+		Assert.assertTrue(algoformer.esAlterno());
+		
+		Tablero tablero = new Tablero();
+		Posicion posicionInicial = new Posicion(1,1);
+		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
+		
+		tablero.agregarAlgoformer(algoformer, posicionInicial);
+		Assert.assertTrue(tablero.estaOcupado(posicionInicial));
+		Assert.assertEquals(algoformer.obtenerPosicion(),posicionInicial);	
+		
+		Posicion posicionDestino = new Posicion(2,2);
+		Assert.assertFalse(tablero.estaOcupado(posicionDestino));
+		
+		tablero.moverAlgoformer(algoformer, posicionDestino);
+		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
+		
+		Assert.assertTrue(tablero.estaOcupado(posicionDestino));		
+		Assert.assertEquals(algoformer.obtenerPosicion(),posicionDestino);		
+		
+	}
 }
