@@ -17,7 +17,7 @@ public class RatchetTest {
 
 	
 	@Test
-	public void crearRatchetHumanoide(){
+	public void crearRatchetHumanoideTest(){
 		Personaje ratchet = new Ratchet();
 		Assert.assertEquals(RATCHET_VIDA, ratchet.getPuntosDeVida());
 		Assert.assertEquals(RATCHET_HUMANOIDE_ATAQUE, ratchet.getAtaque());
@@ -28,7 +28,7 @@ public class RatchetTest {
 	}
 	
 	@Test
-	public void transformarRatchetAModoHumanoide(){
+	public void transformarRatchetAModoHumanoideTest(){
 		Personaje ratchet = new Ratchet();
 		ratchet.transformacionModoHumanoide();
 		Assert.assertEquals(RATCHET_VIDA, ratchet.getPuntosDeVida());
@@ -40,7 +40,7 @@ public class RatchetTest {
 	}
 	
 	@Test
-	public void transformarRatchetAModoAlterno(){
+	public void transformarRatchetAModoAlternoTest(){
 		Personaje ratchet = new Ratchet();
 		ratchet.transformacionModoAlterno();
 		Assert.assertEquals(RATCHET_VIDA, ratchet.getPuntosDeVida());

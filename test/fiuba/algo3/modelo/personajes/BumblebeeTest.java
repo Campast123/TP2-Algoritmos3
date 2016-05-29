@@ -17,7 +17,7 @@ public class BumblebeeTest {
 
 	
 	@Test
-	public void crearBumblebeeHumanoide(){
+	public void crearBumblebeeHumanoideTest(){
 		Personaje bumblebee = new Bumblebee();
 		Assert.assertEquals(BUMBLEBEE_VIDA, bumblebee.getPuntosDeVida());
 		Assert.assertEquals(BUMBLEBEE_HUMANOIDE_ATAQUE, bumblebee.getAtaque());
@@ -28,7 +28,7 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void transformarBumblebeeAModoHumanoide(){
+	public void transformarBumblebeeAModoHumanoideTest(){
 		Personaje bumblebee = new Bumblebee();
 		bumblebee.transformacionModoHumanoide();
 		Assert.assertEquals(BUMBLEBEE_VIDA, bumblebee.getPuntosDeVida());
@@ -40,7 +40,7 @@ public class BumblebeeTest {
 	}
 	
 	@Test
-	public void transformarBumblebeeAModoAlterno(){
+	public void transformarBumblebeeAModoAlternoTest(){
 		Personaje bumblebee = new Bumblebee();
 		bumblebee.transformacionModoAlterno();
 		Assert.assertEquals(BUMBLEBEE_VIDA, bumblebee.getPuntosDeVida());

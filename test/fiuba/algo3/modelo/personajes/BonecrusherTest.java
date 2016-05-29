@@ -17,7 +17,7 @@ public class BonecrusherTest {
 
 	
 	@Test
-	public void crearBonecrusherHumanoide(){
+	public void crearBonecrusherHumanoideTest(){
 		Personaje bonecrusher = new Bonecrusher();
 		Assert.assertEquals(BONECRUSHER_VIDA, bonecrusher.getPuntosDeVida());
 		Assert.assertEquals(BONECRUSHER_HUMANOIDE_ATAQUE, bonecrusher.getAtaque());
@@ -28,7 +28,7 @@ public class BonecrusherTest {
 	}
 	
 	@Test
-	public void transformarBonecrusherAModoHumanoide(){
+	public void transformarBonecrusherAModoHumanoideTest(){
 		Personaje bonecrusher = new Bonecrusher();
 		bonecrusher.transformacionModoHumanoide();
 		Assert.assertEquals(BONECRUSHER_VIDA, bonecrusher.getPuntosDeVida());
@@ -40,7 +40,7 @@ public class BonecrusherTest {
 	}
 	
 	@Test
-	public void transformarBonecrusherAModoAlterno(){
+	public void transformarBonecrusherAModoAlternoTest(){
 		Personaje bonecrusher = new Bonecrusher();
 		bonecrusher.transformacionModoAlterno();
 		Assert.assertEquals(BONECRUSHER_VIDA, bonecrusher.getPuntosDeVida());

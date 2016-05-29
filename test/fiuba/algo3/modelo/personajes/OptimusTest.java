@@ -17,7 +17,7 @@ public class OptimusTest {
 
 	
 	@Test
-	public void crearOptimusHumanoide(){
+	public void crearOptimusHumanoideTest(){
 		Personaje optimus = new Optimus();
 		Assert.assertEquals(OPTIMUS_VIDA, optimus.getPuntosDeVida());
 		Assert.assertEquals(OPTIMUS_HUMANOIDE_ATAQUE, optimus.getAtaque());
@@ -28,7 +28,7 @@ public class OptimusTest {
 	}
 	
 	@Test
-	public void transformarOptimusAModoHumanoide(){
+	public void transformarOptimusAModoHumanoideTest(){
 		Personaje optimus = new Optimus();
 		optimus.transformacionModoHumanoide();
 		Assert.assertEquals(OPTIMUS_VIDA, optimus.getPuntosDeVida());
@@ -40,7 +40,7 @@ public class OptimusTest {
 	}
 	
 	@Test
-	public void transformarOptimusAModoAlterno(){
+	public void transformarOptimusAModoAlternoTest(){
 		Personaje optimus = new Optimus();
 		optimus.transformacionModoAlterno();
 		Assert.assertEquals(OPTIMUS_VIDA, optimus.getPuntosDeVida());

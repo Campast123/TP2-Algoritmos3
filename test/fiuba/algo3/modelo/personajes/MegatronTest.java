@@ -17,7 +17,7 @@ public class MegatronTest {
 
 	
 	@Test
-	public void crearMegatronHumanoide(){
+	public void crearMegatronHumanoideTest(){
 		Personaje megatron = new Megatron();
 		Assert.assertEquals(MEGATRON_VIDA, megatron.getPuntosDeVida());
 		Assert.assertEquals(MEGATRON_HUMANOIDE_ATAQUE, megatron.getAtaque());
@@ -28,7 +28,7 @@ public class MegatronTest {
 	}
 	
 	@Test
-	public void transformarMegatronAModoHumanoide(){
+	public void transformarMegatronAModoHumanoideTest(){
 		Personaje megatron = new Megatron();
 		megatron.transformacionModoHumanoide();
 		Assert.assertEquals(MEGATRON_VIDA, megatron.getPuntosDeVida());
@@ -40,7 +40,7 @@ public class MegatronTest {
 	}
 	
 	@Test
-	public void transformarMegatronAModoAlterno(){
+	public void transformarMegatronAModoAlternoTest(){
 		Personaje megatron = new Megatron();
 		megatron.transformacionModoAlterno();
 		Assert.assertEquals(MEGATRON_VIDA, megatron.getPuntosDeVida());

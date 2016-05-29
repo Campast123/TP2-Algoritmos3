@@ -17,7 +17,7 @@ public class FrenzyTest {
 
 	
 	@Test
-	public void crearFrenzyHumanoide(){
+	public void crearFrenzyHumanoideTest(){
 		Personaje frenzy = new Frenzy();
 		Assert.assertEquals(FRENZY_VIDA, frenzy.getPuntosDeVida());
 		Assert.assertEquals(FRENZY_HUMANOIDE_ATAQUE, frenzy.getAtaque());
@@ -28,7 +28,7 @@ public class FrenzyTest {
 	}
 	
 	@Test
-	public void transformarFrenzyAModoHumanoide(){
+	public void transformarFrenzyAModoHumanoideTest(){
 		Personaje frenzy = new Frenzy();
 		frenzy.transformacionModoHumanoide();
 		Assert.assertEquals(FRENZY_VIDA, frenzy.getPuntosDeVida());
@@ -40,7 +40,7 @@ public class FrenzyTest {
 	}
 	
 	@Test
-	public void transformarFrenzyAModoAlterno(){
+	public void transformarFrenzyAModoAlternoTest(){
 		Personaje frenzy = new Frenzy();
 		frenzy.transformacionModoAlterno();
 		Assert.assertEquals(FRENZY_VIDA, frenzy.getPuntosDeVida());
