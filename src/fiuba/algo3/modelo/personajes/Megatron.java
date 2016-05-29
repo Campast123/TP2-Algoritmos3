@@ -4,10 +4,10 @@ public class Megatron extends Desepticon {
 
 	public Megatron(){
 		this.setPuntosDeVida(550);
-		this.setAtaque(55);
-		this.setDistanciaDeAtaque(2);
-		this.setVelocidad(8);
-		this.setEstado(EstadoAlgoformer.ALTERNO);
+		this.setAtaque(10);
+		this.setDistanciaDeAtaque(3);
+		this.setVelocidad(1);
+		this.setEstado(EstadoAlgoformer.HUMANOIDE);
 	}
 	
 	@Override
