@@ -44,6 +44,10 @@ public class Casillero {
 	public Personaje getPersonaje() {
 		return personaje;
 	}
+	
+	public Personaje obtenerPersonaje() {
+		return this.personaje;
+	}
 
 	public void setPersonaje(Personaje personaje) {
 		this.personaje = personaje;

@@ -12,7 +12,7 @@ import fiuba.algo3.modelo.tablero.Tablero;
 public class IntegrationTests {
 
 	@Test
-	public void AlgoformerEnTableroSeMueve() throws PosicionInvalidaException{
+	public void AlgoformerEnTableroSeMueve() {
 		// La estructura seria:
 		// 						Interfaz Personaje -->
 		//							Objeto Autobot
@@ -52,5 +52,27 @@ public class IntegrationTests {
 		Assert.assertEquals(algoformerHumanoide.obtenerPosicion(),posicionFinal);
 
 		
+	}
+	
+	@Test
+	public void AlgoformerHumanoideSeTransformaEnAmbosSentidos() {
+		Personaje algoformer = new Optimus();
+		Assert.assertTrue(algoformer.esHumanoide());
+		Tablero tablero = new Tablero(); 
+		Posicion posicionInicial = new Posicion(10,2);
+		
+		tablero.agregarAlgoformer(algoformer,posicionInicial);
+		
+		Personaje algoformerEnTablero = tablero.obtenerAlgoformer(posicionInicial);
+		Assert.assertEquals(algoformer, algoformerEnTablero);
+		Assert.assertTrue(algoformer.esHumanoide());
+		
+		algoformerEnTablero.transformacionModoAlterno();
+		Assert.assertTrue(algoformer.esAlterno());
+		
+		algoformerEnTablero.transformacionModoHumanoide();
+		Assert.assertTrue(algoformer.esHumanoide());
+
+
 	}
 }

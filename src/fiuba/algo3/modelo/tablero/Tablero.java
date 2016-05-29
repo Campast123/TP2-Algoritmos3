@@ -41,6 +41,14 @@ public class Tablero {
 		}
 	}
 	
+	public Personaje obtenerAlgoformer(Posicion posicionInicial){
+		Personaje algoformer = null;
+		if (this.posicionValida(posicionInicial) && this.estaOcupado(posicionInicial)){
+			algoformer = this.tablero.get(posicionInicial).obtenerPersonaje();
+		}
+		return algoformer;
+	}
+	
 	public void moverAlgoformer(Personaje algoformer, Posicion posicionDestino){
 		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){
 			Posicion posicionInicial = algoformer.obtenerPosicion();
