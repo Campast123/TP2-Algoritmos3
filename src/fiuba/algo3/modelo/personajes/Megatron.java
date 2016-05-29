@@ -3,29 +3,29 @@ package fiuba.algo3.modelo.personajes;
 public class Megatron extends Desepticon {
 
 	public Megatron(){
-		this.puntosDeVida = 550;
-		this.ataque = 55;
-		this.distanciaDeAtaque = 2;
-		this.velocidad = 8;
-		this.estado = EstadoAlgoformer.ALTERNO;
+		this.setPuntosDeVida(550);
+		this.setAtaque(55);
+		this.setDistanciaDeAtaque(2);
+		this.setVelocidad(8);
+		this.setEstado(EstadoAlgoformer.ALTERNO);
 	}
 	
 	@Override
 	public void transformacionModoHumanoide() {
-		if (!this.estado.equals(EstadoAlgoformer.HUMANOIDE)){
-			this.ataque = 10;
-			this.distanciaDeAtaque = 3;
-			this.velocidad = 1;
-			this.estado = EstadoAlgoformer.HUMANOIDE;
+		if (!this.getEstado().equals(EstadoAlgoformer.HUMANOIDE)){
+			this.setAtaque(10);
+			this.setDistanciaDeAtaque(3);
+			this.setVelocidad(1);
+			this.setEstado(EstadoAlgoformer.HUMANOIDE);
 		}
 	}
 	@Override
 	public void transformacionModoAlterno() {
-		if (!this.estado.equals(EstadoAlgoformer.ALTERNO)){
-			this.ataque = 55;
-			this.distanciaDeAtaque = 2;
-			this.velocidad = 8;
-			this.estado = EstadoAlgoformer.ALTERNO;
+		if (!this.getEstado().equals(EstadoAlgoformer.ALTERNO)){
+			this.setAtaque(55);
+			this.setDistanciaDeAtaque(2);
+			this.setVelocidad(8);
+			this.setEstado(EstadoAlgoformer.ALTERNO);
 		}
 	}
 }

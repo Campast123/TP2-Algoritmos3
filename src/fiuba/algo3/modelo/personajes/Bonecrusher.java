@@ -3,29 +3,29 @@ package fiuba.algo3.modelo.personajes;
 public class Bonecrusher extends Desepticon {
 
 	public Bonecrusher(){
-		this.puntosDeVida = 200;
-		this.ataque = 30;
-		this.distanciaDeAtaque = 3;
-		this.velocidad = 1;
-		this.estado = EstadoAlgoformer.HUMANOIDE;
+		this.setPuntosDeVida(200);
+		this.setAtaque(30);
+		this.setDistanciaDeAtaque(3);
+		this.setVelocidad(1);
+		this.setEstado(EstadoAlgoformer.HUMANOIDE);
 	}
 	
 	@Override
 	public void transformacionModoHumanoide() {
-		if (!this.estado.equals(EstadoAlgoformer.HUMANOIDE)){
-			this.ataque = 30;
-			this.distanciaDeAtaque = 3;
-			this.velocidad = 1;
-			this.estado = EstadoAlgoformer.HUMANOIDE;
+		if (!this.getEstado().equals(EstadoAlgoformer.HUMANOIDE)){
+			this.setAtaque(30);
+			this.setDistanciaDeAtaque(3);
+			this.setVelocidad(1);
+			this.setEstado(EstadoAlgoformer.HUMANOIDE);
 		}
 	}
 	@Override
 	public void transformacionModoAlterno() {
-		if (!this.estado.equals(EstadoAlgoformer.ALTERNO)){
-			this.ataque = 30;
-			this.distanciaDeAtaque = 3;
-			this.velocidad = 8;
-			this.estado = EstadoAlgoformer.ALTERNO;
+		if (!this.getEstado().equals(EstadoAlgoformer.ALTERNO)){
+			this.setAtaque(30);
+			this.setDistanciaDeAtaque(3);
+			this.setVelocidad(8);
+			this.setEstado(EstadoAlgoformer.ALTERNO);
 		}
 	}
 }

@@ -15,7 +15,7 @@ public abstract class Desepticon extends Personaje{
 	@Override
 	public void atacarA(Personaje personaje) {
 		if (personaje.esAutobot()){
-			personaje.recibirAtaque(this.ataque);
+			personaje.recibirAtaque(this.getAtaque());
 		}
 	}
 }

@@ -4,12 +4,12 @@ import fiuba.algo3.modelo.tablero.Posicion;
 
 public abstract class Personaje {
 	
-	protected Posicion posicion;
-	protected int ataque;
-	protected int velocidad;
-	protected int distanciaDeAtaque;
-	protected int puntosDeVida;
-	protected EstadoAlgoformer estado;
+	private Posicion posicion;
+	private int ataque;
+	private int velocidad;
+	private int distanciaDeAtaque;
+	private int puntosDeVida;
+	private EstadoAlgoformer estado;
 	
 	public Personaje(){
 		this.posicion  = new Posicion(-1,-1);
@@ -50,5 +50,53 @@ public abstract class Personaje {
 
 	public abstract boolean esAutobot();
 	public abstract boolean esDecepticon();
+
+	public Posicion getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(Posicion posicion) {
+		this.posicion = posicion;
+	}
+
+	public int getAtaque() {
+		return ataque;
+	}
+
+	public void setAtaque(int ataque) {
+		this.ataque = ataque;
+	}
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public int getDistanciaDeAtaque() {
+		return distanciaDeAtaque;
+	}
+
+	public void setDistanciaDeAtaque(int distanciaDeAtaque) {
+		this.distanciaDeAtaque = distanciaDeAtaque;
+	}
+
+	public int getPuntosDeVida() {
+		return puntosDeVida;
+	}
+
+	public void setPuntosDeVida(int puntosDeVida) {
+		this.puntosDeVida = puntosDeVida;
+	}
+
+	public EstadoAlgoformer getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoAlgoformer estado) {
+		this.estado = estado;
+	}
 
 }

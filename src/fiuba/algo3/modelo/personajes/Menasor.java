@@ -2,11 +2,11 @@ package fiuba.algo3.modelo.personajes;
 
 public class Menasor extends Desepticon {
 	public Menasor(){
-//		this.puntosDeVida = 500;
-		this.ataque = 115;
-		this.distanciaDeAtaque = 2;
-		this.velocidad = 2;
-		this.estado = EstadoAlgoformer.MODO_UNICO;
+//		this.setpuntosDeVida = 500;
+		this.setAtaque(115);
+		this.setDistanciaDeAtaque(2);
+		this.setVelocidad(2);
+		this.setEstado(EstadoAlgoformer.MODO_UNICO);
 	}
 	
 	@Override

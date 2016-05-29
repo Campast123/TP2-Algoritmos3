@@ -3,29 +3,29 @@ package fiuba.algo3.modelo.personajes;
 public class Frenzy extends Desepticon {
 
 	public Frenzy(){
-		this.puntosDeVida = 400;
-		this.ataque = 10;
-		this.distanciaDeAtaque = 5;
-		this.velocidad = 2;
-		this.estado = EstadoAlgoformer.HUMANOIDE;
+		this.setPuntosDeVida(400);
+		this.setAtaque(10);
+		this.setDistanciaDeAtaque(5);
+		this.setVelocidad(2);
+		this.setEstado(EstadoAlgoformer.HUMANOIDE);
 	}
 	
 	@Override
 	public void transformacionModoHumanoide() {
-		if (!this.estado.equals(EstadoAlgoformer.HUMANOIDE)){
-			this.ataque = 10;
-			this.distanciaDeAtaque = 5;
-			this.velocidad = 2;
-			this.estado = EstadoAlgoformer.HUMANOIDE;
+		if (!this.getEstado().equals(EstadoAlgoformer.HUMANOIDE)){
+			this.setAtaque(10);
+			this.setDistanciaDeAtaque(5);
+			this.setVelocidad(2);
+			this.setEstado(EstadoAlgoformer.HUMANOIDE);
 		}
 	}
 	@Override
 	public void transformacionModoAlterno() {
-		if (!this.estado.equals(EstadoAlgoformer.ALTERNO)){
-			this.ataque = 25;
-			this.distanciaDeAtaque = 2;
-			this.velocidad = 6;
-			this.estado = EstadoAlgoformer.ALTERNO;
+		if (!this.getEstado().equals(EstadoAlgoformer.ALTERNO)){
+			this.setAtaque(25);
+			this.setDistanciaDeAtaque(2);
+			this.setVelocidad(6);
+			this.setEstado(EstadoAlgoformer.ALTERNO);
 		}
 	}
 }

@@ -15,7 +15,7 @@ public abstract class Autobot extends Personaje{
 	@Override
 	public void atacarA(Personaje personaje) {
 		if (personaje.esDecepticon()){
-			personaje.recibirAtaque(this.ataque);
+			personaje.recibirAtaque(this.getAtaque());
 		}
 	}
 

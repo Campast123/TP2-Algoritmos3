@@ -3,29 +3,29 @@ package fiuba.algo3.modelo.personajes;
 public class Optimus extends Autobot {
 
 	public Optimus(){
-		this.puntosDeVida = 500;
-		this.ataque = 50;
-		this.distanciaDeAtaque = 2;
-		this.velocidad = 2;
-		this.estado = EstadoAlgoformer.HUMANOIDE;
+		this.setPuntosDeVida(500);
+		this.setAtaque(50);
+		this.setDistanciaDeAtaque(2);
+		this.setVelocidad(2);
+		this.setEstado(EstadoAlgoformer.HUMANOIDE);
 	}
 	
 	@Override
 	public void transformacionModoHumanoide() {
-		if (!this.estado.equals(EstadoAlgoformer.HUMANOIDE)){
-			this.ataque = 50;
-			this.distanciaDeAtaque = 2;
-			this.velocidad = 2;
-			this.estado = EstadoAlgoformer.HUMANOIDE;
+		if (!this.getEstado().equals(EstadoAlgoformer.HUMANOIDE)){
+			this.setAtaque(50);
+			this.setDistanciaDeAtaque(2);
+			this.setVelocidad(2);
+			this.setEstado(EstadoAlgoformer.HUMANOIDE);
 		}
 	}
 	@Override
 	public void transformacionModoAlterno() {
-		if (!this.estado.equals(EstadoAlgoformer.ALTERNO)){
-			this.ataque = 15;
-			this.distanciaDeAtaque = 4;
-			this.velocidad = 5;
-			this.estado = EstadoAlgoformer.ALTERNO;
+		if (!this.getEstado().equals(EstadoAlgoformer.ALTERNO)){
+			this.setAtaque(15);
+			this.setDistanciaDeAtaque(4);
+			this.setVelocidad(5);
+			this.setEstado(EstadoAlgoformer.ALTERNO);
 		}
 	}
 

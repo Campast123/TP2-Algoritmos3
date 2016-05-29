@@ -3,29 +3,29 @@ package fiuba.algo3.modelo.personajes;
 public class Bumblebee extends Autobot {
 
 	public Bumblebee(){
-		this.puntosDeVida = 350;
-		this.ataque = 40;
-		this.distanciaDeAtaque = 1;
-		this.velocidad = 2;
-		this.estado = EstadoAlgoformer.HUMANOIDE;
+		this.setPuntosDeVida(350);
+		this.setAtaque(40);
+		this.setDistanciaDeAtaque(1);
+		this.setVelocidad(2);
+		this.setEstado(EstadoAlgoformer.HUMANOIDE);
 	}
 	
 	@Override
 	public void transformacionModoHumanoide() {
-		if (!this.estado.equals(EstadoAlgoformer.HUMANOIDE)){
-			this.ataque = 40;
-			this.distanciaDeAtaque = 1;
-			this.velocidad = 2;
-			this.estado = EstadoAlgoformer.HUMANOIDE;
+		if (!this.getEstado().equals(EstadoAlgoformer.HUMANOIDE)){
+			this.setAtaque(40);
+			this.setDistanciaDeAtaque(1);
+			this.setVelocidad(2);
+			this.setEstado(EstadoAlgoformer.HUMANOIDE);
 		}
 	}
 	@Override
 	public void transformacionModoAlterno() {
-		if (!this.estado.equals(EstadoAlgoformer.ALTERNO)){
-			this.ataque = 20;
-			this.distanciaDeAtaque = 3;
-			this.velocidad = 5;
-			this.estado = EstadoAlgoformer.ALTERNO;
+		if (!this.getEstado().equals(EstadoAlgoformer.ALTERNO)){
+			this.setAtaque(20);
+			this.setDistanciaDeAtaque(3);
+			this.setVelocidad(5);
+			this.setEstado(EstadoAlgoformer.ALTERNO);
 		}
 	}
 }
