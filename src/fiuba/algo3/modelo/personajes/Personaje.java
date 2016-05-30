@@ -2,9 +2,8 @@ package fiuba.algo3.modelo.personajes;
 
 import fiuba.algo3.modelo.tablero.Posicion;
 
-public abstract class Personaje {
+public abstract class Personaje extends Posicionable {
 	
-	private Posicion posicion;
 	private int ataque;
 	private int velocidad;
 	private int distanciaDeAtaque;
@@ -20,14 +19,7 @@ public abstract class Personaje {
 		this.estado = EstadoAlgoformer.HUMANOIDE;
 	}
 	
-	public void ubicarEnPosicion (Posicion posicion){
-		this.posicion = posicion;
-	}
-	
-	public Posicion obtenerPosicion (){
-		return this.posicion;
-	}
-	
+		
 	public boolean esHumanoide(){
 		return this.estado.equals(EstadoAlgoformer.HUMANOIDE);
 	}
@@ -45,20 +37,14 @@ public abstract class Personaje {
 	}
 	
 	public abstract void atacarA (Personaje personaje);
+	
 	public abstract void transformacionModoHumanoide();
 	public abstract void transformacionModoAlterno();
 
 	public abstract boolean esAutobot();
 	public abstract boolean esDecepticon();
 
-	public Posicion getPosicion() {
-		return posicion;
-	}
-
-	public void setPosicion(Posicion posicion) {
-		this.posicion = posicion;
-	}
-
+	
 	public int getAtaque() {
 		return ataque;
 	}
@@ -97,6 +83,6 @@ public abstract class Personaje {
 
 	public void setEstado(EstadoAlgoformer estado) {
 		this.estado = estado;
-	}
+	}	
 
 }

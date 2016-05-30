@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
-public class Bonecrusher extends Desepticon {
+public class Bonecrusher extends Decepticon {
 
 	public Bonecrusher(){
 		this.setPuntosDeVida(200);
@@ -28,4 +28,5 @@ public class Bonecrusher extends Desepticon {
 			this.setEstado(EstadoAlgoformer.ALTERNO);
 		}
 	}
-}
+
+	}

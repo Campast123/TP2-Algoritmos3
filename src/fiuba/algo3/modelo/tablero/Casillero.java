@@ -1,23 +1,32 @@
 package fiuba.algo3.modelo.tablero;
 
 import fiuba.algo3.modelo.personajes.Personaje;
+import fiuba.algo3.modelo.personajes.Posicionable;
 
-public class Casillero {
+public class Casillero extends Posicionable {
 
 	private boolean ocupado;
-	private Posicion posicion;
 	private Personaje personaje;
+	private ChispaSuprema chispa;
 	
 	public Casillero(Posicion posicion){
 		this.ocupado = false;
 		this.posicion = posicion;
 		this.personaje = null;
+		this.chispa = null;
 	}
 	
-	public void agregarPersonaje(Personaje personaje){
-		personaje.ubicarEnPosicion(this.posicion);
+	public void agregarPosicionable(Personaje personaje){
+		personaje.setPosicion(this.posicion);
 		this.personaje = personaje;
 		this.ocupado = true;
+		this.chispa = null;
+	}
+	
+	public void agregarPosicionable(ChispaSuprema chispa){		
+		this.personaje = null;		
+		this.chispa = chispa;
+		this.ocupado = false;
 	}
 	
 	public void retirarPersonaje(){
@@ -31,24 +40,12 @@ public class Casillero {
 
 	public void setOcupado(boolean ocupado) {
 		this.ocupado = ocupado;
-	}
-
-	public Posicion getPosicion() {
-		return posicion;
-	}
-
-	public void setPosicion(Posicion posicion) {
-		this.posicion = posicion;
-	}
+	}	
 
 	public Personaje getPersonaje() {
 		return personaje;
-	}
+	}	
 	
-	public Personaje obtenerPersonaje() {
-		return this.personaje;
-	}
-
 	public void setPersonaje(Personaje personaje) {
 		this.personaje = personaje;
 	}

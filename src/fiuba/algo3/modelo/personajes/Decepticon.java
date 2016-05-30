@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
-public abstract class Desepticon extends Personaje{
+public abstract class Decepticon extends Personaje{
 
 	@Override 
 	public boolean esAutobot(){

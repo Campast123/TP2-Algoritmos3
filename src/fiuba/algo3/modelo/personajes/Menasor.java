@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
-public class Menasor extends Desepticon {
+public class Menasor extends Decepticon {
 	public Menasor(){
 //		this.setpuntosDeVida = 500;
 		this.setAtaque(115);

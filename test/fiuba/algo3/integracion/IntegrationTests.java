@@ -3,16 +3,17 @@ package fiuba.algo3.integracion;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.modelo.excepciones.PosicionInvalidaException;
+import fiuba.algo3.modelo.jugabilidad.*;
 import fiuba.algo3.modelo.personajes.Optimus;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
 
+
 public class IntegrationTests {
 
 	@Test
-	public void AlgoformerEnTableroSeMueve() {
+	public void test01AlgoformerEnTableroSeMueve() {
 		// La estructura seria:
 		// 						Interfaz Personaje -->
 		//							Objeto Autobot
@@ -38,7 +39,7 @@ public class IntegrationTests {
 		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
 		tablero.agregarAlgoformer(algoformerHumanoide,posicionInicial);
 		Assert.assertTrue(tablero.estaOcupado(posicionInicial));
-		Assert.assertEquals(algoformerHumanoide.obtenerPosicion(),posicionInicial);
+		Assert.assertEquals(algoformerHumanoide.getPosicion(),posicionInicial);
 
 		// Se considera que el algoformer sabe como moverse y es el que puede moverse, luego
 		// se comunica con el tablero para indicar el cambio de posicion
@@ -49,13 +50,13 @@ public class IntegrationTests {
 		Assert.assertFalse(tablero.estaOcupado(posicionFinal));
 		tablero.moverAlgoformer(algoformerHumanoide,posicionFinal);
 		Assert.assertTrue(tablero.estaOcupado(posicionFinal));
-		Assert.assertEquals(algoformerHumanoide.obtenerPosicion(),posicionFinal);
+		Assert.assertEquals(algoformerHumanoide.getPosicion(),posicionFinal);
 
 		
 	}
 	
 	@Test
-	public void AlgoformerHumanoideSeTransformaEnAmbosSentidos() {
+	public void test02AlgoformerHumanoideSeTransformaEnAmbosSentidos() {
 		Personaje algoformer = new Optimus();
 		Assert.assertTrue(algoformer.esHumanoide());
 		Tablero tablero = new Tablero(); 
@@ -76,7 +77,7 @@ public class IntegrationTests {
 
 	}
 	@Test
-	public void AlgoformerAlternoSeUbicaEnTableroYSeMueve(){
+	public void test03AlgoformerAlternoSeUbicaEnTableroYSeMueve(){
 		Personaje algoformer = new Optimus();
 		Assert.assertTrue(algoformer.esHumanoide());
 		algoformer.transformacionModoAlterno();
@@ -88,7 +89,7 @@ public class IntegrationTests {
 		
 		tablero.agregarAlgoformer(algoformer, posicionInicial);
 		Assert.assertTrue(tablero.estaOcupado(posicionInicial));
-		Assert.assertEquals(algoformer.obtenerPosicion(),posicionInicial);	
+		Assert.assertEquals(algoformer.getPosicion(),posicionInicial);	
 		
 		Posicion posicionDestino = new Posicion(2,2);
 		Assert.assertFalse(tablero.estaOcupado(posicionDestino));
@@ -97,7 +98,16 @@ public class IntegrationTests {
 		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
 		
 		Assert.assertTrue(tablero.estaOcupado(posicionDestino));		
-		Assert.assertEquals(algoformer.obtenerPosicion(),posicionDestino);		
+		Assert.assertEquals(algoformer.getPosicion(),posicionDestino);		
 		
+	}
+		
+	@Test
+	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){		
+		Jugador j1 = new Jugador("Juan", TipoTransformer.AUTOBOT);
+		Jugador j2 = new Jugador("Pedro", TipoTransformer.DECEPTICON);
+		
+		Partida partida = new Partida(j2, j2);	
+				
 	}
 }

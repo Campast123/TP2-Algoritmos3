@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
-public class Frenzy extends Desepticon {
+public class Frenzy extends Decepticon {
 
 	public Frenzy(){
 		this.setPuntosDeVida(400);

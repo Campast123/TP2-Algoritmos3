@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
-public class Megatron extends Desepticon {
+public class Megatron extends Decepticon {
 
 	public Megatron(){
 		this.setPuntosDeVida(550);
