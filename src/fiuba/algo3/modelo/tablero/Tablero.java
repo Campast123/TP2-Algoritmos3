@@ -36,6 +36,7 @@ public class Tablero {
 	
 	public void agregarAlgoformer(Personaje algoformer , Posicion posicionInicial){
 		if (this.posicionValida(posicionInicial) && !this.estaOcupado(posicionInicial)){
+			
 			this.tablero.get(posicionInicial).agregarPersonaje(algoformer);
 		}
 	}
@@ -50,16 +51,10 @@ public class Tablero {
 	
 	public void moverAlgoformer(Personaje algoformer, Posicion posicionDestino){
 		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){
-		
 			Posicion posicionInicial = algoformer.obtenerPosicion();
-			algoformer.moverA(posicionDestino);
 			this.tablero.get(posicionInicial).retirarPersonaje();
 			this.tablero.get(posicionDestino).agregarPersonaje(algoformer);
 		}
-	}
-	
-	public Map<Posicion,Casillero> obtenerTablero(){
-		return this.tablero;
 	}
 	
 }

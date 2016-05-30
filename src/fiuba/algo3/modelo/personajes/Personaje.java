@@ -1,7 +1,5 @@
 package fiuba.algo3.modelo.personajes;
 
-import fiuba.algo3.modelo.excepciones.MovimientoInvalidoException;
-import fiuba.algo3.modelo.excepciones.PosicionInvalidaException;
 import fiuba.algo3.modelo.tablero.Posicion;
 
 public abstract class Personaje {
@@ -20,22 +18,6 @@ public abstract class Personaje {
 		this.distanciaDeAtaque = 0;
 		this.puntosDeVida = 0;
 		this.estado = EstadoAlgoformer.HUMANOIDE;
-	}
-	
-	public void moverA(Posicion posicion){
-		int posicionInicialX = this.posicion.getCoordenadaX();
-		int posicionInicialY = this.posicion.getCoordenadaY();
-		int posicionFinalX = this.posicion.getCoordenadaX();
-		int posicionFinalY = this.posicion.getCoordenadaY();
-		
-		int movimientoEnX = posicionInicialX - posicionFinalX;
-		int movimientoEnY = posicionInicialY - posicionFinalY;
-		
-		if ((Math.abs(movimientoEnX) <= this.getVelocidad()) && (Math.abs(movimientoEnY) <= this.getVelocidad())){
-			this.setPosicion(posicion);
-		} else {
-			throw new MovimientoInvalidoException("EL movimiento en X:" + movimientoEnX + " e Y:" + movimientoEnY + " es mayor que la velocidad del personaje:" + this.velocidad);
-		}
 	}
 	
 	public void ubicarEnPosicion (Posicion posicion){
