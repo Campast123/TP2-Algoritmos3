@@ -11,10 +11,10 @@ public class PersonajeTest {
 	public void ubicarEnPosicionTest(){
 		Personaje personaje = new Optimus();
 		Posicion posicionFueraDelMapa = new Posicion(-1,-1);
-		Assert.assertEquals(posicionFueraDelMapa, personaje.obtenerPosicion());
+		Assert.assertEquals(posicionFueraDelMapa, personaje.getPosicion());
 		Posicion posicionDentroDelMapa = new Posicion(10,10);
-		personaje.ubicarEnPosicion(posicionDentroDelMapa);
-		Assert.assertEquals(posicionDentroDelMapa, personaje.obtenerPosicion());
+		personaje.setPosicion(posicionDentroDelMapa);
+		Assert.assertEquals(posicionDentroDelMapa, personaje.getPosicion());
 	}
 	
 	@Test

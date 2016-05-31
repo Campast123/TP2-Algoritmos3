@@ -14,7 +14,7 @@ public abstract class Decepticon extends Personaje{
 	
 	@Override
 	public void atacarA(Personaje personaje) {
-		if (personaje.esAutobot()){
+		if (personaje.esAutobot() && (this.puedeAtacar(personaje.posicion))){
 			personaje.recibirAtaque(this.getAtaque());
 		}
 	}

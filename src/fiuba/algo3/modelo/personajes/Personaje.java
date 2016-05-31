@@ -83,6 +83,14 @@ public abstract class Personaje extends Posicionable {
 
 	public void setEstado(EstadoAlgoformer estado) {
 		this.estado = estado;
+	}
+
+
+	public boolean puedeAtacar(Posicion posicion) {
+		if((posicion.distanciaCoordX (this.posicion) <= this.distanciaDeAtaque) && (posicion.distanciaCoordY(this.posicion) <= this.distanciaDeAtaque)){
+			return true;
+		}
+		return false;
 	}	
 
 }

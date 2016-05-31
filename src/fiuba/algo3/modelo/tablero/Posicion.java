@@ -46,5 +46,13 @@ public class Posicion {
 	public void setCoordenadaY(int coordenadaY) {
 		this.coordenadaY = coordenadaY;
 	}
+
+
+	public int distanciaCoordX(Posicion posicion) {
+		return Math.abs(this.coordenadaX - posicion.coordenadaX);
+	}
 	
+	public int distanciaCoordY(Posicion posicion) {
+		return Math.abs(this.coordenadaY - posicion.coordenadaY);
+	}
 }

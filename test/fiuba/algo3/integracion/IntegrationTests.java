@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.jugabilidad.*;
+import fiuba.algo3.modelo.personajes.Megatron;
 import fiuba.algo3.modelo.personajes.Optimus;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.tablero.Posicion;
@@ -108,6 +109,47 @@ public class IntegrationTests {
 		Jugador j2 = new Jugador("Pedro", TipoTransformer.DECEPTICON);
 		
 		Partida partida = new Partida(j2, j2);	
+				
+	}
+	
+	//Combinaciones en modos de: Ubicar un autobot,
+	//ubicar un decepticon, pedir que se ataquen respetando ( y no ) 
+	//las distancias verificando los daños ( o no daños ).
+	@Test
+	public void test05AtaqueEntreAutobotYDecepticon(){	
+		
+		Personaje autobot = new Optimus();
+		Personaje decepticon = new Megatron();
+		
+		Assert.assertTrue(decepticon.getPuntosDeVida() == 550);
+		Assert.assertTrue(autobot.getPuntosDeVida() == 500);
+
+		
+		Tablero tablero = new Tablero();
+		Posicion posicionInicialAutobot = new Posicion(12,12);
+		Posicion posicionInicialDecepticon = new Posicion(13,12);
+		
+		tablero.agregarAlgoformer(autobot, posicionInicialAutobot);
+		tablero.agregarAlgoformer(decepticon, posicionInicialDecepticon);
+
+		//optimus ataca megatron
+		autobot.atacarA(decepticon);
+		Assert.assertTrue(decepticon.getPuntosDeVida() == 500);
+		
+		//megatron ataca optimus
+		decepticon.atacarA(autobot);
+		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
+
+		Posicion posicionDestinoAutobot = new Posicion(2,2);
+		tablero.moverAlgoformer(autobot, posicionDestinoAutobot);
+		
+		//optimus no ataca megatron
+		autobot.atacarA(decepticon);
+		Assert.assertTrue(decepticon.getPuntosDeVida() == 500);
+		
+		//megatron no ataca optimus
+		decepticon.atacarA(autobot);
+		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
 				
 	}
 }
