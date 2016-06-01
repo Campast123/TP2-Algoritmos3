@@ -21,8 +21,8 @@ public class Casillero extends Posicionable {
 		this.personaje = personaje;
 		this.ocupado = true;
 		this.chispa = null;
-	}
-	
+	}	
+		
 	public void agregarPosicionable(ChispaSuprema chispa){		
 		this.personaje = null;		
 		this.chispa = chispa;
@@ -38,10 +38,7 @@ public class Casillero extends Posicionable {
 		return ocupado;
 	}
 
-	public void setOcupado(boolean ocupado) {
-		this.ocupado = ocupado;
-	}	
-
+	
 	public Personaje getPersonaje() {
 		return personaje;
 	}	

@@ -14,12 +14,12 @@ public class Jugador {
 		
 		if(tipo.equals(TipoTransformer.AUTOBOT)){
 			personaje1 = new Optimus();
-			personaje1 = new Ratchet();
-			personaje1 = new Bumblebee();			
+			personaje2 = new Ratchet();
+			personaje3 = new Bumblebee();			
 		}
 		
 		personaje1 = new Frenzy();
-		personaje1 = new Megatron();
-		personaje1 = new Bonecrusher();
+		personaje2 = new Megatron();
+		personaje3 = new Bonecrusher();
 	}
 }

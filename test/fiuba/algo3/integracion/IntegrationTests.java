@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.jugabilidad.*;
 import fiuba.algo3.modelo.personajes.Megatron;
 import fiuba.algo3.modelo.personajes.Optimus;
 import fiuba.algo3.modelo.personajes.Personaje;
+import fiuba.algo3.modelo.tablero.ChispaSuprema;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
 
@@ -107,8 +108,11 @@ public class IntegrationTests {
 	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){		
 		Jugador j1 = new Jugador("Juan", TipoTransformer.AUTOBOT);
 		Jugador j2 = new Jugador("Pedro", TipoTransformer.DECEPTICON);
+		ChispaSuprema chispa = new ChispaSuprema();
 		
-		Partida partida = new Partida(j2, j2);	
+		Partida partida = new Partida(j1, j2);
+		
+		//partida.getTablero().
 				
 	}
 	

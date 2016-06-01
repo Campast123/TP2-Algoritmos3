@@ -11,7 +11,14 @@ public class Partida {
 	public Partida(Jugador p1, Jugador p2){
 		juego = new Tablero();	
 		this.player1 = p1;
-		this.player2 = p2;		
+		this.player2 = p2;
+		
+		//Seteo y asignacion de turno
 	}
+	
+	public Tablero getTablero(){
+		return this.juego;
+	}
+	
 
 }

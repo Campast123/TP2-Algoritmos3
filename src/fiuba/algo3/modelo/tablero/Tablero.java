@@ -6,12 +6,12 @@ import java.util.Map;
 import fiuba.algo3.modelo.personajes.*;
 
 public class Tablero { 	
-    
+	public static final String config = "config.properties";
+
 	public static final int alto = 50;
 	public static final int largo = 50;
 	
 	private Map<Posicion,Casillero> tablero;
-	private ChispaSuprema chispa;
 	
 	// Crea un tablero de 50x50 donde el intervalo de x = [0,50] e y = [0,50]
 	public Tablero(){
@@ -28,9 +28,12 @@ public class Tablero {
 	
 	//Configura el mapa con: Bonus, trampas y chispa suprema	
 	public void inicializaCampoAleatoriamente(){
+		ChispaSuprema posicionable = new ChispaSuprema();
 		
-		this.chispa = new ChispaSuprema();
-		Casillero casillero = new Casillero(chispa.getPosicion());
+		Casillero casillero = this.tablero.get(posicionable.getPosicion());
+		
+		casillero.agregarPosicionable(posicionable);		
+						
 		this.tablero.put(casillero.getPosicion(), casillero);
 	}	
 	
