@@ -1,13 +1,22 @@
 package fiuba.algo3.modelo.personajes;
 
 public abstract class Autobot extends Personaje{
-	
-	public void atacarA(Decepticon decepticon) {
-		if (this.puedeAtacar(decepticon.posicion)){
-			decepticon.recibirAtaque(this.getAtaque());
-		}
+
+	@Override 
+	public boolean esAutobot(){
+		return true;
 	}
-	public void atacarA(Autobot autobot) {
+	
+	@Override 
+	public boolean esDecepticon(){
+		return false;
+	}
+	
+	@Override
+	public void atacarA(Personaje personaje) {
+		if ((personaje.esDecepticon()) && (this.puedeAtacar(personaje.posicion))){
+			personaje.recibirAtaque(this.getAtaque());
+		}
 	}
 
 }

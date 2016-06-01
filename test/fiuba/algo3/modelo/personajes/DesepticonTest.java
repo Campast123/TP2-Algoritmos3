@@ -15,7 +15,6 @@ public class DesepticonTest {
 		Assert.assertTrue(desepticon.esDecepticon());
 		Assert.assertFalse(desepticon.esAutobot());
 	}
-	
 	@Test
 	public void atacarAutobotTest(){
 		Personaje desepticon = new Megatron();

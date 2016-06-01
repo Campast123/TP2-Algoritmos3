@@ -36,8 +36,9 @@ public abstract class Personaje extends Posicionable {
 		this.puntosDeVida = this.puntosDeVida - ataqueRecibido;
 	}
 	
+
 	public abstract void atacarA (Personaje personaje);
-	
+
 	public abstract void transformacionModoHumanoide();
 	public abstract void transformacionModoAlterno();
 

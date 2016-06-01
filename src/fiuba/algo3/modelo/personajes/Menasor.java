@@ -17,4 +17,5 @@ public class Menasor extends Decepticon {
 	public void transformacionModoAlterno() {
 		
 	}
+	
 }

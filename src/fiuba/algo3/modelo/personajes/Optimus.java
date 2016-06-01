@@ -28,5 +28,6 @@ public class Optimus extends Autobot {
 			this.setEstado(EstadoAlgoformer.ALTERNO);
 		}
 	}
+	
 
 }
