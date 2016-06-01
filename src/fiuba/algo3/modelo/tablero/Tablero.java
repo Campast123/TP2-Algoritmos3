@@ -72,5 +72,7 @@ public class Tablero {
 			this.tablero.get(posicionDestino).agregarPosicionable(algoformer);
 		}
 	}
+
+
 	
 }

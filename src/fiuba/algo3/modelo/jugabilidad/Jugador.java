@@ -1,5 +1,8 @@
 package fiuba.algo3.modelo.jugabilidad;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fiuba.algo3.modelo.personajes.*;
 
 public class Jugador {
@@ -21,5 +24,13 @@ public class Jugador {
 		personaje1 = new Frenzy();
 		personaje2 = new Megatron();
 		personaje3 = new Bonecrusher();
+	}
+	
+	public List getPersonajes(){
+		List<Personaje> list = new ArrayList<Personaje>();
+		list.add(this.personaje1);
+		list.add(this.personaje2);
+		list.add(this.personaje3);
+		return list;
 	}
 }

@@ -103,16 +103,18 @@ public class IntegrationTests {
 		Assert.assertEquals(algoformer.getPosicion(),posicionDestino);		
 		
 	}
-		
+	
+	//Crear una prueba de integración en la cual se pueda crear un juego,
+	//con 2 jugadores cada uno de ellos con sus 3 algoformers distribuidos
+	//en el tablero según el enunciado y la chispa suprema por el centro del tablero.
 	@Test
-	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){		
+	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){
+		
 		Jugador j1 = new Jugador("Juan", TipoTransformer.AUTOBOT);
 		Jugador j2 = new Jugador("Pedro", TipoTransformer.DECEPTICON);
-		ChispaSuprema chispa = new ChispaSuprema();
 		
 		Partida partida = new Partida(j1, j2);
-		
-		//partida.getTablero().
+
 				
 	}
 	
@@ -125,6 +127,7 @@ public class IntegrationTests {
 		Personaje autobot = new Optimus();
 		Personaje decepticon = new Megatron();
 		
+		
 		Assert.assertTrue(decepticon.getPuntosDeVida() == 550);
 		Assert.assertTrue(autobot.getPuntosDeVida() == 500);
 
@@ -135,6 +138,14 @@ public class IntegrationTests {
 		
 		tablero.agregarAlgoformer(autobot, posicionInicialAutobot);
 		tablero.agregarAlgoformer(decepticon, posicionInicialDecepticon);
+		
+		Personaje autobot2 = new Optimus();
+		Posicion posicionInicialAutobot2 = new Posicion(14,12);
+		tablero.agregarAlgoformer(autobot, posicionInicialAutobot2);
+		
+		//optimus no ataca optimus2
+		autobot.atacarA(autobot2);
+		Assert.assertTrue(autobot2.getPuntosDeVida() == 500);
 
 		//optimus ataca megatron
 		autobot.atacarA(decepticon);
@@ -143,9 +154,13 @@ public class IntegrationTests {
 		//megatron ataca optimus
 		decepticon.atacarA(autobot);
 		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
+		
 
 		Posicion posicionDestinoAutobot = new Posicion(2,2);
+		Assert.assertFalse(tablero.estaOcupado(posicionDestinoAutobot));
 		tablero.moverAlgoformer(autobot, posicionDestinoAutobot);
+		Assert.assertTrue(tablero.estaOcupado(posicionDestinoAutobot));
+
 		
 		//optimus no ataca megatron
 		autobot.atacarA(decepticon);
