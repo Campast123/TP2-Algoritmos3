@@ -6,12 +6,6 @@ La estructura seria:
 								Objeto Los 4 tipos de decepticons
 Donde con esta estructura se pueden diferenciar unos a otros para no atacarse entre si
 
-O tambien podria ser una eestructura asi:
-						Interfaz Personaje -->
-							Objeto Los 4 tipos de autobots			
-							Objeto Los 4 tipos de decepticons
-Donde cada uno implementa un metodo "esAutobot" y "esDecepticon" y donde cada uno sabe lo que es				
-
 Tablero es una matriz de Posiciones ( casilleros ), donde cada casillero/posicion es un objeto que 
 sabe si esta ocupado ( SOLO PUEDE TENER UN PERSONAJE tanto en aire como en tierra, es indiferente )
 tiene una referencia al personaje porque el casillero sabe a quien tiene si esta ocupado
