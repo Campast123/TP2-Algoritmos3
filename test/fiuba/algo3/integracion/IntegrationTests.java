@@ -16,26 +16,10 @@ public class IntegrationTests {
 
 	@Test
 	public void test01AlgoformerEnTableroSeMueve() {
-		// La estructura seria:
-		// 						Interfaz Personaje -->
-		//							Objeto Autobot
-		//								Objeto Los 4 tipos de autobots			
-		//							Objeto Decepticon
-		//								Objeto Los 4 tipos de decepticons
-		// Donde con esta estructura se pueden diferenciar unos a otros para no atacarse entre si
-		//
-		// O tambien podria ser una eestructura asi:
-		// 						Interfaz Personaje -->
-		//							Objeto Los 4 tipos de autobots			
-		//							Objeto Los 4 tipos de decepticons
-		// Donde cada uno implementa un metodo "esAutobot" y "esDecepticon" y donde cada uno sabe lo que es				
+			
 		Personaje algoformerHumanoide = new Optimus();
 		Assert.assertTrue(algoformerHumanoide.esHumanoide());
 		
-		// Tablero es una matriz de Posiciones ( casilleros ), donde cada casillero/posicion es un objeto que 
-		// sabe si esta ocupado ( SOLO PUEDE TENER UN PERSONAJE tanto en aire como en tierra, es indiferente )
-		// tiene una referencia al personaje porque el casillero sabe a quien tiene si esta ocupado
-		// y primeramente el objeto casillero/posicion tendria la misma posicion "X,Y" que tiene el mapa como clave
 		Tablero tablero = new Tablero(); 
 		Posicion posicionInicial = new Posicion(10,2);
 		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
@@ -43,18 +27,12 @@ public class IntegrationTests {
 		Assert.assertTrue(tablero.estaOcupado(posicionInicial));
 		Assert.assertEquals(algoformerHumanoide.getPosicion(),posicionInicial);
 
-		// Se considera que el algoformer sabe como moverse y es el que puede moverse, luego
-		// se comunica con el tablero para indicar el cambio de posicion
-		
-		// el movimiento valida que en el eje x se mueva < = a la distancia maxima y tambien 
-		// que ne el eje y se mueva < = a la distancia maxima
 		Posicion posicionFinal = new Posicion(8,4);
 		Assert.assertFalse(tablero.estaOcupado(posicionFinal));
 		tablero.moverAlgoformer(algoformerHumanoide,posicionFinal);
 		Assert.assertTrue(tablero.estaOcupado(posicionFinal));
 		Assert.assertEquals(algoformerHumanoide.getPosicion(),posicionFinal);
 
-		
 	}
 	
 	@Test
@@ -104,9 +82,9 @@ public class IntegrationTests {
 		
 	}
 	
-	//Crear una prueba de integración en la cual se pueda crear un juego,
+	//Crear una prueba de integraciï¿½n en la cual se pueda crear un juego,
 	//con 2 jugadores cada uno de ellos con sus 3 algoformers distribuidos
-	//en el tablero según el enunciado y la chispa suprema por el centro del tablero.
+	//en el tablero segï¿½n el enunciado y la chispa suprema por el centro del tablero.
 	@Test
 	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){
 		
@@ -120,7 +98,7 @@ public class IntegrationTests {
 	
 	//Combinaciones en modos de: Ubicar un autobot,
 	//ubicar un decepticon, pedir que se ataquen respetando ( y no ) 
-	//las distancias verificando los daños ( o no daños ).
+	//las distancias verificando los daï¿½os ( o no daï¿½os ).
 	@Test
 	public void test05AtaqueEntreAutobotYDecepticon(){	
 		
