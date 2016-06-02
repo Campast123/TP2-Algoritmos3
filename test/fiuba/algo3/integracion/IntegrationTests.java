@@ -143,16 +143,16 @@ public class IntegrationTests {
 		Posicion posicionInicialAutobot2 = new Posicion(14,12);
 		tablero.agregarAlgoformer(autobot, posicionInicialAutobot2);
 		
-		//optimus no ataca optimus2
-		autobot.atacarA(autobot2);
+		//optimus no ataca optimus2 (entre autobots no se atacan)
+		autobot.atacar(autobot2);
 		Assert.assertTrue(autobot2.getPuntosDeVida() == 500);
 
 		//optimus ataca megatron
-		autobot.atacarA(decepticon);
+		autobot.atacar(decepticon);
 		Assert.assertTrue(decepticon.getPuntosDeVida() == 500);
 		
 		//megatron ataca optimus
-		decepticon.atacarA(autobot);
+		decepticon.atacar(autobot);
 		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
 		
 
@@ -162,12 +162,12 @@ public class IntegrationTests {
 		Assert.assertTrue(tablero.estaOcupado(posicionDestinoAutobot));
 
 		
-		//optimus no ataca megatron
-		autobot.atacarA(decepticon);
+		//optimus no ataca megatron (no tiene alcance)
+		autobot.atacar(decepticon);
 		Assert.assertTrue(decepticon.getPuntosDeVida() == 500);
 		
-		//megatron no ataca optimus
-		decepticon.atacarA(autobot);
+		//megatron no ataca optimus (no tiene alcance)
+		decepticon.atacar(autobot);
 		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
 				
 	}

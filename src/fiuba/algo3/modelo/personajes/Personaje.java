@@ -37,13 +37,12 @@ public abstract class Personaje extends Posicionable {
 	}
 	
 
-	public abstract void atacarA (Personaje personaje);
+	public abstract void atacar (Personaje personaje);
+	public abstract void recibirAtaqueDe (Autobot autobot);
+	public abstract void recibirAtaqueDe (Decepticon decepticon);
 
 	public abstract void transformacionModoHumanoide();
 	public abstract void transformacionModoAlterno();
-
-	public abstract boolean esAutobot();
-	public abstract boolean esDecepticon();
 
 	
 	public int getAtaque() {
@@ -92,6 +91,7 @@ public abstract class Personaje extends Posicionable {
 			return true;
 		}
 		return false;
-	}	
+	}
+
 
 }

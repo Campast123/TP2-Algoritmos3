@@ -8,20 +8,14 @@ public class AutobotTest {
 	private int PUNTOS_DE_VIDA_DESEPTICON_MEGATRON = 550;
 	private int PUNTOS_DE_VIDA_DESEPTICON_MEGATRON_DESPUES_ATAQUE_OPTIMUS = 500;
 	private int PUNTOS_DE_VIDA_AUTOBOT_RATCHET = 150;
-	
-	@Test
-	public void esAutobotTest(){
-		Personaje desepticon = new Optimus();
-		Assert.assertTrue(desepticon.esAutobot());
-		Assert.assertFalse(desepticon.esDecepticon());
-	}
+
 	@Test
 	public void atacarDesepticonTest(){
 		Personaje autobot = new Optimus();
 		Personaje desepticon = new Megatron();
 		
 		Assert.assertEquals(PUNTOS_DE_VIDA_DESEPTICON_MEGATRON , desepticon.getPuntosDeVida());
-		autobot.atacarA(desepticon);
+		autobot.atacar(desepticon);
 		Assert.assertEquals(PUNTOS_DE_VIDA_DESEPTICON_MEGATRON_DESPUES_ATAQUE_OPTIMUS ,desepticon.getPuntosDeVida());
 	}
 	
@@ -31,7 +25,7 @@ public class AutobotTest {
 		Personaje autobotRatchet = new Ratchet();
 		
 		Assert.assertEquals(PUNTOS_DE_VIDA_AUTOBOT_RATCHET , autobotRatchet.getPuntosDeVida());
-		autobotOptimus.atacarA(autobotRatchet);
+		autobotOptimus.atacar(autobotRatchet);
 		Assert.assertEquals(PUNTOS_DE_VIDA_AUTOBOT_RATCHET ,autobotRatchet.getPuntosDeVida());
 	}
 }

@@ -18,9 +18,4 @@ public class Superion extends Autobot{
 	public void transformacionModoAlterno() {
 		
 	}
-	@Override
-	public void atacarA(Personaje personaje) {
-		// TODO Auto-generated method stub
-		
-	}
 }
