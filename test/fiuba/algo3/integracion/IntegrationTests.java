@@ -137,7 +137,8 @@ public class IntegrationTests {
 		Assert.assertTrue(frenzy.getPosicion().equals(posicionDeFrenzy));
 		
 		//La chispa se ubica en la mitad del tablero
-		
+		Posicion posicionEnElTableroDeChispa = partida.getTablero().getPosicionChispa();
+		Assert.assertTrue(posicionEnElTableroDeChispa.equals(posicionDeChispa));
 	}
 	
 	//Combinaciones en modos de: Ubicar un autobot,

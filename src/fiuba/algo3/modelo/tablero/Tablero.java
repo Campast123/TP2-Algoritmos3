@@ -12,6 +12,7 @@ public class Tablero {
 	public static final int largo = 50;
 	
 	private Map<Posicion,Casillero> tablero;
+	Posicion posDeChispa;
 	
 	public Tablero(){
 		this.tablero = new HashMap<Posicion,Casillero>();
@@ -34,6 +35,7 @@ public class Tablero {
 		casillero.agregarPosicionable(posicionable);		
 						
 		this.tablero.put(casillero.getPosicion(), casillero);
+		this.posDeChispa = casillero.getPosicion();
 	}	
 	
 		
@@ -70,6 +72,9 @@ public class Tablero {
 			this.tablero.get(posicionInicial).retirarPersonaje();
 			this.tablero.get(posicionDestino).agregarPosicionable(algoformer);
 		}
+	}
+	public Posicion getPosicionChispa(){
+		return (this.posDeChispa);
 	}
 			
 }
