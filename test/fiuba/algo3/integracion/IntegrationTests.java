@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.jugabilidad.*;
 import fiuba.algo3.modelo.personajes.Megatron;
 import fiuba.algo3.modelo.personajes.Optimus;
 import fiuba.algo3.modelo.personajes.Personaje;
+import fiuba.algo3.modelo.tablero.Casillero;
 import fiuba.algo3.modelo.tablero.ChispaSuprema;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
@@ -86,13 +87,29 @@ public class IntegrationTests {
 	//con 2 jugadores cada uno de ellos con sus 3 algoformers distribuidos
 	//en el tablero seg�n el enunciado y la chispa suprema por el centro del tablero.
 	@Test
-	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){
+	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){		
+		
+		//La posicion inicial de Chispa es el centro
+		Posicion posicion = new Posicion(25,25);		
 		
 		Jugador j1 = new Jugador("Juan", TipoTransformer.AUTOBOT);
-		Jugador j2 = new Jugador("Pedro", TipoTransformer.DECEPTICON);
+		Jugador j2 = new Jugador("Pedro", TipoTransformer.DECEPTICON);		
 		
+		//Nombres de los jugadores
+		Assert.assertFalse(j1.getNombre() == "Pepe");
+		Assert.assertFalse(j2.getNombre() == "Ana");		
+				
 		Partida partida = new Partida(j1, j2);
-
+		
+		//No hay ganadores al iniciar la partida.
+		Assert.assertTrue(j1.getGanador() == false);
+		Assert.assertTrue(j2.getGanador() == false);
+		
+		
+		Assert.assertFalse(partida.getTablero().estaOcupado(posicion));				
+		
+		//La Chispa no "ocupa", permite desplazar un personaje
+		Assert.assertFalse(partida.getTablero().estaOcupado(posicion));		
 				
 	}
 	

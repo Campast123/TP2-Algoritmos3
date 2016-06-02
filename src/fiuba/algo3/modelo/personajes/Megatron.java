@@ -1,8 +1,11 @@
 package fiuba.algo3.modelo.personajes;
 
+import fiuba.algo3.modelo.tablero.Posicion;
+
 public class Megatron extends Decepticon {
 
 	public Megatron(){
+		this.posicion = new Posicion(3,10);
 		this.setPuntosDeVida(550);
 		this.setAtaque(10);
 		this.setDistanciaDeAtaque(3);

@@ -6,7 +6,6 @@ public abstract class Decepticon extends Personaje{
 	public void atacar (Personaje personaje){
 		personaje.recibirAtaqueDe(this);
 	}
-
 	
 	@Override
 	public void recibirAtaqueDe(Decepticon decepticon) {
@@ -18,5 +17,18 @@ public abstract class Decepticon extends Personaje{
 			this.recibirAtaque(autobot.getAtaque());
 		}
 	}
-
+	
+	public void transformacionModoHumanoide(int ataque, int distancia, int vel){		
+		this.setAtaque(ataque);
+		this.setDistanciaDeAtaque(distancia);
+		this.setVelocidad(vel);
+	    this.setEstado(EstadoAlgoformer.HUMANOIDE);		
+	}
+	
+	public void transformacionModoAlterno(int ataque, int distancia, int vel){		
+		this.setAtaque(ataque);
+		this.setDistanciaDeAtaque(distancia);
+		this.setVelocidad(vel);
+	    this.setEstado(EstadoAlgoformer.ALTERNO);
+	}
 }

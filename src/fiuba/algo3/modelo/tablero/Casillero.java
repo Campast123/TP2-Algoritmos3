@@ -37,13 +37,9 @@ public class Casillero extends Posicionable {
 	public boolean estaOcupado() {
 		return ocupado;
 	}
-
 	
 	public Personaje getPersonaje() {
-		return personaje;
+		return this.personaje;
 	}	
 	
-	public void setPersonaje(Personaje personaje) {
-		this.personaje = personaje;
-	}
 }

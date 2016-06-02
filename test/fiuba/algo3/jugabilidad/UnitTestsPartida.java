@@ -1,4 +1,4 @@
-package fiuba.algo3.unitarios;
+package fiuba.algo3.jugabilidad;
 
 public class UnitTestsPartida {
 

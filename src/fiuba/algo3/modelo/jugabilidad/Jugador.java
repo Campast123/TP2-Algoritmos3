@@ -8,12 +8,14 @@ import fiuba.algo3.modelo.personajes.*;
 public class Jugador {
 	
 	private String Nombre;
+	boolean ganador;
 	private Personaje personaje1;
 	private Personaje personaje2;
 	private Personaje personaje3;
 	
 	public Jugador(String nombre,TipoTransformer tipo){
 		this.Nombre= nombre;
+		this.ganador=false;
 		
 		if(tipo.equals(TipoTransformer.AUTOBOT)){
 			personaje1 = new Optimus();
@@ -24,13 +26,22 @@ public class Jugador {
 		personaje1 = new Frenzy();
 		personaje2 = new Megatron();
 		personaje3 = new Bonecrusher();
+	}	
+
+	public String getNombre() {
+		return this.Nombre;
+	}
+	public Personaje getPersonaje1() {
+		return this.personaje1;
+	}	
+	public Personaje getPersonaje2() {
+		return this.personaje2;
+		
+	}public Personaje getPersonaje3() {
+		return this.personaje3;
 	}
 	
-	public List getPersonajes(){
-		List<Personaje> list = new ArrayList<Personaje>();
-		list.add(this.personaje1);
-		list.add(this.personaje2);
-		list.add(this.personaje3);
-		return list;
+	public boolean getGanador(){
+		return this.ganador;
 	}
 }

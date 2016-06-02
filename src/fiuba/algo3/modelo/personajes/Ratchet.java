@@ -1,5 +1,8 @@
 package fiuba.algo3.modelo.personajes;
 
+import fiuba.algo3.modelo.tablero.Casillero;
+import fiuba.algo3.modelo.tablero.Posicion;
+
 public class Ratchet extends Autobot {
 	
 	public Ratchet(){

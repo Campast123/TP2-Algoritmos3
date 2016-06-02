@@ -13,9 +13,9 @@ public class Tablero {
 	
 	private Map<Posicion,Casillero> tablero;
 	
-	// Crea un tablero de 50x50 donde el intervalo de x = [0,50] e y = [0,50]
 	public Tablero(){
 		this.tablero = new HashMap<Posicion,Casillero>();
+		
 		for (int x = 0 ; x <= alto ; x++){
 			for (int y = 0; y <= largo; y++){
 				Posicion coordenada = new Posicion(x,y);
@@ -23,7 +23,6 @@ public class Tablero {
 				this.tablero.put(coordenada, casillero);
 			}
 		}
-		inicializaCampoAleatoriamente();
 	}
 	
 	//Configura el mapa con: Bonus, trampas y chispa suprema	
@@ -72,7 +71,5 @@ public class Tablero {
 			this.tablero.get(posicionDestino).agregarPosicionable(algoformer);
 		}
 	}
-
-
-	
+			
 }

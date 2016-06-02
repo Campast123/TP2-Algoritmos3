@@ -9,14 +9,14 @@ public class ChispaSuprema extends Posicionable {
 	public ChispaSuprema(){
 		this.capturada = false;
 		this.posicion = new Posicion(25,25);
-	}
-	
-	public Posicion getPosicion(){
-		return posicion;
-	}
-	
+	}	
+		
 	public void setEstado(){
 		this.capturada = !(this.capturada);
+	}
+	
+	public boolean getEstado(){
+		return this.capturada;
 	}
 	
 }
