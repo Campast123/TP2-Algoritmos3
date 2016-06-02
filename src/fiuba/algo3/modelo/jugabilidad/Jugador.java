@@ -19,13 +19,14 @@ public class Jugador {
 		
 		if(tipo.equals(TipoTransformer.AUTOBOT)){
 			personaje1 = new Optimus();
-			personaje2 = new Ratchet();
-			personaje3 = new Bumblebee();			
+			personaje2 = new Bumblebee();
+			personaje3 = new Ratchet();			
 		}
-		
-		personaje1 = new Frenzy();
-		personaje2 = new Megatron();
-		personaje3 = new Bonecrusher();
+		else{
+			personaje1 = new Megatron();
+			personaje2 = new Bonecrusher();
+			personaje3 = new Frenzy();
+		}
 	}	
 
 	public String getNombre() {

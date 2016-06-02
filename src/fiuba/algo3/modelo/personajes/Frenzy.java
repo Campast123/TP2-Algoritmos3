@@ -5,7 +5,7 @@ import fiuba.algo3.modelo.tablero.Posicion;
 public class Frenzy extends Decepticon {
 
 	public Frenzy(){
-		this.posicion = new Posicion(2,8);
+		this.posicion = new Posicion(50,49);
 		this.setPuntosDeVida(400);
 		this.setAtaque(10);
 		this.setDistanciaDeAtaque(5);

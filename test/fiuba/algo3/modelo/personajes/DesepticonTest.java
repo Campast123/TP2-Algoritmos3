@@ -3,6 +3,8 @@ package fiuba.algo3.modelo.personajes;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.modelo.tablero.Posicion;
+
 public class DesepticonTest {
 
 	private int PUNTOS_DE_VIDA_AUTOBOT_OPTIMUS = 500;
@@ -15,6 +17,8 @@ public class DesepticonTest {
 		Personaje autobot = new Optimus();
 		
 		Assert.assertEquals(PUNTOS_DE_VIDA_AUTOBOT_OPTIMUS , autobot.getPuntosDeVida());
+		Posicion posicion = new Posicion(2,2);
+		desepticon.setPosicion(posicion);
 		desepticon.atacar(autobot);
 		Assert.assertEquals(PUNTOS_DE_VIDA_AUTOBOT_OPTIMUS_DESPUES_ATAQUE_MEGATRON ,autobot.getPuntosDeVida());
 	}

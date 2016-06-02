@@ -5,7 +5,7 @@ import fiuba.algo3.modelo.tablero.Posicion;
 public class Bumblebee extends Autobot {
 
 	public Bumblebee(){
-		this.posicion = new Posicion(50,50);
+		this.posicion = new Posicion(0,1);
 		this.setPuntosDeVida(350);
 		this.setAtaque(40);
 		this.setDistanciaDeAtaque(1);

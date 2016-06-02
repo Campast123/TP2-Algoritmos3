@@ -5,7 +5,7 @@ import fiuba.algo3.modelo.tablero.Posicion;
 public class Optimus extends Autobot {
 
 	public Optimus(){
-		this.posicion = new Posicion(49,44);
+		this.posicion = new Posicion(0,0);
 		this.setPuntosDeVida(500);
 		this.setAtaque(50);
 		this.setDistanciaDeAtaque(2);

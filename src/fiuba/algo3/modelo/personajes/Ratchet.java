@@ -6,6 +6,7 @@ import fiuba.algo3.modelo.tablero.Posicion;
 public class Ratchet extends Autobot {
 	
 	public Ratchet(){
+		this.posicion = new Posicion(1,0);
 		this.setPuntosDeVida(150);
 		this.setAtaque(5);
 		this.setDistanciaDeAtaque(5);

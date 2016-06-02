@@ -5,7 +5,7 @@ import fiuba.algo3.modelo.tablero.Posicion;
 public class Bonecrusher extends Decepticon {
 
 	public Bonecrusher(){
-		this.posicion = new Posicion(1,1);
+		this.posicion = new Posicion(49,50);
 		this.setPuntosDeVida(200);
 		this.setAtaque(30);
 		this.setDistanciaDeAtaque(3);
