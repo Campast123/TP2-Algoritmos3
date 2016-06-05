@@ -4,7 +4,6 @@ abstract class ModoUnico implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
 	int distanciaDeAtaque;
-	String superficie;
 
 	@Override
 	public int getVelocidad() {
@@ -14,11 +13,6 @@ abstract class ModoUnico implements ModoAlgoformer {
 	@Override
 	public int getDistanciaDeAtaque() {
 		return (this.distanciaDeAtaque);
-		
-	}
-	@Override
-	public String getSuperficie() {
-		return (this.superficie);
 		
 	}
 
@@ -36,8 +30,19 @@ abstract class ModoUnico implements ModoAlgoformer {
 	public boolean esAlterno() {
 		return false;
 	}
+	
 	@Override 
 	public boolean esUnico(){
 		return true;
+	}
+	
+	@Override
+	public boolean esUnidadTerrestre(){
+		return true;
+	}
+	
+	@Override
+	public boolean esUnidadAerea(){
+		return false;
 	}
 }

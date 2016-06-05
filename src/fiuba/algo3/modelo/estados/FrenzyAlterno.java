@@ -6,4 +6,14 @@ public class FrenzyAlterno extends ModoAlterno{
 		this.distanciaDeAtaque = 2;
 		this.velocidad = 6;
 	}
+	
+	@Override
+	public boolean esUnidadTerrestre(){
+		return true;
+	}
+	
+	@Override
+	public boolean esUnidadAerea(){
+		return false;
+	}
 }

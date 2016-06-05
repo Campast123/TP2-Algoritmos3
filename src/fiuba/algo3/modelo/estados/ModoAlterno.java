@@ -4,7 +4,6 @@ abstract class ModoAlterno implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
 	int distanciaDeAtaque;
-	String superficie;
 
 	@Override
 	public int getVelocidad() {
@@ -14,11 +13,6 @@ abstract class ModoAlterno implements ModoAlgoformer {
 	@Override
 	public int getDistanciaDeAtaque() {
 		return (this.distanciaDeAtaque);
-		
-	}
-	@Override
-	public String getSuperficie() {
-		return (this.superficie);
 		
 	}
 

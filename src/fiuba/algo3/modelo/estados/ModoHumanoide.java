@@ -4,7 +4,6 @@ abstract class ModoHumanoide implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
 	int distanciaDeAtaque;
-	String superficie;
 
 	@Override
 	public int getVelocidad() {
@@ -14,12 +13,6 @@ abstract class ModoHumanoide implements ModoAlgoformer {
 	@Override
 	public int getDistanciaDeAtaque() {
 		return (this.distanciaDeAtaque);
-		
-	}
-	@Override
-	public String getSuperficie() {
-		return (this.superficie);
-		
 	}
 
 	@Override
@@ -36,8 +29,19 @@ abstract class ModoHumanoide implements ModoAlgoformer {
 	public boolean esAlterno() {
 		return false;
 	}
+	
 	@Override 
 	public boolean esUnico(){
+		return false;
+	}
+	
+	@Override
+	public boolean esUnidadTerrestre(){
+		return true;
+	}
+	
+	@Override
+	public boolean esUnidadAerea(){
 		return false;
 	}
 }

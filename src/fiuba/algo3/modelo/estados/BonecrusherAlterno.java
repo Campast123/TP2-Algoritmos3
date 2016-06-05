@@ -6,4 +6,14 @@ public class BonecrusherAlterno extends ModoAlterno {
 		this.distanciaDeAtaque = 3;
 		this.velocidad = 8;
 	}
+
+	@Override
+	public boolean esUnidadTerrestre() {
+		return true;
+	}
+
+	@Override
+	public boolean esUnidadAerea() {
+		return false;
+	}
 }

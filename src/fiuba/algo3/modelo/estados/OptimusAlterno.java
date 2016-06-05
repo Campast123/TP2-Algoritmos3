@@ -6,4 +6,14 @@ public class OptimusAlterno extends ModoAlterno{
 		this.velocidad = 5;
 		this.distanciaDeAtaque = 4;
 	}
+
+	@Override
+	public boolean esUnidadTerrestre() {
+		return true;
+	}
+
+	@Override
+	public boolean esUnidadAerea() {
+		return false;
+	}
 }
