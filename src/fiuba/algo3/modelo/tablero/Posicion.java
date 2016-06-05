@@ -48,11 +48,17 @@ public class Posicion {
 	}
 
 
-	public int distanciaCoordX(Posicion posicion) {
-		return Math.abs(this.coordenadaX - posicion.coordenadaX);
-	}
-	
-	public int distanciaCoordY(Posicion posicion) {
-		return Math.abs(this.coordenadaY - posicion.coordenadaY);
+	public int distanciaA(Posicion posicion){
+		int maxCoordenadaX = Math.max(this.coordenadaX, posicion.getCoordenadaX());
+		int minCoordenadaX = Math.min(this.coordenadaX, posicion.getCoordenadaX());
+		int maxCoordenadaY = Math.max(this.coordenadaY, posicion.getCoordenadaY());
+		int minCoordenadaY = Math.min(this.coordenadaY, posicion.getCoordenadaY());
+		
+		int distaciaAX = maxCoordenadaX - minCoordenadaX;
+		int distanciaAY = maxCoordenadaY - minCoordenadaY;
+		
+		int mayorDistancia = Math.max(distaciaAX, distanciaAY);
+		
+		return mayorDistancia;
 	}
 }

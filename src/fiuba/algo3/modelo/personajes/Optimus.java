@@ -1,36 +1,17 @@
 package fiuba.algo3.modelo.personajes;
 
-import fiuba.algo3.modelo.tablero.Posicion;
+import java.util.Stack;
+
+import fiuba.algo3.modelo.estados.ModoAlgoformer;
+import fiuba.algo3.modelo.estados.OptimusAlterno;
+import fiuba.algo3.modelo.estados.OptimusHumanoide;
 
 public class Optimus extends Autobot {
-
 	public Optimus(){
-		this.posicion = new Posicion(0,0);
-		this.setPuntosDeVida(500);
-		this.setAtaque(50);
-		this.setDistanciaDeAtaque(2);
-		this.setVelocidad(2);
-		this.setEstado(EstadoAlgoformer.HUMANOIDE);
+		this.ptosDeVida = 500;
+		this.modoAlgoformer = new OptimusHumanoide();
+		ModoAlgoformer modoAlterno = new OptimusAlterno();
+		this.distintosModos = new Stack<ModoAlgoformer>();
+		this.distintosModos.push(modoAlterno);
 	}
-	
-	@Override
-	public void transformacionModoHumanoide() {
-		if (!this.getEstado().equals(EstadoAlgoformer.HUMANOIDE)){
-			this.setAtaque(50);
-			this.setDistanciaDeAtaque(2);
-			this.setVelocidad(2);
-			this.setEstado(EstadoAlgoformer.HUMANOIDE);
-		}
-	}
-	@Override
-	public void transformacionModoAlterno() {
-		if (!this.getEstado().equals(EstadoAlgoformer.ALTERNO)){
-			this.setAtaque(15);
-			this.setDistanciaDeAtaque(4);
-			this.setVelocidad(5);
-			this.setEstado(EstadoAlgoformer.ALTERNO);
-		}
-	}
-	
-
 }

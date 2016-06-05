@@ -1,34 +1,17 @@
 package fiuba.algo3.modelo.personajes;
 
-import fiuba.algo3.modelo.tablero.Posicion;
+import java.util.Stack;
+
+import fiuba.algo3.modelo.estados.FrenzyAlterno;
+import fiuba.algo3.modelo.estados.FrenzyHumanoide;
+import fiuba.algo3.modelo.estados.ModoAlgoformer;
 
 public class Frenzy extends Decepticon {
-
 	public Frenzy(){
-		this.posicion = new Posicion(50,49);
-		this.setPuntosDeVida(400);
-		this.setAtaque(10);
-		this.setDistanciaDeAtaque(5);
-		this.setVelocidad(2);
-		this.setEstado(EstadoAlgoformer.HUMANOIDE);
-	}
-	
-	@Override
-	public void transformacionModoHumanoide() {
-		if (!this.getEstado().equals(EstadoAlgoformer.HUMANOIDE)){
-			this.setAtaque(10);
-			this.setDistanciaDeAtaque(5);
-			this.setVelocidad(2);
-			this.setEstado(EstadoAlgoformer.HUMANOIDE);
-		}
-	}
-	@Override
-	public void transformacionModoAlterno() {
-		if (!this.getEstado().equals(EstadoAlgoformer.ALTERNO)){
-			this.setAtaque(25);
-			this.setDistanciaDeAtaque(2);
-			this.setVelocidad(6);
-			this.setEstado(EstadoAlgoformer.ALTERNO);
-		}
+		this.ptosDeVida = 400;
+		this.modoAlgoformer = new FrenzyHumanoide();
+		ModoAlgoformer modoAlterno = new FrenzyAlterno();
+		this.distintosModos = new Stack<ModoAlgoformer>();
+		this.distintosModos.push(modoAlterno);
 	}
 }

@@ -1,22 +1,14 @@
 package fiuba.algo3.modelo.personajes;
 
-public class Menasor extends Decepticon {
-	public Menasor(){
-		
-//		this.setpuntosDeVida = 500;
-		this.setAtaque(115);
-		this.setDistanciaDeAtaque(2);
-		this.setVelocidad(2);
-		this.setEstado(EstadoAlgoformer.MODO_UNICO);
-	}
-	
-	@Override
-	public void transformacionModoHumanoide() {
+import fiuba.algo3.modelo.estados.MenasorUnico;
 
+public class Menasor extends Decepticon {
+	public Menasor(int vida){
+		this.ptosDeVida = vida;
+		this.modoAlgoformer = new MenasorUnico();
 	}
 	@Override
-	public void transformacionModoAlterno() {
+	public void transformar(){
 		
 	}
-	
 }

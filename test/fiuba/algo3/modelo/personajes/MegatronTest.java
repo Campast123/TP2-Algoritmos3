@@ -9,11 +9,9 @@ public class MegatronTest {
 	private int MEGATRON_HUMANOIDE_ATAQUE = 10;
 	private int MEGATRON_HUMANOIDE_DISTANCIA_DE_ATAQUE = 3;
 	private int MEGATRON_HUMANOIDE_VELOCIDAD = 1;
-	private EstadoAlgoformer MEGATRON_HUMANOIDE_ESTADO = EstadoAlgoformer.HUMANOIDE;
 	private int MEGATRON_ALTERNO_ATAQUE = 55 ;
 	private int MEGATRON_ALTERNO_DISTANCIA_DE_ATAQUE = 2;
 	private int MEGATRON_ALTERNO_VELOCIDAD = 8;
-	private EstadoAlgoformer MEGATRON_ALTERNO_ESTADO = EstadoAlgoformer.ALTERNO;
 
 	
 	@Test
@@ -22,7 +20,7 @@ public class MegatronTest {
 		Assert.assertEquals(MEGATRON_VIDA, megatron.getPuntosDeVida());
 		Assert.assertEquals(MEGATRON_HUMANOIDE_ATAQUE, megatron.getAtaque());
 		Assert.assertEquals(MEGATRON_HUMANOIDE_DISTANCIA_DE_ATAQUE, megatron.getDistanciaDeAtaque());
-		Assert.assertEquals(MEGATRON_HUMANOIDE_ESTADO, megatron.getEstado());
+		Assert.assertTrue(megatron.esHumanoide());
 		Assert.assertEquals(MEGATRON_HUMANOIDE_VELOCIDAD, megatron.getVelocidad());
 	
 	}
@@ -30,11 +28,12 @@ public class MegatronTest {
 	@Test
 	public void transformarMegatronAModoHumanoideTest(){
 		Personaje megatron = new Megatron();
-		megatron.transformacionModoHumanoide();
+		megatron.transformar();
+		megatron.transformar();
 		Assert.assertEquals(MEGATRON_VIDA, megatron.getPuntosDeVida());
 		Assert.assertEquals(MEGATRON_HUMANOIDE_ATAQUE, megatron.getAtaque());
 		Assert.assertEquals(MEGATRON_HUMANOIDE_DISTANCIA_DE_ATAQUE, megatron.getDistanciaDeAtaque());
-		Assert.assertEquals(MEGATRON_HUMANOIDE_ESTADO, megatron.getEstado());
+		Assert.assertTrue(megatron.esHumanoide());
 		Assert.assertEquals(MEGATRON_HUMANOIDE_VELOCIDAD, megatron.getVelocidad());
 	
 	}
@@ -42,11 +41,11 @@ public class MegatronTest {
 	@Test
 	public void transformarMegatronAModoAlternoTest(){
 		Personaje megatron = new Megatron();
-		megatron.transformacionModoAlterno();
+		megatron.transformar();
 		Assert.assertEquals(MEGATRON_VIDA, megatron.getPuntosDeVida());
 		Assert.assertEquals(MEGATRON_ALTERNO_ATAQUE, megatron.getAtaque());
 		Assert.assertEquals(MEGATRON_ALTERNO_DISTANCIA_DE_ATAQUE, megatron.getDistanciaDeAtaque());
-		Assert.assertEquals(MEGATRON_ALTERNO_ESTADO, megatron.getEstado());
+		Assert.assertTrue(megatron.esAlterno());
 		Assert.assertEquals(MEGATRON_ALTERNO_VELOCIDAD, megatron.getVelocidad());
 	
 	}

@@ -5,10 +5,6 @@ import org.junit.Test;
 
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.TipoTransformer;
-import fiuba.algo3.modelo.personajes.Optimus;
-import fiuba.algo3.modelo.personajes.Personaje;
-import fiuba.algo3.modelo.tablero.Posicion;
-import fiuba.algo3.modelo.tablero.Tablero;
 
 public class UnitTestsJugador {
 

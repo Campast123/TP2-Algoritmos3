@@ -9,11 +9,9 @@ public class OptimusTest {
 	private int OPTIMUS_HUMANOIDE_ATAQUE = 50;
 	private int OPTIMUS_HUMANOIDE_DISTANCIA_DE_ATAQUE = 2;
 	private int OPTIMUS_HUMANOIDE_VELOCIDAD = 2;
-	private EstadoAlgoformer OPTIMUS_HUMANOIDE_ESTADO = EstadoAlgoformer.HUMANOIDE;
 	private int OPTIMUS_ALTERNO_ATAQUE = 15 ;
 	private int OPTIMUS_ALTERNO_DISTANCIA_DE_ATAQUE = 4;
 	private int OPTIMUS_ALTERNO_VELOCIDAD = 5;
-	private EstadoAlgoformer OPTIMUS_ALTERNO_ESTADO = EstadoAlgoformer.ALTERNO;
 
 	
 	@Test
@@ -22,7 +20,7 @@ public class OptimusTest {
 		Assert.assertEquals(OPTIMUS_VIDA, optimus.getPuntosDeVida());
 		Assert.assertEquals(OPTIMUS_HUMANOIDE_ATAQUE, optimus.getAtaque());
 		Assert.assertEquals(OPTIMUS_HUMANOIDE_DISTANCIA_DE_ATAQUE, optimus.getDistanciaDeAtaque());
-		Assert.assertEquals(OPTIMUS_HUMANOIDE_ESTADO, optimus.getEstado());
+		Assert.assertTrue(optimus.esHumanoide());
 		Assert.assertEquals(OPTIMUS_HUMANOIDE_VELOCIDAD, optimus.getVelocidad());
 	
 	}
@@ -30,11 +28,12 @@ public class OptimusTest {
 	@Test
 	public void transformarOptimusAModoHumanoideTest(){
 		Personaje optimus = new Optimus();
-		optimus.transformacionModoHumanoide();
+		optimus.transformar();
+		optimus.transformar();
 		Assert.assertEquals(OPTIMUS_VIDA, optimus.getPuntosDeVida());
 		Assert.assertEquals(OPTIMUS_HUMANOIDE_ATAQUE, optimus.getAtaque());
 		Assert.assertEquals(OPTIMUS_HUMANOIDE_DISTANCIA_DE_ATAQUE, optimus.getDistanciaDeAtaque());
-		Assert.assertEquals(OPTIMUS_HUMANOIDE_ESTADO, optimus.getEstado());
+		Assert.assertTrue(optimus.esHumanoide());
 		Assert.assertEquals(OPTIMUS_HUMANOIDE_VELOCIDAD, optimus.getVelocidad());
 	
 	}
@@ -42,11 +41,11 @@ public class OptimusTest {
 	@Test
 	public void transformarOptimusAModoAlternoTest(){
 		Personaje optimus = new Optimus();
-		optimus.transformacionModoAlterno();
+		optimus.transformar();
 		Assert.assertEquals(OPTIMUS_VIDA, optimus.getPuntosDeVida());
 		Assert.assertEquals(OPTIMUS_ALTERNO_ATAQUE, optimus.getAtaque());
 		Assert.assertEquals(OPTIMUS_ALTERNO_DISTANCIA_DE_ATAQUE, optimus.getDistanciaDeAtaque());
-		Assert.assertEquals(OPTIMUS_ALTERNO_ESTADO, optimus.getEstado());
+		Assert.assertTrue(optimus.esAlterno());
 		Assert.assertEquals(OPTIMUS_ALTERNO_VELOCIDAD, optimus.getVelocidad());
 	
 	}

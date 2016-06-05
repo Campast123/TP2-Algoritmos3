@@ -7,8 +7,6 @@ import fiuba.algo3.modelo.jugabilidad.*;
 import fiuba.algo3.modelo.personajes.Megatron;
 import fiuba.algo3.modelo.personajes.Optimus;
 import fiuba.algo3.modelo.personajes.Personaje;
-import fiuba.algo3.modelo.tablero.Casillero;
-import fiuba.algo3.modelo.tablero.ChispaSuprema;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
 
@@ -24,13 +22,13 @@ public class IntegrationTests {
 		Tablero tablero = new Tablero(); 
 		Posicion posicionInicial = new Posicion(10,2);
 		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
-		tablero.agregarAlgoformer(algoformerHumanoide,posicionInicial);
+		tablero.agregarPersonaje(algoformerHumanoide,posicionInicial);
 		Assert.assertTrue(tablero.estaOcupado(posicionInicial));
 		Assert.assertEquals(algoformerHumanoide.getPosicion(),posicionInicial);
 
 		Posicion posicionFinal = new Posicion(8,4);
 		Assert.assertFalse(tablero.estaOcupado(posicionFinal));
-		tablero.moverAlgoformer(algoformerHumanoide,posicionFinal);
+		tablero.moverPersonaje(algoformerHumanoide,posicionFinal);
 		Assert.assertTrue(tablero.estaOcupado(posicionFinal));
 		Assert.assertEquals(algoformerHumanoide.getPosicion(),posicionFinal);
 
@@ -43,16 +41,16 @@ public class IntegrationTests {
 		Tablero tablero = new Tablero(); 
 		Posicion posicionInicial = new Posicion(10,2);
 		
-		tablero.agregarAlgoformer(algoformer,posicionInicial);
+		tablero.agregarPersonaje(algoformer,posicionInicial);
 		
-		Personaje algoformerEnTablero = tablero.obtenerAlgoformer(posicionInicial);
+		Personaje algoformerEnTablero = tablero.obtenerPersonaje(posicionInicial);
 		Assert.assertEquals(algoformer, algoformerEnTablero);
 		Assert.assertTrue(algoformer.esHumanoide());
 		
-		algoformerEnTablero.transformacionModoAlterno();
+		algoformerEnTablero.transformar();
 		Assert.assertTrue(algoformer.esAlterno());
 		
-		algoformerEnTablero.transformacionModoHumanoide();
+		algoformerEnTablero.transformar();
 		Assert.assertTrue(algoformer.esHumanoide());
 
 
@@ -61,21 +59,21 @@ public class IntegrationTests {
 	public void test03AlgoformerAlternoSeUbicaEnTableroYSeMueve(){
 		Personaje algoformer = new Optimus();
 		Assert.assertTrue(algoformer.esHumanoide());
-		algoformer.transformacionModoAlterno();
+		algoformer.transformar();
 		Assert.assertTrue(algoformer.esAlterno());
 		
 		Tablero tablero = new Tablero();
 		Posicion posicionInicial = new Posicion(1,1);
 		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
 		
-		tablero.agregarAlgoformer(algoformer, posicionInicial);
+		tablero.agregarPersonaje(algoformer, posicionInicial);
 		Assert.assertTrue(tablero.estaOcupado(posicionInicial));
 		Assert.assertEquals(algoformer.getPosicion(),posicionInicial);	
 		
 		Posicion posicionDestino = new Posicion(2,2);
 		Assert.assertFalse(tablero.estaOcupado(posicionDestino));
 		
-		tablero.moverAlgoformer(algoformer, posicionDestino);
+		tablero.moverPersonaje(algoformer, posicionDestino);
 		Assert.assertFalse(tablero.estaOcupado(posicionInicial));
 		
 		Assert.assertTrue(tablero.estaOcupado(posicionDestino));		
@@ -83,9 +81,9 @@ public class IntegrationTests {
 		
 	}
 	
-	//Crear una prueba de integraci�n en la cual se pueda crear un juego,
+	//Crear una prueba de integracion en la cual se pueda crear un juego,
 	//con 2 jugadores cada uno de ellos con sus 3 algoformers distribuidos
-	//en el tablero seg�n el enunciado y la chispa suprema por el centro del tablero.
+	//en el tablero segun el enunciado y la chispa suprema por el centro del tablero.
 	@Test
 	public void test04AlgoformerCreoJuegoConDosJugadoresValidoEstadoGeneral(){		
 		
@@ -137,13 +135,13 @@ public class IntegrationTests {
 		Assert.assertTrue(frenzy.getPosicion().equals(posicionDeFrenzy));
 		
 		//La chispa se ubica en la mitad del tablero
-		Posicion posicionEnElTableroDeChispa = partida.getTablero().getPosicionChispa();
+		Posicion posicionEnElTableroDeChispa = partida.getPosicionChispaSuprema();
 		Assert.assertTrue(posicionEnElTableroDeChispa.equals(posicionDeChispa));
 	}
 	
 	//Combinaciones en modos de: Ubicar un autobot,
 	//ubicar un decepticon, pedir que se ataquen respetando ( y no ) 
-	//las distancias verificando los da�os ( o no da�os ).
+	//las distancias verificando los danios ( o no danios ).
 	@Test
 	public void test05AtaqueEntreAutobotYDecepticon(){	
 		
@@ -157,14 +155,14 @@ public class IntegrationTests {
 		
 		Tablero tablero = new Tablero();
 		Posicion posicionInicialAutobot = new Posicion(12,12);
-		Posicion posicionInicialDecepticon = new Posicion(13,12);
+		Posicion posicionInicialDecepticon = new Posicion(14,14);
 		
-		tablero.agregarAlgoformer(autobot, posicionInicialAutobot);
-		tablero.agregarAlgoformer(decepticon, posicionInicialDecepticon);
+		tablero.agregarPersonaje(autobot, posicionInicialAutobot);
+		tablero.agregarPersonaje(decepticon, posicionInicialDecepticon);
 		
 		Personaje autobot2 = new Optimus();
 		Posicion posicionInicialAutobot2 = new Posicion(14,12);
-		tablero.agregarAlgoformer(autobot, posicionInicialAutobot2);
+		tablero.agregarPersonaje(autobot2, posicionInicialAutobot2);
 		
 		//optimus no ataca optimus2 (entre autobots no se atacan)
 		autobot.atacar(autobot2);
@@ -179,9 +177,9 @@ public class IntegrationTests {
 		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
 		
 
-		Posicion posicionDestinoAutobot = new Posicion(2,2);
+		Posicion posicionDestinoAutobot = new Posicion(10,10);
 		Assert.assertFalse(tablero.estaOcupado(posicionDestinoAutobot));
-		tablero.moverAlgoformer(autobot, posicionDestinoAutobot);
+		tablero.moverPersonaje(autobot, posicionDestinoAutobot);
 		Assert.assertTrue(tablero.estaOcupado(posicionDestinoAutobot));
 
 		

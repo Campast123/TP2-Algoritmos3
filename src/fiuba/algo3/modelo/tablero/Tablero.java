@@ -12,7 +12,6 @@ public class Tablero {
 	public static final int largo = 50;
 	
 	private Map<Posicion,Casillero> tablero;
-	Posicion posDeChispa;
 	
 	public Tablero(){
 		this.tablero = new HashMap<Posicion,Casillero>();
@@ -26,18 +25,9 @@ public class Tablero {
 		}
 	}
 	
-	//Configura el mapa con: Bonus, trampas y chispa suprema	
-	public void inicializaCampoAleatoriamente(){
-		ChispaSuprema posicionable = new ChispaSuprema();
-		
-		Casillero casillero = this.tablero.get(posicionable.getPosicion());
-		
-		casillero.agregarPosicionable(posicionable);		
-						
-		this.tablero.put(casillero.getPosicion(), casillero);
-		this.posDeChispa = casillero.getPosicion();
+	public void ingresarCasillero(Casillero casillero){
+		this.tablero.put(casillero.getPosicion(),casillero);
 	}	
-	
 		
 	public boolean estaOcupado(Posicion posicion){
 		if (this.posicionValida(posicion)){
@@ -52,29 +42,27 @@ public class Tablero {
 //		throw new PosicionInvalidaException("La posicion en X:" + posicion.getCoordenadaX() + " e Y:" + posicion.getCoordenadaY() + " es invalida");
 	}
 	
-	public void agregarAlgoformer(Personaje algoformer , Posicion posicionInicial){
+	public void agregarPersonaje(Personaje personaje , Posicion posicionInicial){
 		if (this.posicionValida(posicionInicial) && !this.estaOcupado(posicionInicial)){			
-			this.tablero.get(posicionInicial).agregarPosicionable(algoformer);
+			this.tablero.get(posicionInicial).agregarPosicionable(personaje);
 		}
 	}
 	
-	public Personaje obtenerAlgoformer(Posicion posicionInicial){
-		Personaje algoformer = null;
+	public Personaje obtenerPersonaje(Posicion posicionInicial){
+		Personaje personaje = null;
 		if (this.posicionValida(posicionInicial) && this.estaOcupado(posicionInicial)){
-			algoformer = this.tablero.get(posicionInicial).getPersonaje();
+			personaje = this.tablero.get(posicionInicial).getPersonaje();
 		}
-		return algoformer;
+		return personaje;
 	}
 	
-	public void moverAlgoformer(Personaje algoformer, Posicion posicionDestino){
+	public void moverPersonaje(Personaje personaje, Posicion posicionDestino){
 		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){
-			Posicion posicionInicial = algoformer.getPosicion();
-			this.tablero.get(posicionInicial).retirarPersonaje();
-			this.tablero.get(posicionDestino).agregarPosicionable(algoformer);
+			if(personaje.puedeMoverse(posicionDestino)){
+				Posicion posicionInicial = personaje.getPosicion();
+				this.tablero.get(posicionInicial).retirarPersonaje();
+				this.tablero.get(posicionDestino).agregarPosicionable(personaje);
+			}
 		}
-	}
-	public Posicion getPosicionChispa(){
-		return (this.posDeChispa);
-	}
-			
+	}		
 }

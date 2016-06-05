@@ -3,8 +3,9 @@ package fiuba.algo3.modelo.tablero;
 import fiuba.algo3.modelo.personajes.Posicionable;
 import fiuba.algo3.modelo.tablero.Posicion;
 
-public class ChispaSuprema extends Posicionable {
-	private boolean capturada;	
+public class ChispaSuprema implements Posicionable {
+	private boolean capturada;
+	private Posicion posicion;
 	
 	public ChispaSuprema(){
 		this.capturada = false;
@@ -17,6 +18,17 @@ public class ChispaSuprema extends Posicionable {
 	
 	public boolean getEstado(){
 		return this.capturada;
+	}
+	
+	@Override
+	public Posicion getPosicion(){
+		return (this.posicion);
+	}
+	
+	@Override
+	public void setPosicion(Posicion posicion) {
+		this.posicion = posicion;
+		
 	}
 	
 }

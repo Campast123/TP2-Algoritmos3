@@ -1,8 +1,5 @@
 package fiuba.algo3.modelo.jugabilidad;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import fiuba.algo3.modelo.personajes.*;
 
 public class Jugador {

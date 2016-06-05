@@ -11,6 +11,7 @@ public class PersonajeTest {
 	public void ubicarEnPosicionTest(){
 		Personaje personaje = new Optimus();
 		Posicion posicionInicial = new Posicion(0,0);
+		personaje.setPosicion(posicionInicial);
 		Assert.assertEquals(posicionInicial, personaje.getPosicion());
 		Posicion posicionDentroDelMapa = new Posicion(10,10);
 		personaje.setPosicion(posicionDentroDelMapa);
