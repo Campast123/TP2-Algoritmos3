@@ -1,6 +1,4 @@
 language: java
-
+script: ant integracion-continua
 jdk:
   - oraclejdk8
- 
- script: ant integracion-continua
