@@ -1,2 +1,2 @@
 language: java
-install: install-ivy
+script: ant test
