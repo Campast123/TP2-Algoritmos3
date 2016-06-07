@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class FrenzyAlterno extends ModoAlterno implements UnidadTerrestre{
+public class FrenzyAlterno extends UnidadAlternaTerrestre{
 	public FrenzyAlterno(){
 		this.ataque = 25;
 		this.distanciaDeAtaque = 2;

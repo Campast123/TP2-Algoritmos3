@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class FrenzyHumanoide extends ModoHumanoide implements UnidadTerrestre{
+public class FrenzyHumanoide extends ModoHumanoide{
 	public FrenzyHumanoide(){
 		this.ataque = 10;
 		this.distanciaDeAtaque = 5;

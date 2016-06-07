@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class MenasorUnico extends ModoUnico implements UnidadTerrestre{
+public class MenasorUnico extends ModoUnico{
 	public MenasorUnico(){
 		this.ataque = 115;
 		this.distanciaDeAtaque = 2;

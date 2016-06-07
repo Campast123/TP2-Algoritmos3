@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class MegatronAlterno extends ModoAlterno implements UnidadAerea{
+public class MegatronAlterno extends UnidadAlternaAerea{
 	public MegatronAlterno(){
 		this.ataque = 55;
 		this.distanciaDeAtaque = 2;

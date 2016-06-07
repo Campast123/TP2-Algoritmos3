@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-abstract class ModoAlterno implements ModoAlgoformer {
+public abstract class ModoAlterno implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
 	int distanciaDeAtaque;

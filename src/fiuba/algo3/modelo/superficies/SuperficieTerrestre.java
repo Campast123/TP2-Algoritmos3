@@ -1,18 +1,18 @@
 package fiuba.algo3.modelo.superficies;
 
-import fiuba.algo3.modelo.estados.UnidadAerea;
-import fiuba.algo3.modelo.estados.UnidadTerrestre;
+import fiuba.algo3.modelo.estados.UnidadAlternaAerea;
+import fiuba.algo3.modelo.estados.UnidadAlternaTerrestre;
 import fiuba.algo3.modelo.personajes.Personaje;
 
-public class SuperficieTerrestre extends Superficie{
+public abstract class SuperficieTerrestre extends Superficie{
 
 	@Override
-	protected void producirEfecto(UnidadAerea algoformer) {
+	protected void producirEfecto(UnidadAlternaAerea algoformer) {
 		
 	}
 
 	@Override
-	protected void producirEfecto(UnidadTerrestre algoformer) {
+	protected void producirEfecto(UnidadAlternaTerrestre algoformer) {
 		
 	}
 

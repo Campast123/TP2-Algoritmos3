@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class MegatronHumanoide extends ModoHumanoide implements UnidadTerrestre{
+public class MegatronHumanoide extends ModoHumanoide{
 	public MegatronHumanoide(){
 		this.ataque = 10;
 		this.distanciaDeAtaque = 3;

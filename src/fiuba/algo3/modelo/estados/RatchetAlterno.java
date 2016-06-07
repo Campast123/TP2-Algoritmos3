@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class RatchetAlterno extends ModoAlterno implements UnidadAerea{
+public class RatchetAlterno extends UnidadAlternaAerea{
 	public RatchetAlterno(){
 		this.ataque = 35;
 		this.distanciaDeAtaque = 2;

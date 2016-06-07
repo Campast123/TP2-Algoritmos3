@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class RatchetHumanoide extends ModoHumanoide implements UnidadTerrestre{
+public class RatchetHumanoide extends ModoHumanoide{
 	public RatchetHumanoide(){
 		this.ataque = 5;
 		this.distanciaDeAtaque = 5;

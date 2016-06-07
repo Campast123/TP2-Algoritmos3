@@ -1,6 +1,9 @@
 package fiuba.algo3.modelo.estados;
 
-abstract class ModoUnico implements ModoAlgoformer {
+import fiuba.algo3.modelo.superficies.SuperficieAerea;
+import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
+
+public abstract class ModoUnico implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
 	int distanciaDeAtaque;
@@ -44,5 +47,14 @@ abstract class ModoUnico implements ModoAlgoformer {
 	@Override
 	public boolean esUnidadAerea(){
 		return false;
+	}
+	@Override
+	public boolean puedeAtravesar(SuperficieAerea superficie) {
+		return true;
+	}
+
+	@Override
+	public boolean puedeAtravesar(SuperficieTerrestre superficie) {
+		return (superficie.puedeAtravesar(this));
 	}
 }
