@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class BumblebeeAlterno extends ModoAlterno {
+public class BumblebeeAlterno extends ModoAlterno implements UnidadTerrestre {
 	public BumblebeeAlterno(){
 		this.ataque = 20;
 		this.distanciaDeAtaque = 3;
