@@ -1,3 +1,6 @@
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------PRIMERA ENTREGA--------------------------------------------- -----------------------------------------------------------------------------------------------------
+
 La estructura seria:
 						Interfaz Personaje -->
 							Objeto Autobot
@@ -16,3 +19,24 @@ se comunica con el tablero para indicar el cambio de posicion
 
 el movimiento valida que en el eje x se mueva < = a la distancia maxima y tambien 
 que ne el eje y se mueva < = a la distancia maxima
+
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------SEGUNDA ENTREGA--------------------------------------------- -----------------------------------------------------------------------------------------------------
+
+Cambios segun lo hablado en la clase:
+
+-Cambio general en los algoformers para que los mismos posean un estado,
+en el cual esten sus atributos
+-Creacion de todos los estados
+-Refactoring de nombres para que el tablero sea mas generalizado
+-Creada funcion para calcular distancion en la clase Posicon
+-Agregada verificacion de movimiento de algoformers
+-La clase posicionable se convirtio en interfaz
+-Cambio en la clase partida para que el mismo sea quien ingrese a los
+algoformers a las posiciones que se establezcan y que el cree y
+posicione la chispaSuprema y almacene su posicion
+-Cambio dentro de EstadoAlgoformer para conocer si el algoformer es una
+unidad terrestre o es una unidad aerea
+
+Incorporacion de Integracion Continua con Travis
