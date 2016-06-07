@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-public class OptimusHumanoide extends ModoHumanoide {
+public class OptimusHumanoide extends ModoHumanoide implements UnidadTerrestre{
 	
 	public OptimusHumanoide(){
 		this.ataque = 50;
