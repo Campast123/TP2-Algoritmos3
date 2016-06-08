@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.estados;
 
+import fiuba.algo3.modelo.personajes.Personaje;
+
 public abstract class ModoAlterno implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
@@ -34,4 +36,9 @@ public abstract class ModoAlterno implements ModoAlgoformer {
 	public boolean esUnico(){
 		return false;
 	}
+	@Override
+	public void quitarVidaEspinas(Personaje algoformer){
+		
+	}
+	
 }

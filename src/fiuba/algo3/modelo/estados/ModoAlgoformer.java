@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.estados;
 
+
+import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.superficies.*;
 
 public interface ModoAlgoformer {
@@ -13,4 +15,5 @@ public interface ModoAlgoformer {
 	boolean esUnidadAerea();
 	boolean puedeAtravesar(SuperficieAerea superficie);
 	boolean puedeAtravesar(SuperficieTerrestre superficie);
+	void quitarVidaEspinas(Personaje personaje);
 }

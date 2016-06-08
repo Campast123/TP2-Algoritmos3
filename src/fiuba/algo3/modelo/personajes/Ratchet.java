@@ -14,4 +14,5 @@ public class Ratchet extends Autobot {
 		this.distintosModos = new Stack<ModoAlgoformer>();
 		this.distintosModos.push(modoAlterno);
 	}
+
 }

@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
+import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.superficies.SuperficieAerea;
 import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 
@@ -56,5 +57,10 @@ public abstract class ModoUnico implements ModoAlgoformer {
 	@Override
 	public boolean puedeAtravesar(SuperficieTerrestre superficie) {
 		return (superficie.puedeAtravesar(this));
+	}
+	
+	@Override
+	public void quitarVidaEspinas(Personaje algoformer){
+		algoformer.reducirVida();
 	}
 }

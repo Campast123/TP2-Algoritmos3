@@ -3,6 +3,9 @@ package fiuba.algo3.modelo.personajes;
 import java.util.Stack;
 
 import fiuba.algo3.modelo.estados.ModoAlgoformer;
+import fiuba.algo3.modelo.estados.ModoAlterno;
+import fiuba.algo3.modelo.superficies.SuperficieAerea;
+import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 import fiuba.algo3.modelo.tablero.Posicion;
 
 abstract class Autobot implements Personaje{
@@ -83,10 +86,31 @@ abstract class Autobot implements Personaje{
 	public boolean esAlterno() {
 		return (this.modoAlgoformer.esAlterno());
 	}
+	
+	@Override
+	public boolean puedeAtravesarSup(SuperficieAerea superficie){
+		return this.modoAlgoformer.puedeAtravesar(superficie);
+	}
+	
+	@Override
+	public boolean puedeAtravesarSup(SuperficieTerrestre superficie){
+		return this.modoAlgoformer.puedeAtravesar(superficie);
+	}
+	
+	@Override
+	public void reducirVidaEspinas() {
+		this.modoAlgoformer.quitarVidaEspinas(this);;
+	}
+
 	@Override
 	public void transformar() {
 		ModoAlgoformer nuevoModo = this.distintosModos.pop();
 		distintosModos.push(this.modoAlgoformer);
 		this.modoAlgoformer = nuevoModo;
+	}
+	
+	@Override
+	public void reducirVida() {
+		this.ptosDeVida = this.ptosDeVida - ((this.ptosDeVida*5)/100);
 	}
 }
