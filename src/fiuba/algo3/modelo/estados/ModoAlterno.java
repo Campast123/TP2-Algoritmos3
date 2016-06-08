@@ -6,7 +6,6 @@ public abstract class ModoAlterno implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
 	int distanciaDeAtaque;
-
 	@Override
 	public int getVelocidad() {
 		return (this.velocidad);
@@ -40,5 +39,9 @@ public abstract class ModoAlterno implements ModoAlgoformer {
 	public void quitarVidaEspinas(Personaje algoformer){
 		
 	}
-	
+	@Override
+	public void reducirAtaque(){
+		
+	}
+
 }

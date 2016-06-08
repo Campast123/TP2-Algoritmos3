@@ -113,4 +113,10 @@ abstract class Autobot implements Personaje{
 	public void reducirVida() {
 		this.ptosDeVida = this.ptosDeVida - ((this.ptosDeVida*5)/100);
 	}
+	
+	@Override
+	public void reducirAtaque(){
+		this.modoAlgoformer.reducirAtaque();
+	}
+
 }

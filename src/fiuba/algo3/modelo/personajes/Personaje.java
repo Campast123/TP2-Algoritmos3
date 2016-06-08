@@ -22,4 +22,5 @@ public interface Personaje extends Posicionable {
 	boolean puedeAtravesarSup(SuperficieTerrestre superficie);
 	void reducirVidaEspinas();
 	void reducirVida();
+	void reducirAtaque();
 }

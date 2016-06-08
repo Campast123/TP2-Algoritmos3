@@ -63,4 +63,8 @@ public abstract class ModoUnico implements ModoAlgoformer {
 	public void quitarVidaEspinas(Personaje algoformer){
 		algoformer.reducirVida();
 	}
+	@Override
+	public void reducirAtaque(){
+		
+	}
 }

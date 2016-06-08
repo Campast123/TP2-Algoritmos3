@@ -18,4 +18,8 @@ public abstract class UnidadAlternaTerrestre extends ModoAlterno {
 	public void quitarVidaEspinas(Personaje algoformer){
 		algoformer.reducirVida();
 	}
+	@Override
+	public void reducirAtaque(){
+		
+	}
 }

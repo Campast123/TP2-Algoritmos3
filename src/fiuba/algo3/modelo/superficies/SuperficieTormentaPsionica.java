@@ -30,7 +30,6 @@ public class SuperficieTormentaPsionica extends SuperficieAerea {
 
 	@Override
 	public void producirEfecto(Personaje algoformer) {
-		// TODO Auto-generated method stub
-		
+		algoformer.reducirAtaque();
 	}
 }

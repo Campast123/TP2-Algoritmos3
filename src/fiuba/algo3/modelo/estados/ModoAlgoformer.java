@@ -16,4 +16,5 @@ public interface ModoAlgoformer {
 	boolean puedeAtravesar(SuperficieAerea superficie);
 	boolean puedeAtravesar(SuperficieTerrestre superficie);
 	void quitarVidaEspinas(Personaje personaje);
+	void reducirAtaque();
 }

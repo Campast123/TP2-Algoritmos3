@@ -111,4 +111,8 @@ abstract class Decepticon implements Personaje {
 		distintosModos.push(this.modoAlgoformer);
 		this.modoAlgoformer = nuevoModo;
 	}
+	@Override
+	public void reducirAtaque(){
+		this.modoAlgoformer.reducirAtaque();
+	}
 }
