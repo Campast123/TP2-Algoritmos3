@@ -3,7 +3,6 @@ package fiuba.algo3.modelo.personajes;
 import java.util.Stack;
 
 import fiuba.algo3.modelo.estados.ModoAlgoformer;
-import fiuba.algo3.modelo.estados.ModoAlterno;
 import fiuba.algo3.modelo.superficies.SuperficieAerea;
 import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 import fiuba.algo3.modelo.tablero.Posicion;

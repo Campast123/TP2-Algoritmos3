@@ -2,7 +2,6 @@ package fiuba.algo3.superficies;
 
 import org.junit.Assert;
 import org.junit.Test;
-import fiuba.algo3.modelo.estados.*;
 import fiuba.algo3.modelo.personajes.*;
 import fiuba.algo3.modelo.superficies.*;
 
@@ -217,5 +216,57 @@ public class SuperficieTests {
 
 		Assert.assertTrue(optimus.getAtaque() == 15);
 		
+	}
+	
+	@Test
+	public void test08PruebasDeAtravesarSuperficieDeCampo(){
+		Personaje optimus = new Optimus();
+		Personaje megatron = new Megatron();
+		
+		SuperficieAerea tormenta = new SuperficieTormentaPsionica();
+		SuperficieTerrestre pantano = new SuperficiePantano();
+		
+		SuperficieDeCampo supDeCampo = new SuperficieDeCampo(tormenta,pantano);
+		
+		//En modo humanoide no pueden atravesar el pantano
+		Assert.assertFalse(supDeCampo.puedeAtravesarlo(megatron));
+		Assert.assertFalse(supDeCampo.puedeAtravesarlo(optimus));
+		
+		megatron.transformar();
+		optimus.transformar();
+		
+		//En modo alterno, tanto siendo terrestres como aereos pueden atravesar el pantano y la tormenta
+		Assert.assertTrue(supDeCampo.puedeAtravesarlo(megatron));
+		Assert.assertTrue(supDeCampo.puedeAtravesarlo(optimus));
+	}
+		
+		@Test
+		public void test09PruebasDeAplicarEfectosEnSuperficieDeCampo(){
+			Personaje optimus = new Optimus();
+			Personaje megatron = new Megatron();
+			
+			SuperficieAerea tormenta = new SuperficieTormentaPsionica();
+			SuperficieTerrestre espinas = new SuperficieEspinas();
+			
+			SuperficieDeCampo supDeCampo = new SuperficieDeCampo(tormenta,espinas);
+			
+			supDeCampo.aplicarEfecto(megatron);
+			supDeCampo.aplicarEfecto(optimus);
+			
+			//A los dos algoformers se les aplica el efecto de las espinas por ser unidades terrestres
+			Assert.assertTrue(megatron.getPuntosDeVida() == 523);
+			Assert.assertTrue(optimus.getPuntosDeVida() == 475);
+			
+			megatron.transformar();
+			optimus.transformar();
+			
+			supDeCampo.aplicarEfecto(megatron);
+			supDeCampo.aplicarEfecto(optimus);
+			//A megatron se le aplica el efecto aereo y a optimus se le aplica el efecto terrestre
+			Assert.assertTrue(megatron.getPuntosDeVida() == 523);
+			Assert.assertTrue(megatron.getAtaque() == 33);
+			Assert.assertTrue(optimus.getPuntosDeVida() == 452);
+			Assert.assertTrue(optimus.getAtaque() == 15);
+			
 	}
 }
