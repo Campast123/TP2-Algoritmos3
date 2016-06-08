@@ -83,7 +83,7 @@ public class SuperficieTests {
 	}
 	
 	@Test
-	public void test04EspinasLastimanAlgoformerNoAereo(){
+	public void test05EspinasLastimanAlgoformerNoAereo(){
 		Ratchet ratchet = new Ratchet();
 		Optimus optimus = new Optimus();
 		Megatron megatron = new Megatron();
@@ -127,5 +127,95 @@ public class SuperficieTests {
 		espinas.producirEfecto(superion);
 		
 		Assert.assertTrue(superion.getPuntosDeVida() == 950);
+	}
+	@Test
+	public void test06TormentaPsionicaAfectaAtaqueAlgoformerAereo(){
+		Ratchet ratchet = new Ratchet();
+		Megatron megatron = new Megatron();
+		
+		SuperficieAerea tormenta = new SuperficieTormentaPsionica();
+		
+		Assert.assertTrue(ratchet.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(megatron.puedeAtravesarSup(tormenta));
+		
+		ratchet.transformar();
+		megatron.transformar();
+		
+		Assert.assertTrue(ratchet.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(megatron.puedeAtravesarSup(tormenta));
+		
+		//Tormenta disminuye en un 40% ataque de algoformers aereos
+		tormenta.producirEfecto(ratchet);
+		tormenta.producirEfecto(megatron);
+		
+		Assert.assertTrue(ratchet.getAtaque() == 21);
+		Assert.assertTrue(megatron.getAtaque() == 33);
+		
+		//Al pasar por segunda vez no afecta
+		tormenta.producirEfecto(ratchet);
+		tormenta.producirEfecto(megatron);
+		
+		Assert.assertTrue(ratchet.getAtaque() == 21);
+		Assert.assertTrue(megatron.getAtaque() == 33);
+		
+		//Ataque del modo humanoide no se vio afectado
+		ratchet.transformar();
+		megatron.transformar();
+		
+		tormenta.producirEfecto(ratchet);
+		tormenta.producirEfecto(megatron);
+		
+		Assert.assertTrue(ratchet.getAtaque() == 5);
+		Assert.assertTrue(megatron.getAtaque() == 10);
+		
+		//Al volver a transformarse a unidad aerea el ataque sigue disminuido y no se volver a disminuir
+		ratchet.transformar();
+		megatron.transformar();
+		
+		Assert.assertTrue(ratchet.getAtaque() == 21);
+		Assert.assertTrue(megatron.getAtaque() == 33);
+		
+		tormenta.producirEfecto(ratchet);
+		tormenta.producirEfecto(megatron);
+		
+		Assert.assertTrue(ratchet.getAtaque() == 21);
+		Assert.assertTrue(megatron.getAtaque() == 33);
+	}
+	
+	@Test
+	public void test07TormentaPsionicaNoAfectaAlgoformersNoAereos(){
+		Ratchet ratchet = new Ratchet();
+		Megatron megatron = new Megatron();
+		Optimus optimus = new Optimus();
+		Superion superion = new Superion(1000);
+		
+		SuperficieAerea tormenta = new SuperficieTormentaPsionica();
+		
+		Assert.assertTrue(ratchet.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(megatron.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(optimus.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(superion.puedeAtravesarSup(tormenta));
+
+		//Tormenta no disminuye ataque de algoformers en modo humanoide
+		tormenta.producirEfecto(ratchet);
+		tormenta.producirEfecto(megatron);
+		tormenta.producirEfecto(optimus);
+
+		Assert.assertTrue(ratchet.getAtaque() == 5);
+		Assert.assertTrue(megatron.getAtaque() == 10);
+		Assert.assertTrue(optimus.getAtaque() == 50);
+		
+		//Tormenta no afecta ataque de algoformers en modo unico
+		tormenta.producirEfecto(superion);
+		
+		Assert.assertTrue(superion.getAtaque() == 100);
+		
+		//Tormenta no afecta ataque de algoformers terrestres
+		optimus.transformar();
+
+		tormenta.producirEfecto(optimus);
+
+		Assert.assertTrue(optimus.getAtaque() == 15);
+		
 	}
 }
