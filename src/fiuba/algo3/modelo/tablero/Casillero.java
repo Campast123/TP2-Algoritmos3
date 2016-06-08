@@ -2,6 +2,11 @@ package fiuba.algo3.modelo.tablero;
 
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.personajes.Posicionable;
+import fiuba.algo3.modelo.superficies.SuperficieAerea;
+import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
+import fiuba.algo3.modelo.superficies.SuperficieNube;
+import fiuba.algo3.modelo.superficies.SuperficieRocosa;
+import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 
 public class Casillero implements Posicionable {
 
@@ -9,12 +14,22 @@ public class Casillero implements Posicionable {
 	private Personaje personaje;
 	private ChispaSuprema chispa;
 	private Posicion posicion;
+	private SuperficieDeCampo superficies;
 	
 	public Casillero(Posicion posicion){
 		this.ocupado = false;
 		this.posicion = posicion;
 		this.personaje = null;
 		this.chispa = null;
+		this.superficies = new SuperficieDeCampo(new SuperficieNube(), new SuperficieRocosa());
+	}
+	
+	public Casillero(Posicion posicion, SuperficieAerea superficieAerea, SuperficieTerrestre suerficieTerrestre){
+		this.ocupado = false;
+		this.posicion = posicion;
+		this.personaje = null;
+		this.chispa = null;
+		this.superficies = new SuperficieDeCampo(superficieAerea, suerficieTerrestre);
 	}
 	@Override
 	public Posicion getPosicion(){
@@ -50,6 +65,10 @@ public class Casillero implements Posicionable {
 	
 	public Personaje getPersonaje() {
 		return this.personaje;
-	}	
+	}
+
+	public SuperficieDeCampo getSuperficies() {
+		return superficies;
+	}
 	
 }
