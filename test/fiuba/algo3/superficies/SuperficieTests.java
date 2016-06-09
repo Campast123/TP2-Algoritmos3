@@ -2,6 +2,7 @@ package fiuba.algo3.superficies;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import fiuba.algo3.modelo.personajes.*;
 import fiuba.algo3.modelo.superficies.*;
 
@@ -218,6 +219,7 @@ public class SuperficieTests {
 		
 	}
 	
+	
 	@Test
 	public void test08PruebasDeAtravesarSuperficieDeCampo(){
 		Personaje optimus = new Optimus();
@@ -269,4 +271,107 @@ public class SuperficieTests {
 			Assert.assertTrue(optimus.getAtaque() == 15);
 			
 	}
+		@Test
+		public void test10SuperficieDeCampoConPantanoReduceVelocidadExtraAlternoTerrestre(){
+
+			Personaje optimus = new Optimus();
+			Assert.assertFalse(optimus.getModoAlgoformer().esAlterno());
+			optimus.transformar();
+			Assert.assertTrue(optimus.getModoAlgoformer().esAlterno());
+			Assert.assertEquals(5,optimus.getVelocidad());
+	
+			SuperficieAerea nube = new SuperficieNube();
+			SuperficieTerrestre pantano = new SuperficiePantano();
+			SuperficieDeCampo supDeCampo = new SuperficieDeCampo(nube,pantano);
+
+			Assert.assertTrue(supDeCampo.puedeAtravesarlo(optimus));
+			
+			supDeCampo.reducirVelocidad(optimus);
+			
+			Assert.assertEquals(optimus.getVelocidad(),3);
+			
+		}
+		
+		@Test
+		public void test11PantanoReduceVelocidadExtraAlternoTerrestre(){
+
+			Personaje optimus = new Optimus();
+			SuperficieTerrestre pantano = new SuperficiePantano();
+		
+			Assert.assertFalse(optimus.getModoAlgoformer().esAlterno());
+			Assert.assertFalse(pantano.reduccionExtraDeVelocidad(optimus));
+
+			optimus.transformar();
+			Assert.assertTrue(optimus.getModoAlgoformer().esAlterno());
+			Assert.assertTrue(pantano.reduccionExtraDeVelocidad(optimus));
+			
+		}
+		
+		@Test
+		public void test12SuperficieDeCampoConNebulosaInmovilizaTresTurnos(){
+
+			Personaje ratchet = new Ratchet();
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),0);
+			Assert.assertFalse(ratchet.getModoAlgoformer().esUnidadAerea());
+			Assert.assertFalse(ratchet.getModoAlgoformer().esAlterno());
+			ratchet.transformar();
+			Assert.assertTrue(ratchet.getModoAlgoformer().esAlterno());
+			Assert.assertTrue(ratchet.getModoAlgoformer().esUnidadAerea());
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),0);
+	
+			SuperficieAerea nebulosaDeAndromeda = new SuperficieNebulosaDeAndromeda();
+			SuperficieTerrestre rocosa = new SuperficieRocosa();
+			SuperficieDeCampo supDeCampo = new SuperficieDeCampo(nebulosaDeAndromeda,rocosa);
+
+			Assert.assertTrue(supDeCampo.puedeAtravesarlo(ratchet));
+			
+			supDeCampo.aplicarEfecto(ratchet);
+			
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),3);
+			
+			ratchet.reestablecerEfectos(); //CAMBIO DE TURNO
+
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),2);
+
+			ratchet.reestablecerEfectos(); //CAMBIO DE TURNO
+
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),1);
+
+			ratchet.reestablecerEfectos(); //CAMBIO DE TURNO
+			
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),0);
+			
+		}
+		
+		@Test
+		public void test13NebulosaInmovilizaTresTurnos(){
+
+			Personaje ratchet = new Ratchet();
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),0);
+			Assert.assertFalse(ratchet.getModoAlgoformer().esUnidadAerea());
+			Assert.assertFalse(ratchet.getModoAlgoformer().esAlterno());
+			ratchet.transformar();
+			Assert.assertTrue(ratchet.getModoAlgoformer().esAlterno());
+			Assert.assertTrue(ratchet.getModoAlgoformer().esUnidadAerea());
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),0);
+	
+			SuperficieAerea nebulosaDeAndromeda = new SuperficieNebulosaDeAndromeda();
+			
+			nebulosaDeAndromeda.producirEfecto(ratchet);
+			
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),3);
+			
+			ratchet.reestablecerEfectos(); //CAMBIO DE TURNO
+
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),2);
+
+			ratchet.reestablecerEfectos(); //CAMBIO DE TURNO
+
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),1);
+
+			ratchet.reestablecerEfectos(); //CAMBIO DE TURNO
+			
+			Assert.assertEquals(ratchet.getTurnosInmovilizado(),0);
+			
+		}
 }

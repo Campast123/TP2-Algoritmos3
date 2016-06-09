@@ -13,6 +13,7 @@ public abstract class Personaje implements Posicionable {
 	protected ModoAlgoformer modoAlgoformer;
 	protected Posicion posicion;
 	protected Stack<ModoAlgoformer> distintosModos;
+	protected int turnosInmovilizado = 0;
 	
 	public abstract void atacar(Personaje personaje);
 	public abstract void recibirAtaqueDe(Decepticon decepticon);
@@ -34,10 +35,23 @@ public abstract class Personaje implements Posicionable {
 	public abstract void reducirAtaque();
 	public abstract void reducirVelocidad();
 	public abstract void avanzaCasillero(SuperficieDeCampo superficieDeCampo);
+	
+	public void reestablecerEfectos(){
+		if (this.turnosInmovilizado > 0){
+			this.turnosInmovilizado = this.turnosInmovilizado -1;
+		}
+	}
+	
 	public ModoAlgoformer getModoAlgoformer() {
 		return modoAlgoformer;
 	}
 	public void setModoAlgoformer(ModoAlgoformer modoAlgoformer) {
 		this.modoAlgoformer = modoAlgoformer;
+	}
+	public int getTurnosInmovilizado() {
+		return turnosInmovilizado;
+	}
+	public void setTurnosInmovilizado(int turnosInmovilizado) {
+		this.turnosInmovilizado = turnosInmovilizado;
 	}
 }
