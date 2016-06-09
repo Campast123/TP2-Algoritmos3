@@ -1,9 +1,5 @@
 package fiuba.algo3.modelo.superficies;
 
-import fiuba.algo3.modelo.estados.ModoAlterno;
-import fiuba.algo3.modelo.estados.ModoHumanoide;
-import fiuba.algo3.modelo.estados.UnidadAlternaAerea;
-import fiuba.algo3.modelo.estados.UnidadAlternaTerrestre;
 import fiuba.algo3.modelo.personajes.Personaje;
 
 public class SuperficiePantano extends SuperficieTerrestre {

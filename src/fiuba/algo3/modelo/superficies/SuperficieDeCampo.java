@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.superficies;
 
-import fiuba.algo3.modelo.estados.UnidadAlternaAerea;
 import fiuba.algo3.modelo.personajes.Personaje;
 
 public class SuperficieDeCampo {

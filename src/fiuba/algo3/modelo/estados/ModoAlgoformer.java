@@ -2,7 +2,6 @@ package fiuba.algo3.modelo.estados;
 
 
 import fiuba.algo3.modelo.personajes.Personaje;
-import fiuba.algo3.modelo.superficies.*;
 
 public interface ModoAlgoformer {
 	int getAtaque();
