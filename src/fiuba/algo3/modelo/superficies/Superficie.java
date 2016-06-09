@@ -10,5 +10,6 @@ public abstract class Superficie {
 	public abstract boolean puedeAtravesar(ModoUnico unico);
 	public abstract boolean puedeAtravesar(UnidadAlternaAerea aereo);
 	public abstract boolean puedeAtravesar(UnidadAlternaTerrestre terrestre);
+	public abstract boolean reduccionExtraDeVelocidad (Personaje algoformer);
 
 }

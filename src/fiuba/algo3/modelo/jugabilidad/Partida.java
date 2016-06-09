@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.jugabilidad;
 
+import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.tablero.Casillero;
 import fiuba.algo3.modelo.tablero.ChispaSuprema;
 import fiuba.algo3.modelo.tablero.Posicion;
@@ -11,11 +12,13 @@ public class Partida {
 	private Jugador player2;
 	private Tablero juego;
 	private Posicion posicionChispaSuprema;
+	private Turno turno;
 	
 	public Partida(Jugador p1, Jugador p2){
 		juego = new Tablero();	
 		this.player1 = p1;
 		this.player2 = p2;
+		this.turno = new Turno(p1,p2);
 		
 		//Inicializo ChispaSuprema
 		ChispaSuprema chispaSuprema = new ChispaSuprema();
@@ -51,5 +54,14 @@ public class Partida {
 	public Posicion getPosicionChispaSuprema(){
 		return (this.posicionChispaSuprema);
 	}
+	
+	public void moverAlgoformerA(Personaje algoformer, DireccionDeMovimiento direccion){
+		Posicion posicion = algoformer.getPosicion().obtenerPosicionEnDireccion(direccion);
+		juego.moverPersonajeA(algoformer, posicion);
+	}
 
+	public Turno getTurno() {
+		return turno;
+	}
+		
 }

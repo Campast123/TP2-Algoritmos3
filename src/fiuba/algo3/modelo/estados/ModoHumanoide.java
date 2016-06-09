@@ -66,4 +66,9 @@ public abstract class ModoHumanoide implements ModoAlgoformer {
 	public void reducirAtaque(){
 		
 	}
+	@Override
+	public void reducirVelocidad(){
+		this.velocidad = this.velocidad - 1;
+	}
+	
 }

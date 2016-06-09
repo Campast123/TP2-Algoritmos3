@@ -36,5 +36,9 @@ public abstract class SuperficieTerrestre extends Superficie{
 	protected void reestablecerEfecto(Personaje algoformer) {
 		
 	}
+	@Override
+	public boolean reduccionExtraDeVelocidad(Personaje algoformer) {
+		return false;	
+	}
 
 }

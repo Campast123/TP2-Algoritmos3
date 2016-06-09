@@ -4,10 +4,11 @@ import java.util.Stack;
 
 import fiuba.algo3.modelo.estados.ModoAlgoformer;
 import fiuba.algo3.modelo.superficies.SuperficieAerea;
+import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
 import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 import fiuba.algo3.modelo.tablero.Posicion;
 
-abstract class Decepticon implements Personaje {
+public abstract class Decepticon extends Personaje {
 	int ptosDeVida;
 	ModoAlgoformer modoAlgoformer;
 	Posicion posicion;
@@ -114,5 +115,13 @@ abstract class Decepticon implements Personaje {
 	@Override
 	public void reducirAtaque(){
 		this.modoAlgoformer.reducirAtaque();
+	}
+	@Override
+	public void reducirVelocidad(){
+		this.modoAlgoformer.reducirVelocidad();
+	}
+	@Override
+	public void avanzaCasillero(SuperficieDeCampo superficieDeCampo){
+		superficieDeCampo.reducirVelocidad(this);
 	}
 }

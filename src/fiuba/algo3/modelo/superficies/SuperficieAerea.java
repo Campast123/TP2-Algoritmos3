@@ -36,4 +36,8 @@ public abstract class SuperficieAerea extends Superficie {
 	protected void reestablecerEfecto(Personaje algoformer) {
 		
 	}
+	@Override
+	public boolean reduccionExtraDeVelocidad(Personaje algoformer) {
+		return false;	
+	}
 }

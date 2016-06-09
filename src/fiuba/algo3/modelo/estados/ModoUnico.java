@@ -67,4 +67,9 @@ public abstract class ModoUnico implements ModoAlgoformer {
 	public void reducirAtaque(){
 		
 	}
+	@Override
+	public void reducirVelocidad(){
+		this.velocidad = this.velocidad - 1;
+	}
+	
 }

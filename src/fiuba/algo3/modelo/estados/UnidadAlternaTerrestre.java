@@ -22,4 +22,9 @@ public abstract class UnidadAlternaTerrestre extends ModoAlterno {
 	public void reducirAtaque(){
 		
 	}
+	@Override
+	public void reducirVelocidad(){
+		 this.velocidad = this.velocidad - 2;
+	}
+	
 }

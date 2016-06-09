@@ -12,11 +12,13 @@
 	<property name="coverage.xml.dir" location="${reports.dir}/cobertura-xml" />
 	<property name="coverage.summaryxml.dir" location="${reports.dir}/cobertura-summary-xml" />
 	<property name="coverage.html.dir" location="${reports.dir}/cobertura-html" />
-
+	<property name="mockito" value="${lib.dir}/mockito"/> 
+	
 	<!-- Ivy customization -->
 	<property name="ivy.install.version" value="2.2.0" />
 	<property name="ivy.jar.dir" value="${libs}/" />
 	<property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
+	
 	<!-- End of 'Ivy customization -->
 
 	<!-- For those who are behind a proxy you may add the line bellow -->
