@@ -9,22 +9,7 @@ import fiuba.algo3.modelo.personajes.Personaje;
 public abstract class SuperficieAerea extends Superficie {
 	
 	@Override
-	public boolean puedeAtravesar(ModoHumanoide humanoide){
-		return true;
-	}
-	
-	@Override
-	public boolean puedeAtravesar(UnidadAlternaAerea humanoide){
-		return true;
-	}
-	
-	@Override
-	public boolean puedeAtravesar(UnidadAlternaTerrestre humanoide){
-		return true;
-	}
-
-	@Override
-	public boolean puedeAtravesar(ModoUnico unico) {
+	public boolean puedeAtravesarlo(Personaje algoformer){
 		return true;
 	}
 	

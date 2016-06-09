@@ -27,8 +27,7 @@ public abstract class Personaje implements Posicionable {
 	public abstract int getPuntosDeVida();
 	public abstract boolean esAlterno();
 	public abstract boolean esHumanoide();
-	public abstract boolean puedeAtravesarSup(SuperficieAerea superficie);
-	public abstract boolean puedeAtravesarSup(SuperficieTerrestre superficie);
+	public abstract boolean puedeAtravesarPantano();
 	public abstract void reducirVidaEspinas();
 	public abstract void reducirVida();
 	public abstract void reducirAtaque();

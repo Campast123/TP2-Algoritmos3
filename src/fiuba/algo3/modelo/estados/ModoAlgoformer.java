@@ -13,8 +13,7 @@ public interface ModoAlgoformer {
 	boolean esUnico();
 	boolean esUnidadTerrestre();
 	boolean esUnidadAerea();
-	boolean puedeAtravesar(SuperficieAerea superficie);
-	boolean puedeAtravesar(SuperficieTerrestre superficie);
+	boolean puedeAtravesarPantano();
 	void quitarVidaEspinas(Personaje personaje);
 	void reducirAtaque();
 	void reducirVelocidad();

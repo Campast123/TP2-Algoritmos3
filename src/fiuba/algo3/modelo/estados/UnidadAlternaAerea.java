@@ -6,13 +6,9 @@ import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 
 public abstract class UnidadAlternaAerea extends ModoAlterno{
 	int tormentaPsionica;
+	
 	@Override
-	public boolean puedeAtravesar(SuperficieAerea superficie) {
-		return (superficie.puedeAtravesar(this));
-	}
-
-	@Override
-	public boolean puedeAtravesar(SuperficieTerrestre superficie) {
+	public boolean puedeAtravesarPantano(){
 		return true;
 	}
 	

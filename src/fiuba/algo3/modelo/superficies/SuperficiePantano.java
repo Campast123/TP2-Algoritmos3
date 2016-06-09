@@ -9,8 +9,8 @@ import fiuba.algo3.modelo.personajes.Personaje;
 public class SuperficiePantano extends SuperficieTerrestre {
 	
 	@Override
-	public boolean puedeAtravesar(ModoHumanoide humanoide){
-		return false;
+	public boolean puedeAtravesarlo(Personaje algoformer){
+		return (algoformer.puedeAtravesarPantano());
 	}
 	
 	@Override

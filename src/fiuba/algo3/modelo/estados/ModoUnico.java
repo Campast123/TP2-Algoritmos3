@@ -50,13 +50,8 @@ public abstract class ModoUnico implements ModoAlgoformer {
 		return false;
 	}
 	@Override
-	public boolean puedeAtravesar(SuperficieAerea superficie) {
+	public boolean puedeAtravesarPantano(){
 		return true;
-	}
-
-	@Override
-	public boolean puedeAtravesar(SuperficieTerrestre superficie) {
-		return (superficie.puedeAtravesar(this));
 	}
 	
 	@Override
