@@ -65,4 +65,9 @@ public abstract class ModoUnico implements ModoAlgoformer {
 		this.velocidad = this.velocidad - 1;
 	}
 	
+	@Override
+	public boolean pantanoReduceVelocidad(){
+		return false;
+	}
+	
 }

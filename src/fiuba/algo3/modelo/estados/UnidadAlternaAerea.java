@@ -3,7 +3,7 @@ package fiuba.algo3.modelo.estados;
 import fiuba.algo3.modelo.personajes.Personaje;
 
 public abstract class UnidadAlternaAerea extends ModoAlterno{
-	int tormentaPsionica;
+	boolean tormentaPsionica;
 	
 	@Override
 	public boolean puedeAtravesarPantano(){
@@ -17,9 +17,14 @@ public abstract class UnidadAlternaAerea extends ModoAlterno{
 	
 	@Override
 	public void reducirAtaque(){
-		if (this.tormentaPsionica == 0){
+		if (!this.tormentaPsionica){
 		this.ataque = this.ataque - ((this.ataque *40)/100);
-		this.tormentaPsionica++;
+		this.tormentaPsionica = true;
 		}
+	}
+	
+	@Override
+	public boolean pantanoReduceVelocidad(){
+		return false;
 	}
 }

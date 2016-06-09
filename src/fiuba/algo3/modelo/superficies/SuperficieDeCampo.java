@@ -26,7 +26,7 @@ public class SuperficieDeCampo {
 	
 	public void reducirVelocidad(Personaje algoformer){
 		algoformer.reducirVelocidad();
-		if(this.superficieTerrestre.reduccionExtraDeVelocidad(algoformer)){
+		if(this.superficieTerrestre.seReduceLaVelocidad(algoformer)){
 			algoformer.reducirVelocidad();
 		}
 	}

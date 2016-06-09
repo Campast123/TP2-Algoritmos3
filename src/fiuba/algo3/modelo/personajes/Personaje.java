@@ -101,4 +101,8 @@ public abstract class Personaje implements Posicionable {
 		this.modoAlgoformer = nuevoModo;
 	}
 	
+	public boolean pantanoReduceVelocidad(){
+		return (this.modoAlgoformer.pantanoReduceVelocidad());
+	}
+	
 }

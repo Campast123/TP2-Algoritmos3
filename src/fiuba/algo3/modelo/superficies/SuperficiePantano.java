@@ -14,18 +14,13 @@ public class SuperficiePantano extends SuperficieTerrestre {
 		this.reducirVelocidad(algoformer);
 	}
 	
-	
-	
 	public void reducirVelocidad(Personaje alterno){
 		alterno.reducirVelocidad();
 	}
 	
 	@Override
-	public boolean reduccionExtraDeVelocidad(Personaje algoformer) {
-		if (algoformer.getModoAlgoformer().esAlterno() && algoformer.getModoAlgoformer().esUnidadTerrestre()){
-			return true;				
-		}
-		return false;
+	public boolean seReduceLaVelocidad(Personaje algoformer) {
+		return (algoformer.pantanoReduceVelocidad());
 	}
 
 }

@@ -22,4 +22,8 @@ public abstract class UnidadAlternaTerrestre extends ModoAlterno {
 		 this.velocidad = this.velocidad - 1;
 	}
 	
+	@Override
+	public boolean pantanoReduceVelocidad(){
+		return true;
+	}
 }
