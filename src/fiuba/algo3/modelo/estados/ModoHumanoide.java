@@ -49,13 +49,8 @@ public abstract class ModoHumanoide implements ModoAlgoformer {
 		return false;
 	}
 	@Override
-	public boolean puedeAtravesar(SuperficieAerea superficie) {
-		return true;
-	}
-
-	@Override
-	public boolean puedeAtravesar(SuperficieTerrestre superficie) {
-		return (superficie.puedeAtravesar(this));
+	public boolean puedeAtravesarPantano() {
+		return false;
 	}
 	
 	@Override

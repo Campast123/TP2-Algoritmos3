@@ -19,8 +19,8 @@ public class SuperficieDeCampo {
 	}
 	
 	public boolean puedeAtravesarlo(Personaje algoformer){
-		boolean atraviesaAereo = algoformer.puedeAtravesarSup(this.superficieAerea);
-		boolean atraviesaTerrestre = algoformer.puedeAtravesarSup(this.superficieTerrestre);
+		boolean atraviesaAereo = this.superficieAerea.puedeAtravesarlo(algoformer);
+		boolean atraviesaTerrestre = this.superficieTerrestre.puedeAtravesarlo(algoformer);
 		
 		return (atraviesaAereo & atraviesaTerrestre);
 	}

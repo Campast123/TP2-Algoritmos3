@@ -84,13 +84,8 @@ public abstract class Autobot extends Personaje{
 	}
 	
 	@Override
-	public boolean puedeAtravesarSup(SuperficieAerea superficie){
-		return this.modoAlgoformer.puedeAtravesar(superficie);
-	}
-	
-	@Override
-	public boolean puedeAtravesarSup(SuperficieTerrestre superficie){
-		return this.modoAlgoformer.puedeAtravesar(superficie);
+	public boolean puedeAtravesarPantano(){
+		return (this.modoAlgoformer.puedeAtravesarPantano());
 	}
 	
 	@Override

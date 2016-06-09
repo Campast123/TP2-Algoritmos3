@@ -98,14 +98,10 @@ public abstract class Decepticon extends Personaje {
 	}
 	
 	@Override
-	public boolean puedeAtravesarSup(SuperficieAerea superficie){
-		return this.modoAlgoformer.puedeAtravesar(superficie);
+	public boolean puedeAtravesarPantano(){
+		return (this.modoAlgoformer.puedeAtravesarPantano());
 	}
 	
-	@Override
-	public boolean puedeAtravesarSup(SuperficieTerrestre superficie){
-		return this.modoAlgoformer.puedeAtravesar(superficie);
-	}
 	@Override
 	public void transformar() {
 		ModoAlgoformer nuevoModo = this.distintosModos.pop();

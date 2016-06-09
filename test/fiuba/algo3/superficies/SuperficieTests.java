@@ -15,8 +15,8 @@ public class SuperficieTests {
 		
 		SuperficieTerrestre pantano = new SuperficiePantano();
 		
-		Assert.assertFalse(optimus.puedeAtravesarSup(pantano));
-		Assert.assertFalse(megatron.puedeAtravesarSup(pantano));
+		Assert.assertFalse(pantano.puedeAtravesarlo(optimus));
+		Assert.assertFalse(pantano.puedeAtravesarlo(megatron));
 	}
 	@Test
 	public void test02AlgoformerAlternoPuedeAtravesarPantano(){
@@ -29,8 +29,8 @@ public class SuperficieTests {
 		optimus.transformar();
 		megatron.transformar();
 		
-		Assert.assertTrue(optimus.puedeAtravesarSup(pantano));
-		Assert.assertTrue(megatron.puedeAtravesarSup(pantano));
+		Assert.assertTrue(pantano.puedeAtravesarlo(optimus));
+		Assert.assertTrue(pantano.puedeAtravesarlo(megatron));
 	}
 	@Test
 	public void test03AlgoformersHumanoidesYAlternosPuedeAtravesarRocosaYNube(){
@@ -41,18 +41,18 @@ public class SuperficieTests {
 		SuperficieTerrestre rocosa = new SuperficieRocosa();
 		SuperficieAerea nube = new SuperficieNube();
 		
-		Assert.assertTrue(optimus.puedeAtravesarSup(rocosa));
-		Assert.assertTrue(megatron.puedeAtravesarSup(rocosa));
-		Assert.assertTrue(optimus.puedeAtravesarSup(nube));
-		Assert.assertTrue(megatron.puedeAtravesarSup(nube));
+		Assert.assertTrue(rocosa.puedeAtravesarlo(optimus));
+		Assert.assertTrue(rocosa.puedeAtravesarlo(megatron));
+		Assert.assertTrue(nube.puedeAtravesarlo(optimus));
+		Assert.assertTrue(nube.puedeAtravesarlo(megatron));
 		
 		optimus.transformar();
 		megatron.transformar();
 		
-		Assert.assertTrue(optimus.puedeAtravesarSup(rocosa));
-		Assert.assertTrue(megatron.puedeAtravesarSup(rocosa));
-		Assert.assertTrue(optimus.puedeAtravesarSup(nube));
-		Assert.assertTrue(megatron.puedeAtravesarSup(nube));
+		Assert.assertTrue(rocosa.puedeAtravesarlo(optimus));
+		Assert.assertTrue(rocosa.puedeAtravesarlo(megatron));
+		Assert.assertTrue(nube.puedeAtravesarlo(optimus));
+		Assert.assertTrue(nube.puedeAtravesarlo(megatron));
 		
 	}
 	@Test
@@ -63,19 +63,19 @@ public class SuperficieTests {
 		
 		SuperficieTerrestre espinas = new SuperficieEspinas();
 		
-		Assert.assertTrue(ratchet.puedeAtravesarSup(espinas));
-		Assert.assertTrue(megatron.puedeAtravesarSup(espinas));
+		Assert.assertTrue(espinas.puedeAtravesarlo(ratchet));
+		Assert.assertTrue(espinas.puedeAtravesarlo(megatron));
 		
 		ratchet.transformar();
 		
-		Assert.assertTrue(ratchet.puedeAtravesarSup(espinas));
+		Assert.assertTrue(espinas.puedeAtravesarlo(ratchet));
 
 		espinas.producirEfecto(ratchet);
 		
 		Assert.assertTrue(ratchet.getPuntosDeVida() == 150);
 		
 		megatron.transformar();
-		Assert.assertTrue(megatron.puedeAtravesarSup(espinas));
+		Assert.assertTrue(espinas.puedeAtravesarlo(megatron));
 
 		espinas.producirEfecto(megatron);
 
@@ -92,10 +92,10 @@ public class SuperficieTests {
 		SuperficieTerrestre espinas = new SuperficieEspinas();
 		
 		//Pueden atravesar la superficie espinas
-		Assert.assertTrue(ratchet.puedeAtravesarSup(espinas));
-		Assert.assertTrue(optimus.puedeAtravesarSup(espinas));
-		Assert.assertTrue(megatron.puedeAtravesarSup(espinas));
-		Assert.assertTrue(superion.puedeAtravesarSup(espinas));
+		Assert.assertTrue(espinas.puedeAtravesarlo(ratchet));
+		Assert.assertTrue(espinas.puedeAtravesarlo(optimus));
+		Assert.assertTrue(espinas.puedeAtravesarlo(megatron));
+		Assert.assertTrue(espinas.puedeAtravesarlo(superion));
 		
 		//Espinas sacan 5% vida ratchet en modo humanoide
 		espinas.producirEfecto(ratchet);
@@ -112,7 +112,7 @@ public class SuperficieTests {
 		Assert.assertTrue(optimus.getPuntosDeVida() == 452);
 		
 		optimus.transformar();
-		Assert.assertTrue(optimus.puedeAtravesarSup(espinas));
+		Assert.assertTrue(espinas.puedeAtravesarlo(optimus));
 
 		espinas.producirEfecto(optimus);
 		
@@ -135,14 +135,14 @@ public class SuperficieTests {
 		
 		SuperficieAerea tormenta = new SuperficieTormentaPsionica();
 		
-		Assert.assertTrue(ratchet.puedeAtravesarSup(tormenta));
-		Assert.assertTrue(megatron.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(ratchet));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(megatron));
 		
 		ratchet.transformar();
 		megatron.transformar();
 		
-		Assert.assertTrue(ratchet.puedeAtravesarSup(tormenta));
-		Assert.assertTrue(megatron.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(ratchet));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(megatron));
 		
 		//Tormenta disminuye en un 40% ataque de algoformers aereos
 		tormenta.producirEfecto(ratchet);
@@ -191,10 +191,10 @@ public class SuperficieTests {
 		
 		SuperficieAerea tormenta = new SuperficieTormentaPsionica();
 		
-		Assert.assertTrue(ratchet.puedeAtravesarSup(tormenta));
-		Assert.assertTrue(megatron.puedeAtravesarSup(tormenta));
-		Assert.assertTrue(optimus.puedeAtravesarSup(tormenta));
-		Assert.assertTrue(superion.puedeAtravesarSup(tormenta));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(ratchet));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(megatron));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(optimus));
+		Assert.assertTrue(tormenta.puedeAtravesarlo(superion));
 
 		//Tormenta no disminuye ataque de algoformers en modo humanoide
 		tormenta.producirEfecto(ratchet);
