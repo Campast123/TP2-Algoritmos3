@@ -87,4 +87,10 @@ public class Posicion {
 		
 		return mayorDistancia;
 	}
+	
+	@Override 
+	public String toString(){
+		String mensaje = "[" + this.coordenadaX + "," + this.coordenadaY + "]";
+		return mensaje;
+	}
 }
