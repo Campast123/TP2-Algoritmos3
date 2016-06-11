@@ -7,16 +7,7 @@ public abstract class Superficie {
 		
 	}
 	
-	protected void reestablecerEfecto(Personaje algoformer){
-		
-	}
-	
-	public boolean puedeAtravesarlo(Personaje algoformer){
-		return true;
-	}
-	
-	public boolean seReduceLaVelocidad (Personaje algoformer){
-		return false;
-	}
+	public abstract boolean puedeAtravesarlo(Personaje algoformer);
+	public abstract boolean seReduceLaVelocidad (Personaje algoformer);
 
 }

@@ -14,7 +14,8 @@ public abstract class Decepticon extends Personaje {
 	
 	@Override
 	public void recibirAtaqueDe(Autobot autobot) {
-		this.recibirAtaque(autobot.getAtaque());
+		int ataqueRecibido = autobot.getAtaque();
+		this.ptosDeVida = this.ptosDeVida - ataqueRecibido;
 	}
 	
 	@Override
