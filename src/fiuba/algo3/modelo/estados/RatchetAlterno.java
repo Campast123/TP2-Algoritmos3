@@ -5,7 +5,7 @@ public class RatchetAlterno extends UnidadAlternaAerea{
 		this.ataque = 35;
 		this.distanciaDeAtaque = 2;
 		this.velocidad = 8;
-		this.tormentaPsionica = 0;
+		this.tormentaPsionica = false;
 	}
 
 	@Override

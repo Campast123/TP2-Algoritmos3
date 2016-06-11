@@ -26,7 +26,8 @@ public abstract class Autobot extends Personaje{
 
 	@Override
 	public void recibirAtaqueDe(Decepticon decepticon) {
-		this.recibirAtaque(decepticon.getAtaque());
+		int ataqueRecibido = decepticon.getAtaque();
+		this.ptosDeVida = this.ptosDeVida - ataqueRecibido;
 	}
 	
 	@Override

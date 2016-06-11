@@ -5,7 +5,7 @@ public class MegatronAlterno extends UnidadAlternaAerea{
 		this.ataque = 55;
 		this.distanciaDeAtaque = 2;
 		this.velocidad = 8;
-		this.tormentaPsionica = 0;
+		this.tormentaPsionica = false;
 	}
 
 	@Override

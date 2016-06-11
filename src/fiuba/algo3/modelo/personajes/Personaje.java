@@ -54,10 +54,6 @@ public abstract class Personaje implements Posicionable {
 		return (distanciaDePosiciones <= this.getVelocidad());
 	}
 	
-	public void recibirAtaque(int ataque) {
-		this.ptosDeVida = this.ptosDeVida - ataque;
-	}
-	
 	public boolean puedeAtacar(Posicion posicion) {
 		int distanciaDePosiciones = this.posicion.distanciaA(posicion);
 		return (distanciaDePosiciones <= this.getDistanciaDeAtaque());
@@ -87,10 +83,6 @@ public abstract class Personaje implements Posicionable {
 		return (this.modoAlgoformer.esAlterno());
 	}
 	
-	public boolean puedeAtravesarPantano(){
-		return (this.modoAlgoformer.puedeAtravesarPantano());
-	}
-	
 	public void reducirVidaEspinas() {
 		this.modoAlgoformer.quitarVidaEspinas(this);
 	}
@@ -99,6 +91,53 @@ public abstract class Personaje implements Posicionable {
 		ModoAlgoformer nuevoModo = this.distintosModos.pop();
 		distintosModos.push(this.modoAlgoformer);
 		this.modoAlgoformer = nuevoModo;
+	}
+	public boolean rocosaReduceVelocidad(){
+		return false;
+	}
+	
+	public boolean pantanoReduceVelocidad(){
+		return (this.modoAlgoformer.pantanoReduceVelocidad());
+	}
+	
+	public boolean espinasReduceVelocidad(){
+		return false;
+	}
+	
+	public boolean nubeReduceVelocidad(){
+		return false;
+	}
+	
+	public boolean tormentaReduceVelocidad(){
+		return false;
+	}
+	
+	public boolean nebulosaReduceVelocidad(){
+		return false;
+	}
+	
+	public boolean puedeAtravesarRocosa(){
+		return true;
+	}
+	
+	public boolean puedeAtravesarPantano(){
+		return (this.modoAlgoformer.puedeAtravesarPantano());
+	}
+	
+	public boolean puedeAtravesarEspinas(){
+		return true;
+	}
+	
+	public boolean puedeAtravesarNube(){
+		return true;
+	}
+	
+	public boolean puedeAtravesarTormenta(){
+		return true;
+	}
+	
+	public boolean puedeAtravesarNebulosa(){
+		return true;
 	}
 	
 }

@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo.superficies;
 
-import fiuba.algo3.modelo.estados.UnidadAlternaAerea;
 import fiuba.algo3.modelo.personajes.Personaje;
 
 public class SuperficieDeCampo {
@@ -27,7 +26,7 @@ public class SuperficieDeCampo {
 	
 	public void reducirVelocidad(Personaje algoformer){
 		algoformer.reducirVelocidad();
-		if(this.superficieTerrestre.reduccionExtraDeVelocidad(algoformer)){
+		if(this.superficieTerrestre.seReduceLaVelocidad(algoformer)){
 			algoformer.reducirVelocidad();
 		}
 	}

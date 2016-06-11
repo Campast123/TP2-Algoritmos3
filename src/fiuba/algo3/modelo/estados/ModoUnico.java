@@ -1,8 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
 import fiuba.algo3.modelo.personajes.Personaje;
-import fiuba.algo3.modelo.superficies.SuperficieAerea;
-import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 
 public abstract class ModoUnico implements ModoAlgoformer {
 	int ataque;
@@ -65,6 +63,11 @@ public abstract class ModoUnico implements ModoAlgoformer {
 	@Override
 	public void reducirVelocidad(){
 		this.velocidad = this.velocidad - 1;
+	}
+	
+	@Override
+	public boolean pantanoReduceVelocidad(){
+		return false;
 	}
 	
 }

@@ -10,4 +10,15 @@ public class SuperficieNebulosaDeAndromeda extends SuperficieAerea {
 	public void producirEfecto(Personaje algoformer) {
 		algoformer.setTurnosInmovilizado(TURNOS_DE_INMOVILIZACION);
 	}
+
+	@Override
+	public boolean puedeAtravesarlo(Personaje algoformer) {
+		
+		return (algoformer.puedeAtravesarNebulosa());
+	}
+
+	@Override
+	public boolean seReduceLaVelocidad(Personaje algoformer) {
+		return (algoformer.nebulosaReduceVelocidad());
+	}
 }

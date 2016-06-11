@@ -299,11 +299,11 @@ public class SuperficieTests {
 			SuperficieTerrestre pantano = new SuperficiePantano();
 		
 			Assert.assertFalse(optimus.getModoAlgoformer().esAlterno());
-			Assert.assertFalse(pantano.reduccionExtraDeVelocidad(optimus));
+			Assert.assertFalse(pantano.seReduceLaVelocidad(optimus));
 
 			optimus.transformar();
 			Assert.assertTrue(optimus.getModoAlgoformer().esAlterno());
-			Assert.assertTrue(pantano.reduccionExtraDeVelocidad(optimus));
+			Assert.assertTrue(pantano.seReduceLaVelocidad(optimus));
 			
 		}
 		

@@ -20,11 +20,11 @@ public class PersonajeTest {
 	
 	@Test
 	public void recibirAtaqueTest(){
-		Personaje personaje = new Optimus();
-		int ataqueRealizado = 200;
-		Assert.assertEquals(500, personaje.getPuntosDeVida());
-		personaje.recibirAtaque(ataqueRealizado);
-		Assert.assertEquals(300, personaje.getPuntosDeVida());
+		Autobot autobot = new Optimus();
+		Decepticon decepticon = new Megatron();
+		Assert.assertEquals(500, autobot.getPuntosDeVida());
+		autobot.recibirAtaqueDe(decepticon);
+		Assert.assertEquals(490, autobot.getPuntosDeVida());
 
 	}
 }
