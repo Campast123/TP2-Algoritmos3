@@ -4,7 +4,7 @@ package fiuba.algo3.jugabilidad;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.modelo.jugabilidad.DireccionDeMovimiento;
+import fiuba.algo3.modelo.jugabilidad.Direccion;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.jugabilidad.TipoTransformer;
@@ -25,8 +25,19 @@ public class UnitTestsPartida {
 		Assert.assertEquals(this.jugador1.getPersonaje2().getPosicion(),posicionInicial);
 		Assert.assertEquals(partida.getTurno().getJugadorActual(),this.jugador1);
 		
-		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), DireccionDeMovimiento.DERECHA);
-		Posicion posicionEsperada = new Posicion(1,1);
+		//Algoformer se mueve hacia la Derecha
+		Direccion direccion = new Direccion();
+		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), direccion.getDerecha());
+		Posicion posicionEsperada = new Posicion(0,2);
+		Assert.assertEquals(this.jugador1.getPersonaje2().getPosicion(),posicionEsperada);
+		
+		//Ante un movimiento invalido el algoformer no se mueve
+		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), direccion.getArriba());
+		Assert.assertEquals(this.jugador1.getPersonaje2().getPosicion(),posicionEsperada);
+		
+		//El algoformer se mueve en diagonal
+		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), direccion.getDiagonalDerInferior());
+		posicionEsperada = new Posicion(1,3);
 		Assert.assertEquals(this.jugador1.getPersonaje2().getPosicion(),posicionEsperada);
 
 	}

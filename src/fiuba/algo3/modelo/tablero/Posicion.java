@@ -1,8 +1,5 @@
 package fiuba.algo3.modelo.tablero;
 
-import fiuba.algo3.modelo.jugabilidad.DireccionDeMovimiento;
-
-
 public class Posicion {
 
 	private int coordenadaX;
@@ -50,28 +47,12 @@ public class Posicion {
 	}
 	
 
-	public Posicion obtenerPosicionEnDireccion(DireccionDeMovimiento direccion) {
-		Posicion posicionResultado = new Posicion(this.coordenadaX,this.coordenadaY );		
-		
-		switch(direccion.name()){
-			case ("ABAJO"): {
-				posicionResultado.setCoordenadaY(this.coordenadaY - 1);
-				break;
-			}
-			case ("ARRIBA"): {
-				posicionResultado.setCoordenadaY(this.coordenadaY + 1);
-				break;
-			}
-			case ("IZQUIERDA"): {
-				posicionResultado.setCoordenadaX(this.coordenadaX - 1);
-				break;
-			}
-			case ("DERECHA"): {
-				posicionResultado.setCoordenadaX(this.coordenadaX + 1);
-				break;
-			}
-		}
-		return posicionResultado;
+	public Posicion devolverSuma(Posicion posicion) {
+		int nuevaCoordX = this.coordenadaX + posicion.getCoordenadaX();
+		int nuevaCoordY = this.coordenadaY + posicion.getCoordenadaY();
+
+		Posicion nuevaPos = new Posicion(nuevaCoordX,nuevaCoordY);
+		return nuevaPos;
 	}
 
 	public int distanciaA(Posicion posicion){

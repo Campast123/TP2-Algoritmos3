@@ -55,9 +55,9 @@ public class Partida {
 		return (this.posicionChispaSuprema);
 	}
 	
-	public void moverAlgoformerA(Personaje algoformer, DireccionDeMovimiento direccion){
-		Posicion posicion = algoformer.getPosicion().obtenerPosicionEnDireccion(direccion);
-		juego.moverPersonajeA(algoformer, posicion);
+	public void moverAlgoformerA(Personaje algoformer, Posicion direccion){
+		Posicion posicion = algoformer.getPosicion().devolverSuma(direccion);
+		juego.moverPersonaje(algoformer, posicion);
 	}
 
 	public Turno getTurno() {

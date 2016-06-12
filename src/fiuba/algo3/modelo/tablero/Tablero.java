@@ -59,16 +59,6 @@ public class Tablero {
 	
 	public void moverPersonaje(Personaje personaje, Posicion posicionDestino){
 		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){			
-			if(personaje.puedeMoverse(posicionDestino)){
-				Posicion posicionInicial = personaje.getPosicion();
-				this.tablero.get(posicionInicial).retirarPersonaje();
-				this.tablero.get(posicionDestino).agregarPosicionable(personaje);
-			}
-		}
-	}	
-	
-	public void moverPersonajeA(Personaje personaje, Posicion posicionDestino){
-		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){			
 			SuperficieDeCampo superficiesDestino = this.tablero.get(posicionDestino).getSuperficies();
 			if(personaje.puedeMoverse(posicionDestino) && (superficiesDestino.puedeAtravesarlo(personaje))){
 				Posicion posicionInicial = personaje.getPosicion();
