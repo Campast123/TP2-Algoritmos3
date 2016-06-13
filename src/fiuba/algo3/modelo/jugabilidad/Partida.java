@@ -22,7 +22,7 @@ public class Partida {
 		
 		//Inicializo ChispaSuprema
 		ChispaSuprema chispaSuprema = new ChispaSuprema();
-		this.posicionChispaSuprema = new Posicion(25,25);
+		this.posicionChispaSuprema = chispaSuprema.getPosicion();
 		Casillero casilleroChispaSuprema = new Casillero(posicionChispaSuprema);
 		casilleroChispaSuprema.agregarPosicionable(chispaSuprema);
 		
