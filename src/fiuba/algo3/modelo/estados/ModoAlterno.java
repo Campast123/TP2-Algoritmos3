@@ -30,8 +30,8 @@ public abstract class ModoAlterno implements ModoAlgoformer {
 	}
 	
 	@Override
-	public void setInmunidad() {
-		this.inmunidad = !(this.inmunidad);
+	public void setInmunidad(boolean inmunity) {
+		this.inmunidad = inmunity;
 	}		
 	
 	@Override

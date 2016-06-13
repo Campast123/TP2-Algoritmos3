@@ -6,4 +6,10 @@ public class MenasorUnico extends ModoUnico{
 		this.distanciaDeAtaque = 2;
 		this.velocidad = 2;
 	}
+
+	@Override
+	public void setVelocidad(int velocidad) {
+		// TODO Auto-generated method stub
+		
+	}
 }

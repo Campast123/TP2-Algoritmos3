@@ -6,4 +6,10 @@ public class SuperionUnico extends ModoUnico{
 		this.distanciaDeAtaque = 2;
 		this.velocidad = 3;
 	}
+
+	@Override
+	public void setVelocidad(int velocidad) {
+		// TODO Auto-generated method stub
+		
+	}
 }
