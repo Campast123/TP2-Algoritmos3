@@ -16,4 +16,17 @@ public class BonecrusherAlterno extends UnidadAlternaTerrestre{
 	public boolean esUnidadAerea() {
 		return false;
 	}
+
+	@Override
+	public void setInmunidad(boolean inmunidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setVelocidad(int velocidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
