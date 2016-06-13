@@ -6,7 +6,10 @@ public class MenasorUnico extends ModoUnico{
 		this.distanciaDeAtaque = 2;
 		this.velocidad = 2;
 	}
-	
+	public void setVelocidad(int velocidad) {
+		
+	}
+
 	@Override
 	public void reestablecerVelocidad(){
 		this.velocidad = 2;

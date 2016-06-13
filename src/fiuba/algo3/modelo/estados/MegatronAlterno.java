@@ -16,6 +16,9 @@ public class MegatronAlterno extends UnidadAlternaAerea{
 	@Override
 	public boolean esUnidadAerea() {
 		return true;
+	}	
+	
+	public void setVelocidad(int velocidad) {
 	}
 	
 	@Override

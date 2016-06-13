@@ -17,6 +17,12 @@ public class FrenzyAlterno extends UnidadAlternaTerrestre{
 		return false;
 	}
 	
+	public void setInmunidad(boolean inmunidad) {		
+	}
+
+	public void setVelocidad(int velocidad) {		
+	}
+
 	@Override
 	public void reestablecerVelocidad(){
 		this.velocidad = 6;

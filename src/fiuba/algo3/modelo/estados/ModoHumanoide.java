@@ -6,6 +6,7 @@ public abstract class ModoHumanoide implements ModoAlgoformer {
 	int ataque;
 	int velocidad;
 	int distanciaDeAtaque;
+	boolean inmunidad;	
 
 	@Override
 	public int getVelocidad() {
@@ -21,6 +22,21 @@ public abstract class ModoHumanoide implements ModoAlgoformer {
 	public int getAtaque() {
 		return (this.ataque);
 	}
+	
+	@Override
+	public void setAtaque(int attack) {
+		this.ataque = attack;
+	}
+	
+	@Override
+	public void setInmunidad(boolean inmunity) {
+		this.inmunidad = inmunity;
+	}
+	
+	@Override
+	public void setVelocidad(int velocity) {
+		this.velocidad = velocity;
+	}		
 	
 	@Override
 	public boolean esHumanoide() {

@@ -3,6 +3,10 @@ package fiuba.algo3.modelo.tablero;
 import java.util.HashMap;
 import java.util.Map;
 
+import fiuba.algo3.modelo.bonus.Bonus;
+import fiuba.algo3.modelo.bonus.BurbujaInmaculada;
+import fiuba.algo3.modelo.bonus.DobleCanion;
+import fiuba.algo3.modelo.bonus.Flash;
 import fiuba.algo3.modelo.personajes.*;
 import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
 
@@ -28,8 +32,27 @@ public class Tablero {
 	
 	public void ingresarCasillero(Casillero casillero){
 		this.tablero.put(casillero.getPosicion(),casillero);
-	}	
 		
+	}
+	
+	public void inicializarBonus(){
+		for (int i = 0; i < generaNumeroAleatorio(0,20); i++) {
+			Bonus bonus;
+			int value = generaNumeroAleatorio(1,3);
+			
+			switch(value){
+				case 1: bonus = new BurbujaInmaculada();
+						break;
+				case 2: bonus = new DobleCanion();
+						break;
+				case 3: bonus = new Flash();
+						break;
+			}			
+						
+		}
+				
+	}
+	
 	public boolean estaOcupado(Posicion posicion){
 		if (this.posicionValida(posicion)){
 			Casillero casillero = this.tablero.get(posicion);
@@ -86,5 +109,9 @@ public class Tablero {
 		algoformer.transformar();
 		//Agregar efectos de el casillero donde se transforma
 	}
-
+	
+	public static int generaNumeroAleatorio(int minimo, int maximo){        
+        int num=(int)Math.floor(Math.random()*(minimo-(maximo+1))+(maximo+1));
+        return num;
+    }
 }

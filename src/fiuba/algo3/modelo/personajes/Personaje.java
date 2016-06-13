@@ -1,14 +1,18 @@
 package fiuba.algo3.modelo.personajes;
 
+import java.util.Map;
 import java.util.Stack;
+
 
 import fiuba.algo3.modelo.estados.ModoAlgoformer;
 import fiuba.algo3.modelo.excepciones.AlgoformerNoPuedeMoverseException;
 import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
 import fiuba.algo3.modelo.tablero.Posicion;
+import fiuba.algo3.modelo.bonus.*;
 
 public abstract class Personaje implements Posicionable {
 	protected int ptosDeVida;
+	protected Map<TipoBonus,Bonus> listaBonus;
 	protected ModoAlgoformer modoAlgoformer;
 	protected Posicion posicion;
 	protected Stack<ModoAlgoformer> distintosModos;
@@ -29,14 +33,23 @@ public abstract class Personaje implements Posicionable {
 		this.modoAlgoformer.reestablecerVelocidad();
 	}
 	
+	public void agregarBonusPersonaje(Bonus newBonus){		
+		if(!listaBonus.containsKey(newBonus.getType()))
+			listaBonus.put(newBonus.getType(), newBonus);
+	}
+	
+	public void quitarBonusPersonaje(Bonus oldBonus){
+		listaBonus.remove(oldBonus.getType());
+	}
+	
 	public void setPosicion(Posicion posicion) {
-		this.posicion = posicion;
-		
+		this.posicion = posicion;		
 	}
 	
 	public Posicion getPosicion() {
 		return (this.posicion);
 	}
+	
 	
 	public ModoAlgoformer getModoAlgoformer() {
 		return modoAlgoformer;
@@ -149,4 +162,15 @@ public abstract class Personaje implements Posicionable {
 		return true;
 	}
 	
+	public void duplicarAtaque(int attack) {
+		this.modoAlgoformer.setAtaque(attack);		
+	}
+	
+	public void aplicarInmunidad(boolean inmunidad) {
+		this.modoAlgoformer.setInmunidad(inmunidad);		
+	}
+	
+	public void triplicarVelocidad(int velocidad) {		
+		this.modoAlgoformer.setVelocidad(velocidad);
+	}	
 }

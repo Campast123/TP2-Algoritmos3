@@ -21,4 +21,12 @@ public class BumblebeeAlterno extends UnidadAlternaTerrestre{
 	public void reestablecerVelocidad(){
 		this.velocidad = 5;
 	}
+
+	public void setInmunidad(boolean inmunidad){
+		
+	}
+
+	public void setVelocidad(int velocidad) {	
+		
+	}
 }

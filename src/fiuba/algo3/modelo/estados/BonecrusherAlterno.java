@@ -4,7 +4,7 @@ public class BonecrusherAlterno extends UnidadAlternaTerrestre{
 	public BonecrusherAlterno(){
 		this.ataque = 30;
 		this.distanciaDeAtaque = 3;
-		this.velocidad = 8;
+		this.velocidad = 8;		
 	}
 
 	@Override
@@ -21,4 +21,14 @@ public class BonecrusherAlterno extends UnidadAlternaTerrestre{
 	public void reestablecerVelocidad(){
 		this.velocidad = 8;
 	}
+
+	
+	public void setInmunidad(boolean inmunidad) {	
+		
+	}
+	
+	public void setVelocidad(int velocidad) {
+		
+	}
+
 }

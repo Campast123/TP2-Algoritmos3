@@ -10,4 +10,9 @@ public class SuperionUnico extends ModoUnico{
 	public void reestablecerVelocidad(){
 		this.velocidad = 3;
 	}
+
+	public void setVelocidad(int velocidad) {	
+		
+	}
+	
 }

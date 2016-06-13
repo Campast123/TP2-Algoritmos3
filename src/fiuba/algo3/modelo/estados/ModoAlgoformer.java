@@ -3,7 +3,7 @@ package fiuba.algo3.modelo.estados;
 
 import fiuba.algo3.modelo.personajes.Personaje;
 
-public interface ModoAlgoformer {
+public interface ModoAlgoformer {	
 	int getAtaque();
 	int getVelocidad();
 	int getDistanciaDeAtaque();
@@ -13,9 +13,12 @@ public interface ModoAlgoformer {
 	boolean esUnidadTerrestre();
 	boolean esUnidadAerea();
 	boolean puedeAtravesarPantano();
+	boolean pantanoReduceVelocidad();
 	void quitarVidaEspinas(Personaje personaje);
 	void reducirAtaque();
 	void reducirVelocidad();
 	void reestablecerVelocidad();
-	boolean pantanoReduceVelocidad();
+	void setAtaque(int ataque);
+	void setInmunidad(boolean inmunidad);
+	void setVelocidad(int velocidad);	
 }
