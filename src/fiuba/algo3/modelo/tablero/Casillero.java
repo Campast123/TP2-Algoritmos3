@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.tablero;
 
+import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.personajes.Posicionable;
 import fiuba.algo3.modelo.superficies.SuperficieAerea;
@@ -15,12 +16,14 @@ public class Casillero implements Posicionable {
 	private ChispaSuprema chispa;
 	private Posicion posicion;
 	private SuperficieDeCampo superficies;
+	private Bonus bonus;
 	
 	public Casillero(Posicion posicion){
 		this.ocupado = false;
 		this.posicion = posicion;
 		this.personaje = null;
 		this.chispa = null;
+		this.bonus = null;
 		this.superficies = new SuperficieDeCampo(new SuperficieNube(), new SuperficieRocosa());
 	}
 	
@@ -52,6 +55,12 @@ public class Casillero implements Posicionable {
 		this.personaje = null;		
 		this.chispa = chispa;
 		this.ocupado = false;
+	}
+	
+	public void agregarPosicionable(Bonus bonus){		
+		this.chispa = null;
+		this.ocupado = false;
+		this.bonus = bonus;
 	}
 	
 	public void retirarPersonaje(){

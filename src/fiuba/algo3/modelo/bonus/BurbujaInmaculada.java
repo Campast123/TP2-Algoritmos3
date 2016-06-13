@@ -6,6 +6,7 @@ public class BurbujaInmaculada extends Bonus {
 	
 	public BurbujaInmaculada(){
 		this.turnos = 2;
+		this.type = TipoBonus.BurbujaInmaculada;
 	}
 	
 	@Override

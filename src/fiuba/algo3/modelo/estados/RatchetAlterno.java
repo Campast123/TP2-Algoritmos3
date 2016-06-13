@@ -17,16 +17,11 @@ public class RatchetAlterno extends UnidadAlternaAerea{
 	public boolean esUnidadAerea() {
 		return true;
 	}
-
-	@Override
+	
 	public void setInmunidad(boolean inmunidad) {
-		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void setVelocidad(int velocidad) {
-		// TODO Auto-generated method stub
-		
+	}	
+	
+	public void setVelocidad(int velocidad) {		
 	}
 }

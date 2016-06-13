@@ -6,6 +6,7 @@ public class Flash extends Bonus {
 	
 	public Flash(){
 		this.turnos = 3;
+		this.type = TipoBonus.Flash;
 	}
 	
 	@Override

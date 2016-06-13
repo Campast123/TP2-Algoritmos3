@@ -6,6 +6,8 @@ import fiuba.algo3.modelo.tablero.Posicion;
 
 public abstract class Bonus  implements Posicionable {
 	protected int turnos;	
+	protected TipoBonus type;
+	protected Posicion posicion;
 	
 	public int getTurnos(){
 		return this.turnos;
@@ -17,15 +19,15 @@ public abstract class Bonus  implements Posicionable {
 		
 	public abstract void aplicarEfecto(Personaje personaje);
 
-	@Override
+	public void setPosicion(Posicion posicion) {
+		this.posicion = posicion;		
+	}
+	
 	public Posicion getPosicion() {
-		// TODO Auto-generated method stub
-		return null;
+		return (this.posicion);
 	}
 
-	@Override
-	public void setPosicion(Posicion posicion) {
-		// TODO Auto-generated method stub
-		
+	public TipoBonus getType() {
+		return this.type;
 	}
 }

@@ -6,6 +6,7 @@ public class DobleCanion extends Bonus {
 	
 	public DobleCanion(){
 		this.turnos = 3;
+		this.type = TipoBonus.DobleCanion;
 	}
 	
 	@Override

@@ -7,9 +7,8 @@ public class SuperionUnico extends ModoUnico{
 		this.velocidad = 3;
 	}
 
-	@Override
-	public void setVelocidad(int velocidad) {
-		// TODO Auto-generated method stub
+	public void setVelocidad(int velocidad) {	
 		
 	}
+	
 }

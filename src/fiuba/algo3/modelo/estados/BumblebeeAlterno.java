@@ -16,16 +16,12 @@ public class BumblebeeAlterno extends UnidadAlternaTerrestre{
 	public boolean esUnidadAerea() {
 		return false;
 	}
-
-	@Override
-	public void setInmunidad(boolean inmunidad) {
-		// TODO Auto-generated method stub
+	
+	public void setInmunidad(boolean inmunidad){
 		
 	}
 
-	@Override
-	public void setVelocidad(int velocidad) {
-		// TODO Auto-generated method stub
+	public void setVelocidad(int velocidad) {	
 		
 	}
 }

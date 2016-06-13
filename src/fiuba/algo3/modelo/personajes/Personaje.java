@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 
@@ -12,7 +11,7 @@ import fiuba.algo3.modelo.bonus.*;
 
 public abstract class Personaje implements Posicionable {
 	protected int ptosDeVida;
-	protected ArrayList<Bonus> listaBonus;
+	protected Map<TipoBonus,Bonus> listaBonus;
 	protected ModoAlgoformer modoAlgoformer;
 	protected Posicion posicion;
 	protected Stack<ModoAlgoformer> distintosModos;
@@ -30,6 +29,15 @@ public abstract class Personaje implements Posicionable {
 		if (this.turnosInmovilizado > 0){
 			this.turnosInmovilizado = this.turnosInmovilizado -1;
 		}
+	}
+	
+	public void agregarBonusPersonaje(Bonus newBonus){		
+		if(!listaBonus.containsKey(newBonus.getType()))
+			listaBonus.put(newBonus.getType(), newBonus);
+	}
+	
+	public void quitarBonusPersonaje(Bonus oldBonus){
+		listaBonus.remove(oldBonus.getType());
 	}
 	
 	public void setPosicion(Posicion posicion) {

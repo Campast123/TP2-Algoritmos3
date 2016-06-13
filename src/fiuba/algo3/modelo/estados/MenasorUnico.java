@@ -7,9 +7,7 @@ public class MenasorUnico extends ModoUnico{
 		this.velocidad = 2;
 	}
 
-	@Override
 	public void setVelocidad(int velocidad) {
-		// TODO Auto-generated method stub
 		
 	}
 }
