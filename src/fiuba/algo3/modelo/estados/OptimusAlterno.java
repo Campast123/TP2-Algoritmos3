@@ -16,4 +16,9 @@ public class OptimusAlterno extends UnidadAlternaTerrestre{
 	public boolean esUnidadAerea() {
 		return false;
 	}
+	
+	@Override
+	public void reestablecerVelocidad(){
+		this.velocidad = 5;
+	}
 }

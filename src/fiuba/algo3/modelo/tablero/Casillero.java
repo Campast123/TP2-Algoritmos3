@@ -63,6 +63,10 @@ public class Casillero implements Posicionable {
 		return ocupado;
 	}
 	
+	public ChispaSuprema getChispaSuprema() {
+		return this.chispa;
+	}
+	
 	public Personaje getPersonaje() {
 		return this.personaje;
 	}

@@ -68,4 +68,9 @@ public class Posicion {
 		
 		return mayorDistancia;
 	}
+	
+	@Override
+	public String toString(){
+		return ("(" + this.coordenadaX + "," + this.coordenadaY + ")"); 
+	}
 }

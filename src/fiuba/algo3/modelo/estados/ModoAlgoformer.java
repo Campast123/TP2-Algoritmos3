@@ -16,5 +16,6 @@ public interface ModoAlgoformer {
 	void quitarVidaEspinas(Personaje personaje);
 	void reducirAtaque();
 	void reducirVelocidad();
+	void reestablecerVelocidad();
 	boolean pantanoReduceVelocidad();
 }

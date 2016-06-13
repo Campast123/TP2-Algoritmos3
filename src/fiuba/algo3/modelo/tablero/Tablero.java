@@ -57,6 +57,14 @@ public class Tablero {
 		return personaje;
 	}
 	
+	public ChispaSuprema obtenerChispaSuprema(Posicion posicion){
+		ChispaSuprema chispa = null;
+		if (this.posicionValida(posicion)){
+			chispa = this.tablero.get(posicion).getChispaSuprema();
+		}
+		return chispa;
+	}
+	
 	public void moverPersonaje(Personaje personaje, Posicion posicionDestino){
 		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){			
 			SuperficieDeCampo superficiesDestino = this.tablero.get(posicionDestino).getSuperficies();
@@ -68,4 +76,15 @@ public class Tablero {
 			}
 		}
 	}	
+	
+	public void atacarConAlgoformerA(Personaje algoformerAtacante, Personaje algoformerDestino){
+		algoformerAtacante.atacar(algoformerDestino);
+
+	}
+	
+	public void transformarAlgoformer(Personaje algoformer){
+		algoformer.transformar();
+		//Agregar efectos de el casillero donde se transforma
+	}
+
 }

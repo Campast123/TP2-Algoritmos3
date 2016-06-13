@@ -3,14 +3,14 @@ package fiuba.algo3.modelo.jugabilidad;
 import fiuba.algo3.modelo.tablero.Posicion;
 
 public class Direccion {
-	Posicion izquierda;
-	Posicion derecha;
-	Posicion arriba;
-	Posicion abajo;
-	Posicion diagonalIzqSuperior;
-	Posicion diagonalDerSuperior;
-	Posicion diagonalIzqInferior;
-	Posicion diagonalDerInferior;
+	private Posicion izquierda;
+	private Posicion derecha;
+	private Posicion arriba;
+	private Posicion abajo;
+	private Posicion diagonalIzqSuperior;
+	private Posicion diagonalDerSuperior;
+	private Posicion diagonalIzqInferior;
+	private Posicion diagonalDerInferior;
 	
 	public Direccion(){
 		this.izquierda = new Posicion(0,-1);

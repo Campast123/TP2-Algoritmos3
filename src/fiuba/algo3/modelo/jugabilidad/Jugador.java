@@ -10,6 +10,12 @@ public class Jugador {
 	private Personaje personaje2;
 	private Personaje personaje3;
 	
+	public void finalizarTurno(){
+		this.personaje1.reestablecerEfectos();
+		this.personaje2.reestablecerEfectos();
+		this.personaje3.reestablecerEfectos();
+	}
+	
 	public Jugador(String nombre,TipoTransformer tipo){
 		this.Nombre= nombre;
 		this.ganador=false;

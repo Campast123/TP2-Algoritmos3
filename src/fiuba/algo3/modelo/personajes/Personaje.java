@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.personajes;
 import java.util.Stack;
 
 import fiuba.algo3.modelo.estados.ModoAlgoformer;
+import fiuba.algo3.modelo.excepciones.AlgoformerNoPuedeMoverseException;
 import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
 import fiuba.algo3.modelo.tablero.Posicion;
 
@@ -25,6 +26,7 @@ public abstract class Personaje implements Posicionable {
 		if (this.turnosInmovilizado > 0){
 			this.turnosInmovilizado = this.turnosInmovilizado -1;
 		}
+		this.modoAlgoformer.reestablecerVelocidad();
 	}
 	
 	public void setPosicion(Posicion posicion) {
@@ -48,10 +50,17 @@ public abstract class Personaje implements Posicionable {
 	public void setTurnosInmovilizado(int turnosInmovilizado) {
 		this.turnosInmovilizado = turnosInmovilizado;
 	}
+	public boolean estaInmovilizado(){
+		return (this.turnosInmovilizado > 0);
+	}
 	
 	public boolean puedeMoverse(Posicion posicion){
 		int distanciaDePosiciones = this.posicion.distanciaA(posicion);
-		return (distanciaDePosiciones <= this.getVelocidad());
+		if (distanciaDePosiciones <= this.getVelocidad() && (!this.estaInmovilizado())){
+			return true;
+		} else {
+			throw new AlgoformerNoPuedeMoverseException();
+		}
 	}
 	
 	public boolean puedeAtacar(Posicion posicion) {

@@ -41,4 +41,74 @@ public class UnitTestsPartida {
 		Assert.assertEquals(this.jugador1.getPersonaje2().getPosicion(),posicionEsperada);
 
 	}
+	
+	@Test
+	public void simulacionJugadaDeAtaque(){
+		Direccion movimiento = new Direccion();
+		this.jugador1 = new Jugador("Pepe", TipoTransformer.AUTOBOT);
+		this.jugador2 = new Jugador("Beto", TipoTransformer.DECEPTICON);
+		Partida partida = new Partida(this.jugador1, this.jugador2);
+
+		//Muevo a optimus 5 veces
+		partida.transformarAlgoformer(partida.obtenerJugadorDelTurno().getPersonaje1());						
+		for (int i = 1 ; i <= 5 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalDerInferior());						
+		}
+		partida.finalizarTurno();
+		
+		//Muevo a megatron 8 veces
+		partida.transformarAlgoformer(partida.obtenerJugadorDelTurno().getPersonaje1());						
+		for (int i = 1 ; i <= 8 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalIzqSuperior());						
+		}
+		partida.finalizarTurno();
+		
+		//Muevo a optimus 5 veces
+		for (int i = 1 ; i <= 5 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalDerInferior());						
+		}
+		partida.finalizarTurno();
+		
+		//Muevo a megatron 8 veces
+		for (int i = 1 ; i <= 8 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalIzqSuperior());						
+		}
+		partida.finalizarTurno();
+		
+		//Muevo a optimus 5 veces
+		for (int i = 1 ; i < 5 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalDerInferior());						
+		}
+		partida.finalizarTurno();
+		
+		//Muevo a megatron 8 veces
+		for (int i = 0 ; i < 8 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalIzqSuperior());						
+		}
+		partida.finalizarTurno();
+		
+		//Muevo a optimus 5 veces
+		for (int i = 1 ; i <= 5 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalDerInferior());						
+		}
+		partida.finalizarTurno();
+		
+		//Muevo a megatron 8 veces
+		for (int i = 1 ; i <= 8 ; i++){
+			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalIzqSuperior());						
+		}
+		partida.finalizarTurno();
+		
+		Assert.assertEquals(500,this.jugador1.getPersonaje1().getPuntosDeVida());
+		Assert.assertEquals(550,this.jugador2.getPersonaje1().getPuntosDeVida());
+		
+		partida.atacarConAlgoformerA(this.jugador1.getPersonaje1(), this.jugador2.getPersonaje1());
+		
+		Assert.assertEquals(500,this.jugador1.getPersonaje1().getPuntosDeVida());
+		Assert.assertEquals(535,this.jugador2.getPersonaje1().getPuntosDeVida());
+		
+
+	
+	}
+	
 }

@@ -17,4 +17,9 @@ public class RatchetAlterno extends UnidadAlternaAerea{
 	public boolean esUnidadAerea() {
 		return true;
 	}
+	
+	@Override
+	public void reestablecerVelocidad(){
+		this.velocidad = 8;
+	}
 }

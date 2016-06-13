@@ -6,4 +6,8 @@ public class SuperionUnico extends ModoUnico{
 		this.distanciaDeAtaque = 2;
 		this.velocidad = 3;
 	}
+	@Override
+	public void reestablecerVelocidad(){
+		this.velocidad = 3;
+	}
 }

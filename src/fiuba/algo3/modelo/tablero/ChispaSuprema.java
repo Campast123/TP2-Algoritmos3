@@ -12,11 +12,11 @@ public class ChispaSuprema implements Posicionable {
 		this.posicion = new Posicion(25,25);
 	}	
 		
-	public void setEstado(){
-		this.capturada = !(this.capturada);
+	public void capturar(){
+		this.capturada = true;
 	}
 	
-	public boolean getEstado(){
+	public boolean chispaCapturada(){
 		return this.capturada;
 	}
 	
