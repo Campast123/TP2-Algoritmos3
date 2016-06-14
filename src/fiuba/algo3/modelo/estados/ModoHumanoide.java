@@ -1,42 +1,6 @@
 package fiuba.algo3.modelo.estados;
 
-import fiuba.algo3.modelo.personajes.Personaje;
-
-public abstract class ModoHumanoide implements ModoAlgoformer {
-	int ataque;
-	int velocidad;
-	int distanciaDeAtaque;
-	boolean inmunidad;	
-
-	@Override
-	public int getVelocidad() {
-		return (this.velocidad);
-		
-	}
-	@Override
-	public int getDistanciaDeAtaque() {
-		return (this.distanciaDeAtaque);
-	}
-
-	@Override
-	public int getAtaque() {
-		return (this.ataque);
-	}
-	
-	@Override
-	public void setAtaque(int attack) {
-		this.ataque = attack;
-	}
-	
-	@Override
-	public void setInmunidad(boolean inmunity) {
-		this.inmunidad = inmunity;
-	}
-	
-	@Override
-	public void setVelocidad(int velocity) {
-		this.velocidad = velocity;
-	}		
+public abstract class ModoHumanoide extends ModoAlgoformer {
 	
 	@Override
 	public boolean esHumanoide() {
@@ -62,26 +26,9 @@ public abstract class ModoHumanoide implements ModoAlgoformer {
 	public boolean esUnidadAerea(){
 		return false;
 	}
+	
 	@Override
 	public boolean puedeAtravesarPantano() {
-		return false;
-	}
-	
-	@Override
-	public void quitarVidaEspinas(Personaje algoformer){
-		algoformer.reducirVida();
-	}
-	@Override
-	public void reducirAtaque(){
-		
-	}
-	@Override
-	public void reducirVelocidad(){
-		this.velocidad = this.velocidad - 1;
-	}
-	
-	@Override
-	public boolean pantanoReduceVelocidad(){
 		return false;
 	}
 	

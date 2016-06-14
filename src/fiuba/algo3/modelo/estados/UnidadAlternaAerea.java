@@ -6,11 +6,6 @@ public abstract class UnidadAlternaAerea extends ModoAlterno{
 	boolean tormentaPsionica;
 	
 	@Override
-	public boolean puedeAtravesarPantano(){
-		return true;
-	}
-	
-	@Override
 	public void quitarVidaEspinas(Personaje algoformer){
 		
 	}
@@ -22,10 +17,4 @@ public abstract class UnidadAlternaAerea extends ModoAlterno{
 		this.tormentaPsionica = true;
 		}
 	}
-	
-	@Override
-	public boolean pantanoReduceVelocidad(){
-		return false;
-	}
-	
 }
