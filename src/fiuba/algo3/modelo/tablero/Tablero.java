@@ -8,7 +8,17 @@ import fiuba.algo3.modelo.bonus.BurbujaInmaculada;
 import fiuba.algo3.modelo.bonus.DobleCanion;
 import fiuba.algo3.modelo.bonus.Flash;
 import fiuba.algo3.modelo.personajes.*;
+import fiuba.algo3.modelo.superficies.SuperficieAerea;
 import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
+import fiuba.algo3.modelo.superficies.SuperficieDeCampoProvider;
+import fiuba.algo3.modelo.superficies.SuperficieEspinas;
+import fiuba.algo3.modelo.superficies.SuperficieNebulosaDeAndromeda;
+import fiuba.algo3.modelo.superficies.SuperficieNube;
+import fiuba.algo3.modelo.superficies.SuperficiePantano;
+import fiuba.algo3.modelo.superficies.SuperficieRocosa;
+import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
+import fiuba.algo3.modelo.superficies.SuperficieTormentaPsionica;
+import fiuba.algo3.modelo.utils.RandomUtils;
 
 public class Tablero { 	
 	public static final String config = "config.properties";
@@ -24,21 +34,48 @@ public class Tablero {
 		for (int x = 0 ; x <= alto ; x++){
 			for (int y = 0; y <= largo; y++){
 				Posicion coordenada = new Posicion(x,y);
-				Casillero casillero = new Casillero(coordenada);
+				Casillero casillero = new Casillero(coordenada,SuperficieDeCampoProvider.generarSerficieDeCampoComun());
 				this.tablero.put(coordenada, casillero);
 			}
 		}
 	}
 	
+	public Tablero(boolean alAzar){
+		
+		this.tablero = new HashMap<Posicion,Casillero>();
+		for (int x = 0 ; x <= alto ; x++){
+			for (int y = 0; y <= largo; y++){
+				Posicion coordenada = new Posicion(x,y);
+				Casillero casillero = new Casillero(coordenada,SuperficieDeCampoProvider.generarSerficieDeCampoComun());
+				this.tablero.put(coordenada, casillero);
+			}
+		}
+		
+		if (alAzar){
+			for (int z = 0 ; z <= 1500 ; z++){
+				// Dejo margenes de 2 casilleros por todo le borde
+				int coordenadaX = RandomUtils.generaNumeroAleatorio(2,alto-2);
+				int coordenadaY = RandomUtils.generaNumeroAleatorio(2,largo-2);
+
+				Posicion coordenada = new Posicion(coordenadaX,coordenadaY);
+				Casillero casillero = this.tablero.get(coordenada);
+				SuperficieDeCampo supDeCampo = SuperficieDeCampoProvider.generarSuperficieDeCampoAleatoria();
+				casillero.setSuperficies(supDeCampo);
+			
+			}
+			
+		}
+	}
+
 	public void ingresarCasillero(Casillero casillero){
 		this.tablero.put(casillero.getPosicion(),casillero);
 		
 	}
 	
 	public void inicializarBonus(){
-		for (int i = 0; i < generaNumeroAleatorio(0,20); i++) {
+		for (int i = 0; i < RandomUtils.generaNumeroAleatorio(0,20); i++) {
 			Bonus bonus;
-			int value = generaNumeroAleatorio(1,3);
+			int value = RandomUtils.generaNumeroAleatorio(1,3);
 			
 			switch(value){
 				case 1: bonus = new BurbujaInmaculada();
@@ -80,6 +117,10 @@ public class Tablero {
 		return personaje;
 	}
 	
+	public Casillero obtenerCasillero(Posicion posicionInicial){
+		return this.tablero.get(posicionInicial);
+	}
+	
 	public ChispaSuprema obtenerChispaSuprema(Posicion posicion){
 		ChispaSuprema chispa = null;
 		if (this.posicionValida(posicion)){
@@ -110,8 +151,4 @@ public class Tablero {
 		//Agregar efectos de el casillero donde se transforma
 	}
 	
-	public static int generaNumeroAleatorio(int minimo, int maximo){        
-        int num=(int)Math.floor(Math.random()*(minimo-(maximo+1))+(maximo+1));
-        return num;
-    }
 }

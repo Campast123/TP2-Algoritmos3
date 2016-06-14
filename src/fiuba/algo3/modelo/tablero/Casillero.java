@@ -34,6 +34,15 @@ public class Casillero implements Posicionable {
 		this.chispa = null;
 		this.superficies = new SuperficieDeCampo(superficieAerea, suerficieTerrestre);
 	}
+	
+	public Casillero(Posicion posicion, SuperficieDeCampo superficie){
+		this.ocupado = false;
+		this.posicion = posicion;
+		this.personaje = null;
+		this.chispa = null;
+		this.superficies = superficie;
+	}
+	
 	@Override
 	public Posicion getPosicion(){
 		return (this.posicion);
@@ -82,6 +91,10 @@ public class Casillero implements Posicionable {
 
 	public SuperficieDeCampo getSuperficies() {
 		return superficies;
+	}
+
+	public void setSuperficies(SuperficieDeCampo superficies) {
+		this.superficies = superficies;
 	}
 	
 }

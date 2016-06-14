@@ -1,6 +1,9 @@
 package fiuba.algo3.modelo.superficies;
 
 import fiuba.algo3.modelo.personajes.Personaje;
+import fiuba.algo3.modelo.tablero.Casillero;
+import fiuba.algo3.modelo.tablero.Posicion;
+import fiuba.algo3.modelo.utils.RandomUtils;
 
 public class SuperficieDeCampo {
 
