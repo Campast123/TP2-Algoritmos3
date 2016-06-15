@@ -4,10 +4,10 @@ package fiuba.algo3.modelo.estados;
 import fiuba.algo3.modelo.personajes.Personaje;
 
 public abstract class ModoAlgoformer {	
-	int ataque;
-	int velocidad;
-	int distanciaDeAtaque;
-	boolean inmunidad;
+	protected int ataque;
+	protected int velocidad;
+	protected int distanciaDeAtaque;
+	protected boolean inmunidad;
 	
 	public abstract boolean esHumanoide();
 	public abstract boolean esAlterno();
