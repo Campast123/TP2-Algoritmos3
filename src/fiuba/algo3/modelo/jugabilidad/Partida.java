@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.jugabilidad;
 
+import fiuba.algo3.modelo.excepciones.NoEsValidaLaTransformacionAModoUnico;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.bonus.*;
+import fiuba.algo3.modelo.jugabilidad.Direccion;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.jugabilidad.TipoTransformer;
@@ -12,8 +13,8 @@ import fiuba.algo3.modelo.tablero.Posicion;
 
 public class BonusTest {
 	
-	@Test	
-public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){		
+	@Test
+	public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){		
 		
 		//Creo los jugadores, y la partida. Valido el test con el Personaje 1 de cada uno
 		Jugador j1 = new Jugador("j1",TipoTransformer.AUTOBOT);
@@ -23,63 +24,82 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		
 		Personaje optimus = j1.getPersonaje1();
 		Personaje megatron =j2.getPersonaje1();
+		Direccion direccion = new Direccion();		
 		
-		optimus.getModoAlgoformer().setVelocidad(100);
-		megatron.getModoAlgoformer().setVelocidad(100);
+		//Paso al turno del jugador 2
+		p1.finalizarTurno();
+		Assert.assertTrue(p1.obtenerJugadorDelTurno() == j2);
 		
+		//Megatron se transforma en su modo alterno
+		p1.transformarAlgoformer(megatron);
+		p1.finalizarTurno();
+		p1.finalizarTurno();
 		
-		Posicion posicionOptimus = new Posicion(12,12);
-		Posicion posicionMegatron = new Posicion(14,14);
-		
-		optimus.setPosicion(posicionOptimus);
-		megatron.setPosicion(posicionMegatron);
-
-		
-		optimus.getModoAlgoformer().reestablecerVelocidad();;
-		megatron.getModoAlgoformer().reestablecerVelocidad();
-		
-		p1.moverAlgoformerA(optimus, posicionOptimus);
-		p1.moverAlgoformerA(megatron, posicionMegatron);		
-		
-		//Optimus en Humanoide tiene 50 fuerza
-		Assert.assertEquals(optimus.getAtaque(),50);		
-		//Megatron en Humanoide tiene 50 fuerza
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
-		
+		//Posiciono el bonus doble canion en la posicion (2,2)
 		DobleCanion canion = new DobleCanion();
-		Posicion posicionBonus = new Posicion(12,12);
+		Posicion posicionBonus = new Posicion(2,2);
 		canion.setPosicion(posicionBonus);
-		optimus.agregarBonusPersonaje(canion);
 		
-		//Optimus en Humanoide tiene 100 fuerza, con el doble canion
-		Assert.assertEquals(optimus.getAtaque(),100);	
+		//Megatron se mueve en diagonal hacia la posicion (2,2)
+		for (int i = 0 ; i < 6 ; i++){
+			for(int j = 0; j < 8; j++){
+				p1.moverAlgoformerA(megatron, direccion.getDiagonalIzqSuperior());
+			}
+			p1.finalizarTurno();
+			p1.finalizarTurno();
+		}
 		
-		//Ataco, con danio de 100 y cambio de turno. Baja la vigencia de bonus en 1
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),450);		
+		Posicion posMegatron = new Posicion(2,2);
+		Assert.assertTrue(megatron.getPosicion().equals(posMegatron));
+		
+		//Megatron se transforma en su modo humanoide
+		p1.transformarAlgoformer(megatron);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		//Me posiciono con Megatron, en el mismo lugar y paso turno
-		p1.moverAlgoformerA(megatron, posicionMegatron);
+		//Megatron en modo humanoide tiene 10 ptos de ataque
+		Assert.assertEquals(megatron.getAtaque(),10);				
+		
+		//Optimus tiene 500 ptos de vida
+		Assert.assertTrue(optimus.getPuntosDeVida() == 500);
+		
+		//Optimus es atacado por Megatron el cual le quita 10 ptos de vida
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 490);
+		
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),350);		
+		//Megatron toma el bonus en modo humanoide, ahora tiene 20 ptos de ataque
+		megatron.agregarBonusPersonaje(canion);
+		Assert.assertEquals(megatron.getAtaque(),20);
+		
+		//Optimus es atacado por Megatron con con bonus, el cual le quita 20 ptos de vida
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 470);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.moverAlgoformerA(megatron, posicionMegatron);
+		//Al segundo turno propio el danio sigue siendo el doble
+		Assert.assertEquals(megatron.getAtaque(),20);
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 450);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),250);		
+		//Al tercer turno propio el danio sigue siendo el doble
+		Assert.assertEquals(megatron.getAtaque(),20);
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 430);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.moverAlgoformerA(megatron, posicionMegatron);
+		//Al pasar los tres turnos el danio vuelve a la normalidad
+		Assert.assertEquals(megatron.getAtaque(),10);
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 420);
 		p1.finalizarTurno();
-		
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),200);
-		Assert.assertEquals(optimus.getAtaque(),50);		
+		p1.finalizarTurno();
 				
 	}
 	
@@ -95,71 +115,81 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		
 		Personaje optimus = j1.getPersonaje1();
 		Personaje megatron =j2.getPersonaje1();
-		optimus.getModoAlgoformer().setVelocidad(100);
-		megatron.getModoAlgoformer().setVelocidad(100);
+		Direccion direccion = new Direccion();		
 		
+		//Paso al turno del jugador 2
+		p1.finalizarTurno();
+		Assert.assertTrue(p1.obtenerJugadorDelTurno() == j2);
 		
-		Posicion posicionOptimus = new Posicion(12,12);
-		Posicion posicionMegatron = new Posicion(14,14);
-		
-		optimus.setPosicion(posicionOptimus);
-		megatron.setPosicion(posicionMegatron);
-
-		
-		optimus.getModoAlgoformer().reestablecerVelocidad();;
-		megatron.getModoAlgoformer().reestablecerVelocidad();				
-		
-		p1.moverAlgoformerA(optimus, posicionOptimus);
-		p1.moverAlgoformerA(megatron, posicionMegatron);
-		
+		//Megatron y optimus se transforman en su modo alterno
+		p1.transformarAlgoformer(megatron);
+		p1.finalizarTurno();
 		p1.transformarAlgoformer(optimus);
-		p1.transformarAlgoformer(megatron);		
+		p1.finalizarTurno();
 		
-		//Optimus en Alterno tiene 15 fuerza
-		Assert.assertEquals(optimus.getAtaque(),15);		
-		//Megatron en Humanoide tiene 550 vida
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
-		
+		//Posiciono el bonus doble canion en la posicion (2,2)
 		DobleCanion canion = new DobleCanion();
-		Posicion posicionBonus = new Posicion(12,12);
+		Posicion posicionBonus = new Posicion(2,2);
 		canion.setPosicion(posicionBonus);
-		optimus.agregarBonusPersonaje(canion);
 		
-		//Optimus en Humanoide tiene 30 fuerza, con el doble canion
-		Assert.assertEquals(optimus.getAtaque(),30);	
+		//Megatron se mueve en diagonal hacia la posicion (2,2)
+		for (int i = 0 ; i < 6 ; i++){
+			for(int j = 0; j < 8; j++){
+				p1.moverAlgoformerA(megatron, direccion.getDiagonalIzqSuperior());
+			}
+			p1.finalizarTurno();
+			p1.finalizarTurno();
+		}
 		
-		//Ataco, con danio de 30 y cambio de turno. Baja la vigencia de bonus en 1
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),520);		
+		Posicion posMegatron = new Posicion(2,2);
+		Assert.assertTrue(megatron.getPosicion().equals(posMegatron));
+		
+		//Megatron en modo alterno tiene 55 ptos de ataque
+		Assert.assertEquals(megatron.getAtaque(),55);				
+		
+		//Optimus alterno tiene 500 ptos de vida
+		Assert.assertTrue(optimus.getPuntosDeVida() == 500);
+		
+		//Optimus es atacado por Megatron el cual le quita 55 ptos de vida
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 445);
+		
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		//Me posiciono con Megatron, en el mismo lugar y paso turno
-		p1.moverAlgoformerA(megatron, posicionMegatron);
+		//Megatron toma el bonus en modo humanoide, ahora tiene 20 ptos de ataque
+		megatron.agregarBonusPersonaje(canion);
+		Assert.assertEquals(megatron.getAtaque(),110);
+		
+		//Optimus es atacado por Megatron con con bonus, el cual le quita 20 ptos de vida
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 335);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),490);		
+		//Al segundo turno propio el danio sigue siendo el doble
+		Assert.assertEquals(megatron.getAtaque(),110);
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 225);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.moverAlgoformerA(megatron, posicionMegatron);
+		//Al tercer turno propio el danio sigue siendo el doble
+		Assert.assertEquals(megatron.getAtaque(),110);
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 115);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),460);		
+		//Al pasar los tres turnos el danio vuelve a la normalidad
+		Assert.assertEquals(megatron.getAtaque(),55);
+		p1.atacarConAlgoformerA(megatron, optimus);
+		Assert.assertTrue(optimus.getPuntosDeVida() == 60);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.moverAlgoformerA(megatron, posicionMegatron);
-		p1.finalizarTurno();
-		
-		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),445);
-		
-		//Finalizado los 3 turnos la fuerza vuelve al estado inicial
-		Assert.assertEquals(optimus.getAtaque(),15);		
-				
 	}
-	
-	
+		
 	@Test
 	public void test03AlgoformerCapturaBurbujaYEsInmuneHumanoide(){		
 		
@@ -171,61 +201,69 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		
 		Personaje optimus = j1.getPersonaje1();
 		Personaje megatron =j2.getPersonaje1();
+		Direccion direccion = new Direccion();		
 		
-		optimus.getModoAlgoformer().setVelocidad(100);
-		megatron.getModoAlgoformer().setVelocidad(100);
+		//Paso al turno del jugador 2
+		p1.finalizarTurno();
+		Assert.assertTrue(p1.obtenerJugadorDelTurno() == j2);
 		
+		//Megatron se transforman en su modo alterno
+		p1.transformarAlgoformer(megatron);
+		p1.finalizarTurno();
+		p1.finalizarTurno();
 		
-		Posicion posicionOptimus = new Posicion(12,12);
-		Posicion posicionMegatron = new Posicion(14,14);
-		
-		optimus.setPosicion(posicionOptimus);
-		megatron.setPosicion(posicionMegatron);
-
-		
-		optimus.getModoAlgoformer().reestablecerVelocidad();;
-		megatron.getModoAlgoformer().reestablecerVelocidad();		
-			
-				
-		//Optimus en Humanoide tiene 50 fuerza
-		Assert.assertEquals(optimus.getAtaque(),50);		
-		//Megatron en Humanoide tiene 550 vida
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
-		
+		//Posiciono el bonus burbuja inmaculada en la posicion (2,2)
 		BurbujaInmaculada burbuja = new BurbujaInmaculada();
-		Posicion posicionBonus = new Posicion(14,14);
+		Posicion posicionBonus = new Posicion(2,2);
 		burbuja.setPosicion(posicionBonus);
-		megatron.agregarBonusPersonaje(burbuja);			
 		
-		Assert.assertTrue(megatron.getModoAlgoformer().getInmunidad());
+		//Megatron se mueve en diagonal hacia la posicion (2,2)
+		for (int i = 0 ; i < 6 ; i++){
+			for(int j = 0; j < 8; j++){
+				p1.moverAlgoformerA(megatron, direccion.getDiagonalIzqSuperior());
+			}
+			p1.finalizarTurno();
+			p1.finalizarTurno();
+		}
 		
-		//Ataco, con danio de 50 y cambio de turno. 
-		//La vida de megatron sigue igual
+		Posicion posMegatron = new Posicion(2,2);
+		Assert.assertTrue(megatron.getPosicion().equals(posMegatron));
+		
+		//Megatron se transforman en su modo humanoide
+		p1.transformarAlgoformer(megatron);
+		p1.finalizarTurno();
+		
+		//Megatron humanoide tiene 550 ptos de vida
+		Assert.assertTrue(megatron.getPuntosDeVida() == 550);
+		
+		//Megatron es atacado por Optimus el cual le quita 50 ptos de vida
 		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
+		Assert.assertTrue(megatron.getPuntosDeVida() == 500);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		//Me posiciono con Megatron, en el mismo lugar y paso turno. Ajusto vigencia
-		p1.moverAlgoformerA(megatron, posicionMegatron);
-		p1.finalizarTurno();
+		//Megatron toma el bonus de burbuja inmaculada en modo humanoide
+		megatron.agregarBonusPersonaje(burbuja);
 		
+		//Megatron con el bonus burbuja es atacado por Optimus por lo que no recibe danio
 		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
+		Assert.assertTrue(megatron.getPuntosDeVida() == 500);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.moverAlgoformerA(megatron, posicionMegatron);
-		p1.finalizarTurno();
-		
-		//Finaliza la vigencia de la burbuja
+		//Al segundo turno sigue sin recibir danio
 		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),500);		
+		Assert.assertTrue(megatron.getPuntosDeVida() == 500);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		
-		Assert.assertTrue(!(megatron.getModoAlgoformer().getInmunidad()));		
-				
+		//Al pasar los dos turnos megatron vuelve a recibir danio
+		p1.atacarConAlgoformerA(optimus, megatron);
+		Assert.assertTrue(megatron.getPuntosDeVida() == 450);
+		p1.finalizarTurno();
+		p1.finalizarTurno();
 	}
-	
+
 	
 	@Test
 	public void test04AlgoformerCapturaBurbujaYEsInmuneAlterno(){		
@@ -238,62 +276,64 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		
 		Personaje optimus = j1.getPersonaje1();
 		Personaje megatron =j2.getPersonaje1();
+		Direccion direccion = new Direccion();		
 		
-		optimus.transformar();
-		megatron.transformar();
+		//Paso al turno del jugador 2
+		p1.finalizarTurno();
+		Assert.assertTrue(p1.obtenerJugadorDelTurno() == j2);
 		
-		optimus.getModoAlgoformer().setVelocidad(100);
-		megatron.getModoAlgoformer().setVelocidad(100);
+		//Megatron se transforman en su modo alterno
+		p1.transformarAlgoformer(megatron);
+		p1.finalizarTurno();
+		p1.transformarAlgoformer(optimus);
+		p1.finalizarTurno();
 		
-		
-		Posicion posicionOptimus = new Posicion(12,12);
-		Posicion posicionMegatron = new Posicion(14,14);
-		
-		optimus.setPosicion(posicionOptimus);
-		megatron.setPosicion(posicionMegatron);
-
-		
-		optimus.getModoAlgoformer().reestablecerVelocidad();;
-		megatron.getModoAlgoformer().reestablecerVelocidad();		
-			
-				
-		//Optimus en Humanoide tiene 15 fuerza
-		Assert.assertEquals(optimus.getAtaque(),15);		
-		//Megatron en Humanoide tiene 550 vida
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
-		
+		//Posiciono el bonus burbuja inmaculada en la posicion (2,2)
 		BurbujaInmaculada burbuja = new BurbujaInmaculada();
-		Posicion posicionBonus = new Posicion(14,14);
+		Posicion posicionBonus = new Posicion(2,2);
 		burbuja.setPosicion(posicionBonus);
-		megatron.agregarBonusPersonaje(burbuja);			
 		
-		Assert.assertTrue(megatron.getModoAlgoformer().getInmunidad());
+		//Megatron se mueve en diagonal hacia la posicion (2,2)
+		for (int i = 0 ; i < 6 ; i++){
+			for(int j = 0; j < 8; j++){
+				p1.moverAlgoformerA(megatron, direccion.getDiagonalIzqSuperior());
+			}
+			p1.finalizarTurno();
+			p1.finalizarTurno();
+		}
 		
-		//Ataco, con danio de 15 y cambio de turno. 
-		//La vida de megatron sigue igual
+		Posicion posMegatron = new Posicion(2,2);
+		Assert.assertTrue(megatron.getPosicion().equals(posMegatron));
+		
+		//Megatron alterno tiene 550 ptos de vida
+		Assert.assertTrue(megatron.getPuntosDeVida() == 550);
+		
+		//Megatron es atacado por Optimus el cual le quita 15 ptos de vida
 		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
+		Assert.assertTrue(megatron.getPuntosDeVida() == 535);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		//Me posiciono con Megatron, en el mismo lugar y paso turno. Ajusto vigencia
-		p1.moverAlgoformerA(megatron, posicionMegatron);
-		p1.finalizarTurno();
+		//Megatron toma el bonus de burbuja inmaculada en modo alterno
+		megatron.agregarBonusPersonaje(burbuja);
 		
+		//Megatron con el bonus burbuja es atacado por Optimus por lo que no recibe danio
 		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),550);		
+		Assert.assertTrue(megatron.getPuntosDeVida() == 535);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		p1.moverAlgoformerA(megatron, posicionMegatron);
-		p1.finalizarTurno();
-		
-		//Finaliza la vigencia de la burbuja
+		//Al segundo turno sigue sin recibir danio
 		p1.atacarConAlgoformerA(optimus, megatron);
-		Assert.assertEquals(megatron.getPuntosDeVida(),535);		
+		Assert.assertTrue(megatron.getPuntosDeVida() == 535);
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		//megatron ya no tiene inmunidad
-		Assert.assertTrue(!(megatron.getModoAlgoformer().getInmunidad()));		
-				
+		//Al pasar los dos turnos megatron vuelve a recibir danio
+		p1.atacarConAlgoformerA(optimus, megatron);
+		Assert.assertTrue(megatron.getPuntosDeVida() == 520);
+		p1.finalizarTurno();
+		p1.finalizarTurno();
 	}
 	
 	@Test
@@ -306,44 +346,61 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		Partida p1 = new Partida(j1, j2);		
 		
 		Personaje optimus = j1.getPersonaje1();
+		Direccion direccion = new Direccion();
 		
-		Posicion posicionOptimus = new Posicion(14,14);		
-		optimus.setPosicion(posicionOptimus);			
-		
-		Assert.assertEquals(optimus.getVelocidad(),2);		
-		
+		//Posiciono el bonus flash en la posicion (2,2)
 		Flash flash = new Flash();
-		Posicion posicionBonus = new Posicion(14,14);
-		flash.setPosicion(posicionBonus);		
-				
+		Posicion posicionBonus = new Posicion(2,2);
+		flash.setPosicion(posicionBonus);
+		
+		//Optimus humanoide tiene 2 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 2);
+		for (int i = 0 ; i < 2 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}
+		//Optimus se mueve hacia la posicion (2,2)
+		Posicion posOptimus = new Posicion(2,2);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		
+		//Optimus toma el bonus flash en modo humanoide
 		optimus.agregarBonusPersonaje(flash);
 		
-		//Optimus Humanoide tiene velocidad 2. Flash triplica
-		Assert.assertEquals(optimus.getVelocidad(),6);		
-		p1.finalizarTurno(); //Forzosamente terminamos los turnos
-		
-		//Finalizo el turno de megatron		
+		//Optimus humanoide ahora tiene 6 de velocidad
+		System.out.println(optimus.getVelocidad());
+		Assert.assertTrue(optimus.getVelocidad() == 6);
+		for (int i = 0 ; i < 6 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}
+		//Optimus ahora esta en la posicion (8,8)
+		posOptimus = new Posicion(8,8);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		Assert.assertEquals(optimus.getVelocidad(),6);		
-		p1.finalizarTurno(); //Forzosamente terminamos los turnos		
+/*      
 		
+		//Durante el segundo turno sigue con 6 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 6);
+		for (int i = 0 ; i < 6 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}		
+		
+		//Optimus ahora esta en la posicion (14,14)
+		posOptimus = new Posicion(14,14);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		Assert.assertEquals(optimus.getVelocidad(),6);		
-		p1.finalizarTurno(); //Forzosamente terminamos los turnos
-		//Finaliza la vigencia de flash
-		
-		p1.finalizarTurno();
-		
-		//Optimus nuevamente con velocidad 2
-		Assert.assertEquals(optimus.getVelocidad(),2);
+*/
 		
 	}
 
 	@Test
 	public void test06AlgoformerCapturaFlashYEsVelozAlterno(){		
-		
+/*	
 		//Creo los jugadores, y la partida. Valido el test con el Personaje 1 de cada uno
 		Jugador j1 = new Jugador("j1",TipoTransformer.AUTOBOT);
 		Jugador j2 = new Jugador("j2",TipoTransformer.DECEPTICON);
@@ -351,7 +408,6 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		Partida p1 = new Partida(j1, j2);		
 		
 		Personaje optimus = j1.getPersonaje1();
-		Personaje megatron = j2.getPersonaje1();
 		
 		Posicion posicionOptimus = new Posicion(14,14);		
 		optimus.setPosicion(posicionOptimus);
@@ -387,6 +443,11 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		
 		//Optimus nuevamente con velocidad 2
 		Assert.assertEquals(optimus.getVelocidad(),5);
+*/
+	}
+	
+	@Test
+	public void test07AlgoformerCapturaFlashYEsVelozHumanoideAlternoHumanoide(){
 		
 	}
 	
@@ -400,7 +461,6 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		Partida p1 = new Partida(j1, j2);		
 		
 		Personaje optimus = j1.getPersonaje1();
-		Personaje megatron = j2.getPersonaje1();
 		
 		Posicion posicionOptimus = new Posicion(14,14);		
 		optimus.setPosicion(posicionOptimus);
