@@ -4,6 +4,7 @@ package fiuba.algo3.jugabilidad;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.modelo.excepciones.NoEsValidaLaTransformacionAModoUnico;
 import fiuba.algo3.modelo.jugabilidad.Direccion;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.Partida;
@@ -107,7 +108,32 @@ public class UnitTestsPartida {
 		Assert.assertEquals(500,this.jugador1.getPersonaje1().getPuntosDeVida());
 		Assert.assertEquals(535,this.jugador2.getPersonaje1().getPuntosDeVida());
 		
-
+	}
+	
+	@Test
+	public void simulacionDeTransformacionModoUnico(){
+		this.jugador1 = new Jugador("Pepe", TipoTransformer.AUTOBOT);
+		this.jugador2 = new Jugador("Beto", TipoTransformer.DECEPTICON);
+		Partida partida = new Partida(this.jugador1, this.jugador2);
+		
+		Assert.assertNull(this.jugador1.getPersonajeModoUnico());
+		partida.transformarAlgoformerAModoUnico(this.jugador1);
+		Assert.assertNotNull(this.jugador1.getPersonajeModoUnico());
+		Assert.assertEquals(1000,this.jugador1.getPersonajeModoUnico().getPuntosDeVida());
+	
+	}
+	
+	@Test(expected = NoEsValidaLaTransformacionAModoUnico.class)
+	public void simulacionDeTransformacionModoUnicoNoValidaPorPosiciones(){
+		Direccion direccion = new Direccion();
+		this.jugador1 = new Jugador("Pepe", TipoTransformer.AUTOBOT);
+		this.jugador2 = new Jugador("Beto", TipoTransformer.DECEPTICON);
+		Partida partida = new Partida(this.jugador1, this.jugador2);
+		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), direccion.getDiagonalDerInferior());
+		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), direccion.getDiagonalDerInferior());
+		
+		Assert.assertNull(this.jugador1.getPersonajeModoUnico());
+		partida.transformarAlgoformerAModoUnico(this.jugador1);
 	
 	}
 	

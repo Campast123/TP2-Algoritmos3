@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.tablero;
 
+import java.math.BigDecimal;
+
 public class Posicion {
 
 	private int coordenadaX;
@@ -69,6 +71,17 @@ public class Posicion {
 		return mayorDistancia;
 	}
 	
+	public static int distanciaEntreTresPuntos(Posicion posicionA, Posicion posicionB, Posicion posicionC){
+		int distanciaAB = posicionA.distanciaA(posicionB);
+		int distanciaAC = posicionA.distanciaA(posicionC);
+		int distanciaBC = posicionB.distanciaA(posicionC);
+		
+		int mayorDistancia = Math.max(distanciaBC, Math.max(distanciaAB, distanciaAC));
+
+		return mayorDistancia;
+		
+	}
+
 	@Override
 	public String toString(){
 		return ("(" + this.coordenadaX + "," + this.coordenadaY + ")"); 

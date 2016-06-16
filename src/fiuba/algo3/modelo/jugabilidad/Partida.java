@@ -3,7 +3,10 @@ package fiuba.algo3.modelo.jugabilidad;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
+import fiuba.algo3.modelo.excepciones.NoEsValidaLaTransformacionAModoUnico;
+import fiuba.algo3.modelo.personajes.Menasor;
 import fiuba.algo3.modelo.personajes.Personaje;
+import fiuba.algo3.modelo.personajes.Superion;
 import fiuba.algo3.modelo.tablero.Casillero;
 import fiuba.algo3.modelo.tablero.ChispaSuprema;
 import fiuba.algo3.modelo.tablero.Posicion;
@@ -94,6 +97,32 @@ public class Partida {
 		Jugador jugadorActual = this.obtenerJugadorDelTurno();
 		jugadorActual.finalizarTurno();
 		this.turno.cambioDeTurno();
+		
+	}
+	
+	public void transformarAlgoformerAModoUnico(Jugador jugador){
+		
+		Posicion posicionPersonaje1 = jugador.getPersonaje1().getPosicion();
+		Posicion posicionPersonaje2 = jugador.getPersonaje2().getPosicion();
+		Posicion posicionPersonaje3 = jugador.getPersonaje3().getPosicion();
+
+		int MayorDistanciaEntreLosPuntos = Posicion.distanciaEntreTresPuntos(posicionPersonaje1,posicionPersonaje2,posicionPersonaje3);
+		if (MayorDistanciaEntreLosPuntos <= 2){
+			int vidaTotal = jugador.getPersonaje1().getPuntosDeVida();
+			vidaTotal = vidaTotal + jugador.getPersonaje2().getPuntosDeVida();
+			vidaTotal = vidaTotal + jugador.getPersonaje3().getPuntosDeVida();
+			Posicion posicion = jugador.getPersonaje1().getPosicion();
+			
+			Personaje algoformerModoUnico = null;
+			if (jugador.getTipo().equals(TipoTransformer.AUTOBOT)){
+				algoformerModoUnico = new Superion(vidaTotal,posicion);			
+			} else {
+				algoformerModoUnico = new Menasor(vidaTotal,posicion);			
+			}
+			jugador.setPersonajeModoUnico(algoformerModoUnico);			
+		} else {
+			throw new NoEsValidaLaTransformacionAModoUnico("La distancia entre los algoformers no es valida para la transformacion");
+		}
 		
 	}
 	

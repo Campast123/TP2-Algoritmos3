@@ -9,6 +9,8 @@ public class Jugador {
 	private Personaje personaje1;
 	private Personaje personaje2;
 	private Personaje personaje3;
+	private Personaje personajeModoUnico = null;
+	private TipoTransformer tipo;
 	
 	public void finalizarTurno(){
 		this.personaje1.reestablecerEfectos();
@@ -19,6 +21,7 @@ public class Jugador {
 	public Jugador(String nombre,TipoTransformer tipo){
 		this.Nombre= nombre;
 		this.ganador=false;
+		this.tipo = tipo;
 		
 		if(tipo.equals(TipoTransformer.AUTOBOT)){
 			personaje1 = new Optimus();
@@ -48,4 +51,18 @@ public class Jugador {
 	public boolean getGanador(){
 		return this.ganador;
 	}
+
+	public Personaje getPersonajeModoUnico() {
+		return personajeModoUnico;
+	}
+
+	public void setPersonajeModoUnico(Personaje personajeModoUnico) {
+		this.personajeModoUnico = personajeModoUnico;
+	}
+
+	public TipoTransformer getTipo() {
+		return tipo;
+	}
+	
+
 }
