@@ -368,7 +368,6 @@ public class BonusTest {
 		optimus.agregarBonusPersonaje(flash);
 		
 		//Optimus humanoide ahora tiene 6 de velocidad
-		System.out.println(optimus.getVelocidad());
 		Assert.assertTrue(optimus.getVelocidad() == 6);
 		for (int i = 0 ; i < 6 ; i++){
 			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
@@ -379,9 +378,7 @@ public class BonusTest {
 
 		p1.finalizarTurno();
 		p1.finalizarTurno();
-		
-/*      
-		
+		     
 		//Durante el segundo turno sigue con 6 de velocidad
 		Assert.assertTrue(optimus.getVelocidad() == 6);
 		for (int i = 0 ; i < 6 ; i++){
@@ -394,13 +391,26 @@ public class BonusTest {
 		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-*/
+		//Durante el tercer turno sigue con 6 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 6);
+		for (int i = 0 ; i < 6 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}		
+		
+		//Optimus ahora esta en la posicion (20,20)
+		posOptimus = new Posicion(20,20);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		
+		//Al pasar los tres turnos la velocidad vuelve a la normalidad
+		Assert.assertTrue(optimus.getVelocidad() == 2);
 		
 	}
 
 	@Test
 	public void test06AlgoformerCapturaFlashYEsVelozAlterno(){		
-/*	
+		
 		//Creo los jugadores, y la partida. Valido el test con el Personaje 1 de cada uno
 		Jugador j1 = new Jugador("j1",TipoTransformer.AUTOBOT);
 		Jugador j2 = new Jugador("j2",TipoTransformer.DECEPTICON);
@@ -408,46 +418,140 @@ public class BonusTest {
 		Partida p1 = new Partida(j1, j2);		
 		
 		Personaje optimus = j1.getPersonaje1();
+		Direccion direccion = new Direccion();
 		
-		Posicion posicionOptimus = new Posicion(14,14);		
-		optimus.setPosicion(posicionOptimus);
+		//Transformo optimus humanoide a modo alterno
+		p1.transformarAlgoformer(optimus);
+		p1.finalizarTurno();
+		p1.finalizarTurno();
 		
-		//Transformo
-		optimus.transformar();
-		
-		Assert.assertEquals(optimus.getVelocidad(),5);		
-		
+		//Posiciono el bonus flash en la posicion (5,5)
 		Flash flash = new Flash();
-		Posicion posicionBonus = new Posicion(14,14);
-		flash.setPosicion(posicionBonus);		
-				
+		Posicion posicionBonus = new Posicion(5,5);
+		flash.setPosicion(posicionBonus);
+		
+		//Optimus alterno tiene 5 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 5);
+		for (int i = 0 ; i < 5 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}
+		//Optimus se mueve hacia la posicion (5,5)
+		Posicion posOptimus = new Posicion(5,5);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		
+		//Optimus toma el bonus flash en modo humanoide
 		optimus.agregarBonusPersonaje(flash);
 		
-		//Optimus Humanoide tiene velocidad 2. Flash triplica
-		Assert.assertEquals(optimus.getVelocidad(),15);		
-		p1.finalizarTurno(); //Forzosamente terminamos los turnos
-		
-		//Finalizo el turno de megatron		
+		//Optimus humanoide ahora tiene 6 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 15);
+		for (int i = 0 ; i < 15 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}
+		//Optimus ahora esta en la posicion (20,20)
+		posOptimus = new Posicion(20,20);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		Assert.assertEquals(optimus.getVelocidad(),15);		
-		p1.finalizarTurno(); //Forzosamente terminamos los turnos		
+      
+		//Durante el segundo turno sigue con 15 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 15);
+		for (int i = 0 ; i < 15 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}		
 		
+		//Optimus ahora esta en la posicion (35,35)
+		posOptimus = new Posicion(35,35);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+	
+		//Durante el tercer turno sigue con 15 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 15);
+		for (int i = 0 ; i < 15 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalIzqSuperior());
+		}		
+		
+		//Optimus ahora esta en la posicion (20,20)
+		posOptimus = new Posicion(20,20);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
 		p1.finalizarTurno();
 		
-		Assert.assertEquals(optimus.getVelocidad(),15);		
-		p1.finalizarTurno(); //Forzosamente terminamos los turnos
-		//Finaliza la vigencia de flash
-		
-		p1.finalizarTurno();
-		
-		//Optimus nuevamente con velocidad 2
-		Assert.assertEquals(optimus.getVelocidad(),5);
-*/
+		//Al pasar los tres turnos la velocidad vuelve a la normalidad
+		Assert.assertTrue(optimus.getVelocidad() == 5);
+	
 	}
 	
 	@Test
 	public void test07AlgoformerCapturaFlashYEsVelozHumanoideAlternoHumanoide(){
+		
+		//Creo los jugadores, y la partida. Valido el test con el Personaje 1 de cada uno
+		Jugador j1 = new Jugador("j1",TipoTransformer.AUTOBOT);
+		Jugador j2 = new Jugador("j2",TipoTransformer.DECEPTICON);
+		
+		Partida p1 = new Partida(j1, j2);		
+		
+		Personaje optimus = j1.getPersonaje1();
+		Direccion direccion = new Direccion();
+		
+		//Posiciono el bonus flash en la posicion (2,2)
+		Flash flash = new Flash();
+		Posicion posicionBonus = new Posicion(2,2);
+		flash.setPosicion(posicionBonus);
+		
+		//Optimus humanoide tiene 2 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 2);
+		for (int i = 0 ; i < 2 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}
+		//Optimus se mueve hacia la posicion (2,2)
+		Posicion posOptimus = new Posicion(2,2);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		
+		//Optimus toma el bonus flash en modo humanoide
+		optimus.agregarBonusPersonaje(flash);
+		
+		//Optimus humanoide ahora tiene 6 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 6);
+		for (int i = 0 ; i < 6 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}
+		//Optimus ahora esta en la posicion (8,8)
+		posOptimus = new Posicion(8,8);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		    
+		//Durante el segundo turno transformo a Optimus a modo Alterno
+		p1.transformarAlgoformer(optimus);
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		
+		//Durante el tercer turno optimus alterno tiene 15 de velocidad
+		Assert.assertTrue(optimus.getVelocidad() == 15);
+		for (int i = 0 ; i < 15 ; i++){
+			p1.moverAlgoformerA(optimus, direccion.getDiagonalDerInferior());
+		}		
+		
+		//Optimus ahora esta en la posicion (23,23)
+		posOptimus = new Posicion(23,23);
+		Assert.assertTrue(optimus.getPosicion().equals(posOptimus));
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		
+		//Al pasar los tres turnos la velocidad vuelve a la normalidad en ambos modos
+		Assert.assertTrue(optimus.getVelocidad() == 5);
+		p1.transformarAlgoformer(optimus);
+		p1.finalizarTurno();
+		p1.finalizarTurno();
+		Assert.assertTrue(optimus.getVelocidad() == 2);
 		
 	}
 	

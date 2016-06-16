@@ -32,6 +32,10 @@ public abstract class Personaje implements Posicionable {
 			this.turnosInmovilizado = this.turnosInmovilizado -1;
 		}
 		this.modoAlgoformer.reestablecerVelocidad();
+		
+		if (this.listaBonus.containsKey(TipoBonus.Flash)){
+			this.listaBonus.get(TipoBonus.Flash).aplicarEfecto(this);
+		}
 	}
 	
 	public void agregarBonusPersonaje(Bonus newBonus){		
