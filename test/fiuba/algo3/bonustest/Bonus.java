@@ -41,7 +41,7 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		//Optimus en Humanoide tiene 100 fuerza, con el doble canion
 		Assert.assertEquals(optimus.getAtaque(),100);	
 		
-		//Ataco, con daño de 100 y cambio de turno. Baja la vigencia de bonus en 1
+		//Ataco, con danio de 100 y cambio de turno. Baja la vigencia de bonus en 1
 		p1.atacarConAlgoformerA(optimus, megatron);
 		Assert.assertEquals(megatron.getPuntosDeVida(),450);		
 		p1.finalizarTurno();
@@ -105,7 +105,7 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		//Optimus en Humanoide tiene 30 fuerza, con el doble canion
 		Assert.assertEquals(optimus.getAtaque(),30);	
 		
-		//Ataco, con daño de 30 y cambio de turno. Baja la vigencia de bonus en 1
+		//Ataco, con danio de 30 y cambio de turno. Baja la vigencia de bonus en 1
 		p1.atacarConAlgoformerA(optimus, megatron);
 		Assert.assertEquals(megatron.getPuntosDeVida(),520);		
 		p1.finalizarTurno();
@@ -165,7 +165,7 @@ public void test01AlgoformerCapturaCanionYAtacaDobleHumanoide(){
 		canion.setPosicion(posicionBonus);
 		megatron.agregarBonusPersonaje(canion);			
 		
-		//Ataco, con daño de 50 y cambio de turno. Baja la vigencia de bonus en 1
+		//Ataco, con danio de 50 y cambio de turno. Baja la vigencia de bonus en 1
 		//La vida de megatron sigue igual
 		p1.atacarConAlgoformerA(optimus, megatron);
 		Assert.assertEquals(megatron.getPuntosDeVida(),520);		
