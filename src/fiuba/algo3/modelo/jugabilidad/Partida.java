@@ -3,7 +3,6 @@ package fiuba.algo3.modelo.jugabilidad;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
-import fiuba.algo3.modelo.excepciones.NoEsValidaLaTransformacionAModoUnico;
 import fiuba.algo3.modelo.personajes.Menasor;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.personajes.Superion;
