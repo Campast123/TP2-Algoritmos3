@@ -96,5 +96,17 @@ public class Casillero implements Posicionable {
 	public void setSuperficies(SuperficieDeCampo superficies) {
 		this.superficies = superficies;
 	}
+
+	public Bonus getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(Bonus bonus) {
+		this.bonus = bonus;
+	}
+
+	public boolean isOcupado() {
+		return ocupado;
+	}
 	
 }

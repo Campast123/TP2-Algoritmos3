@@ -10,14 +10,28 @@ import fiuba.algo3.modelo.superficies.SuperficieRocosa;
 public class TableroTest {
 
 	@Test
-	public void crearTableroAleatorioTest(){
-		Tablero tablero = new Tablero(true);
+	public void crearTableroTest(){
+		Tablero tablero = new Tablero();
 		SuperficieDeCampo supDeCampoInicialBordes = new SuperficieDeCampo(new SuperficieNube(), new SuperficieRocosa());
-		for (int x = 0; x < 2 ; x++ ){
-			for (int y = 0 ; y <= 50 ; y++){
+		for (int x = 0; x < Tablero.alto ; x++ ){
+			for (int y = 0 ; y <= Tablero.largo ; y++){
 				Posicion posicion = new Posicion(x,y);
-//				Assert.assertEquals(tablero.obtenerCasillero(posicion).getSuperficies().,supDeCampoInicialBordes);
+				Assert.assertEquals(tablero.obtenerCasillero(posicion).getSuperficies(),supDeCampoInicialBordes);
 			}
 		}
 	}
+	
+	@Test
+	public void crearTableroFijoTest(){
+		Tablero tablero = new Tablero(false);
+		SuperficieDeCampo supDeCampoInicialBordes = new SuperficieDeCampo(new SuperficieNube(), new SuperficieRocosa());
+		for (int x = 0; x < Tablero.alto ; x++ ){
+			for (int y = 0 ; y <= Tablero.largo ; y++){
+				Posicion posicion = new Posicion(x,y);
+				Assert.assertEquals(tablero.obtenerCasillero(posicion).getSuperficies(),supDeCampoInicialBordes);
+			}
+		}
+	}
+	
+	
 }

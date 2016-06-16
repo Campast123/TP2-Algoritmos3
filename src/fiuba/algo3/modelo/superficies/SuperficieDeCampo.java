@@ -34,4 +34,16 @@ public class SuperficieDeCampo {
 		}
 	}
 	
+	@Override
+	public boolean equals(Object o){
+		SuperficieDeCampo superficieDeCampo = (SuperficieDeCampo) o;
+		if (superficieDeCampo != null){
+			if ((this.superficieAerea.getClass().equals(superficieDeCampo.superficieAerea.getClass())
+					&& (this.superficieTerrestre.getClass().equals(superficieDeCampo.superficieTerrestre.getClass())))){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
