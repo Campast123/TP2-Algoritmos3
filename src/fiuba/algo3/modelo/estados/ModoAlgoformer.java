@@ -25,7 +25,7 @@ public abstract class ModoAlgoformer {
 		
 	}
 
-	public int getAtaque() {
+	public int getAtaque() {		
 		return (this.ataque);
 	}
 

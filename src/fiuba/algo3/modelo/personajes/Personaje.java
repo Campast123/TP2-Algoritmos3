@@ -48,8 +48,7 @@ public abstract class Personaje implements Posicionable {
 	
 	public Posicion getPosicion() {
 		return (this.posicion);
-	}
-	
+	}	
 	
 	public ModoAlgoformer getModoAlgoformer() {
 		return modoAlgoformer;
@@ -109,10 +108,22 @@ public abstract class Personaje implements Posicionable {
 		this.modoAlgoformer.quitarVidaEspinas(this);
 	}
 
+	//Validar implementacion
 	public void transformar() {
+		Bonus bonus;		
+		for (Map.Entry<TipoBonus,Bonus> entry : listaBonus.entrySet()) {
+		    	bonus = entry.getValue();		    	
+		    	bonus.quitarEfecto(this);		    	
+		}				
 		ModoAlgoformer nuevoModo = this.distintosModos.pop();
 		distintosModos.push(this.modoAlgoformer);
 		this.modoAlgoformer = nuevoModo;
+		
+		for (Map.Entry<TipoBonus,Bonus> entry : listaBonus.entrySet()) {
+	    	bonus = entry.getValue();		    	
+	    	bonus.aplicarEfecto(this);		    	
+		}				
+		
 	}
 	public boolean rocosaReduceVelocidad(){
 		return false;
@@ -162,7 +173,7 @@ public abstract class Personaje implements Posicionable {
 		return true;
 	}
 	
-	public void duplicarAtaque(int attack) {
+	public void bonificarAtaque(int attack) {
 		this.modoAlgoformer.setAtaque(attack);		
 	}
 	
@@ -170,7 +181,21 @@ public abstract class Personaje implements Posicionable {
 		this.modoAlgoformer.setInmunidad(inmunidad);		
 	}
 	
-	public void triplicarVelocidad(int velocidad) {		
-		this.modoAlgoformer.setVelocidad(velocidad);
+	public void bonificarVelocidad(int velocidad) {		
+		this.modoAlgoformer.setVelocidad(velocidad);		
+	}
+	
+	public void actualizarBonus() {
+		Bonus bonus;
+		for (Map.Entry<TipoBonus,Bonus> entry : listaBonus.entrySet()) {
+		    	bonus = entry.getValue();
+		    	bonus.reducirTurno();
+		    	
+		    	if(bonus.getTurnos() == 0){
+		    		this.quitarBonusPersonaje(bonus);
+		    		bonus.quitarEfecto(this);
+		    	}		    	
+		}	
 	}	
 }
+

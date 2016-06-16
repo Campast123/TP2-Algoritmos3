@@ -12,5 +12,10 @@ public class BurbujaInmaculada extends Bonus {
 	@Override
 	public void aplicarEfecto(Personaje personaje){
 		personaje.aplicarInmunidad(true);
+	}	
+	
+	@Override
+	public void quitarEfecto(Personaje personaje){
+		personaje.aplicarInmunidad(false);
 	}
 }

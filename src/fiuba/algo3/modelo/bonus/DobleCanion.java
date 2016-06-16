@@ -11,7 +11,12 @@ public class DobleCanion extends Bonus {
 	
 	@Override
 	public void aplicarEfecto(Personaje personaje){
-		personaje.duplicarAtaque(personaje.getAtaque() *2);
+		personaje.bonificarAtaque(personaje.getAtaque() *2);
+	}
+	
+	@Override
+	public void quitarEfecto(Personaje personaje){
+		personaje.bonificarAtaque(personaje.getAtaque() /2);
 	}
 
 }

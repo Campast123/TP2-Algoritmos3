@@ -9,6 +9,9 @@ public abstract class Bonus  implements Posicionable {
 	protected TipoBonus type;
 	protected Posicion posicion;
 	
+	public abstract void aplicarEfecto(Personaje personaje);
+	public abstract void quitarEfecto(Personaje personaje);
+	
 	public int getTurnos(){
 		return this.turnos;
 	}
@@ -16,8 +19,6 @@ public abstract class Bonus  implements Posicionable {
 	public void reducirTurno(){
 		this.turnos = this.turnos -1;
 	}	
-		
-	public abstract void aplicarEfecto(Personaje personaje);
 
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;		

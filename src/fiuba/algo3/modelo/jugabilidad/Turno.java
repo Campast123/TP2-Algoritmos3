@@ -18,6 +18,8 @@ public class Turno {
 	
 	public void cambioDeTurno(){
 		this.reestablecerEfectos(jugadorActual);
+		this.actualizarBonus(jugadorActual);
+		
 		if (jugadorActual.equals(p1)){
 			this.jugadorActual = p2;
 		} else {
@@ -28,12 +30,14 @@ public class Turno {
 	private void reestablecerEfectos(Jugador jugador){
 		jugador.getPersonaje1().reestablecerEfectos();
 		jugador.getPersonaje2().reestablecerEfectos();
-		jugador.getPersonaje3().reestablecerEfectos();
-		
+		jugador.getPersonaje3().reestablecerEfectos();		
 	}
-
 	
-	
+	private void actualizarBonus(Jugador jugador){
+		jugador.getPersonaje1().actualizarBonus();
+		jugador.getPersonaje2().actualizarBonus();
+		jugador.getPersonaje3().actualizarBonus();
+	}	
 	
 	
 }

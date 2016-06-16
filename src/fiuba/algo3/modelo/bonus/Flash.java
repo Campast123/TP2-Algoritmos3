@@ -11,9 +11,12 @@ public class Flash extends Bonus {
 	
 	@Override
 	public void aplicarEfecto(Personaje personaje){
-		personaje.triplicarVelocidad(personaje.getVelocidad() *3);
+		personaje.bonificarVelocidad(personaje.getVelocidad() *3);
 	}
-
-
+	
+	@Override
+	public void quitarEfecto(Personaje personaje){
+		personaje.bonificarVelocidad(personaje.getVelocidad() /3);
+	}
 
 }
