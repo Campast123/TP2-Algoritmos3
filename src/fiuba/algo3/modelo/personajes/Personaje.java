@@ -17,6 +17,7 @@ public abstract class Personaje implements Posicionable {
 	protected Posicion posicion;
 	protected Stack<ModoAlgoformer> distintosModos;
 	protected int turnosInmovilizado = 0;
+	protected boolean inmunidad = false;
 	
 	public abstract void atacar(Personaje personaje);
 	public abstract void recibirAtaqueDe(Decepticon decepticon);
@@ -34,12 +35,15 @@ public abstract class Personaje implements Posicionable {
 	}
 	
 	public void agregarBonusPersonaje(Bonus newBonus){		
-		if(!listaBonus.containsKey(newBonus.getType()))
+		if(!listaBonus.containsKey(newBonus.getType())){
 			listaBonus.put(newBonus.getType(), newBonus);
+			newBonus.aplicarEfecto(this);	
+		}
+		
 	}
 	
 	public void quitarBonusPersonaje(Bonus oldBonus){
-		listaBonus.remove(oldBonus.getType());
+		listaBonus.remove(oldBonus.getType());		
 	}
 	
 	public void setPosicion(Posicion posicion) {

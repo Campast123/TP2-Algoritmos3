@@ -17,13 +17,6 @@ public class OptimusAlterno extends UnidadAlternaTerrestre{
 		return false;
 	}
 
-	public void setInmunidad(boolean inmunidad) {	
-		
-	}
-	
-	public void setVelocidad(int velocidad) {
-		
-	}
 
 	@Override
 	public void reestablecerVelocidad(){

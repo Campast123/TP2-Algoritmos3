@@ -20,15 +20,6 @@ public class BonecrusherAlterno extends UnidadAlternaTerrestre{
 	@Override
 	public void reestablecerVelocidad(){
 		this.velocidad = 8;
-	}
-
-	
-	public void setInmunidad(boolean inmunidad) {	
-		
-	}
-	
-	public void setVelocidad(int velocidad) {
-		
-	}
+	}	
 
 }

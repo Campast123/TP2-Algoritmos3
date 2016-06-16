@@ -11,8 +11,5 @@ public class SuperionUnico extends ModoUnico{
 		this.velocidad = 3;
 	}
 
-	public void setVelocidad(int velocidad) {	
-		
-	}
 	
 }

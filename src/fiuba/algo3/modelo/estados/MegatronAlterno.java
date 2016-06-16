@@ -18,9 +18,6 @@ public class MegatronAlterno extends UnidadAlternaAerea{
 		return true;
 	}	
 	
-	public void setVelocidad(int velocidad) {
-	}
-	
 	@Override
 	public void reestablecerVelocidad(){
 		this.velocidad = 8;

@@ -36,6 +36,10 @@ public abstract class ModoAlgoformer {
 	public void setInmunidad(boolean inmunity) {
 		this.inmunidad = inmunity;
 	}
+	
+	public boolean getInmunidad() {
+		return this.inmunidad;
+	}
 
 	public boolean puedeAtravesarPantano(){
 		return true;

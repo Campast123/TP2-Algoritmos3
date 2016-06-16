@@ -32,6 +32,7 @@ public class Casillero implements Posicionable {
 		this.posicion = posicion;
 		this.personaje = null;
 		this.chispa = null;
+		this.bonus = null;
 		this.superficies = new SuperficieDeCampo(superficieAerea, suerficieTerrestre);
 	}
 	
@@ -40,6 +41,7 @@ public class Casillero implements Posicionable {
 		this.posicion = posicion;
 		this.personaje = null;
 		this.chispa = null;
+		this.bonus = null;
 		this.superficies = superficie;
 	}
 	
@@ -98,7 +100,7 @@ public class Casillero implements Posicionable {
 	}
 
 	public Bonus getBonus() {
-		return bonus;
+		return this.bonus;
 	}
 
 	public void setBonus(Bonus bonus) {

@@ -15,13 +15,7 @@ public class FrenzyAlterno extends UnidadAlternaTerrestre{
 	@Override
 	public boolean esUnidadAerea(){
 		return false;
-	}
-	
-	public void setInmunidad(boolean inmunidad) {		
-	}
-
-	public void setVelocidad(int velocidad) {		
-	}
+	}	
 
 	@Override
 	public void reestablecerVelocidad(){

@@ -27,6 +27,10 @@ public abstract class Autobot extends Personaje{
 	@Override
 	public void recibirAtaqueDe(Decepticon decepticon) {
 		int ataqueRecibido = decepticon.getAtaque();
+		
+			if(this.modoAlgoformer.getInmunidad())
+				ataqueRecibido = 0;
+		
 		this.ptosDeVida = this.ptosDeVida - ataqueRecibido;
 	}
 	
