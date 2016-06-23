@@ -19,10 +19,13 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverArriba() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getArriba());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia arriba ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
-
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en movimiento", "El personaje no se puede mover hacia arriba");
 		}
@@ -30,10 +33,12 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverAbajo() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getAbajo());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia abajo ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
-
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en movimiento", "El personaje no se puede mover hacia abajo");
 		}
@@ -41,10 +46,12 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverDerecha() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getDerecha());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia derecha ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
-
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en movimiento", "El personaje no se puede mover hacia derecha");
 		}
@@ -52,10 +59,12 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverIzquierda() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getIzquierda());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia izquierda ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
-
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en movimiento", "El personaje no se puede mover hacia izquierda");
 		}
@@ -63,10 +72,12 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverDiagDerInf() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getDiagonalDerInferior());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia diagonal derecha inferior ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
-
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en movimiento", "El personaje no se puede mover hacia diagonal derecha inferior");
 		}
@@ -74,10 +85,12 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverDiagDerSup() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getDiagonalDerSuperior());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia diagonal derecha superior ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
-
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en movimiento", "El personaje no se puede mover hacia diagonal derecha superior");
 		}
@@ -85,10 +98,12 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverDiagIzqSup() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getDiagonalIzqSuperior());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia diagonal izquierda superior ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
-
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en movimiento", "El personaje no se puede mover hacia diagonal izquierda superior ");
 		}
@@ -96,8 +111,11 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverDiagIzqInf() throws IOException{
 		try{
 			Direccion direccion=new Direccion();
+			System.out.print(" Esta en la pos "+this.personajeAMover.getPosicion()+" ");
 			this.partida.moverAlgoformerA(this.personajeAMover, direccion.getDiagonalDerSuperior());
 			System.out.print(" Ahora "+this.partida.getJugadorActual().getNombre()+"  se movio hacia diagonal izquierda inferior ");
+			System.out.print(" Ahora esta en la pos "+this.personajeAMover.getPosicion()+" ");
+			this.cantMov = this.cantMov-1;
 			if (this.cantMov==0) this.clickBotonTerminarTurno();
 
 		}catch(Exception ex){
