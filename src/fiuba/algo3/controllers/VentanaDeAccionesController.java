@@ -45,8 +45,19 @@ public class VentanaDeAccionesController {
 
 	}
 
-	public void clickBotonTransformacion(){
-		System.out.print("Transformarse");
+	public void clickBotonTransformacion()throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("MenuTransformar.fxml"));
+		loader.load();
+		Parent menuTransformar = loader.getRoot();
+
+		MenuTransformarController menuTransformarController = loader.getController();
+		menuTransformarController.setPartida(this.partida);
+		menuTransformarController.setWindow(this.window);
+
+		this.window.hide();
+		this.window.setScene(new Scene(menuTransformar));
+		this.window.show();
 	}
 
 	public void clickBotonTransformacionModoUnico(){
