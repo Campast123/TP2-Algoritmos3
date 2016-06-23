@@ -2,6 +2,7 @@ package fiuba.algo3;
 
 import java.io.IOException;
 
+import fiuba.algo3.controllers.VentanaDeAccionesController;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.jugabilidad.TipoTransformer;
@@ -76,7 +77,7 @@ public class MainApp extends Application {
 				this.partida = new Partida(jugadorAutobot,jugadorDecepticon);
 				window.hide();
 				try {
-					window.setScene(this.getMenuSceneField());
+					window.setScene(this.getMenuSceneField(this.partida));
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -90,9 +91,15 @@ public class MainApp extends Application {
 		return new Scene(grid, 350, 350);
 	}
 
-	private Scene getMenuSceneField() throws IOException{
-		window.setTitle("Elegir accion");
-	    Parent vistaDeAcciones = FXMLLoader.load(getClass().getResource("vistas/recursos/MenuDeOpciones.fxml"));
+	private Scene getMenuSceneField(Partida partida) throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("vistas/recursos/MenuDeOpciones.fxml"));
+		loader.load();
+		Parent vistaDeAcciones = loader.getRoot();
+
+		VentanaDeAccionesController ventanaDeAccionesController = loader.getController();
+		ventanaDeAccionesController.setPartida(this.partida);
+		ventanaDeAccionesController.setWindow(this.window);
 		return new Scene(vistaDeAcciones);
 	}
 
