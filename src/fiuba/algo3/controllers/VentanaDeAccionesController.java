@@ -14,8 +14,19 @@ public class VentanaDeAccionesController {
 	private Stage window;
 	private Partida partida;
 
-	public void clickBotonMovimiento(){
-		System.out.print("Movimiento");
+	public void clickBotonMovimiento()throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("MenuMovimientoInicial.fxml"));
+		loader.load();
+		Parent menuDeMovVista = loader.getRoot();
+
+		MenuMovimientoController menuDeMovController = loader.getController();
+		menuDeMovController.setPartida(this.partida);
+		menuDeMovController.setWindow(this.window);
+
+		this.window.hide();
+		this.window.setScene(new Scene(menuDeMovVista));
+		this.window.show();
 	}
 
 	public void clickBotonAtaque() throws IOException{
