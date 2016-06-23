@@ -77,7 +77,7 @@ public class MainApp extends Application {
 				this.partida = new Partida(jugadorAutobot,jugadorDecepticon);
 				window.hide();
 				try {
-					window.setScene(this.getMenuSceneField(this.partida));
+					window.setScene(this.getMenuSceneField());
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -91,7 +91,7 @@ public class MainApp extends Application {
 		return new Scene(grid, 350, 350);
 	}
 
-	private Scene getMenuSceneField(Partida partida) throws IOException{
+	private Scene getMenuSceneField() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("vistas/recursos/MenuDeOpciones.fxml"));
 		loader.load();

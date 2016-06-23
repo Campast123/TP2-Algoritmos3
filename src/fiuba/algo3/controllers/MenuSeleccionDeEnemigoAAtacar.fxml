@@ -178,8 +178,8 @@
                         <TextArea layoutX="17.0" layoutY="160.0" prefHeight="96.0" prefWidth="101.0" text="Datos personaje 1&#10;" />
                         <Label layoutX="9.0" layoutY="36.0" prefHeight="43.0" prefWidth="111.0" text="Jugador" />
                         <Button layoutX="37.0" layoutY="116.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonaje1" prefHeight="25.0" prefWidth="55.0" text="1" />
-                        <Button layoutX="38.0" layoutY="305.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="2" />
-                        <Button layoutX="58.0" layoutY="510.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="3" />
+                        <Button layoutX="38.0" layoutY="305.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonaje2" prefHeight="25.0" prefWidth="55.0" text="2" />
+                        <Button layoutX="38.0" layoutY="510.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonaje3" prefHeight="25.0" prefWidth="55.0" text="3" />
                      </children>
                   </Pane>
                </right>

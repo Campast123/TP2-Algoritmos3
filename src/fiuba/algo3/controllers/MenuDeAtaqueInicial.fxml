@@ -171,8 +171,8 @@
                         <TextArea layoutX="15.0" layoutY="350.0" prefHeight="108.0" prefWidth="105.0" text="Datos personaje 2" />
                         <TextArea layoutX="14.0" layoutY="546.0" prefHeight="108.0" prefWidth="105.0" text="Datos personaje 3&#10;" />
                         <Button layoutX="35.0" layoutY="122.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje1" prefHeight="25.0" prefWidth="55.0" text="1" />
-                        <Button layoutX="37.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="2" />
-                        <Button layoutX="40.0" layoutY="504.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="3" />
+                        <Button layoutX="37.0" layoutY="310.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje2" prefHeight="25.0" prefWidth="55.0" text="2" />
+                        <Button layoutX="40.0" layoutY="504.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje3" prefHeight="25.0" prefWidth="55.0" text="3" />
                      </children>
                   </Pane>
                </left>
