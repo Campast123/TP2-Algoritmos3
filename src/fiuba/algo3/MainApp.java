@@ -92,7 +92,7 @@ public class MainApp extends Application {
 
 	private Scene getMenuSceneField() throws IOException{
 		window.setTitle("Elegir accion");
-	    Parent vistaDeAcciones = FXMLLoader.load(getClass().getResource("MenuDeOpciones.fxml"));
+	    Parent vistaDeAcciones = FXMLLoader.load(getClass().getResource("vistas/recursos/MenuDeOpciones.fxml"));
 		return new Scene(vistaDeAcciones);
 	}
 

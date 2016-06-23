@@ -58,10 +58,10 @@
                      <children>
                         <Label layoutX="11.0" layoutY="21.0" prefHeight="43.0" prefWidth="111.0" text="Jugador" />
                         <Button layoutX="19.0" layoutY="671.0" mnemonicParsing="false" onAction="#clickBotonMovimiento" prefHeight="25.0" prefWidth="95.0" text="Mover" />
-                        <Button layoutX="16.0" layoutY="710.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Atacar" />
-                        <Button layoutX="17.0" layoutY="748.0" mnemonicParsing="false" text="Transformar" />
-                        <Button layoutX="20.0" layoutY="783.0" mnemonicParsing="false" text="Modo Unico" />
-                        <Button layoutX="8.0" layoutY="816.0" mnemonicParsing="false" text="Terminar Turno" />
+                        <Button layoutX="16.0" layoutY="710.0" mnemonicParsing="false" onAction="#clickBotonAtaque" prefHeight="25.0" prefWidth="101.0" text="Atacar" />
+                        <Button layoutX="17.0" layoutY="748.0" mnemonicParsing="false" onAction="#clickBotonTransformacion" text="Transformar" />
+                        <Button layoutX="20.0" layoutY="783.0" mnemonicParsing="false" onAction="#clickBotonTransformacionModoUnico" text="Modo Unico" />
+                        <Button layoutX="8.0" layoutY="816.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
                         <ImageView fitHeight="82.0" fitWidth="98.0" layoutX="15.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
                         <TextArea layoutX="13.0" layoutY="167.0" prefHeight="96.0" prefWidth="101.0" text="Datos personaje 1&#10;" />
                         <ImageView fitHeight="82.0" fitWidth="98.0" layoutX="15.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
