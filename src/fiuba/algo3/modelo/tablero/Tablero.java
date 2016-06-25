@@ -7,6 +7,8 @@ import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.BurbujaInmaculada;
 import fiuba.algo3.modelo.bonus.DobleCanion;
 import fiuba.algo3.modelo.bonus.Flash;
+import fiuba.algo3.modelo.excepciones.AlgoformerNoPuedeMoverseException;
+import fiuba.algo3.modelo.excepciones.PosicionInvalidaException;
 import fiuba.algo3.modelo.personajes.*;
 import fiuba.algo3.modelo.superficies.SuperficieAerea;
 import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
@@ -20,17 +22,17 @@ import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
 import fiuba.algo3.modelo.superficies.SuperficieTormentaPsionica;
 import fiuba.algo3.modelo.utils.RandomUtils;
 
-public class Tablero { 	
+public class Tablero {
 	public static final String config = "config.properties";
 
 	public static final int alto = 50;
 	public static final int largo = 50;
-	
+
 	private Map<Posicion,Casillero> tablero;
-	
+
 	public Tablero(){
 		this.tablero = new HashMap<Posicion,Casillero>();
-		
+
 		for (int x = 0 ; x <= alto ; x++){
 			for (int y = 0; y <= largo; y++){
 				Posicion coordenada = new Posicion(x,y);
@@ -39,9 +41,9 @@ public class Tablero {
 			}
 		}
 	}
-	
+
 	public Tablero(boolean alAzar){
-		
+
 		this.tablero = new HashMap<Posicion,Casillero>();
 		for (int x = 0 ; x <= alto ; x++){
 			for (int y = 0; y <= largo; y++){
@@ -50,7 +52,7 @@ public class Tablero {
 				this.tablero.put(coordenada, casillero);
 			}
 		}
-		
+
 		if (alAzar){
 			for (int z = 0 ; z <= 1500 ; z++){
 				// Dejo margenes de 2 casilleros por todo le borde
@@ -61,22 +63,22 @@ public class Tablero {
 				Casillero casillero = this.tablero.get(coordenada);
 				SuperficieDeCampo supDeCampo = SuperficieDeCampoProvider.generarSuperficieDeCampoAleatoria();
 				casillero.setSuperficies(supDeCampo);
-			
+
 			}
-			
+
 		}
 	}
 
 	public void ingresarCasillero(Casillero casillero){
 		this.tablero.put(casillero.getPosicion(),casillero);
-		
+
 	}
-	
+
 	public void inicializarBonus(){
 		for (int i = 0; i < RandomUtils.generaNumeroAleatorio(0,20); i++) {
 			Bonus bonus;
 			int value = RandomUtils.generaNumeroAleatorio(1,3);
-			
+
 			switch(value){
 				case 1: bonus = new BurbujaInmaculada();
 						break;
@@ -84,12 +86,12 @@ public class Tablero {
 						break;
 				case 3: bonus = new Flash();
 						break;
-			}			
-						
+			}
+
 		}
-				
+
 	}
-	
+
 	public boolean estaOcupado(Posicion posicion){
 		if (this.posicionValida(posicion)){
 			Casillero casillero = this.tablero.get(posicion);
@@ -97,18 +99,17 @@ public class Tablero {
 		}
 		return false;
 	}
-	
+
 	public boolean posicionValida(Posicion posicion) {
 		return (this.tablero.containsKey(posicion));
-//		throw new PosicionInvalidaException("La posicion en X:" + posicion.getCoordenadaX() + " e Y:" + posicion.getCoordenadaY() + " es invalida");
 	}
-	
+
 	public void agregarPersonaje(Personaje personaje , Posicion posicionInicial){
-		if (this.posicionValida(posicionInicial) && !this.estaOcupado(posicionInicial)){			
+		if (this.posicionValida(posicionInicial) && !this.estaOcupado(posicionInicial)){
 			this.tablero.get(posicionInicial).agregarPosicionable(personaje);
 		}
 	}
-	
+
 	public Personaje obtenerPersonaje(Posicion posicionInicial){
 		Personaje personaje = null;
 		if (this.posicionValida(posicionInicial) && this.estaOcupado(posicionInicial)){
@@ -116,11 +117,11 @@ public class Tablero {
 		}
 		return personaje;
 	}
-	
+
 	public Casillero obtenerCasillero(Posicion posicionInicial){
 		return this.tablero.get(posicionInicial);
 	}
-	
+
 	public ChispaSuprema obtenerChispaSuprema(Posicion posicion){
 		ChispaSuprema chispa = null;
 		if (this.posicionValida(posicion)){
@@ -128,27 +129,31 @@ public class Tablero {
 		}
 		return chispa;
 	}
-	
+
 	public void moverPersonaje(Personaje personaje, Posicion posicionDestino){
-		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){			
+		if (this.posicionValida(posicionDestino) && !this.estaOcupado(posicionDestino)){
 			SuperficieDeCampo superficiesDestino = this.tablero.get(posicionDestino).getSuperficies();
 			if(personaje.puedeMoverse(posicionDestino) && (superficiesDestino.puedeAtravesarlo(personaje))){
 				Posicion posicionInicial = personaje.getPosicion();
 				this.tablero.get(posicionInicial).retirarPersonaje();
 				this.tablero.get(posicionDestino).agregarPosicionable(personaje);
 				personaje.avanzaCasillero(superficiesDestino);
+			} else {
+				throw new AlgoformerNoPuedeMoverseException();
 			}
+		} else {
+			throw new PosicionInvalidaException("La posicion en X:" + posicionDestino.getCoordenadaX() + " e Y:" + posicionDestino.getCoordenadaY() + " es invalida");
 		}
-	}	
-	
+	}
+
 	public void atacarConAlgoformerA(Personaje algoformerAtacante, Personaje algoformerDestino){
 		algoformerAtacante.atacar(algoformerDestino);
 
 	}
-	
+
 	public void transformarAlgoformer(Personaje algoformer){
 		algoformer.transformar();
 		//Agregar efectos de el casillero donde se transforma
 	}
-	
+
 }
