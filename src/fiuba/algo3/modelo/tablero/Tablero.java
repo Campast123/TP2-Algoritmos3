@@ -43,6 +43,10 @@ public class Tablero {
 	}
 
 	public Tablero(boolean alAzar){
+		new Tablero(alAzar,alto,largo);
+	}
+
+	public Tablero(boolean alAzar, int alto, int largo){
 
 		this.tablero = new HashMap<Posicion,Casillero>();
 		for (int x = 0 ; x <= alto ; x++){
@@ -67,6 +71,8 @@ public class Tablero {
 			}
 
 		}
+
+		this.inicializarBonus(this.tablero,alto,largo);
 	}
 
 	public void ingresarCasillero(Casillero casillero){
@@ -74,9 +80,9 @@ public class Tablero {
 
 	}
 
-	public void inicializarBonus(){
+	private void inicializarBonus(Map<Posicion,Casillero> tablero, int alto,int largo){
 		for (int i = 0; i < RandomUtils.generaNumeroAleatorio(0,20); i++) {
-			Bonus bonus;
+			Bonus bonus = null;
 			int value = RandomUtils.generaNumeroAleatorio(1,3);
 
 			switch(value){
@@ -88,6 +94,11 @@ public class Tablero {
 						break;
 			}
 
+			int coordenadaX = RandomUtils.generaNumeroAleatorio(2,alto-2);
+			int coordenadaY = RandomUtils.generaNumeroAleatorio(2,largo-2);
+			Posicion coordenada = new Posicion(coordenadaX,coordenadaY);
+			Casillero casillero = tablero.get(coordenada);
+			casillero.setBonus(bonus);
 		}
 
 	}

@@ -57,6 +57,40 @@ public class Partida {
 		this.juego.ingresarCasillero(casilleroChispaSuprema);
 	}
 
+	public Partida(Jugador p1, Jugador p2,int alto, int largo){
+		this.juego = new Tablero(true,alto,largo);
+		this.player1 = p1;
+		this.player2 = p2;
+		this.turno = new Turno(p1,p2);
+
+		//Inicializo ChispaSuprema
+		ChispaSuprema chispaSuprema = new ChispaSuprema(alto,largo);
+		this.posicionChispaSuprema = chispaSuprema.getPosicion();
+		Casillero casilleroChispaSuprema = new Casillero(posicionChispaSuprema);
+		casilleroChispaSuprema.agregarPosicionable(chispaSuprema);
+
+		//Posicion inicial de Autobots
+		Posicion posicionDeOptimus = new Posicion(0,0);
+		Posicion posicionDeBumblebee = new Posicion(0,1);
+		Posicion posicionDeRatchet = new Posicion(1,0);
+
+		//Posicion inicial de Decepticons
+		Posicion posicionDeMegatron = new Posicion(alto,largo);
+		Posicion posicionDeBonecrusher = new Posicion(alto-1,largo);
+		Posicion posicionDeFrenzy = new Posicion(alto,largo-1);
+
+		this.juego.agregarPersonaje(this.player1.getPersonaje1(),posicionDeOptimus);
+		this.juego.agregarPersonaje(this.player1.getPersonaje2(),posicionDeBumblebee);
+		this.juego.agregarPersonaje(this.player1.getPersonaje3(),posicionDeRatchet);
+
+		this.juego.agregarPersonaje(this.player2.getPersonaje1(),posicionDeMegatron);
+		this.juego.agregarPersonaje(this.player2.getPersonaje2(),posicionDeBonecrusher);
+		this.juego.agregarPersonaje(this.player2.getPersonaje3(),posicionDeFrenzy);
+
+		//Setea la chispa y campo
+		this.juego.ingresarCasillero(casilleroChispaSuprema);
+	}
+
 	public Tablero getTablero(){
 		return this.juego;
 	}

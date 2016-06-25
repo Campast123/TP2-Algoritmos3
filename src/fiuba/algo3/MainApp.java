@@ -29,7 +29,8 @@ public class MainApp extends Application {
 	private Stage window;
 	private Scene scene1,scene2;
 	private Partida partida;
-
+	private static int alto = 23;
+	private static int largo = 23;
 
     public static void main(String[] args) {
     	launch(args);
@@ -74,7 +75,7 @@ public class MainApp extends Application {
 			if(this.estanCompletosLosCampos(autobotsInput,decepticonsInput)){
 				Jugador jugadorAutobot = new Jugador(autobotsInput.getText(), TipoTransformer.AUTOBOT);
 				Jugador jugadorDecepticon = new Jugador(decepticonsInput.getText(), TipoTransformer.DECEPTICON);
-				this.partida = new Partida(jugadorAutobot,jugadorDecepticon);
+				this.partida = new Partida(jugadorAutobot,jugadorDecepticon,alto,largo);
 				window.hide();
 				try {
 					window.setScene(this.getMenuSceneField());

@@ -68,7 +68,7 @@ public class MenuDeAtaqueController {
 		try{
 			this.partida.finalizarTurno();
 			System.out.print("Termino turno ");
-			System.out.print("Ahora juega "+this.partida.getJugadorActual().getNombre());
+			System.out.print("Ahora juega "+this.partida.getJugadorActual().getNombre() +"\n");
 			FXMLLoader loader = new FXMLLoader();
 		
 			loader.setLocation(getClass().getResource("/fiuba/algo3/vistas/recursos/MenuDeOpciones.fxml"));
