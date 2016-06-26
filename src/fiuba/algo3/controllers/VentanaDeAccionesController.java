@@ -2,46 +2,31 @@ package fiuba.algo3.controllers;
 
 import java.io.IOException;
 
+import fiuba.algo3.MainApp;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.vistas.CajaAlerta;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class VentanaDeAccionesController {
+	
+	@FXML
+	private Label nombreJugador;
 
 	private Stage window;
 	private Partida partida;
+	private MainApp mainApp;
 
-	public void clickBotonMovimiento()throws IOException{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("MenuMovimientoInicial.fxml"));
-		loader.load();
-		Parent menuDeMovVista = loader.getRoot();
-
-		MenuMovimientoController menuDeMovController = loader.getController();
-		menuDeMovController.setPartida(this.partida);
-		menuDeMovController.setWindow(this.window);
-
-		this.window.hide();
-		this.window.setScene(new Scene(menuDeMovVista));
-		this.window.show();
+	public void clickBotonMovimiento(){
+		this.mainApp.showSeleccionPersonajeMovimiento();	
 	}
 
-	public void clickBotonAtaque() throws IOException{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("MenuDeAtaqueInicial.fxml"));
-		loader.load();
-		Parent menuDeAtaqueVista = loader.getRoot();
-
-		MenuDeAtaqueController menuDeAtaqueController = loader.getController();
-		menuDeAtaqueController.setPartida(this.partida);
-		menuDeAtaqueController.setWindow(this.window);
-
-		this.window.hide();
-		this.window.setScene(new Scene(menuDeAtaqueVista));
-		this.window.show();
+	public void clickBotonAtaque(){
+		this.mainApp.showSeleccionPersonajeAtaque();
 
 	}
 
@@ -70,24 +55,23 @@ public class VentanaDeAccionesController {
 			this.partida.finalizarTurno();
 			System.out.print("Termino turno ");
 			System.out.print("Ahora juega "+this.partida.getJugadorActual().getNombre());
-			FXMLLoader loader = new FXMLLoader();
-		
-			loader.setLocation(getClass().getResource("/fiuba/algo3/vistas/recursos/MenuDeOpciones.fxml"));
-			loader.load();
-			Parent menuDeOpciones = loader.getRoot();
-
-			VentanaDeAccionesController menuVentanaDeAccionesController = loader.getController();
-			menuVentanaDeAccionesController.setPartida(this.partida);
-			menuVentanaDeAccionesController.setWindow(this.window);
-
-			this.window.hide();
-			this.window.setScene(new Scene(menuDeOpciones));
-			this.window.show();
-
-		}catch(Exception ex){
+			this.mainApp.showMenuDeOpciones();
+			
+			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
+				this.mainApp.showMenuAutobots();
+			}
+			else{
+				this.mainApp.showMenuDecepticons();
+			}
+		}
+		catch(Exception ex){
 			CajaAlerta.mostrar("Error en finalizar turno", "");
 		}	
-		}
+	}
+	
+	public void setMainApp(MainApp mainApp){
+		this.mainApp = mainApp;
+	}
 
 	public void setPartida(Partida partida) {
 		this.partida = partida;
@@ -95,5 +79,9 @@ public class VentanaDeAccionesController {
 
 	public void setWindow(Stage window) {
 		this.window = window;
+	}
+	
+	public void setNombreJugador(String nombre){
+		this.nombreJugador.setText(nombre);
 	}
 }

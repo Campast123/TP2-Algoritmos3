@@ -2,33 +2,32 @@ package fiuba.algo3;
 
 import java.io.IOException;
 
+import fiuba.algo3.controllers.EscenarioRaizTableroController;
+import fiuba.algo3.controllers.MenuDeAtaqueController;
+import fiuba.algo3.controllers.MenuMovimientoController;
+import fiuba.algo3.controllers.MenuSeleccionDeEnemigoAAtacarController;
+import fiuba.algo3.controllers.MenuSeleccionMovimientoController;
+import fiuba.algo3.controllers.PantallaDeInicioController;
 import fiuba.algo3.controllers.VentanaDeAccionesController;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.jugabilidad.TipoTransformer;
-import fiuba.algo3.vistas.CajaAlerta;
+import fiuba.algo3.modelo.personajes.Personaje;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
 	private Stage window;
-	private Scene scene1,scene2;
 	private Partida partida;
+	private BorderPane escenarioRaiz;
+	private EscenarioRaizTableroController controladorTablero;
+	
 	private static int alto = 23;
 	private static int largo = 23;
 
@@ -40,81 +39,182 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
 
-		window.setScene(this.getEscenaDeMenuInicial());
-
-		window.show();
+		this.showPantallaDeInicio();
+		
 	}
 
-	private Scene getEscenaDeMenuInicial(){
-		window.setTitle("Iniciar Partida Battle Algoformers");
+	private void showPantallaDeInicio(){
+		try{
+			window.setTitle("Iniciar Partida Battle Algoformers");
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("controllers/PantallaDeInicio.fxml"));
+			AnchorPane inicio = (AnchorPane) loader.load();
+			
+            Scene scene = new Scene(inicio);
+            window.setScene(scene);
+            window.sizeToScene();
+            window.show();
+            
+            PantallaDeInicioController controller = loader.getController();
+            controller.setMainApp(this);
 
-		GridPane grid = new GridPane();
-		grid.setPadding(new Insets(10,10,10,10));
-		grid.setVgap(8);
-		grid.setHgap(10);
-
-		//name label
-		Label autobotsLabel = new Label("Autobots");
-		GridPane.setConstraints(autobotsLabel, 0, 0);
-
-		TextField autobotsInput = new TextField();
-		autobotsInput.setPromptText("Jugador Autobot");
-		GridPane.setConstraints(autobotsInput, 1, 0);
-
-		Label decepticonsLabel = new Label("Decepticons");
-		GridPane.setConstraints(decepticonsLabel, 0, 1);
-
-		TextField decepticonsInput = new TextField();
-		decepticonsInput.setPromptText("Jugador Decepticon");
-		GridPane.setConstraints(decepticonsInput, 1, 1);
-
-		Button botonInicioDePartida = new Button("Iniciar Partida");
-		GridPane.setConstraints(botonInicioDePartida, 1, 2);
-
-		botonInicioDePartida.setOnAction( e -> {
-			if(this.estanCompletosLosCampos(autobotsInput,decepticonsInput)){
-				Jugador jugadorAutobot = new Jugador(autobotsInput.getText(), TipoTransformer.AUTOBOT);
-				Jugador jugadorDecepticon = new Jugador(decepticonsInput.getText(), TipoTransformer.DECEPTICON);
-				this.partida = new Partida(jugadorAutobot,jugadorDecepticon,alto,largo);
-				window.hide();
-				try {
-					window.setScene(this.getMenuSceneField());
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				window.show();
-			}
-
-		});
-
-		grid.getChildren().addAll(autobotsLabel,autobotsInput,decepticonsLabel,decepticonsInput,botonInicioDePartida);
-
-		return new Scene(grid, 350, 350);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 
-	private Scene getMenuSceneField() throws IOException{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("vistas/recursos/MenuDeOpciones.fxml"));
-		loader.load();
-		Parent vistaDeAcciones = loader.getRoot();
+	public void showTableroRaiz(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/EscenarioRaizTablero.fxml"));
+			this.escenarioRaiz = (BorderPane) loader.load();
 
-		VentanaDeAccionesController ventanaDeAccionesController = loader.getController();
-		ventanaDeAccionesController.setPartida(this.partida);
-		ventanaDeAccionesController.setWindow(this.window);
-		return new Scene(vistaDeAcciones);
+			this.controladorTablero = loader.getController();
+			this.controladorTablero.setMainApp(this);
+			
+			Scene escenaTablero =  new Scene(this.escenarioRaiz);
+			window.setTitle("Algoformers");
+			window.setScene(escenaTablero);
+			window.show();
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
 	}
+	
+	public void showMenuDeOpciones(){
+		try{
+			String nombreJugador = this.partida.getJugadorActual().getNombre();
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("vistas/recursos/MenuDeOpciones.fxml"));
+			VBox menuOpciones = (VBox) loader.load();
+			
+			VentanaDeAccionesController controladorDeAcciones = loader.getController();
+			controladorDeAcciones.setMainApp(this);
+			controladorDeAcciones.setPartida(this.partida);
+			controladorDeAcciones.setWindow(this.window);
+			controladorDeAcciones.setNombreJugador(nombreJugador);
+			
+			this.escenarioRaiz.setLeft(menuOpciones);
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public void showMenuAutobots(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/MenuAutobots.fxml"));
+			AnchorPane menuAutobots = (AnchorPane) loader.load();
+			
+			this.escenarioRaiz.setRight(menuAutobots);
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public void showMenuDecepticons(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/MenuDecepticons.fxml"));
+			AnchorPane menuDecepticons = (AnchorPane) loader.load();
+			
+			this.escenarioRaiz.setRight(menuDecepticons);
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public void showSeleccionPersonajeMovimiento(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/MenuMovimientoInicial.fxml"));
+			VBox seleccPersonajeAMover = (VBox) loader.load();
 
+			MenuMovimientoController menuDeMovController = loader.getController();
+			menuDeMovController.setMainApp(this);
+			menuDeMovController.setPartida(this.partida);
+			
+			this.escenarioRaiz.setLeft(seleccPersonajeAMover);
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public void showMovimientoDePersonaje(Personaje personaje){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/MenuSeleccionMovimiento.fxml"));
+			VBox movimientoPersonaje = (VBox) loader.load();
 
-	private boolean estanCompletosLosCampos(TextField autobotsInput, TextField decepticonsInput){
-		if (autobotsInput.getText().isEmpty()){
-			CajaAlerta.mostrar("Datos Invalidos", "El casillero de los autobots esta vacio. Completar para jugar...");
-			return false;
-		}
-		if (decepticonsInput.getText().isEmpty()){
-			CajaAlerta.mostrar("Datos Invalidos", "El casillero de los decepticons esta vacio. Completar para jugar...");
-			return false;
-		}
-		return true;
+			MenuSeleccionMovimientoController menuSeleccionMovController = loader.getController();
+			menuSeleccionMovController.setMainApp(this);
+			menuSeleccionMovController.setPartida(this.partida);
+			menuSeleccionMovController.setPersonajeAtacante(personaje);
 
+			this.escenarioRaiz.setLeft(movimientoPersonaje);
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+	}
+	
+	public void showSeleccionPersonajeAtaque(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/MenuDeAtaqueInicial.fxml"));
+			VBox seleccPersonajeAtacante = (VBox) loader.load();
+
+			MenuDeAtaqueController menuDeAtaqueController = loader.getController();
+			menuDeAtaqueController.setMainApp(this);
+			menuDeAtaqueController.setPartida(this.partida);
+			
+			this.escenarioRaiz.setLeft(seleccPersonajeAtacante);
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public void showAtaqueDePersonaje(Personaje personaje){
+		//TODO cambiar!!
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/MenuSeleccionDeEnemigoAAtacar.fxml"));
+			VBox AtaqueDePersonaje = (VBox) loader.load();
+
+			MenuSeleccionDeEnemigoAAtacarController menuSeleccionMovController = loader.getController();
+			menuSeleccionMovController.setMainApp(this);
+			menuSeleccionMovController.setPartida(this.partida);
+			menuSeleccionMovController.setPersonajeAtacante(personaje);
+
+			this.escenarioRaiz.setLeft(AtaqueDePersonaje);
+		
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+	}
+	
+	public void comenzarPartida(String jugador1, String jugador2){
+		Jugador jugadorAutobot = new Jugador(jugador1, TipoTransformer.AUTOBOT);
+		Jugador jugadorDecepticon = new Jugador(jugador2, TipoTransformer.DECEPTICON);
+		this.partida = new Partida(jugadorAutobot,jugadorDecepticon,alto,largo);
+	}
+	
+	public Partida getPartida(){
+		return (this.partida);
+	}
+	
+	public EscenarioRaizTableroController getControladorTablero(){
+		return (this.controladorTablero);
 	}
 }
