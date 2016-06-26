@@ -185,7 +185,6 @@ public class MainApp extends Application {
 	}
 	
 	public void showAtaqueDePersonaje(Personaje personaje){
-		//TODO cambiar!!
 		try{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("controllers/MenuSeleccionDeEnemigoAAtacar.fxml"));
