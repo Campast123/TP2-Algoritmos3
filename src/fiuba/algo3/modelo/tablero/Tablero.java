@@ -10,16 +10,8 @@ import fiuba.algo3.modelo.bonus.Flash;
 import fiuba.algo3.modelo.excepciones.AlgoformerNoPuedeMoverseException;
 import fiuba.algo3.modelo.excepciones.PosicionInvalidaException;
 import fiuba.algo3.modelo.personajes.*;
-import fiuba.algo3.modelo.superficies.SuperficieAerea;
 import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
 import fiuba.algo3.modelo.superficies.SuperficieDeCampoProvider;
-import fiuba.algo3.modelo.superficies.SuperficieEspinas;
-import fiuba.algo3.modelo.superficies.SuperficieNebulosaDeAndromeda;
-import fiuba.algo3.modelo.superficies.SuperficieNube;
-import fiuba.algo3.modelo.superficies.SuperficiePantano;
-import fiuba.algo3.modelo.superficies.SuperficieRocosa;
-import fiuba.algo3.modelo.superficies.SuperficieTerrestre;
-import fiuba.algo3.modelo.superficies.SuperficieTormentaPsionica;
 import fiuba.algo3.modelo.utils.RandomUtils;
 
 public class Tablero {

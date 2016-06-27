@@ -16,14 +16,70 @@
                <children>
                   <Label layoutX="11.0" layoutY="21.0" prefHeight="43.0" prefWidth="111.0" text="Jugador" />
                   <Button layoutX="51.0" layoutY="519.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
-                  <Button layoutX="67.0" layoutY="175.0" mnemonicParsing="false" onAction="#clickBotonMoverArriba" prefHeight="25.0" prefWidth="55.0" text="Arriba" />
-                  <Button layoutX="67.0" layoutY="394.0" mnemonicParsing="false" onAction="#clickBotonMoverAbajo" prefHeight="25.0" prefWidth="55.0" text="Abajo" />
-                  <Button layoutX="101.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagDerSup" prefHeight="60.0" prefWidth="69.0" text="Diagonal &#10;Derecha &#10;Superior" />
-                  <Button layoutX="101.0" layoutY="326.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagDerInf" prefHeight="60.0" prefWidth="69.0" text="Diagonal &#10;Derecha &#10;Inferior" />
-                  <Button layoutX="30.0" layoutY="326.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagIzqInf" prefHeight="60.0" prefWidth="69.0" text="Diagonal &#10;Izquierda&#10;Inferior" />
-                  <Button layoutX="30.0" layoutY="211.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagIzqSup" prefHeight="60.0" prefWidth="69.0" text="Diagonal &#10;Izquierda&#10;Superior" />
-                  <Button layoutX="102.0" layoutY="286.0" mnemonicParsing="false" onAction="#clickBotonMoverDerecha" prefHeight="25.0" prefWidth="61.0" text="Derecha" />
-                  <Button layoutX="30.0" layoutY="286.0" mnemonicParsing="false" onAction="#clickBotonMoverIzquierda" prefHeight="25.0" prefWidth="68.0" text="Izquierda" />
+                  <Button layoutX="69.0" layoutY="176.0" mnemonicParsing="false" onAction="#clickBotonMoverArriba" prefHeight="60.0" prefWidth="60.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button layoutX="70.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickBotonMoverAbajo" prefHeight="60.0" prefWidth="60.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button layoutX="134.0" layoutY="176.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagDerSup" prefHeight="60.0" prefWidth="60.0" text="&#10;">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="-40.6">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button layoutX="134.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagDerInf" prefHeight="60.0" prefWidth="60.0" text="&#10;">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button layoutX="5.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagIzqInf" prefHeight="60.0" prefWidth="60.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="132.0">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button layoutX="5.0" layoutY="176.0" mnemonicParsing="false" onAction="#clickBotonMoverDiagIzqSup" prefHeight="60.0" prefWidth="60.0" text="&#10;">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="-139.4">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button layoutX="134.0" layoutY="244.0" mnemonicParsing="false" onAction="#clickBotonMoverDerecha" prefHeight="60.0" prefWidth="60.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button layoutX="5.0" layoutY="244.0" mnemonicParsing="false" onAction="#clickBotonMoverIzquierda" prefHeight="60.0" prefWidth="60.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                           <image>
+                              <Image url="@../vistas/imagenes/FlechaDeMovimiento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </Pane>
       </children>
