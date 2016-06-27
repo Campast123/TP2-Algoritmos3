@@ -7,6 +7,7 @@ import fiuba.algo3.controllers.MenuDeAtaqueController;
 import fiuba.algo3.controllers.MenuMovimientoController;
 import fiuba.algo3.controllers.MenuSeleccionDeEnemigoAAtacarController;
 import fiuba.algo3.controllers.MenuSeleccionMovimientoController;
+import fiuba.algo3.controllers.MenuTransformarController;
 import fiuba.algo3.controllers.PantallaDeInicioController;
 import fiuba.algo3.controllers.VentanaDeAccionesController;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
@@ -95,7 +96,6 @@ public class MainApp extends Application {
 			VentanaDeAccionesController controladorDeAcciones = loader.getController();
 			controladorDeAcciones.setMainApp(this);
 			controladorDeAcciones.setPartida(this.partida);
-			controladorDeAcciones.setWindow(this.window);
 			controladorDeAcciones.setNombreJugador(nombreJugador);
 			
 			this.escenarioRaiz.setLeft(menuOpciones);
@@ -189,6 +189,13 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("controllers/MenuSeleccionDeEnemigoAAtacar.fxml"));
 			VBox AtaqueDePersonaje = (VBox) loader.load();
+			
+			if (this.partida.getJugadorEnEspera() == this.partida.getPlayer1()){
+				this.showMenuAutobots();
+			}
+			else{
+				this.showMenuDecepticons();
+			}
 
 			MenuSeleccionDeEnemigoAAtacarController menuSeleccionMovController = loader.getController();
 			menuSeleccionMovController.setMainApp(this);
@@ -201,6 +208,24 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 		
+	}
+	
+	public void showSeleccionPersonajeTransformacion(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("controllers/MenuTransformar.fxml"));
+			VBox menuTransformar = (VBox) loader.load();
+
+			MenuTransformarController menuTransformarController = loader.getController();
+			menuTransformarController.setPartida(this.partida);
+			menuTransformarController.setMainApp(this);
+			
+			this.escenarioRaiz.setLeft(menuTransformar);
+			
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 	}
 	
 	public void comenzarPartida(String jugador1, String jugador2){

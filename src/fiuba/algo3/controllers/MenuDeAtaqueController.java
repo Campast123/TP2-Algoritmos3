@@ -42,21 +42,21 @@ public class MenuDeAtaqueController {
 	
 	public void clickBotonAtacarConPersonaje1(){
 		
-		Personaje personaje = this.partida.getJugadorActual().getPersonaje1();
-		this.mainApp.showAtaqueDePersonaje(personaje);
+		Personaje personaje1 = this.partida.getJugadorActual().getPersonaje1();
+		this.mainApp.showAtaqueDePersonaje(personaje1);
 	}
 
 	public void clickBotonAtacarConPersonaje2(){
 		
-		Personaje personaje = this.partida.getJugadorActual().getPersonaje2();
-		this.mainApp.showAtaqueDePersonaje(personaje);
+		Personaje personaje2 = this.partida.getJugadorActual().getPersonaje2();
+		this.mainApp.showAtaqueDePersonaje(personaje2);
 		
 		}
 
 	public void clickBotonAtacarConPersonaje3(){
 		
-		Personaje personaje = this.partida.getJugadorActual().getPersonaje3();
-		this.mainApp.showAtaqueDePersonaje(personaje);
+		Personaje personaje3 = this.partida.getJugadorActual().getPersonaje3();
+		this.mainApp.showAtaqueDePersonaje(personaje3);
 		
 		}
 
@@ -64,8 +64,6 @@ public class MenuDeAtaqueController {
 		
 		try{
 			this.partida.finalizarTurno();
-			System.out.print("Termino turno ");
-			System.out.print("Ahora juega "+this.partida.getJugadorActual().getNombre());
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){

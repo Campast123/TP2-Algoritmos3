@@ -1,23 +1,16 @@
 package fiuba.algo3.controllers;
 
-import java.io.IOException;
-
 import fiuba.algo3.MainApp;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class VentanaDeAccionesController {
 	
 	@FXML
 	private Label nombreJugador;
 
-	private Stage window;
 	private Partida partida;
 	private MainApp mainApp;
 
@@ -30,19 +23,8 @@ public class VentanaDeAccionesController {
 
 	}
 
-	public void clickBotonTransformacion()throws IOException{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("MenuTransformar.fxml"));
-		loader.load();
-		Parent menuTransformar = loader.getRoot();
-
-		MenuTransformarController menuTransformarController = loader.getController();
-		menuTransformarController.setPartida(this.partida);
-		menuTransformarController.setWindow(this.window);
-
-		this.window.hide();
-		this.window.setScene(new Scene(menuTransformar));
-		this.window.show();
+	public void clickBotonTransformacion(){
+		this.mainApp.showSeleccionPersonajeTransformacion();
 	}
 
 	public void clickBotonTransformacionModoUnico(){
@@ -77,10 +59,6 @@ public class VentanaDeAccionesController {
 		this.partida = partida;
 	}
 
-	public void setWindow(Stage window) {
-		this.window = window;
-	}
-	
 	public void setNombreJugador(String nombre){
 		this.nombreJugador.setText(nombre);
 	}
