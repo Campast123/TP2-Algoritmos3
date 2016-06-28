@@ -3,7 +3,10 @@ package fiuba.algo3.controllers;
 import fiuba.algo3.MainApp;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.personajes.Personaje;
+import fiuba.algo3.modelo.superficies.*;
+import fiuba.algo3.modelo.tablero.Casillero;
 import fiuba.algo3.modelo.tablero.Posicion;
+import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -50,6 +53,7 @@ public class EscenarioRaizTableroController {
 			this.tablero.add(pane1, i, 23);
 			this.tablero.add(pane2, 23, i);
 		}
+		
 	}
 	
 	public void actualizarPosicionesIndividualmente(Personaje personaje, ImageView autobotVisual){
@@ -72,8 +76,67 @@ public class EscenarioRaizTableroController {
 		
 	}
 	
+	public void actualizarCampos(){
+		SuperficieRocosa rocosa = new SuperficieRocosa();
+		SuperficiePantano pantano = new SuperficiePantano();
+		SuperficieEspinas espinas = new SuperficieEspinas();
+		SuperficieNube nube = new SuperficieNube();
+		SuperficieNebulosaDeAndromeda nebulosa = new SuperficieNebulosaDeAndromeda();
+		SuperficieTormentaPsionica tormenta = new SuperficieTormentaPsionica();
+		
+		SuperficieDeCampo campoNubeRoca = new SuperficieDeCampo(nube,rocosa);
+		SuperficieDeCampo campoNubePantano = new SuperficieDeCampo(nube,pantano);
+		SuperficieDeCampo campoNubeEspinas = new SuperficieDeCampo(nube,espinas);
+		SuperficieDeCampo campoNebulosaRoca = new SuperficieDeCampo(nebulosa,rocosa);
+		SuperficieDeCampo campoNebulosaPantano = new SuperficieDeCampo(nebulosa,pantano);
+		SuperficieDeCampo campoNebulosaEspinas = new SuperficieDeCampo(nebulosa,espinas);
+		SuperficieDeCampo campoTormentaRoca = new SuperficieDeCampo(tormenta,rocosa);
+		SuperficieDeCampo campoTormentaPantano = new SuperficieDeCampo(tormenta,pantano);
+		SuperficieDeCampo campoTormentaEspinas = new SuperficieDeCampo(tormenta,espinas);
+		
+		
+		for (int i= 1; i <= 22; i++){
+			for (int j=1; j <=22; j++){
+				Pane pane = new Pane();
+				Posicion posicionActual = new Posicion(j,i);
+				Tablero tablero = this.mainApp.getPartida().getTablero();
+				Casillero casillero = tablero.obtenerCasillero(posicionActual);
+				
+				if (casillero.getSuperficies().equals(campoNubeRoca)){
+					pane.setStyle("-fx-background-color: LIGHTGREEN;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoNubePantano)){
+					pane.setStyle("-fx-background-color: BURLYWOOD;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoNubeEspinas)){
+					pane.setStyle("-fx-background-color: CRIMSON;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoNebulosaRoca)){
+					pane.setStyle("-fx-background-color: LIGHTGREEN;-fx-border-color: VIOLET; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoNebulosaPantano)){
+					pane.setStyle("-fx-background-color: BURLYWOOD;-fx-border-color: VIOLET; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoNebulosaEspinas)){
+					pane.setStyle("-fx-background-color: CRIMSON;-fx-border-color: VIOLET; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoTormentaRoca)){
+					pane.setStyle("-fx-background-color: LIGHTGREEN;-fx-border-color: GREY; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoTormentaPantano)){
+					pane.setStyle("-fx-background-color: BURLYWOOD;-fx-border-color: GREY; -fx-border-width: 5");
+				}
+				if (casillero.getSuperficies().equals(campoTormentaEspinas)){
+					pane.setStyle("-fx-background-color: CRIMSON;-fx-border-color: GREY; -fx-border-width: 5");
+				}
+				this.tablero.add(pane, i, j);
+			}
+		}
+	}
+	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp = mainApp;
+		this.actualizarCampos();
 	}
 	
 }
