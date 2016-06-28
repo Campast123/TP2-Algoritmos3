@@ -200,6 +200,7 @@ public abstract class Personaje implements Posicionable {
 		    	if(bonus.getTurnos() == 0){
 		    		this.quitarBonusPersonaje(bonus);
 		    		bonus.quitarEfecto(this);
+		    		bonus.reiniciarTurnos();
 		    	}		    	
 		}	
 	}
@@ -209,6 +210,9 @@ public abstract class Personaje implements Posicionable {
 		if (this.modoAlgoformer.esUnidadAerea()){
 			this.setTurnosInmovilizado(TURNOS_DE_INMOVILIZACION);
 		}
-	}	
+	}
+	public void reducirVelocidadPantano(){
+		this.modoAlgoformer.reducirVelocidadPantano();
+	}
 }
 

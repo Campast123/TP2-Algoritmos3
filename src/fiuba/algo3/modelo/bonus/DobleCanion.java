@@ -10,6 +10,11 @@ public class DobleCanion extends Bonus {
 	}
 	
 	@Override
+	public void reiniciarTurnos(){
+		this.turnos = 3;
+	}
+	
+	@Override
 	public void aplicarEfecto(Personaje personaje){
 		personaje.bonificarAtaque(personaje.getAtaque() *2);
 	}

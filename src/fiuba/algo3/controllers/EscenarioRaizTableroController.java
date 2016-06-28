@@ -1,6 +1,8 @@
 package fiuba.algo3.controllers;
 
 import fiuba.algo3.MainApp;
+import fiuba.algo3.modelo.bonus.Bonus;
+import fiuba.algo3.modelo.bonus.TipoBonus;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.superficies.*;
@@ -11,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 public class EscenarioRaizTableroController {
 	
@@ -70,13 +74,21 @@ public class EscenarioRaizTableroController {
 		Jugador jugador1 = this.mainApp.getPartida().getPlayer1();
 		Jugador jugador2 = this.mainApp.getPartida().getPlayer2();
 		
-		this.actualizarPosicionesIndividualmente(jugador1.getPersonaje1(), this.optimus);
-		this.actualizarPosicionesIndividualmente(jugador1.getPersonaje2(), this.bumblebee);
-		this.actualizarPosicionesIndividualmente(jugador1.getPersonaje3(), this.ratchet);
+		if (jugador1.getPersonajeModoUnico() == null){
+			this.actualizarPosicionesIndividualmente(jugador1.getPersonaje1(), this.optimus);
+			this.actualizarPosicionesIndividualmente(jugador1.getPersonaje2(), this.bumblebee);
+			this.actualizarPosicionesIndividualmente(jugador1.getPersonaje3(), this.ratchet);
+		}else{
+			this.actualizarPosicionesIndividualmente(jugador1.getPersonajeModoUnico(), this.optimus);
+		}
 		
-		this.actualizarPosicionesIndividualmente(jugador2.getPersonaje1(), this.megatron);
-		this.actualizarPosicionesIndividualmente(jugador2.getPersonaje2(), this.bonecrusher);
-		this.actualizarPosicionesIndividualmente(jugador2.getPersonaje3(), this.frenzy);
+		if (jugador2.getPersonajeModoUnico() == null){
+			this.actualizarPosicionesIndividualmente(jugador2.getPersonaje1(), this.megatron);
+			this.actualizarPosicionesIndividualmente(jugador2.getPersonaje2(), this.bonecrusher);
+			this.actualizarPosicionesIndividualmente(jugador2.getPersonaje3(), this.frenzy);
+		}else{
+			this.actualizarPosicionesIndividualmente(jugador2.getPersonajeModoUnico(), this.megatron);
+		}
 		
 	}
 	
@@ -133,8 +145,42 @@ public class EscenarioRaizTableroController {
 				if (casillero.getSuperficies().equals(campoTormentaEspinas)){
 					pane.setStyle("-fx-background-color: CRIMSON;-fx-border-color: GREY; -fx-border-width: 5");
 				}
+				if (casillero.getChispaSuprema() != null){
+					pane.setStyle("-fx-background-color: GOLD");
+				}
+				if (casillero.getBonus() != null){
+					Bonus bonus = casillero.getBonus();
+					Circle circleBonus = new Circle();
+					pane.getChildren().add(circleBonus);
+					
+					if (bonus.getType() == TipoBonus.DobleCanion){
+						circleBonus.setFill(Color.GOLD);
+					}
+					if (bonus.getType() == TipoBonus.Flash){
+						circleBonus.setFill(Color.RED);
+					}
+					if (bonus.getType() == TipoBonus.BurbujaInmaculada){
+						circleBonus.setFill(Color.BLUE);
+					}
+					
+					circleBonus.setStroke(Color.BLACK);
+					circleBonus.setRadius(25);
+					circleBonus.setTranslateX(38);
+					circleBonus.setTranslateY(33);
+				}
 				this.tablero.add(pane, i, j);
 			}
+		}
+	}
+	
+	public void fusionarPersonajes(Jugador jugadorActual){
+		Jugador jugadorAutobots = this.mainApp.getPartida().getPlayer1();
+		if(jugadorActual == jugadorAutobots){
+			this.bumblebee.setOpacity(0.00);
+			this.ratchet.setOpacity(0.00);
+		}else{
+			this.bonecrusher.setOpacity(0.00);
+			this.frenzy.setOpacity(0.00);
 		}
 	}
 	

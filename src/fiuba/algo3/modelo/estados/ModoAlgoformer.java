@@ -63,6 +63,10 @@ public abstract class ModoAlgoformer {
 	
 	public void setVelocidad(int velocity) {
 		this.velocidad = velocity;
-	}	
+	}
+	
+	public void reducirVelocidadPantano(){
+		
+	}
 	
 }

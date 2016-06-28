@@ -13,9 +13,13 @@ public class Jugador {
 	private TipoTransformer tipo;
 	
 	public void finalizarTurno(){
+		if (this.personajeModoUnico != null){
+			this.personajeModoUnico.reestablecerEfectos();
+		}else{
 		this.personaje1.reestablecerEfectos();
 		this.personaje2.reestablecerEfectos();
 		this.personaje3.reestablecerEfectos();
+		}
 	}
 	
 	public Jugador(String nombre,TipoTransformer tipo){

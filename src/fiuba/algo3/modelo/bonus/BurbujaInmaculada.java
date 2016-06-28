@@ -10,6 +10,11 @@ public class BurbujaInmaculada extends Bonus {
 	}
 	
 	@Override
+	public void reiniciarTurnos(){
+		this.turnos = 2;
+	}
+	
+	@Override
 	public void aplicarEfecto(Personaje personaje){
 		personaje.aplicarInmunidad(true);
 	}	

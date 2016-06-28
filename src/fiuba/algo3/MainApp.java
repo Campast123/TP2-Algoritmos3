@@ -107,10 +107,18 @@ public class MainApp extends Application {
 	
 	public void showMenuAutobots(){
 		try{
+			Jugador jugadorActual = this.partida.getJugadorActual();
+			Boolean esModoUnico = jugadorActual.getPersonajeModoUnico()!=null;
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/MenuAutobots.fxml"));
-			AnchorPane menuAutobots = (AnchorPane) loader.load();
 			
+			if (esModoUnico){
+				loader.setLocation(getClass().getResource("controllers/MenuAutobotsModoUnico.fxml"));
+			}else{
+				
+				loader.setLocation(getClass().getResource("controllers/MenuAutobots.fxml"));
+			}
+			
+			AnchorPane menuAutobots = (AnchorPane) loader.load();
 			this.escenarioRaiz.setRight(menuAutobots);
 			
         } catch (IOException e) {
@@ -120,10 +128,17 @@ public class MainApp extends Application {
 	
 	public void showMenuDecepticons(){
 		try{
+			Jugador jugadorActual = this.partida.getJugadorActual();
+			Boolean esModoUnico = jugadorActual.getPersonajeModoUnico()!=null;
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/MenuDecepticons.fxml"));
-			AnchorPane menuDecepticons = (AnchorPane) loader.load();
 			
+			if (esModoUnico){
+				loader.setLocation(getClass().getResource("controllers/MenuDecepticonsModoUnico.fxml"));
+			}else{
+				loader.setLocation(getClass().getResource("controllers/MenuDecepticons.fxml"));
+			}
+			
+			AnchorPane menuDecepticons = (AnchorPane) loader.load();
 			this.escenarioRaiz.setRight(menuDecepticons);
 			
         } catch (IOException e) {

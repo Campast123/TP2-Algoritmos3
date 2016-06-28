@@ -11,11 +11,7 @@ public class SuperficiePantano extends SuperficieTerrestre {
 	
 	@Override
 	public void producirEfecto(Personaje algoformer) {
-		this.reducirVelocidad(algoformer);
-	}
-	
-	public void reducirVelocidad(Personaje alterno){
-		alterno.reducirVelocidad();
+		algoformer.reducirVelocidadPantano();
 	}
 	
 	@Override

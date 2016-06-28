@@ -45,7 +45,6 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		Jugador jugadorEnEspera = this.partida.getJugadorEnEspera();
 		try{
 			this.partida.atacarConAlgoformerA(this.personajeAtacante, jugadorEnEspera.getPersonaje1());
-			System.out.print("Ataco "+this.partida.getJugadorActual().getNombre()+" a "+this.partida.getJugadorEnEspera().getNombre() );
 			this.clickBotonTerminarTurno();
 
 		}catch(Exception ex){
@@ -58,7 +57,6 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		Jugador jugadorEnEspera = this.partida.getJugadorEnEspera();
 		try{
 			this.partida.atacarConAlgoformerA(this.personajeAtacante, jugadorEnEspera.getPersonaje2());
-			System.out.print("Ataco "+this.partida.getJugadorActual().getNombre()+" a "+this.partida.getJugadorEnEspera().getNombre() );
 			this.clickBotonTerminarTurno();
 
 		}catch(Exception ex){
@@ -70,7 +68,6 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		Jugador jugadorEnEspera = this.partida.getJugadorEnEspera();
 		try{
 			this.partida.atacarConAlgoformerA(this.personajeAtacante, jugadorEnEspera.getPersonaje3());
-			System.out.print("Ataco "+this.partida.getJugadorActual().getNombre()+" a "+this.partida.getJugadorEnEspera().getNombre() );
 			this.clickBotonTerminarTurno();
 
 		}catch(Exception ex){
@@ -83,8 +80,6 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		
 		try{
 			this.partida.finalizarTurno();
-			System.out.print("Termino turno ");
-			System.out.print("Ahora juega "+this.partida.getJugadorActual().getNombre());
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){

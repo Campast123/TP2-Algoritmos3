@@ -10,6 +10,11 @@ public class Flash extends Bonus {
 	}
 	
 	@Override
+	public void reiniciarTurnos(){
+		this.turnos = 3;
+	}
+	
+	@Override
 	public void aplicarEfecto(Personaje personaje){
 		personaje.bonificarVelocidad(personaje.getVelocidad() *3);
 	}

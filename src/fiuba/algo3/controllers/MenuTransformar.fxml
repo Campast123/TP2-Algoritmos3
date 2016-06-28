@@ -14,7 +14,6 @@
       <children>
             <Pane prefHeight="575.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="11.0" layoutY="21.0" prefHeight="43.0" prefWidth="111.0" text="Jugador" />
                   <Button layoutX="47.0" layoutY="467.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
                   <Button layoutX="51.0" layoutY="84.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje1" prefHeight="25.0" prefWidth="89.0" text="Personaje1" />
                   <Button layoutX="51.0" layoutY="203.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje2" prefHeight="25.0" prefWidth="89.0" text="Personaje2" />
@@ -85,6 +84,16 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
+                  <Label fx:id="nombreJugador" layoutX="13.0" layoutY="14.0" text="Personaje">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tipoDeAlgoformers" layoutX="103.0" layoutY="14.0" text="Algoformer">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
       </children>

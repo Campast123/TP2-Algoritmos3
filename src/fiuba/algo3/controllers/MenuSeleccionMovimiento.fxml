@@ -80,6 +80,19 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
+                  <GridPane layoutX="5.0" layoutY="92.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="108.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="92.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Velocidad restante:" />
+                        <Label fx:id="velocidadRestante" text="Label" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
                </children>
             </Pane>
       </children>

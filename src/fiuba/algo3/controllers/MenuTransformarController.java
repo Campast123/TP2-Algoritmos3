@@ -10,6 +10,10 @@ import javafx.scene.control.Label;
 public class MenuTransformarController {
 	
 	@FXML
+	private Label nombreJugador;
+	@FXML
+	private Label tipoDeAlgoformers;
+	@FXML
 	private Label ptosDeVidaPersonaje1;
 	@FXML
 	private Label ataquePersonaje1;
@@ -66,8 +70,6 @@ public class MenuTransformarController {
 		
 		try{
 			this.partida.finalizarTurno();
-			System.out.print("Termino turno ");
-			System.out.print("Ahora juega "+this.partida.getJugadorActual().getNombre());
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
@@ -97,6 +99,13 @@ public class MenuTransformarController {
 		this.actualizarDatosIndividual(personaje2, this.ptosDeVidaPersonaje2, this.ataquePersonaje2, this.distDeAtaquePersonaje2, this.velocidadPersonaje2);
 		Personaje personaje3 = this.partida.getJugadorActual().getPersonaje3();
 		this.actualizarDatosIndividual(personaje3, this.ptosDeVidaPersonaje3, this.ataquePersonaje3, this.distDeAtaquePersonaje3, this.velocidadPersonaje3);
+		
+		this.nombreJugador.setText(this.partida.getJugadorActual().getNombre());
+		if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
+			this.tipoDeAlgoformers.setText("Autobots");
+		}else{
+			this.tipoDeAlgoformers.setText("Decepticons");
+		}
 		
 	}
 	

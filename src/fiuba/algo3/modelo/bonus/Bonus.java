@@ -11,6 +11,7 @@ public abstract class Bonus  implements Posicionable {
 	
 	public abstract void aplicarEfecto(Personaje personaje);
 	public abstract void quitarEfecto(Personaje personaje);
+	public abstract void reiniciarTurnos();
 	
 	public int getTurnos(){
 		return this.turnos;

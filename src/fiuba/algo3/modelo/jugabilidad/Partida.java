@@ -140,19 +140,25 @@ public class Partida {
 		Posicion posicionPersonaje1 = jugador.getPersonaje1().getPosicion();
 		Posicion posicionPersonaje2 = jugador.getPersonaje2().getPosicion();
 		Posicion posicionPersonaje3 = jugador.getPersonaje3().getPosicion();
+		
+		Casillero casilleroPersonaje1 = this.juego.obtenerCasillero(posicionPersonaje1);
+		casilleroPersonaje1.retirarPersonaje();
+		Casillero casilleroPersonaje2 = this.juego.obtenerCasillero(posicionPersonaje2);
+		casilleroPersonaje2.retirarPersonaje();
+		Casillero casilleroPersonaje3 = this.juego.obtenerCasillero(posicionPersonaje3);
+		casilleroPersonaje3.retirarPersonaje();
 
 		int MayorDistanciaEntreLosPuntos = Posicion.distanciaEntreTresPuntos(posicionPersonaje1,posicionPersonaje2,posicionPersonaje3);
 		if (MayorDistanciaEntreLosPuntos <= 2){
 			int vidaTotal = jugador.getPersonaje1().getPuntosDeVida();
 			vidaTotal = vidaTotal + jugador.getPersonaje2().getPuntosDeVida();
 			vidaTotal = vidaTotal + jugador.getPersonaje3().getPuntosDeVida();
-			Posicion posicion = jugador.getPersonaje1().getPosicion();
 
 			Personaje algoformerModoUnico = null;
 			if (jugador.getTipo().equals(TipoTransformer.AUTOBOT)){
-				algoformerModoUnico = new Superion(vidaTotal,posicion);
+				algoformerModoUnico = new Superion(vidaTotal,posicionPersonaje1);
 			} else {
-				algoformerModoUnico = new Menasor(vidaTotal,posicion);
+				algoformerModoUnico = new Menasor(vidaTotal,posicionPersonaje1);
 			}
 			jugador.setPersonajeModoUnico(algoformerModoUnico);
 		} else {
