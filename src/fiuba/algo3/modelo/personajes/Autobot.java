@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
 
-import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
 import fiuba.algo3.modelo.tablero.Posicion;
 
 public abstract class Autobot extends Personaje{
@@ -51,11 +50,6 @@ public abstract class Autobot extends Personaje{
 	@Override
 	public void reducirVelocidad(){
 		this.modoAlgoformer.reducirVelocidad();
-	}
-	
-	@Override
-	public void avanzaCasillero(SuperficieDeCampo superficieDeCampo){
-		superficieDeCampo.reducirVelocidad(this);
 	}
 
 }

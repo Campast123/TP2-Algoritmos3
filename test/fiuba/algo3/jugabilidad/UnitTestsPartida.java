@@ -32,10 +32,6 @@ public class UnitTestsPartida {
 		Posicion posicionEsperada = new Posicion(0,2);
 		Assert.assertEquals(this.jugador1.getPersonaje2().getPosicion(),posicionEsperada);
 		
-		//Ante un movimiento invalido el algoformer no se mueve
-		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), direccion.getArriba());
-		Assert.assertEquals(this.jugador1.getPersonaje2().getPosicion(),posicionEsperada);
-		
 		//El algoformer se mueve en diagonal
 		partida.moverAlgoformerA(this.jugador1.getPersonaje2(), direccion.getDiagonalDerInferior());
 		posicionEsperada = new Posicion(1,3);
@@ -94,8 +90,8 @@ public class UnitTestsPartida {
 		}
 		partida.finalizarTurno();
 		
-		//Muevo a megatron 8 veces
-		for (int i = 1 ; i <= 8 ; i++){
+		//Muevo a megatron 6 veces
+		for (int i = 1 ; i <= 6 ; i++){
 			partida.moverAlgoformerA(partida.obtenerJugadorDelTurno().getPersonaje1(), movimiento.getDiagonalIzqSuperior());						
 		}
 		partida.finalizarTurno();

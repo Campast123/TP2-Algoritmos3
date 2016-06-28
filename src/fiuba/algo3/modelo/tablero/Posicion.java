@@ -1,7 +1,5 @@
 package fiuba.algo3.modelo.tablero;
 
-import java.math.BigDecimal;
-
 public class Posicion {
 
 	private int coordenadaX;

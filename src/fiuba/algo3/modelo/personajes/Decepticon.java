@@ -1,7 +1,5 @@
 package fiuba.algo3.modelo.personajes;
 
-import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
-
 
 public abstract class Decepticon extends Personaje {
 	
@@ -44,9 +42,5 @@ public abstract class Decepticon extends Personaje {
 	@Override
 	public void reducirVelocidad(){
 		this.modoAlgoformer.reducirVelocidad();
-	}
-	@Override
-	public void avanzaCasillero(SuperficieDeCampo superficieDeCampo){
-		superficieDeCampo.reducirVelocidad(this);
 	}
 }

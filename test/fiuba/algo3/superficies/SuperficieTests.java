@@ -286,7 +286,8 @@ public class SuperficieTests {
 
 			Assert.assertTrue(supDeCampo.puedeAtravesarlo(optimus));
 			
-			supDeCampo.reducirVelocidad(optimus);
+			optimus.reducirVelocidad();
+			supDeCampo.aplicarEfecto(optimus);
 			
 			Assert.assertEquals(optimus.getVelocidad(),3);
 			

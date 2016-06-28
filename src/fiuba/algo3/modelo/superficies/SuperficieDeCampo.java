@@ -1,9 +1,6 @@
 package fiuba.algo3.modelo.superficies;
 
 import fiuba.algo3.modelo.personajes.Personaje;
-import fiuba.algo3.modelo.tablero.Casillero;
-import fiuba.algo3.modelo.tablero.Posicion;
-import fiuba.algo3.modelo.utils.RandomUtils;
 
 public class SuperficieDeCampo {
 
@@ -25,13 +22,6 @@ public class SuperficieDeCampo {
 		boolean atraviesaTerrestre = this.superficieTerrestre.puedeAtravesarlo(algoformer);
 		
 		return (atraviesaAereo & atraviesaTerrestre);
-	}
-	
-	public void reducirVelocidad(Personaje algoformer){
-		algoformer.reducirVelocidad();
-		if(this.superficieTerrestre.seReduceLaVelocidad(algoformer)){
-			algoformer.reducirVelocidad();
-		}
 	}
 	
 	@Override

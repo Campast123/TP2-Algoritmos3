@@ -562,6 +562,7 @@ public class BonusTest {
 		Jugador j1 = new Jugador("j1",TipoTransformer.AUTOBOT);
 		Jugador j2 = new Jugador("j2",TipoTransformer.DECEPTICON);
 		
+		@SuppressWarnings("unused")
 		Partida p1 = new Partida(j1, j2);		
 		
 		Personaje optimus = j1.getPersonaje1();

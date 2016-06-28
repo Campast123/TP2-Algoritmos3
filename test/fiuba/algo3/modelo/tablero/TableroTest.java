@@ -23,7 +23,7 @@ public class TableroTest {
 	
 	@Test
 	public void crearTableroFijoTest(){
-		Tablero tablero = new Tablero(false);
+		Tablero tablero = new Tablero(false,Tablero.alto,Tablero.largo);
 		SuperficieDeCampo supDeCampoInicialBordes = new SuperficieDeCampo(new SuperficieNube(), new SuperficieRocosa());
 		for (int x = 0; x < Tablero.alto ; x++ ){
 			for (int y = 0 ; y <= Tablero.largo ; y++){

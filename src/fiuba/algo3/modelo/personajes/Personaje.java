@@ -6,7 +6,6 @@ import java.util.Stack;
 
 import fiuba.algo3.modelo.estados.ModoAlgoformer;
 import fiuba.algo3.modelo.excepciones.AlgoformerNoPuedeMoverseException;
-import fiuba.algo3.modelo.superficies.SuperficieDeCampo;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.bonus.*;
 
@@ -25,7 +24,6 @@ public abstract class Personaje implements Posicionable {
 	public abstract void reducirVida();
 	public abstract void reducirAtaque();
 	public abstract void reducirVelocidad();
-	public abstract void avanzaCasillero(SuperficieDeCampo superficieDeCampo);
 	
 	public void reestablecerEfectos(){
 		if (this.turnosInmovilizado > 0){
@@ -204,6 +202,13 @@ public abstract class Personaje implements Posicionable {
 		    		bonus.quitarEfecto(this);
 		    	}		    	
 		}	
+	}
+	public void inmovilizacionDeNebulosa() {
+		int TURNOS_DE_INMOVILIZACION = 3;
+		
+		if (this.modoAlgoformer.esUnidadAerea()){
+			this.setTurnosInmovilizado(TURNOS_DE_INMOVILIZACION);
+		}
 	}	
 }
 

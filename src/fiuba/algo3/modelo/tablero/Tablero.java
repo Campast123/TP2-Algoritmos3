@@ -122,7 +122,7 @@ public class Tablero {
 	}
 
 	public Casillero obtenerCasillero(Posicion posicionInicial){
-		return this.tablero.get(posicionInicial);
+		return (this.tablero.get(posicionInicial));
 	}
 
 	public ChispaSuprema obtenerChispaSuprema(Posicion posicion){
@@ -140,7 +140,8 @@ public class Tablero {
 				Posicion posicionInicial = personaje.getPosicion();
 				this.tablero.get(posicionInicial).retirarPersonaje();
 				this.tablero.get(posicionDestino).agregarPosicionable(personaje);
-				personaje.avanzaCasillero(superficiesDestino);
+				superficiesDestino.aplicarEfecto(personaje);
+				personaje.reducirVelocidad();
 			} else {
 				throw new AlgoformerNoPuedeMoverseException();
 			}
