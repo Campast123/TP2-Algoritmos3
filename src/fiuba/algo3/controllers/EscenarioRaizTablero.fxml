@@ -64,52 +64,52 @@
                      <children>
                         <ImageView fx:id="optimus" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../vistas/imagenes/LogoAutobots.png" />
+                              <Image url="@../vistas/imagenes/LogoAutobotsPersonaje1.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LightGreen;" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fx:id="ratchet" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="bumblebee" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../vistas/imagenes/LogoAutobots.png" />
+                              <Image url="@../vistas/imagenes/LogoAutobotsPersonaje2.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.columnIndex="23" GridPane.rowIndex="22">
                      <children>
-                        <ImageView fx:id="megatron" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="frenzy" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../vistas/imagenes/LogoDecepticons.png" />
+                              <Image url="@../vistas/imagenes/LogoDecepticonsPersonaje3.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.rowIndex="1">
                      <children>
-                        <ImageView fx:id="bumblebee" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ratchet" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../vistas/imagenes/LogoAutobots.png" />
+                              <Image url="@../vistas/imagenes/LogoAutobotsPersonaje3.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.columnIndex="23" GridPane.rowIndex="23">
                      <children>
-                        <ImageView fx:id="bonecrusher" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="megatron" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../vistas/imagenes/LogoDecepticons.png" />
+                              <Image url="@../vistas/imagenes/LogoDecepticonsPersonaje1.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.columnIndex="22" GridPane.rowIndex="23">
                      <children>
-                        <ImageView fx:id="frenzy" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="bonecrusher" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../vistas/imagenes/LogoDecepticons.png" />
+                              <Image url="@../vistas/imagenes/LogoDecepticonsPersonaje2.png" />
                            </image>
                         </ImageView>
                      </children>

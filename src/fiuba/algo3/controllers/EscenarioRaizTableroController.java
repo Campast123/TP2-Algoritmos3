@@ -57,6 +57,10 @@ public class EscenarioRaizTableroController {
 	}
 	
 	public void actualizarPosicionesIndividualmente(Personaje personaje, ImageView autobotVisual){
+		autobotVisual.setOpacity(1.00);
+		if (personaje.estaInmovilizado()){
+			autobotVisual.setOpacity(0.20);
+		}
 		Posicion posicion = personaje.getPosicion();
 		this.tablero.getChildren().remove(autobotVisual);
 		this.tablero.add(autobotVisual, posicion.getCoordenadaY(), posicion.getCoordenadaX());

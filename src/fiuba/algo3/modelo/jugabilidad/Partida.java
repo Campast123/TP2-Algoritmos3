@@ -42,8 +42,8 @@ public class Partida {
 
 		//Posicion inicial de Decepticons
 		Posicion posicionDeMegatron = new Posicion(50,50);
-		Posicion posicionDeBonecrusher = new Posicion(49,50);
-		Posicion posicionDeFrenzy = new Posicion(50,49);
+		Posicion posicionDeBonecrusher = new Posicion(50,49);
+		Posicion posicionDeFrenzy = new Posicion(49,50);
 
 		this.juego.agregarPersonaje(this.player1.getPersonaje1(),posicionDeOptimus);
 		this.juego.agregarPersonaje(this.player1.getPersonaje2(),posicionDeBumblebee);
@@ -76,8 +76,8 @@ public class Partida {
 
 		//Posicion inicial de Decepticons
 		Posicion posicionDeMegatron = new Posicion(alto,largo);
-		Posicion posicionDeBonecrusher = new Posicion(alto-1,largo);
-		Posicion posicionDeFrenzy = new Posicion(alto,largo-1);
+		Posicion posicionDeBonecrusher = new Posicion(alto,largo-1);
+		Posicion posicionDeFrenzy = new Posicion(alto-1,largo);
 
 		this.juego.agregarPersonaje(this.player1.getPersonaje1(),posicionDeOptimus);
 		this.juego.agregarPersonaje(this.player1.getPersonaje2(),posicionDeBumblebee);
