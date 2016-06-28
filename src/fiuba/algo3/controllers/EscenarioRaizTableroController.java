@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.tablero.Posicion;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 public class EscenarioRaizTableroController {
 	
@@ -29,6 +30,26 @@ public class EscenarioRaizTableroController {
 	
 	public EscenarioRaizTableroController(){
 
+	}
+	
+	@FXML
+	private void initialize(){
+		for (int i = 2; i <= 23; i++){
+			Pane pane1 = new Pane();
+			Pane pane2 = new Pane();
+			pane1.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+			pane2.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+			this.tablero.add(pane1, i, 0);
+			this.tablero.add(pane2, 0, i);
+		}
+		for (int i = 0; i <= 21; i++){
+			Pane pane1 = new Pane();
+			Pane pane2 = new Pane();
+			pane1.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+			pane2.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+			this.tablero.add(pane1, i, 23);
+			this.tablero.add(pane2, 23, i);
+		}
 	}
 	
 	public void actualizarPosicionesIndividualmente(Personaje personaje, ImageView autobotVisual){

@@ -16,6 +16,7 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,6 +41,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -58,36 +60,60 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fx:id="bonecrusher" fitHeight="91.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" GridPane.columnIndex="21" GridPane.rowIndex="22">
-                     <image>
-                        <Image url="@../vistas/imagenes/LogoDecepticons.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="frenzy" fitHeight="91.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" GridPane.columnIndex="22" GridPane.rowIndex="21">
-                     <image>
-                        <Image url="@../vistas/imagenes/LogoDecepticons.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="megatron" fitHeight="91.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" GridPane.columnIndex="22" GridPane.rowIndex="22">
-                     <image>
-                        <Image url="@../vistas/imagenes/LogoDecepticons.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="optimus" fitHeight="69.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
-                     <image>
-                        <Image url="@../vistas/imagenes/LogoAutobots.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="ratchet" fitHeight="69.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" GridPane.columnIndex="1">
-                     <image>
-                        <Image url="@../vistas/imagenes/LogoAutobots.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="bumblebee" fitHeight="69.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" GridPane.rowIndex="1">
-                     <image>
-                        <Image url="@../vistas/imagenes/LogoAutobots.png" />
-                     </image>
-                  </ImageView>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;">
+                     <children>
+                        <ImageView fx:id="optimus" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../vistas/imagenes/LogoAutobots.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LightGreen;" GridPane.columnIndex="1">
+                     <children>
+                        <ImageView fx:id="ratchet" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../vistas/imagenes/LogoAutobots.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.columnIndex="23" GridPane.rowIndex="22">
+                     <children>
+                        <ImageView fx:id="megatron" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../vistas/imagenes/LogoDecepticons.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fx:id="bumblebee" fitHeight="69.0" fitWidth="79.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../vistas/imagenes/LogoAutobots.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.columnIndex="23" GridPane.rowIndex="23">
+                     <children>
+                        <ImageView fx:id="bonecrusher" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../vistas/imagenes/LogoDecepticons.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: LIGHTGREEN;" GridPane.columnIndex="22" GridPane.rowIndex="23">
+                     <children>
+                        <ImageView fx:id="frenzy" fitHeight="91.0" fitWidth="72.0" layoutX="3.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../vistas/imagenes/LogoDecepticons.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
             </GridPane>
          </content>
