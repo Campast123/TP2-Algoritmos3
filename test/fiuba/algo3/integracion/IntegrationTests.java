@@ -95,8 +95,8 @@ public class IntegrationTests {
 		Posicion posicionDeRatchet = new Posicion(1,0);
 		//Posicion inicial de Decepticons
 		Posicion posicionDeMegatron = new Posicion(50,50);
-		Posicion posicionDeBonecrusher = new Posicion(49,50);
-		Posicion posicionDeFrenzy = new Posicion(50,49);
+		Posicion posicionDeBonecrusher = new Posicion(50,49);
+		Posicion posicionDeFrenzy = new Posicion(49,50);
 		
 		Jugador j1 = new Jugador("Juan", TipoTransformer.AUTOBOT);
 		Jugador j2 = new Jugador("Pedro", TipoTransformer.DECEPTICON);		

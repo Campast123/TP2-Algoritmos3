@@ -14,11 +14,20 @@ public class Jugador {
 	
 	public void finalizarTurno(){
 		if (this.personajeModoUnico != null){
+			
 			this.personajeModoUnico.reestablecerEfectos();
+			this.personajeModoUnico.actualizarBonus();
+			
 		}else{
+			
 		this.personaje1.reestablecerEfectos();
+		this.personaje1.actualizarBonus();
+		
 		this.personaje2.reestablecerEfectos();
+		this.personaje2.actualizarBonus();
+		
 		this.personaje3.reestablecerEfectos();
+		this.personaje3.actualizarBonus();
 		}
 	}
 	

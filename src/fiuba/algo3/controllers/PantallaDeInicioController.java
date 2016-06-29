@@ -24,6 +24,7 @@ public class PantallaDeInicioController {
 			String jugadorDecepticons = nombreJugador2.getText();
 			this.mainApp.comenzarPartida(jugadorAutobots, jugadorDecepticons);
 			this.mainApp.showTableroRaiz();
+			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
 			this.mainApp.showMenuDeOpciones();
 			this.mainApp.showMenuAutobots();
 		}

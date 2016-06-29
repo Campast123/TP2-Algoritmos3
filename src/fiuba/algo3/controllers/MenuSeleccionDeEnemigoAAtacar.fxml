@@ -87,6 +87,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
+                  <Button layoutX="51.0" layoutY="530.0" mnemonicParsing="false" onAction="#clickBotonVolverAtras" prefHeight="25.0" prefWidth="97.0" text="Volver Atras" />
                </children>
             </Pane>
       </children>

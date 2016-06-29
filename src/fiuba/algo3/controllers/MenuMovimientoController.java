@@ -5,15 +5,22 @@ import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MenuMovimientoController {
 	
 	@FXML
+	private Button botonPersonaje1;
+	@FXML
+	private Button botonPersonaje2;
+	@FXML
+	private Button botonPersonaje3;
+	
+	@FXML
 	private Label nombreJugador;
 	@FXML
 	private Label tipoDeAlgoformers;
-	
 	@FXML
 	private Label ptosDeVidaPersonaje1;
 	@FXML
@@ -58,11 +65,16 @@ public class MenuMovimientoController {
 		Personaje personaje = this.partida.getJugadorActual().getPersonaje3();
 		this.mainApp.showMovimientoDePersonaje(personaje);
 		}
+	
+	public void clickBotonVolverAtras(){
+		this.mainApp.showMenuDeOpciones();
+	}
 
 	public void clickBotonTerminarTurno(){
 		
 		try{
 			this.partida.finalizarTurno();
+			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
@@ -99,6 +111,16 @@ public class MenuMovimientoController {
 			this.tipoDeAlgoformers.setText("Autobots");
 		}else{
 			this.tipoDeAlgoformers.setText("Decepticons");
+		}
+		
+		if (personaje1.estaInmovilizado()){
+			this.botonPersonaje1.setDisable(true);
+		}
+		if (personaje2.estaInmovilizado()){
+			this.botonPersonaje2.setDisable(true);
+		}
+		if (personaje3.estaInmovilizado()){
+			this.botonPersonaje3.setDisable(true);
 		}
 		
 	}

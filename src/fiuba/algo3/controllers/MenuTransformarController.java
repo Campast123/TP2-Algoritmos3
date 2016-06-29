@@ -66,10 +66,15 @@ public class MenuTransformarController {
 		this.clickBotonTerminarTurno();
 	}
 	
+	public void clickBotonVolverAtras(){
+		this.mainApp.showMenuDeOpciones();
+	}
+	
 	public void clickBotonTerminarTurno(){
 		
 		try{
 			this.partida.finalizarTurno();
+			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){

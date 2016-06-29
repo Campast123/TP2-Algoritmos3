@@ -7,11 +7,20 @@ import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MenuSeleccionMovimientoController {
 	@FXML
-	private Label velocidadRestante;
+	private Button botonVolverAtras;
+	@FXML
+	private Label ptosDeVida;
+	@FXML
+	private Label ataque;
+	@FXML
+	private Label distDeAtaque;
+	@FXML
+	private Label velocidad;
 	
 	private Partida partida;
 	private Personaje personajeAMover;
@@ -19,12 +28,17 @@ public class MenuSeleccionMovimientoController {
 	private int cantMov;
 	private Direccion direccion = new Direccion();
 	
+	@FXML
+	private void initialize(){
+		this.botonVolverAtras.setDisable(false);
+	}
 	
 	public void moverAPosicion(Posicion posicion){
 		try{
 			this.partida.moverAlgoformerA(this.personajeAMover, posicion);
 			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
-			this.actualizarVelocidad();
+			this.botonVolverAtras.setDisable(true);
+			this.actualizarDatos();
 		
 		if (this.cantMov<=0) this.clickBotonTerminarTurno();
 		
@@ -64,11 +78,16 @@ public class MenuSeleccionMovimientoController {
 	public void clickBotonMoverDiagIzqInf(){
 		this.moverAPosicion(this.direccion.getDiagonalIzqInferior());
 	}
+	
+	public void clickBotonVolverAtras(){
+		this.mainApp.showSeleccionPersonajeMovimiento();
+	}
 
 	public void clickBotonTerminarTurno(){
 		
 		try{
 			this.partida.finalizarTurno();
+			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
@@ -86,12 +105,16 @@ public class MenuSeleccionMovimientoController {
 	
 	public void setPersonajeAtacante(Personaje personajeAtacante) {
 		this.personajeAMover = personajeAtacante;
-		this.actualizarVelocidad();
+		this.actualizarDatos();
 	}
 	
-	private void actualizarVelocidad(){
+	private void actualizarDatos(){
 		this.cantMov = this.personajeAMover.getVelocidad();
-		this.velocidadRestante.setText(String.valueOf(this.cantMov));
+		
+		this.ptosDeVida.setText(String.valueOf(this.personajeAMover.getPuntosDeVida()));
+		this.ataque.setText(String.valueOf(this.personajeAMover.getAtaque()));
+		this.distDeAtaque.setText(String.valueOf(this.personajeAMover.getDistanciaDeAtaque()));
+		this.velocidad.setText(String.valueOf(this.cantMov));
 	}
 	
 	public void setPartida(Partida partida) {

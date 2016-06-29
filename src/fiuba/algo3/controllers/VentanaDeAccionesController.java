@@ -59,6 +59,7 @@ public class VentanaDeAccionesController {
 		
 		try{
 			this.partida.finalizarTurno();
+			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){

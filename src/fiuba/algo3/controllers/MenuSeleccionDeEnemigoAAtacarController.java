@@ -76,10 +76,21 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 
 	}
 	
+	public void clickBotonVolverAtras(){
+		Jugador jugadorActual = this.partida.getJugadorActual();
+		if (jugadorActual == this.partida.getPlayer1()){
+			this.mainApp.showMenuAutobots();
+		}else{
+			this.mainApp.showMenuDecepticons();
+		}
+		this.mainApp.showSeleccionPersonajeAtaque();
+	}
+	
 	public void clickBotonTerminarTurno(){
 		
 		try{
 			this.partida.finalizarTurno();
+			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
 			this.mainApp.showMenuDeOpciones();
 			
 			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){

@@ -34,6 +34,14 @@ public class EscenarioRaizTableroController {
 	private ImageView frenzy;
 	
 	private MainApp mainApp;
+	private String colorDorado = "-fx-background-color: GOLD";
+	private String colorRocosa = "-fx-background-color: LIGHTGREEN;";
+	private String colorPantano = "-fx-background-color: BURLYWOOD;";
+	private String colorEspinas = "-fx-background-color: CRIMSON;";
+	private String bordeNube = "-fx-border-color: CORNFLOWERBLUE;";
+	private String bordeNebulosa = "-fx-border-color: VIOLET;";
+	private String bordeTormenta = "-fx-border-color: GREY;";
+	private String anchuraBorde = "-fx-border-width: 5";
 	
 	public EscenarioRaizTableroController(){
 
@@ -44,16 +52,16 @@ public class EscenarioRaizTableroController {
 		for (int i = 2; i <= 23; i++){
 			Pane pane1 = new Pane();
 			Pane pane2 = new Pane();
-			pane1.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
-			pane2.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+			pane1.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
+			pane2.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
 			this.tablero.add(pane1, i, 0);
 			this.tablero.add(pane2, 0, i);
 		}
 		for (int i = 0; i <= 21; i++){
 			Pane pane1 = new Pane();
 			Pane pane2 = new Pane();
-			pane1.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
-			pane2.setStyle("-fx-background-color: lightgreen;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+			pane1.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
+			pane2.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
 			this.tablero.add(pane1, i, 23);
 			this.tablero.add(pane2, 23, i);
 		}
@@ -119,34 +127,34 @@ public class EscenarioRaizTableroController {
 				Casillero casillero = tablero.obtenerCasillero(posicionActual);
 				
 				if (casillero.getSuperficies().equals(campoNubeRoca)){
-					pane.setStyle("-fx-background-color: LIGHTGREEN;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+					pane.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoNubePantano)){
-					pane.setStyle("-fx-background-color: BURLYWOOD;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+					pane.setStyle(this.colorPantano+this.bordeNube+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoNubeEspinas)){
-					pane.setStyle("-fx-background-color: CRIMSON;-fx-border-color: CORNFLOWERBLUE; -fx-border-width: 5");
+					pane.setStyle(this.colorEspinas+this.bordeNube+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoNebulosaRoca)){
-					pane.setStyle("-fx-background-color: LIGHTGREEN;-fx-border-color: VIOLET; -fx-border-width: 5");
+					pane.setStyle(this.colorRocosa+this.bordeNebulosa+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoNebulosaPantano)){
-					pane.setStyle("-fx-background-color: BURLYWOOD;-fx-border-color: VIOLET; -fx-border-width: 5");
+					pane.setStyle(this.colorPantano+this.bordeNebulosa+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoNebulosaEspinas)){
-					pane.setStyle("-fx-background-color: CRIMSON;-fx-border-color: VIOLET; -fx-border-width: 5");
+					pane.setStyle(this.colorEspinas+this.bordeNebulosa+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoTormentaRoca)){
-					pane.setStyle("-fx-background-color: LIGHTGREEN;-fx-border-color: GREY; -fx-border-width: 5");
+					pane.setStyle(this.colorRocosa+this.bordeTormenta+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoTormentaPantano)){
-					pane.setStyle("-fx-background-color: BURLYWOOD;-fx-border-color: GREY; -fx-border-width: 5");
+					pane.setStyle(this.colorPantano+this.bordeTormenta+this.anchuraBorde);
 				}
 				if (casillero.getSuperficies().equals(campoTormentaEspinas)){
-					pane.setStyle("-fx-background-color: CRIMSON;-fx-border-color: GREY; -fx-border-width: 5");
+					pane.setStyle(this.colorEspinas+this.bordeTormenta+this.anchuraBorde);
 				}
 				if (casillero.getChispaSuprema() != null){
-					pane.setStyle("-fx-background-color: GOLD");
+					pane.setStyle(this.colorDorado);
 				}
 				if (casillero.getBonus() != null){
 					Bonus bonus = casillero.getBonus();
