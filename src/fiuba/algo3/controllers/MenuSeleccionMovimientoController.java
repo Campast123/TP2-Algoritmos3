@@ -81,7 +81,11 @@ public class MenuSeleccionMovimientoController {
 	}
 	
 	public void clickBotonVolverAtras(){
-		this.mainApp.showSeleccionPersonajeMovimiento();
+		if (this.personajeAMover.esUnico()){
+			this.mainApp.showMenuDeOpciones();
+		}else{
+			this.mainApp.showSeleccionPersonajeMovimiento();
+		}
 	}
 
 	public void clickBotonTerminarTurno(){

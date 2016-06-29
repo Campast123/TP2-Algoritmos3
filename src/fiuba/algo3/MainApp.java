@@ -3,6 +3,7 @@ package fiuba.algo3;
 import java.io.IOException;
 
 import fiuba.algo3.controllers.EscenarioRaizTableroController;
+import fiuba.algo3.controllers.MenuDeAtacarAModoUnicoController;
 import fiuba.algo3.controllers.MenuDeAtaqueController;
 import fiuba.algo3.controllers.MenuMovimientoController;
 import fiuba.algo3.controllers.MenuSeleccionDeEnemigoAAtacarController;
@@ -107,8 +108,8 @@ public class MainApp extends Application {
 	
 	public void showMenuAutobots(){
 		try{
-			Jugador jugadorActual = this.partida.getJugadorActual();
-			Boolean esModoUnico = jugadorActual.getPersonajeModoUnico()!=null;
+			Jugador jugadorAutobots = this.partida.getPlayer1();
+			Boolean esModoUnico = jugadorAutobots.getPersonajeModoUnico()!=null;
 			FXMLLoader loader = new FXMLLoader();
 			
 			if (esModoUnico){
@@ -128,8 +129,8 @@ public class MainApp extends Application {
 	
 	public void showMenuDecepticons(){
 		try{
-			Jugador jugadorActual = this.partida.getJugadorActual();
-			Boolean esModoUnico = jugadorActual.getPersonajeModoUnico()!=null;
+			Jugador jugadorDecepticons = this.partida.getPlayer2();
+			Boolean esModoUnico = jugadorDecepticons.getPersonajeModoUnico() != null;
 			FXMLLoader loader = new FXMLLoader();
 			
 			if (esModoUnico){
@@ -202,22 +203,30 @@ public class MainApp extends Application {
 	public void showAtaqueDePersonaje(Personaje personaje){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/MenuSeleccionDeEnemigoAAtacar.fxml"));
-			VBox AtaqueDePersonaje = (VBox) loader.load();
+			VBox ataqueDePersonaje;
+			if (this.partida.getJugadorEnEspera().getPersonajeModoUnico() != null){
+				loader.setLocation(getClass().getResource("controllers/MenuDeAtacarAModoUnico.fxml"));
+				ataqueDePersonaje = (VBox) loader.load();
+				MenuDeAtacarAModoUnicoController menuSeleccionMovController = loader.getController();
+				menuSeleccionMovController.setMainApp(this);
+				menuSeleccionMovController.setPartida(this.partida);
+				menuSeleccionMovController.setPersonajeAtacante(personaje);
+			}else{
+				loader.setLocation(getClass().getResource("controllers/MenuSeleccionDeEnemigoAAtacar.fxml"));
+				ataqueDePersonaje = (VBox) loader.load();
+				MenuSeleccionDeEnemigoAAtacarController menuSeleccionMovController = loader.getController();
+				menuSeleccionMovController.setMainApp(this);
+				menuSeleccionMovController.setPartida(this.partida);
+				menuSeleccionMovController.setPersonajeAtacante(personaje);
+			}
 			
 			if (this.partida.getJugadorEnEspera() == this.partida.getPlayer1()){
 				this.showMenuAutobots();
-			}
-			else{
+			}else{
 				this.showMenuDecepticons();
 			}
 
-			MenuSeleccionDeEnemigoAAtacarController menuSeleccionMovController = loader.getController();
-			menuSeleccionMovController.setMainApp(this);
-			menuSeleccionMovController.setPartida(this.partida);
-			menuSeleccionMovController.setPersonajeAtacante(personaje);
-
-			this.escenarioRaiz.setLeft(AtaqueDePersonaje);
+			this.escenarioRaiz.setLeft(ataqueDePersonaje);
 		
         } catch (IOException e) {
             e.printStackTrace();

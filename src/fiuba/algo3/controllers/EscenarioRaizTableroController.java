@@ -134,34 +134,28 @@ public class EscenarioRaizTableroController {
 				
 				if (casillero.getSuperficies().equals(campoNubeRoca)){
 					pane.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoNubePantano)){
+				}else if (casillero.getSuperficies().equals(campoNubePantano)){
 					pane.setStyle(this.colorPantano+this.bordeNube+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoNubeEspinas)){
+				}else if (casillero.getSuperficies().equals(campoNubeEspinas)){
 					pane.setStyle(this.colorEspinas+this.bordeNube+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoNebulosaRoca)){
+				}else if (casillero.getSuperficies().equals(campoNebulosaRoca)){
 					pane.setStyle(this.colorRocosa+this.bordeNebulosa+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoNebulosaPantano)){
+				}else if (casillero.getSuperficies().equals(campoNebulosaPantano)){
 					pane.setStyle(this.colorPantano+this.bordeNebulosa+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoNebulosaEspinas)){
+				}else if (casillero.getSuperficies().equals(campoNebulosaEspinas)){
 					pane.setStyle(this.colorEspinas+this.bordeNebulosa+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoTormentaRoca)){
+				}else if (casillero.getSuperficies().equals(campoTormentaRoca)){
 					pane.setStyle(this.colorRocosa+this.bordeTormenta+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoTormentaPantano)){
+				}else if (casillero.getSuperficies().equals(campoTormentaPantano)){
 					pane.setStyle(this.colorPantano+this.bordeTormenta+this.anchuraBorde);
-				}
-				if (casillero.getSuperficies().equals(campoTormentaEspinas)){
+				}else if (casillero.getSuperficies().equals(campoTormentaEspinas)){
 					pane.setStyle(this.colorEspinas+this.bordeTormenta+this.anchuraBorde);
 				}
+				
 				if (casillero.getChispaSuprema() != null){
 					pane.setStyle(this.colorDorado);
 				}
+				
 				if (casillero.getBonus() != null){
 					Bonus bonus = casillero.getBonus();
 					Circle circleBonus = new Circle();

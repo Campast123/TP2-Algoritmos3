@@ -8,72 +8,29 @@ import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class MenuSeleccionDeEnemigoAAtacarController {
-	
+public class MenuDeAtacarAModoUnicoController {
 	@FXML
-	private Label ptosDeVidaPersonaje1;
+	private Label ptosDeVidaPersonaje;
 	@FXML
-	private Label ataquePersonaje1;
+	private Label ataquePersonaje;
 	@FXML
-	private Label distDeAtaquePersonaje1;
+	private Label distDeAtaquePersonaje;
 	@FXML
-	private Label velocidadPersonaje1;
-	
-	@FXML
-	private Label ptosDeVidaPersonaje2;
-	@FXML
-	private Label ataquePersonaje2;
-	@FXML
-	private Label distDeAtaquePersonaje2;
-	@FXML
-	private Label velocidadPersonaje2;
-	
-	@FXML
-	private Label ptosDeVidaPersonaje3;
-	@FXML
-	private Label ataquePersonaje3;
-	@FXML
-	private Label distDeAtaquePersonaje3;
-	@FXML
-	private Label velocidadPersonaje3;
+	private Label velocidadPersonaje;
 
 	private Partida partida;
 	private Personaje personajeAtacante;
 	private MainApp mainApp;
 
-	public void clickBotonAtacarAPersonaje1(){
+	public void clickBotonAtacarAPersonajeUnico(){
 		Jugador jugadorEnEspera = this.partida.getJugadorEnEspera();
 		try{
-			this.partida.atacarConAlgoformerA(this.personajeAtacante, jugadorEnEspera.getPersonaje1());
+			this.partida.atacarConAlgoformerA(this.personajeAtacante, jugadorEnEspera.getPersonajeModoUnico());
 			this.clickBotonTerminarTurno();
 
 		}catch(Exception ex){
 			CajaAlerta.mostrar("Error en ataque", "El oponente elegido es imposible de atacar. Elija otro.");
 		}
-
-	}
-
-	public void clickBotonAtacarAPersonaje2(){
-		Jugador jugadorEnEspera = this.partida.getJugadorEnEspera();
-		try{
-			this.partida.atacarConAlgoformerA(this.personajeAtacante, jugadorEnEspera.getPersonaje2());
-			this.clickBotonTerminarTurno();
-
-		}catch(Exception ex){
-			CajaAlerta.mostrar("Error en ataque", "El oponente elegido es imposible de atacar. Elija otro.");
-		}
-	}
-	
-	public void clickBotonAtacarAPersonaje3(){
-		Jugador jugadorEnEspera = this.partida.getJugadorEnEspera();
-		try{
-			this.partida.atacarConAlgoformerA(this.personajeAtacante, jugadorEnEspera.getPersonaje3());
-			this.clickBotonTerminarTurno();
-
-		}catch(Exception ex){
-			CajaAlerta.mostrar("Error en ataque", "El oponente elegido es imposible de atacar. Elija otro.");
-		}
-
 	}
 	
 	public void clickBotonVolverAtras(){
@@ -119,13 +76,8 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 	
 	private void actualizarDatos() {
 		
-		Personaje personaje1 = this.partida.getJugadorEnEspera().getPersonaje1();
-		this.actualizarDatosIndividual(personaje1, this.ptosDeVidaPersonaje1, this.ataquePersonaje1, this.distDeAtaquePersonaje1, this.velocidadPersonaje1);
-		Personaje personaje2 = this.partida.getJugadorEnEspera().getPersonaje2();
-		this.actualizarDatosIndividual(personaje2, this.ptosDeVidaPersonaje2, this.ataquePersonaje2, this.distDeAtaquePersonaje2, this.velocidadPersonaje2);
-		Personaje personaje3 = this.partida.getJugadorEnEspera().getPersonaje3();
-		this.actualizarDatosIndividual(personaje3, this.ptosDeVidaPersonaje3, this.ataquePersonaje3, this.distDeAtaquePersonaje3, this.velocidadPersonaje3);
-		
+		Personaje personaje = this.partida.getJugadorEnEspera().getPersonajeModoUnico();
+		this.actualizarDatosIndividual(personaje, this.ptosDeVidaPersonaje, this.ataquePersonaje, this.distDeAtaquePersonaje, this.velocidadPersonaje);
 	}
 
 	public void setPartida(Partida partida) {
@@ -142,3 +94,4 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 	}
 
 }
+
