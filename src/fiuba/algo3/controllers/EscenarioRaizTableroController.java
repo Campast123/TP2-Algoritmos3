@@ -1,5 +1,7 @@
 package fiuba.algo3.controllers;
 
+import java.util.HashMap;
+
 import fiuba.algo3.MainApp;
 import fiuba.algo3.modelo.bonus.Bonus;
 import fiuba.algo3.modelo.bonus.TipoBonus;
@@ -34,6 +36,7 @@ public class EscenarioRaizTableroController {
 	private ImageView frenzy;
 	
 	private MainApp mainApp;
+	private HashMap<Posicion,Circle> mapaDeBonus;
 	private String colorDorado = "-fx-background-color: GOLD";
 	private String colorRocosa = "-fx-background-color: LIGHTGREEN;";
 	private String colorPantano = "-fx-background-color: BURLYWOOD;";
@@ -49,6 +52,9 @@ public class EscenarioRaizTableroController {
 	
 	@FXML
 	private void initialize(){
+		
+		this.mapaDeBonus = new HashMap<Posicion,Circle>();
+		
 		for (int i = 2; i <= 23; i++){
 			Pane pane1 = new Pane();
 			Pane pane2 = new Pane();
@@ -159,6 +165,8 @@ public class EscenarioRaizTableroController {
 				if (casillero.getBonus() != null){
 					Bonus bonus = casillero.getBonus();
 					Circle circleBonus = new Circle();
+					this.mapaDeBonus.put(posicionActual, circleBonus);
+					
 					pane.getChildren().add(circleBonus);
 					
 					if (bonus.getType() == TipoBonus.DobleCanion){
@@ -178,6 +186,13 @@ public class EscenarioRaizTableroController {
 				}
 				this.tablero.add(pane, i, j);
 			}
+		}
+	}
+	
+	public void consumirBonus(Posicion posicionBonus){
+		if (this.mapaDeBonus.containsKey(posicionBonus)){
+			Circle bonus = this.mapaDeBonus.get(posicionBonus);
+			bonus.setOpacity(0.00);
 		}
 	}
 	

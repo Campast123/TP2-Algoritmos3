@@ -37,6 +37,7 @@ public class MenuSeleccionMovimientoController {
 		try{
 			this.partida.moverAlgoformerA(this.personajeAMover, posicion);
 			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
+			this.mainApp.getControladorTablero().consumirBonus(this.personajeAMover.getPosicion());
 			this.botonVolverAtras.setDisable(true);
 			this.actualizarDatos();
 		

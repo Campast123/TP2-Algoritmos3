@@ -110,5 +110,9 @@ public class Casillero implements Posicionable {
 	public boolean isOcupado() {
 		return ocupado;
 	}
+
+	public void quitarBonus() {
+		this.bonus = null;
+	}
 	
 }

@@ -142,6 +142,7 @@ public class Tablero {
 				this.tablero.get(posicionDestino).agregarPosicionable(personaje);
 				if (this.tablero.get(posicionDestino).getBonus() != null){
 					personaje.agregarBonusPersonaje(this.tablero.get(posicionDestino).getBonus());
+					this.tablero.get(posicionDestino).quitarBonus();
 				}
 				superficiesDestino.aplicarEfecto(personaje);
 				personaje.reducirVelocidad();
