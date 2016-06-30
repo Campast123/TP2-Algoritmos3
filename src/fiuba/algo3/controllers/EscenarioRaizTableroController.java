@@ -12,6 +12,7 @@ import fiuba.algo3.modelo.tablero.Casillero;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -38,13 +39,15 @@ public class EscenarioRaizTableroController {
 	private MainApp mainApp;
 	private HashMap<Posicion,Circle> mapaDeBonus;
 	private String colorDorado = "-fx-background-color: GOLD";
-	private String colorRocosa = "-fx-background-color: LIGHTGREEN;";
-	private String colorPantano = "-fx-background-color: BURLYWOOD;";
-	private String colorEspinas = "-fx-background-color: CRIMSON;";
-	private String bordeNube = "-fx-border-color: CORNFLOWERBLUE;";
-	private String bordeNebulosa = "-fx-border-color: VIOLET;";
-	private String bordeTormenta = "-fx-border-color: GREY;";
-	private String anchuraBorde = "-fx-border-width: 5";
+	private Image imagenRocosaNube = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosa.jpg",74,65,false,true);
+	private Image imagenRocosaNebulosa = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosaNebulosa.png",74,65,false,true);
+	private Image imagenRocosaTormenta = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosaTormenta.png",74,65,false,true);
+	private Image imagenPantanoNube = new Image("fiuba/algo3/vistas/imagenes/ImagenPantano.jpg",74,65,false,true);
+	private Image imagenPantanoNebulosa = new Image("fiuba/algo3/vistas/imagenes/ImagenPantanoNebulosa.png",74,65,false,true);
+	private Image imagenPantanoTormenta = new Image("fiuba/algo3/vistas/imagenes/ImagenPantanoTormenta.png",74,65,false,true);
+	private Image imagenEspinasNube = new Image("fiuba/algo3/vistas/imagenes/ImagenEspinas.jpg",74,65,false,true);
+	private Image imagenEspinasNebulosa = new Image("fiuba/algo3/vistas/imagenes/ImagenEspinasNebulosa.png",74,65,false,true);
+	private Image imagenEspinasTormenta = new Image("fiuba/algo3/vistas/imagenes/ImagenEspinasTormenta.png",74,65,false,true);
 	
 	public EscenarioRaizTableroController(){
 
@@ -56,20 +59,16 @@ public class EscenarioRaizTableroController {
 		this.mapaDeBonus = new HashMap<Posicion,Circle>();
 		
 		for (int i = 2; i <= 23; i++){
-			Pane pane1 = new Pane();
-			Pane pane2 = new Pane();
-			pane1.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
-			pane2.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
-			this.tablero.add(pane1, i, 0);
-			this.tablero.add(pane2, 0, i);
+			ImageView imagen1 = new ImageView(this.imagenRocosaNube);
+			ImageView imagen2 = new ImageView(this.imagenRocosaNube);
+			this.tablero.add(imagen1, i, 0);
+			this.tablero.add(imagen2, 0, i);
 		}
 		for (int i = 0; i <= 21; i++){
-			Pane pane1 = new Pane();
-			Pane pane2 = new Pane();
-			pane1.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
-			pane2.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
-			this.tablero.add(pane1, i, 23);
-			this.tablero.add(pane2, 23, i);
+			ImageView imagen1 = new ImageView(this.imagenRocosaNube);
+			ImageView imagen2 = new ImageView(this.imagenRocosaNube);
+			this.tablero.add(imagen1, i, 23);
+			this.tablero.add(imagen2, 23, i);
 		}
 		
 	}
@@ -77,7 +76,7 @@ public class EscenarioRaizTableroController {
 	public void actualizarPosicionesIndividualmente(Personaje personaje, ImageView autobotVisual){
 		autobotVisual.setOpacity(1.00);
 		if (personaje.estaInmovilizado()){
-			autobotVisual.setOpacity(0.20);
+			autobotVisual.setOpacity(0.40);
 		}
 		Posicion posicion = personaje.getPosicion();
 		this.tablero.getChildren().remove(autobotVisual);
@@ -127,58 +126,59 @@ public class EscenarioRaizTableroController {
 		
 		for (int i= 1; i <= 22; i++){
 			for (int j=1; j <=22; j++){
-				Pane pane = new Pane();
+				ImageView imagen = new ImageView();
 				Posicion posicionActual = new Posicion(j,i);
 				Tablero tablero = this.mainApp.getPartida().getTablero();
 				Casillero casillero = tablero.obtenerCasillero(posicionActual);
 				
 				if (casillero.getSuperficies().equals(campoNubeRoca)){
-					pane.setStyle(this.colorRocosa+this.bordeNube+this.anchuraBorde);
+					imagen.setImage(this.imagenRocosaNube);
 				}else if (casillero.getSuperficies().equals(campoNubePantano)){
-					pane.setStyle(this.colorPantano+this.bordeNube+this.anchuraBorde);
+					imagen.setImage(this.imagenPantanoNube);
 				}else if (casillero.getSuperficies().equals(campoNubeEspinas)){
-					pane.setStyle(this.colorEspinas+this.bordeNube+this.anchuraBorde);
+					imagen.setImage(this.imagenEspinasNube);
 				}else if (casillero.getSuperficies().equals(campoNebulosaRoca)){
-					pane.setStyle(this.colorRocosa+this.bordeNebulosa+this.anchuraBorde);
+					imagen.setImage(this.imagenRocosaNebulosa);
 				}else if (casillero.getSuperficies().equals(campoNebulosaPantano)){
-					pane.setStyle(this.colorPantano+this.bordeNebulosa+this.anchuraBorde);
+					imagen.setImage(this.imagenPantanoNebulosa);
 				}else if (casillero.getSuperficies().equals(campoNebulosaEspinas)){
-					pane.setStyle(this.colorEspinas+this.bordeNebulosa+this.anchuraBorde);
+					imagen.setImage(this.imagenEspinasNebulosa);
 				}else if (casillero.getSuperficies().equals(campoTormentaRoca)){
-					pane.setStyle(this.colorRocosa+this.bordeTormenta+this.anchuraBorde);
+					imagen.setImage(this.imagenRocosaTormenta);
 				}else if (casillero.getSuperficies().equals(campoTormentaPantano)){
-					pane.setStyle(this.colorPantano+this.bordeTormenta+this.anchuraBorde);
+					imagen.setImage(this.imagenPantanoTormenta);
 				}else if (casillero.getSuperficies().equals(campoTormentaEspinas)){
-					pane.setStyle(this.colorEspinas+this.bordeTormenta+this.anchuraBorde);
+					imagen.setImage(this.imagenEspinasTormenta);
 				}
 				
-				if (casillero.getChispaSuprema() != null){
-					pane.setStyle(this.colorDorado);
-				}
+				this.tablero.add(imagen, i, j);
 				
 				if (casillero.getBonus() != null){
 					Bonus bonus = casillero.getBonus();
 					Circle circleBonus = new Circle();
 					this.mapaDeBonus.put(posicionActual, circleBonus);
 					
-					pane.getChildren().add(circleBonus);
+					this.tablero.add(circleBonus, i, j);
 					
 					if (bonus.getType() == TipoBonus.DobleCanion){
 						circleBonus.setFill(Color.GOLD);
-					}
-					if (bonus.getType() == TipoBonus.Flash){
+					}else if (bonus.getType() == TipoBonus.Flash){
 						circleBonus.setFill(Color.RED);
-					}
-					if (bonus.getType() == TipoBonus.BurbujaInmaculada){
+					}else if (bonus.getType() == TipoBonus.BurbujaInmaculada){
 						circleBonus.setFill(Color.BLUE);
 					}
 					
 					circleBonus.setStroke(Color.BLACK);
 					circleBonus.setRadius(25);
-					circleBonus.setTranslateX(38);
-					circleBonus.setTranslateY(33);
+					circleBonus.setOpacity(0.80);
+					circleBonus.setTranslateX(10);
 				}
-				this.tablero.add(pane, i, j);
+				
+				if (casillero.getChispaSuprema() != null){
+					Pane pane = new Pane();
+					pane.setStyle(this.colorDorado);
+					this.tablero.add(pane, i, j);
+				}
 			}
 		}
 	}
