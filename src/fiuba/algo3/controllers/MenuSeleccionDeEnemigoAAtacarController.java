@@ -83,7 +83,11 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		}else{
 			this.mainApp.showMenuDecepticons();
 		}
-		this.mainApp.showSeleccionPersonajeAtaque();
+		if (this.personajeAtacante.esUnico()){
+			this.mainApp.showMenuDeOpciones();
+		}else{
+			this.mainApp.showSeleccionPersonajeAtaque();
+		}
 	}
 
 	public void clickBotonTerminarTurno(){

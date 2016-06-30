@@ -116,7 +116,19 @@ public abstract class Personaje implements Posicionable {
 	public boolean esAlterno() {
 		return (this.modoAlgoformer.esAlterno());
 	}
-
+	
+	public boolean esUnico(){
+		return (this.modoAlgoformer.esUnico());
+	}
+	
+	public boolean esUnidadTerrestre(){
+		return (this.modoAlgoformer.esUnidadTerrestre());
+	}
+	
+	public boolean esUnidadAerea(){
+		return (this.modoAlgoformer.esUnidadAerea());
+	}
+	
 	public void reducirVidaEspinas() {
 		this.modoAlgoformer.quitarVidaEspinas(this);
 	}
