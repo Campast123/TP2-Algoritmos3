@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.jugabilidad;
 
+import fiuba.algo3.modelo.excepciones.JugadorGanoException;
 import fiuba.algo3.modelo.excepciones.NoEsValidaLaTransformacionAModoUnico;
 
 //import org.slf4j.Logger;
@@ -102,6 +103,20 @@ public class Partida {
 		Posicion posicion = algoformer.getPosicion().devolverSuma(direccion);
 		this.juego.moverPersonaje(algoformer, posicion);
 //		logger.info("El personaje se movio a la posicion: " + algoformer.getPosicion().toString());
+		if (this.partidaTerminada()){
+			throw new JugadorGanoException(this.getJugadorActual());
+		}
+	}
+
+	public boolean jugadoresEnEsperaSinVida(){
+		boolean personajeConVida1 = this.getJugadorEnEspera().getPersonaje1().estaVivo();
+		boolean personajeConVida2 = this.getJugadorEnEspera().getPersonaje2().estaVivo();
+		boolean personajeConVida3 = this.getJugadorEnEspera().getPersonaje3().estaVivo();
+
+		if ((!personajeConVida1) && (!personajeConVida2) && (!personajeConVida3)){
+			return true;
+		}
+		return false;
 	}
 
 	public void atacarConAlgoformerA(Personaje algoformerAtacante, Personaje algoformerDestino){
@@ -140,7 +155,7 @@ public class Partida {
 		Posicion posicionPersonaje1 = jugador.getPersonaje1().getPosicion();
 		Posicion posicionPersonaje2 = jugador.getPersonaje2().getPosicion();
 		Posicion posicionPersonaje3 = jugador.getPersonaje3().getPosicion();
-		
+
 		Casillero casilleroPersonaje1 = this.juego.obtenerCasillero(posicionPersonaje1);
 		casilleroPersonaje1.retirarPersonaje();
 		Casillero casilleroPersonaje2 = this.juego.obtenerCasillero(posicionPersonaje2);

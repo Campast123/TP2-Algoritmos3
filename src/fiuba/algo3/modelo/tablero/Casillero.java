@@ -17,7 +17,7 @@ public class Casillero implements Posicionable {
 	private Posicion posicion;
 	private SuperficieDeCampo superficies;
 	private Bonus bonus;
-	
+
 	public Casillero(Posicion posicion){
 		this.ocupado = false;
 		this.posicion = posicion;
@@ -26,7 +26,7 @@ public class Casillero implements Posicionable {
 		this.bonus = null;
 		this.superficies = new SuperficieDeCampo(new SuperficieNube(), new SuperficieRocosa());
 	}
-	
+
 	public Casillero(Posicion posicion, SuperficieAerea superficieAerea, SuperficieTerrestre suerficieTerrestre){
 		this.ocupado = false;
 		this.posicion = posicion;
@@ -35,7 +35,7 @@ public class Casillero implements Posicionable {
 		this.bonus = null;
 		this.superficies = new SuperficieDeCampo(superficieAerea, suerficieTerrestre);
 	}
-	
+
 	public Casillero(Posicion posicion, SuperficieDeCampo superficie){
 		this.ocupado = false;
 		this.posicion = posicion;
@@ -44,36 +44,36 @@ public class Casillero implements Posicionable {
 		this.bonus = null;
 		this.superficies = superficie;
 	}
-	
+
 	@Override
 	public Posicion getPosicion(){
 		return (this.posicion);
 	}
-	
+
 	@Override
 	public void setPosicion(Posicion posicion){
 		this.posicion = posicion;
 	}
-	
+
 	public void agregarPosicionable(Personaje personaje){
 		personaje.setPosicion(this.posicion);
 		this.personaje = personaje;
 		this.ocupado = true;
-		this.chispa = null;
-	}	
-		
-	public void agregarPosicionable(ChispaSuprema chispa){		
-		this.personaje = null;		
+		if (this.chispa != null){
+			this.chispa.capturar();
+		}
+	}
+
+	public void agregarPosicionable(ChispaSuprema chispa){
 		this.chispa = chispa;
 		this.ocupado = false;
 	}
-	
-	public void agregarPosicionable(Bonus bonus){		
-		this.chispa = null;
+
+	public void agregarPosicionable(Bonus bonus){
 		this.ocupado = false;
 		this.bonus = bonus;
 	}
-	
+
 	public void retirarPersonaje(){
 		this.personaje = null;
 		this.ocupado = false;
@@ -82,11 +82,11 @@ public class Casillero implements Posicionable {
 	public boolean estaOcupado() {
 		return ocupado;
 	}
-	
+
 	public ChispaSuprema getChispaSuprema() {
 		return this.chispa;
 	}
-	
+
 	public Personaje getPersonaje() {
 		return this.personaje;
 	}
@@ -114,5 +114,5 @@ public class Casillero implements Posicionable {
 	public void quitarBonus() {
 		this.bonus = null;
 	}
-	
+
 }

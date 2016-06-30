@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class VentanaDeAccionesController {
-	
+
 	@FXML
 	private Label nombreJugador;
 
@@ -23,7 +23,7 @@ public class VentanaDeAccionesController {
 			this.mainApp.showMovimientoDePersonaje(personaje);
 		}else{
 			this.mainApp.showSeleccionPersonajeMovimiento();
-		}	
+		}
 	}
 
 	public void clickBotonAtaque(){
@@ -46,9 +46,9 @@ public class VentanaDeAccionesController {
 		Jugador jugadorActual = this.partida.getJugadorActual();
 		try{
 			this.partida.transformarAlgoformerAModoUnico(jugadorActual);
-		
+
 			this.mainApp.getControladorTablero().fusionarPersonajes(jugadorActual);
-		
+
 			this.clickBotonTerminarTurno();
 		}catch(Exception e){
 			CajaAlerta.mostrar("Error", "Error en transformacion");
@@ -56,28 +56,13 @@ public class VentanaDeAccionesController {
 	}
 
 	public void clickBotonTerminarTurno(){
-		
-		try{
-			this.partida.finalizarTurno();
-			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
-			this.mainApp.showMenuDeOpciones();
-			
-			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
-				this.mainApp.showMenuAutobots();
-			}
-			else{
-				this.mainApp.showMenuDecepticons();
-			}
-		}
-		catch(Exception ex){
-			CajaAlerta.mostrar("Error en finalizar turno", "");
-		}	
+		this.mainApp.terminarTurno();
 	}
-	
+
 	public void setMainApp(MainApp mainApp){
 		this.mainApp = mainApp;
 	}
-	
+
 	private void esUnico(){
 		Jugador jugador = this.partida.getJugadorActual();
 		this.esPersonajeUnico = jugador.getPersonajeModoUnico() != null;
@@ -86,7 +71,7 @@ public class VentanaDeAccionesController {
 	public void setPartida(Partida partida) {
 		this.partida = partida;
 		this.esUnico();
-		
+
 	}
 
 	public void setNombreJugador(String nombre){
