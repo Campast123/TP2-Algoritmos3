@@ -120,15 +120,11 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		this.actualizarDatosIndividual(personaje2, this.ptosDeVidaPersonaje2, this.ataquePersonaje2, this.distDeAtaquePersonaje2, this.velocidadPersonaje2);
 		Personaje personaje3 = this.partida.getJugadorEnEspera().getPersonaje3();
 		this.actualizarDatosIndividual(personaje3, this.ptosDeVidaPersonaje3, this.ataquePersonaje3, this.distDeAtaquePersonaje3, this.velocidadPersonaje3);
-<<<<<<< HEAD
 		
 		this.botonPersonaje1.setText(personaje1.toString());
 		this.botonPersonaje2.setText(personaje2.toString());
 		this.botonPersonaje3.setText(personaje3.toString());
 		
-=======
-
->>>>>>> origin/master
 	}
 
 	public void setPartida(Partida partida) {

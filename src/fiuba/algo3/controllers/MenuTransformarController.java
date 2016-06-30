@@ -3,7 +3,6 @@ package fiuba.algo3.controllers;
 import fiuba.algo3.MainApp;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.personajes.Personaje;
-import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -126,7 +125,6 @@ public class MenuTransformarController {
 		}else{
 			this.tipoDeAlgoformers.setText("Decepticons");
 		}
-<<<<<<< HEAD
 		
 		if (personaje1.estaInmovilizado()){
 			this.botonPersonaje1.setDisable(true);
@@ -135,10 +133,6 @@ public class MenuTransformarController {
 		}else if (personaje3.estaInmovilizado()){
 			this.botonPersonaje3.setDisable(true);
 		}
-		
-=======
-
->>>>>>> origin/master
 	}
 
 	public void setPartida(Partida partida) {
