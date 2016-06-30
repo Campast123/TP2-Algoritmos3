@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MenuTransformarController {
-	
+
 	@FXML
 	private Button botonPersonaje1;
 	@FXML
@@ -63,8 +63,8 @@ public class MenuTransformarController {
 
 	private Partida partida;
 	private MainApp mainApp;
-	
-	public void clickBotonTransformarPersonaje1(){	
+
+	public void clickBotonTransformarPersonaje1(){
 		this.partida.transformarAlgoformer(this.partida.getJugadorActual().getPersonaje1());
 
 		this.clickBotonTerminarTurno();
@@ -82,28 +82,13 @@ public class MenuTransformarController {
 		this.partida.transformarAlgoformer(this.partida.getJugadorActual().getPersonaje3());
 		this.clickBotonTerminarTurno();
 	}
-	
+
 	public void clickBotonVolverAtras(){
 		this.mainApp.showMenuDeOpciones();
 	}
-	
+
 	public void clickBotonTerminarTurno(){
-		
-		try{
-			this.partida.finalizarTurno();
-			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
-			this.mainApp.showMenuDeOpciones();
-			
-			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
-				this.mainApp.showMenuAutobots();
-			}
-			else{
-				this.mainApp.showMenuDecepticons();
-			}
-		}
-		catch(Exception ex){
-			CajaAlerta.mostrar("Error en finalizar turno", "");
-		}		
+		this.mainApp.terminarTurno();
 	}
 	
 	private void actualizarDatosIndividual(Personaje personaje, Label vida,Label ataque, Label alcance, Label velocidad, Label modo, Label unidad){
@@ -121,9 +106,9 @@ public class MenuTransformarController {
 			}
 		}
 	}
-	
+
 	private void actualizarDatos() {
-		
+
 		Personaje personaje1 = this.partida.getJugadorActual().getPersonaje1();
 		this.actualizarDatosIndividual(personaje1, this.ptosDeVidaPersonaje1, this.ataquePersonaje1, this.distDeAtaquePersonaje1, this.velocidadPersonaje1,this.modoPersonaje1,this.tipoUnidadPersonaje1);
 		Personaje personaje2 = this.partida.getJugadorActual().getPersonaje2();
@@ -141,6 +126,7 @@ public class MenuTransformarController {
 		}else{
 			this.tipoDeAlgoformers.setText("Decepticons");
 		}
+<<<<<<< HEAD
 		
 		if (personaje1.estaInmovilizado()){
 			this.botonPersonaje1.setDisable(true);
@@ -150,8 +136,11 @@ public class MenuTransformarController {
 			this.botonPersonaje3.setDisable(true);
 		}
 		
+=======
+
+>>>>>>> origin/master
 	}
-	
+
 	public void setPartida(Partida partida) {
 		this.partida = partida;
 		this.actualizarDatos();

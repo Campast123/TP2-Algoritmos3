@@ -8,11 +8,11 @@ public class ChispaSupremaTest {
 	@Test
 	public void crearChispaSupremaTest(){
 		ChispaSuprema chispaSuprema = new ChispaSuprema();
-		Assert.assertEquals(new Posicion(25,25), chispaSuprema.getPosicion());
+		Assert.assertEquals(new Posicion(24,25), chispaSuprema.getPosicion());
 		Assert.assertFalse(chispaSuprema.chispaCapturada());
-		
+
 	}
-	
+
 	@Test
 	public void capturarChispaSupremaTest(){
 		ChispaSuprema chispaSuprema = new ChispaSuprema();
@@ -20,6 +20,6 @@ public class ChispaSupremaTest {
 		chispaSuprema.capturar();
 		Assert.assertTrue(chispaSuprema.chispaCapturada());
 
-		
+
 	}
 }

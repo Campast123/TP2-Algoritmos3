@@ -9,25 +9,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class VentanaDeAccionesController {
-	
+
 	@FXML
 	private Label nombreJugador;
 
 	private Partida partida;
 	private MainApp mainApp;
-	private Boolean esPersonajeUnico;
 
 	public void clickBotonMovimiento(){
-		if (this.esPersonajeUnico){
+		if (this.esUnico()){
 			Personaje personaje = this.partida.getJugadorActual().getPersonajeModoUnico();
 			this.mainApp.showMovimientoDePersonaje(personaje);
 		}else{
 			this.mainApp.showSeleccionPersonajeMovimiento();
-		}	
+		}
 	}
 
 	public void clickBotonAtaque(){
-		if (this.esPersonajeUnico){
+		if (this.esUnico()){
 			Personaje personaje = this.partida.getJugadorActual().getPersonajeModoUnico();
 			this.mainApp.showAtaqueDePersonaje(personaje);
 		}else{
@@ -36,7 +35,7 @@ public class VentanaDeAccionesController {
 	}
 
 	public void clickBotonTransformacion(){
-		if (this.esPersonajeUnico){
+		if (this.esUnico()){
 		}else{
 			this.mainApp.showSeleccionPersonajeTransformacion();
 		}
@@ -46,9 +45,9 @@ public class VentanaDeAccionesController {
 		Jugador jugadorActual = this.partida.getJugadorActual();
 		try{
 			this.partida.transformarAlgoformerAModoUnico(jugadorActual);
-		
+
 			this.mainApp.getControladorTablero().fusionarPersonajes(jugadorActual);
-		
+
 			this.clickBotonTerminarTurno();
 		}catch(Exception e){
 			CajaAlerta.mostrar("Error", "Error en transformacion");
@@ -56,37 +55,22 @@ public class VentanaDeAccionesController {
 	}
 
 	public void clickBotonTerminarTurno(){
-		
-		try{
-			this.partida.finalizarTurno();
-			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
-			this.mainApp.showMenuDeOpciones();
-			
-			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
-				this.mainApp.showMenuAutobots();
-			}
-			else{
-				this.mainApp.showMenuDecepticons();
-			}
-		}
-		catch(Exception ex){
-			CajaAlerta.mostrar("Error en finalizar turno", "");
-		}	
+		this.mainApp.terminarTurno();
 	}
-	
+
 	public void setMainApp(MainApp mainApp){
 		this.mainApp = mainApp;
 	}
-	
-	private void esUnico(){
+
+	private boolean esUnico(){
 		Jugador jugador = this.partida.getJugadorActual();
-		this.esPersonajeUnico = jugador.getPersonajeModoUnico() != null;
+		return jugador.getPersonajeModoUnico() != null;
 	}
 
 	public void setPartida(Partida partida) {
 		this.partida = partida;
 		this.esUnico();
-		
+
 	}
 
 	public void setNombreJugador(String nombre){

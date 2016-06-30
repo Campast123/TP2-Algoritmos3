@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MenuSeleccionDeEnemigoAAtacarController {
-	
+
 	@FXML
 	private Label nombrePersonajeAtacante;
 	
@@ -29,7 +29,7 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 	private Label distDeAtaquePersonaje1;
 	@FXML
 	private Label velocidadPersonaje1;
-	
+
 	@FXML
 	private Label ptosDeVidaPersonaje2;
 	@FXML
@@ -38,7 +38,7 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 	private Label distDeAtaquePersonaje2;
 	@FXML
 	private Label velocidadPersonaje2;
-	
+
 	@FXML
 	private Label ptosDeVidaPersonaje3;
 	@FXML
@@ -74,7 +74,7 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 			CajaAlerta.mostrar("Error en ataque", "El oponente elegido es imposible de atacar. Elija otro.");
 		}
 	}
-	
+
 	public void clickBotonAtacarAPersonaje3(){
 		Jugador jugadorEnEspera = this.partida.getJugadorEnEspera();
 		try{
@@ -86,7 +86,7 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		}
 
 	}
-	
+
 	public void clickBotonVolverAtras(){
 		Jugador jugadorActual = this.partida.getJugadorActual();
 		if (jugadorActual == this.partida.getPlayer1()){
@@ -100,47 +100,35 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 			this.mainApp.showSeleccionPersonajeAtaque();
 		}
 	}
-	
+
 	public void clickBotonTerminarTurno(){
-		
-		try{
-			this.partida.finalizarTurno();
-			this.mainApp.getControladorTablero().actualizarPosicionesGenerales();
-			this.mainApp.showMenuDeOpciones();
-			
-			if (this.partida.getJugadorActual() == this.partida.getPlayer1()){
-				this.mainApp.showMenuAutobots();
-			}
-			else{
-				this.mainApp.showMenuDecepticons();
-			}
-		}
-		catch(Exception ex){
-			CajaAlerta.mostrar("Error en finalizar turno", "");
-		}
-		
+		this.mainApp.terminarTurno();
 	}
-	
+
 	private void actualizarDatosIndividual(Personaje personaje, Label vida,Label ataque, Label alcance, Label velocidad){
 		vida.setText(String.valueOf(personaje.getPuntosDeVida()));
 		ataque.setText(String.valueOf(personaje.getAtaque()));
 		alcance.setText(String.valueOf(personaje.getDistanciaDeAtaque()));
 		velocidad.setText(String.valueOf(personaje.getVelocidad()));
 	}
-	
+
 	private void actualizarDatos() {
-		
+
 		Personaje personaje1 = this.partida.getJugadorEnEspera().getPersonaje1();
 		this.actualizarDatosIndividual(personaje1, this.ptosDeVidaPersonaje1, this.ataquePersonaje1, this.distDeAtaquePersonaje1, this.velocidadPersonaje1);
 		Personaje personaje2 = this.partida.getJugadorEnEspera().getPersonaje2();
 		this.actualizarDatosIndividual(personaje2, this.ptosDeVidaPersonaje2, this.ataquePersonaje2, this.distDeAtaquePersonaje2, this.velocidadPersonaje2);
 		Personaje personaje3 = this.partida.getJugadorEnEspera().getPersonaje3();
 		this.actualizarDatosIndividual(personaje3, this.ptosDeVidaPersonaje3, this.ataquePersonaje3, this.distDeAtaquePersonaje3, this.velocidadPersonaje3);
+<<<<<<< HEAD
 		
 		this.botonPersonaje1.setText(personaje1.toString());
 		this.botonPersonaje2.setText(personaje2.toString());
 		this.botonPersonaje3.setText(personaje3.toString());
 		
+=======
+
+>>>>>>> origin/master
 	}
 
 	public void setPartida(Partida partida) {

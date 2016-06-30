@@ -9,7 +9,7 @@ public class ChispaSuprema implements Posicionable {
 
 	public ChispaSuprema(){
 		this.capturada = false;
-		this.posicion = new Posicion(25,25);
+		this.posicion = new Posicion(24,25);
 	}
 
 	public ChispaSuprema(int alto, int largo){
