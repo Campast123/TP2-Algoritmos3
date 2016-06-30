@@ -101,7 +101,11 @@ public class MenuSeleccionMovimientoController {
 	}
 
 	private void actualizarDatos(){
-		this.cantMov = this.personajeAMover.getVelocidad();
+		if (this.personajeAMover.estaInmovilizado()){
+			this.cantMov = 0;
+		}else{
+			this.cantMov = this.personajeAMover.getVelocidad();
+		}
 
 		this.ptosDeVida.setText(String.valueOf(this.personajeAMover.getPuntosDeVida()));
 		this.ataque.setText(String.valueOf(this.personajeAMover.getAtaque()));

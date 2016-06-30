@@ -15,9 +15,9 @@
             <Pane prefHeight="575.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Button layoutX="47.0" layoutY="502.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
-                  <Button layoutX="51.0" layoutY="76.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje1" prefHeight="25.0" prefWidth="89.0" text="Personaje1" />
-                  <Button layoutX="51.0" layoutY="218.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje2" prefHeight="25.0" prefWidth="89.0" text="Personaje2" />
-                  <Button layoutX="51.0" layoutY="356.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje3" prefHeight="25.0" prefWidth="89.0" text="Personaje3" />
+                  <Button fx:id="botonPersonaje1" layoutX="51.0" layoutY="76.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje1" prefHeight="25.0" prefWidth="89.0" text="Personaje1" />
+                  <Button fx:id="botonPersonaje2" layoutX="51.0" layoutY="218.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje2" prefHeight="25.0" prefWidth="89.0" text="Personaje2" />
+                  <Button fx:id="botonPersonaje3" layoutX="51.0" layoutY="356.0" mnemonicParsing="false" onAction="#clickBotonTransformarPersonaje3" prefHeight="25.0" prefWidth="89.0" text="Personaje3" />
                   <GridPane layoutX="3.0" layoutY="111.0" prefHeight="99.0" prefWidth="200.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

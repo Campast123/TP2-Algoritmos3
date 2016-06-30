@@ -25,4 +25,8 @@ public class Superion extends Autobot {
 	public void transformar(){
 		
 	}
+	@Override
+	public String toString(){
+		return ("Superion"); 
+	}
 }

@@ -12,7 +12,6 @@ import fiuba.algo3.controllers.MenuTransformarController;
 import fiuba.algo3.controllers.PantallaDeInicioController;
 import fiuba.algo3.controllers.PantallaDeVictoriaController;
 import fiuba.algo3.controllers.VentanaDeAccionesController;
-import fiuba.algo3.modelo.excepciones.JugadorGanoException;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.jugabilidad.TipoTransformer;
@@ -24,7 +23,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 

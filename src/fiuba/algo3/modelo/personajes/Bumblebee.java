@@ -18,4 +18,8 @@ public class Bumblebee extends Autobot {
 		this.distintosModos = new Stack<ModoAlgoformer>();
 		this.distintosModos.push(modoAlterno);
 	}
+	@Override
+	public String toString(){
+		return ("Bumblebee"); 
+	}
 }

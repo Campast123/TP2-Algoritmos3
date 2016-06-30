@@ -18,4 +18,8 @@ public class Optimus extends Autobot {
 		this.distintosModos = new Stack<ModoAlgoformer>();
 		this.distintosModos.push(modoAlterno);
 	}
+	@Override
+	public String toString(){
+		return ("Optimus"); 
+	}
 }
