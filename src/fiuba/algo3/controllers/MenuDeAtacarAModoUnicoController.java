@@ -6,9 +6,13 @@ import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MenuDeAtacarAModoUnicoController {
+	
+	@FXML
+	private Button botonPersonje;
 	@FXML
 	private Label ptosDeVidaPersonaje;
 	@FXML
@@ -78,6 +82,8 @@ public class MenuDeAtacarAModoUnicoController {
 		
 		Personaje personaje = this.partida.getJugadorEnEspera().getPersonajeModoUnico();
 		this.actualizarDatosIndividual(personaje, this.ptosDeVidaPersonaje, this.ataquePersonaje, this.distDeAtaquePersonaje, this.velocidadPersonaje);
+		
+		this.botonPersonje.setText(personaje.toString());
 	}
 
 	public void setPartida(Partida partida) {

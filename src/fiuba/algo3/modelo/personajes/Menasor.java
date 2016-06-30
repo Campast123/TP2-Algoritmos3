@@ -24,4 +24,8 @@ public class Menasor extends Decepticon {
 	public void transformar(){
 		
 	}
+	@Override
+	public String toString(){
+		return ("Menasor"); 
+	}
 }

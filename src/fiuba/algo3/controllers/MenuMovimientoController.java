@@ -134,13 +134,15 @@ public class MenuMovimientoController {
 			this.tipoDeAlgoformers.setText("Decepticons");
 		}
 		
+		this.botonPersonaje1.setText(personaje1.toString());
+		this.botonPersonaje2.setText(personaje2.toString());
+		this.botonPersonaje3.setText(personaje3.toString());
+		
 		if (personaje1.estaInmovilizado()){
 			this.botonPersonaje1.setDisable(true);
-		}
-		if (personaje2.estaInmovilizado()){
+		}else if (personaje2.estaInmovilizado()){
 			this.botonPersonaje2.setDisable(true);
-		}
-		if (personaje3.estaInmovilizado()){
+		}else if (personaje3.estaInmovilizado()){
 			this.botonPersonaje3.setDisable(true);
 		}
 		

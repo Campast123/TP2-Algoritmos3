@@ -17,7 +17,7 @@
                      <font>
                         <Font size="13.0" />
                      </font></Label>
-                  <Button layoutX="41.0" layoutY="197.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonajeUnico" prefHeight="25.0" prefWidth="111.0" text="Personaje Unico" />
+                  <Button fx:id="botonPersonje" layoutX="41.0" layoutY="197.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonajeUnico" prefHeight="25.0" prefWidth="111.0" text="Personaje Unico" />
                   <Button layoutX="51.0" layoutY="494.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
                   <GridPane layoutX="7.0" layoutY="235.0" prefHeight="105.0" prefWidth="200.0">
                     <columnConstraints>

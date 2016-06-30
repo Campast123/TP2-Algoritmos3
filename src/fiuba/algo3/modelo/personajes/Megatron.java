@@ -18,4 +18,8 @@ public class Megatron extends Decepticon {
 		this.distintosModos = new Stack<ModoAlgoformer>();
 		this.distintosModos.push(modoAlterno);
 	}
+	@Override
+	public String toString(){
+		return ("Megatron"); 
+	}
 }

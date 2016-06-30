@@ -19,9 +19,9 @@
                         <Font size="13.0" />
                      </font></Label>
                   <Button layoutX="47.0" layoutY="467.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
-                  <Button layoutX="51.0" layoutY="84.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje1" prefHeight="25.0" prefWidth="89.0" text="Personaje1" />
-                  <Button layoutX="51.0" layoutY="203.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje2" prefHeight="25.0" prefWidth="89.0" text="Personaje2" />
-                  <Button layoutX="51.0" layoutY="319.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje3" prefHeight="25.0" prefWidth="89.0" text="Personaje3" />
+                  <Button fx:id="botonPersonaje1" layoutX="51.0" layoutY="84.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje1" prefHeight="25.0" prefWidth="89.0" text="Personaje1" />
+                  <Button fx:id="botonPersonaje2" layoutX="51.0" layoutY="203.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje2" prefHeight="25.0" prefWidth="89.0" text="Personaje2" />
+                  <Button fx:id="botonPersonaje3" layoutX="51.0" layoutY="319.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje3" prefHeight="25.0" prefWidth="89.0" text="Personaje3" />
                   <GridPane layoutX="11.0" layoutY="109.0" prefHeight="84.0" prefWidth="200.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
