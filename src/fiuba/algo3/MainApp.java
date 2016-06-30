@@ -122,7 +122,7 @@ public class MainApp extends Application {
 			controladorDeAcciones.setMainApp(this);
 			controladorDeAcciones.setPartida(this.partida);
 			controladorDeAcciones.setNombreJugador(nombreJugador);
-
+			controladorDeAcciones.validarBotonesSiEsUnico();
 			this.escenarioRaiz.setLeft(menuOpciones);
 
         } catch (IOException e) {

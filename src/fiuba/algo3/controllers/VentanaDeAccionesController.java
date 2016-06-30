@@ -7,14 +7,35 @@ import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 public class VentanaDeAccionesController {
 
 	@FXML
 	private Label nombreJugador;
 
+	@FXML
+	private Button botonAtacar;
+	@FXML
+	private Button botonTransformar;
+	@FXML
+	private Button botonModoUnico;
+	@FXML
+	private Button botonMover;
+
+
 	private Partida partida;
 	private MainApp mainApp;
+
+
+	public void validarBotonesSiEsUnico(){
+		if (this.esUnico()){
+			this.botonTransformar.setDisable(true);
+			this.botonModoUnico.setDisable(true);
+		}else{
+			this.mainApp.showSeleccionPersonajeMovimiento();
+		}
+	}
 
 	public void clickBotonMovimiento(){
 		if (this.esUnico()){
