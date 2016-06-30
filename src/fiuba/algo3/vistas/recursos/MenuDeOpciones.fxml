@@ -13,10 +13,10 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: lightgrey;" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="53.0" layoutY="351.0" mnemonicParsing="false" onAction="#clickBotonMovimiento" prefHeight="25.0" prefWidth="95.0" text="Mover" />
-            <Button layoutX="50.0" layoutY="390.0" mnemonicParsing="false" onAction="#clickBotonAtaque" prefHeight="25.0" prefWidth="101.0" text="Atacar" />
-            <Button layoutX="60.0" layoutY="433.0" mnemonicParsing="false" onAction="#clickBotonTransformacion" text="Transformar" />
-            <Button layoutX="60.0" layoutY="478.0" mnemonicParsing="false" onAction="#clickBotonTransformacionModoUnico" text="Modo Unico" />
+            <Button fx:id="botonMover" layoutX="53.0" layoutY="351.0" mnemonicParsing="false" onAction="#clickBotonMovimiento" prefHeight="25.0" prefWidth="95.0" text="Mover" />
+            <Button fx:id="botonAtacar" layoutX="50.0" layoutY="390.0" mnemonicParsing="false" onAction="#clickBotonAtaque" prefHeight="25.0" prefWidth="101.0" text="Atacar" />
+            <Button fx:id="botonTransformar" layoutX="60.0" layoutY="433.0" mnemonicParsing="false" onAction="#clickBotonTransformacion" text="Transformar" />
+            <Button fx:id="botonModoUnico" layoutX="60.0" layoutY="478.0" mnemonicParsing="false" onAction="#clickBotonTransformacionModoUnico" text="Modo Unico" />
             <Button layoutX="52.0" layoutY="523.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
             <GridPane layoutY="14.0">
               <columnConstraints>
