@@ -175,7 +175,9 @@ public class Partida {
 			} else {
 				algoformerModoUnico = new Menasor(vidaTotal,posicionPersonaje1);
 			}
+			algoformerModoUnico.setTurnosInmovilizado(3);
 			jugador.setPersonajeModoUnico(algoformerModoUnico);
+
 		} else {
 			throw new NoEsValidaLaTransformacionAModoUnico("La distancia entre los algoformers no es valida para la transformacion");
 		}
