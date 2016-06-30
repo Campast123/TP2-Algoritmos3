@@ -15,10 +15,9 @@ public class VentanaDeAccionesController {
 
 	private Partida partida;
 	private MainApp mainApp;
-	private Boolean esPersonajeUnico;
 
 	public void clickBotonMovimiento(){
-		if (this.esPersonajeUnico){
+		if (this.esUnico()){
 			Personaje personaje = this.partida.getJugadorActual().getPersonajeModoUnico();
 			this.mainApp.showMovimientoDePersonaje(personaje);
 		}else{
@@ -27,7 +26,7 @@ public class VentanaDeAccionesController {
 	}
 
 	public void clickBotonAtaque(){
-		if (this.esPersonajeUnico){
+		if (this.esUnico()){
 			Personaje personaje = this.partida.getJugadorActual().getPersonajeModoUnico();
 			this.mainApp.showAtaqueDePersonaje(personaje);
 		}else{
@@ -36,7 +35,7 @@ public class VentanaDeAccionesController {
 	}
 
 	public void clickBotonTransformacion(){
-		if (this.esPersonajeUnico){
+		if (this.esUnico()){
 		}else{
 			this.mainApp.showSeleccionPersonajeTransformacion();
 		}
@@ -63,9 +62,9 @@ public class VentanaDeAccionesController {
 		this.mainApp = mainApp;
 	}
 
-	private void esUnico(){
+	private boolean esUnico(){
 		Jugador jugador = this.partida.getJugadorActual();
-		this.esPersonajeUnico = jugador.getPersonajeModoUnico() != null;
+		return jugador.getPersonajeModoUnico() != null;
 	}
 
 	public void setPartida(Partida partida) {
