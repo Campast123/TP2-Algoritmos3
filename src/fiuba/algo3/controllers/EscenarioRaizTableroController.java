@@ -12,6 +12,7 @@ import fiuba.algo3.modelo.tablero.Casillero;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.fxml.FXML;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -58,6 +59,13 @@ public class EscenarioRaizTableroController {
 		
 		this.mapaDeBonus = new HashMap<Posicion,Circle>();
 		
+		this.crearBordesDeColores(this.optimus, Color.RED);
+		this.crearBordesDeColores(this.bumblebee, Color.RED);
+		this.crearBordesDeColores(this.ratchet, Color.RED);
+		this.crearBordesDeColores(this.megatron, Color.DARKVIOLET);
+		this.crearBordesDeColores(this.bonecrusher, Color.DARKVIOLET);
+		this.crearBordesDeColores(this.frenzy, Color.DARKVIOLET);
+		
 		for (int i = 2; i <= 23; i++){
 			ImageView imagen1 = new ImageView(this.imagenRocosaNube);
 			ImageView imagen2 = new ImageView(this.imagenRocosaNube);
@@ -77,7 +85,10 @@ public class EscenarioRaizTableroController {
 		autobotVisual.setOpacity(1.00);
 		if (personaje.estaInmovilizado()){
 			autobotVisual.setOpacity(0.40);
+		}else if(!personaje.estaVivo()){
+			autobotVisual.setOpacity(0.00);
 		}
+		
 		Posicion posicion = personaje.getPosicion();
 		this.tablero.getChildren().remove(autobotVisual);
 		this.tablero.add(autobotVisual, posicion.getCoordenadaY(), posicion.getCoordenadaX());
@@ -188,6 +199,20 @@ public class EscenarioRaizTableroController {
 			Circle bonus = this.mapaDeBonus.get(posicionBonus);
 			bonus.setOpacity(0.00);
 		}
+	}
+	
+	public void crearBordesDeColores(ImageView imagenPersonaje, Color color){
+		
+		int depth = 70;
+		DropShadow borderGlow= new DropShadow();
+		borderGlow.setOffsetY(0f);
+		borderGlow.setOffsetX(0f);
+		borderGlow.setWidth(depth);
+		borderGlow.setHeight(depth);
+		
+		borderGlow.setColor(color);
+		imagenPersonaje.setEffect(borderGlow);
+		
 	}
 	
 	public void fusionarPersonajes(Jugador jugadorActual){

@@ -32,9 +32,23 @@ public class VentanaDeAccionesController {
 		if (this.esUnico()){
 			this.botonTransformar.setDisable(true);
 			this.botonModoUnico.setDisable(true);
+			
+			if(this.partida.getJugadorActual().getPersonajeModoUnico().estaInmovilizado()){
+				this.botonAtacar.setDisable(true);
+				this.botonMover.setDisable(true);
+			}
 		}else{
-			this.mainApp.showSeleccionPersonajeMovimiento();
+			if (this.hayPersonajesMuertos()){
+				this.botonModoUnico.setDisable(true);
+			}
 		}
+	}
+
+	private boolean hayPersonajesMuertos() {
+		boolean personaje1EstaVivo = this.partida.getJugadorActual().getPersonaje1().estaVivo();
+		boolean personaje2EstaVivo = this.partida.getJugadorActual().getPersonaje2().estaVivo();
+		boolean personaje3EstaVivo = this.partida.getJugadorActual().getPersonaje3().estaVivo();
+		return (!personaje1EstaVivo || !personaje2EstaVivo || !personaje3EstaVivo);
 	}
 
 	public void clickBotonMovimiento(){
