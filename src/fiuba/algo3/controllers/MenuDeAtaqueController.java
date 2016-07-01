@@ -107,9 +107,11 @@ public class MenuDeAtaqueController {
 		
 		if (personaje1.estaInmovilizado() || !personaje1.estaVivo()){
 			this.botonPersonaje1.setDisable(true);
-		}else if (personaje2.estaInmovilizado() || !personaje2.estaVivo()){
+		} 
+		if (personaje2.estaInmovilizado() || !personaje2.estaVivo()){
 			this.botonPersonaje2.setDisable(true);
-		}else if (personaje3.estaInmovilizado() || !personaje3.estaVivo()){
+		}
+		if (personaje3.estaInmovilizado() || !personaje3.estaVivo()){
 			this.botonPersonaje3.setDisable(true);
 		}
 		

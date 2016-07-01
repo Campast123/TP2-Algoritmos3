@@ -125,6 +125,16 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 		this.botonPersonaje2.setText(personaje2.toString());
 		this.botonPersonaje3.setText(personaje3.toString());
 		
+		if (!personaje1.estaVivo()){
+			this.botonPersonaje1.setDisable(true);
+		} 
+		if (!personaje2.estaVivo()){
+			this.botonPersonaje2.setDisable(true);
+		}
+		if (!personaje3.estaVivo()){
+			this.botonPersonaje3.setDisable(true);
+		}
+		
 	}
 
 	public void setPartida(Partida partida) {
