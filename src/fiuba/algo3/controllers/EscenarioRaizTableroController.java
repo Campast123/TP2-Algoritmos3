@@ -12,6 +12,9 @@ import fiuba.algo3.modelo.tablero.Casillero;
 import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
@@ -219,6 +222,28 @@ public class EscenarioRaizTableroController {
 		}else{
 			this.bonecrusher.setOpacity(0.00);
 			this.frenzy.setOpacity(0.00);
+		}
+	}
+	
+	public void clickBotonClose(){
+		Alert confirmacionCerrar = new Alert(AlertType.CONFIRMATION, "Esta seguro que desea salir?", ButtonType.YES, ButtonType.NO);
+		confirmacionCerrar.setTitle("Salida del programa");
+		confirmacionCerrar.showAndWait();
+		if (confirmacionCerrar.getResult() == ButtonType.YES) {
+		   this.mainApp.cerrarAplicacion();
+		}else{
+			confirmacionCerrar.close();
+		}
+	}
+	
+	public void clickBotonAbout(){
+		String informacion = "Juego De Algoformers\nTP2 de Algoritmos y Programacion III";
+		Alert about = new Alert(AlertType.INFORMATION,informacion, ButtonType.OK);
+		about.setTitle("Informacion");
+		about.setHeaderText("Informacion");
+		about.showAndWait();
+		if (about.getResult() == ButtonType.OK){
+			about.close();
 		}
 	}
 	
