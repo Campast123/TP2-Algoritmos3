@@ -13,6 +13,7 @@ import fiuba.algo3.modelo.tablero.Posicion;
 import fiuba.algo3.modelo.tablero.Tablero;
 import javafx.fxml.FXML;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -39,6 +40,7 @@ public class EscenarioRaizTableroController {
 	
 	private MainApp mainApp;
 	private HashMap<Posicion,Circle> mapaDeBonus;
+	
 	private String colorDorado = "-fx-background-color: GOLD";
 	private Image imagenRocosaNube = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosa.jpg",74,65,false,true);
 	private Image imagenRocosaNebulosa = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosaNebulosa.png",74,65,false,true);
@@ -66,19 +68,6 @@ public class EscenarioRaizTableroController {
 		this.crearBordesDeColores(this.bonecrusher, Color.DARKVIOLET);
 		this.crearBordesDeColores(this.frenzy, Color.DARKVIOLET);
 		
-		for (int i = 2; i <= 23; i++){
-			ImageView imagen1 = new ImageView(this.imagenRocosaNube);
-			ImageView imagen2 = new ImageView(this.imagenRocosaNube);
-			this.tablero.add(imagen1, i, 0);
-			this.tablero.add(imagen2, 0, i);
-		}
-		for (int i = 0; i <= 21; i++){
-			ImageView imagen1 = new ImageView(this.imagenRocosaNube);
-			ImageView imagen2 = new ImageView(this.imagenRocosaNube);
-			this.tablero.add(imagen1, i, 23);
-			this.tablero.add(imagen2, 23, i);
-		}
-		
 	}
 	
 	public void actualizarPosicionesIndividualmente(Personaje personaje, ImageView autobotVisual){
@@ -87,6 +76,9 @@ public class EscenarioRaizTableroController {
 			autobotVisual.setOpacity(0.40);
 		}else if(!personaje.estaVivo()){
 			autobotVisual.setOpacity(0.00);
+		}else if (personaje.esUnico()){
+			DropShadow efecto = (DropShadow) autobotVisual.getEffect();
+			efecto.setInput(new Glow(1.00));
 		}
 		
 		Posicion posicion = personaje.getPosicion();
@@ -117,9 +109,11 @@ public class EscenarioRaizTableroController {
 	}
 	
 	public void actualizarCampos(){
+		
 		SuperficieRocosa rocosa = new SuperficieRocosa();
 		SuperficiePantano pantano = new SuperficiePantano();
 		SuperficieEspinas espinas = new SuperficieEspinas();
+		
 		SuperficieNube nube = new SuperficieNube();
 		SuperficieNebulosaDeAndromeda nebulosa = new SuperficieNebulosaDeAndromeda();
 		SuperficieTormentaPsionica tormenta = new SuperficieTormentaPsionica();
@@ -127,16 +121,19 @@ public class EscenarioRaizTableroController {
 		SuperficieDeCampo campoNubeRoca = new SuperficieDeCampo(nube,rocosa);
 		SuperficieDeCampo campoNubePantano = new SuperficieDeCampo(nube,pantano);
 		SuperficieDeCampo campoNubeEspinas = new SuperficieDeCampo(nube,espinas);
+		
 		SuperficieDeCampo campoNebulosaRoca = new SuperficieDeCampo(nebulosa,rocosa);
 		SuperficieDeCampo campoNebulosaPantano = new SuperficieDeCampo(nebulosa,pantano);
 		SuperficieDeCampo campoNebulosaEspinas = new SuperficieDeCampo(nebulosa,espinas);
+		
 		SuperficieDeCampo campoTormentaRoca = new SuperficieDeCampo(tormenta,rocosa);
 		SuperficieDeCampo campoTormentaPantano = new SuperficieDeCampo(tormenta,pantano);
 		SuperficieDeCampo campoTormentaEspinas = new SuperficieDeCampo(tormenta,espinas);
 		
 		
-		for (int i= 1; i <= 22; i++){
-			for (int j=1; j <=22; j++){
+		for (int i= 0; i <= 23; i++){
+			for (int j=0; j <=23; j++){
+				
 				ImageView imagen = new ImageView();
 				Posicion posicionActual = new Posicion(j,i);
 				Tablero tablero = this.mainApp.getPartida().getTablero();
@@ -161,7 +158,6 @@ public class EscenarioRaizTableroController {
 				}else if (casillero.getSuperficies().equals(campoTormentaEspinas)){
 					imagen.setImage(this.imagenEspinasTormenta);
 				}
-				
 				this.tablero.add(imagen, i, j);
 				
 				if (casillero.getBonus() != null){
@@ -202,15 +198,15 @@ public class EscenarioRaizTableroController {
 	}
 	
 	public void crearBordesDeColores(ImageView imagenPersonaje, Color color){
-		
+
 		int depth = 70;
 		DropShadow borderGlow= new DropShadow();
 		borderGlow.setOffsetY(0f);
 		borderGlow.setOffsetX(0f);
 		borderGlow.setWidth(depth);
 		borderGlow.setHeight(depth);
-		
 		borderGlow.setColor(color);
+		
 		imagenPersonaje.setEffect(borderGlow);
 		
 	}

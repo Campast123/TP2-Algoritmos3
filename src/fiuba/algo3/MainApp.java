@@ -19,10 +19,10 @@ import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.vistas.CajaAlerta;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -50,17 +50,18 @@ public class MainApp extends Application {
 		try{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("controllers/PantallaDeVictoria.fxml"));
-	        Parent root = (Parent) loader.load();
+	        Pane pantallaVictoria = (Pane) loader.load();
 
 	        PantallaDeVictoriaController pantallaDeVictoria = loader.getController();
 			pantallaDeVictoria.setMainApp(this);
 			pantallaDeVictoria.setNombreGanador(jugadorGanador.getNombre());
 
-			Scene scene = new Scene(loader.getRoot());
+			Scene scene = new Scene(pantallaVictoria);
             window.hide();
             window.setScene(scene);
             window.sizeToScene();
             window.show();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
