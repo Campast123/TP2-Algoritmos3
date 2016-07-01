@@ -237,8 +237,9 @@ public class EscenarioRaizTableroController {
 	}
 	
 	public void clickBotonAbout(){
-		String informacion = "Juego De Algoformers\nTP2 de Algoritmos y Programacion III";
-		Alert about = new Alert(AlertType.INFORMATION,informacion, ButtonType.OK);
+		String informacion = "Juego De Algoformers\nTP2 de Algoritmos y Programacion III\n";
+		String integrantes = "\nIntegrantes:\nAparicio, Axel\nCampanella, Martin\nRossi, Ignacio\nSosa, Leandro";
+		Alert about = new Alert(AlertType.INFORMATION,informacion+integrantes, ButtonType.OK);
 		about.setTitle("Informacion");
 		about.setHeaderText("Informacion");
 		about.showAndWait();

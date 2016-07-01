@@ -18,7 +18,7 @@
                         <Font size="13.0" />
                      </font></Label>
                   <Button fx:id="botonPersonaje1" layoutX="59.0" layoutY="79.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonaje1" prefHeight="25.0" prefWidth="82.0" text="Personaje 1" />
-                  <Button fx:id="botonPersonaje2" layoutX="59.0" layoutY="218.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonaje2" prefHeight="25.0" prefWidth="82.0" text="Personaje 2" />
+                  <Button fx:id="botonPersonaje2" layoutX="59.0" layoutY="218.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonaje2" prefHeight="25.0" prefWidth="97.0" text="Personaje 2" />
                   <Button fx:id="botonPersonaje3" layoutX="59.0" layoutY="348.0" mnemonicParsing="false" onAction="#clickBotonAtacarAPersonaje3" prefHeight="25.0" prefWidth="82.0" text="Personaje 3" />
                   <Button layoutX="51.0" layoutY="494.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
                   <GridPane layoutX="9.0" layoutY="104.0" prefHeight="105.0" prefWidth="200.0">

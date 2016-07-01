@@ -117,9 +117,9 @@ public class MenuMovimientoController {
 			this.tipoDeAlgoformers.setText("Decepticons");
 		}
 		
-		this.botonPersonaje1.setText(personaje1.toString());
-		this.botonPersonaje2.setText(personaje2.toString());
-		this.botonPersonaje3.setText(personaje3.toString());
+		this.botonPersonaje1.setText("1-"+personaje1.toString());
+		this.botonPersonaje2.setText("2-"+personaje2.toString());
+		this.botonPersonaje3.setText("3-"+personaje3.toString());
 		
 		if (personaje1.estaInmovilizado() || !personaje1.estaVivo()){
 			this.botonPersonaje1.setDisable(true);

@@ -10,6 +10,8 @@ import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class MenuSeleccionMovimientoController {
 	@FXML
@@ -32,6 +34,28 @@ public class MenuSeleccionMovimientoController {
 	@FXML
 	private void initialize(){
 		this.botonVolverAtras.setDisable(false);
+	}
+	
+	@FXML
+	private void handleTeclaPresionada(KeyEvent teclaPresionada){
+		KeyCode codigoTecla = teclaPresionada.getCode();
+		if (codigoTecla == KeyCode.UP){
+			this.clickBotonMoverArriba();
+		}else if (codigoTecla == KeyCode.DOWN){
+			this.clickBotonMoverAbajo();
+		}else if (codigoTecla == KeyCode.LEFT){
+			this.clickBotonMoverIzquierda();
+		}else if (codigoTecla == KeyCode.RIGHT){
+			this.clickBotonMoverDerecha();
+		}else if (codigoTecla == KeyCode.RIGHT && codigoTecla == KeyCode.UP){
+			this.clickBotonMoverDiagDerSup();
+		}else if (codigoTecla == KeyCode.LEFT && codigoTecla == KeyCode.UP ){
+			this.clickBotonMoverDiagIzqSup();
+		}else if (codigoTecla == KeyCode.RIGHT && codigoTecla == KeyCode.DOWN){
+			this.clickBotonMoverDiagDerInf();
+		}else if (codigoTecla == KeyCode.LEFT && codigoTecla == KeyCode.DOWN ){
+			this.clickBotonMoverDiagIzqInf();
+		}
 	}
 
 	public void moverAPosicion(Posicion posicion){
