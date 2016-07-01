@@ -18,8 +18,6 @@ public abstract class Decepticon extends Personaje {
 			ataqueRecibido = 0;
 		
 		this.ptosDeVida = this.ptosDeVida - ataqueRecibido;
-		
-		this.verificarSaludDelPersonaje();
 	}
 	
 	@Override

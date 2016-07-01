@@ -4,17 +4,12 @@ public class Posicion {
 
 	private int coordenadaX;
 	private int coordenadaY;
-
+	
 	public Posicion( int coordenadaX, int coordenadaY ){
 		this.coordenadaX = coordenadaX;
 		this.coordenadaY = coordenadaY;
 	}
-
-	public void setearPosicion(Posicion posicion){
-		this.coordenadaX = posicion.getCoordenadaX();
-		this.coordenadaY = posicion.getCoordenadaY();
-	}
-
+	
 
     @Override
     public int hashCode() {
@@ -22,7 +17,7 @@ public class Posicion {
 	    hash = (this.coordenadaX * 1000) +this.coordenadaY;
         return hash;
     }
-
+	
 	@Override
 	public boolean equals(Object o){
 		Posicion posicionRecibida = (Posicion) o;
@@ -33,7 +28,7 @@ public class Posicion {
 		}
 		return false;
 	}
-
+	
 
 	public int getCoordenadaX() {
 		return coordenadaX;
@@ -50,7 +45,7 @@ public class Posicion {
 	public void setCoordenadaY(int coordenadaY) {
 		this.coordenadaY = coordenadaY;
 	}
-
+	
 
 	public Posicion devolverSuma(Posicion posicion) {
 		int nuevaCoordX = this.coordenadaX + posicion.getCoordenadaX();
@@ -65,32 +60,28 @@ public class Posicion {
 		int minCoordenadaX = Math.min(this.coordenadaX, posicion.getCoordenadaX());
 		int maxCoordenadaY = Math.max(this.coordenadaY, posicion.getCoordenadaY());
 		int minCoordenadaY = Math.min(this.coordenadaY, posicion.getCoordenadaY());
-
+		
 		int distaciaAX = maxCoordenadaX - minCoordenadaX;
 		int distanciaAY = maxCoordenadaY - minCoordenadaY;
-
+		
 		int mayorDistancia = Math.max(distaciaAX, distanciaAY);
-
+		
 		return mayorDistancia;
 	}
-
+	
 	public static int distanciaEntreTresPuntos(Posicion posicionA, Posicion posicionB, Posicion posicionC){
 		int distanciaAB = posicionA.distanciaA(posicionB);
 		int distanciaAC = posicionA.distanciaA(posicionC);
 		int distanciaBC = posicionB.distanciaA(posicionC);
-
+		
 		int mayorDistancia = Math.max(distanciaBC, Math.max(distanciaAB, distanciaAC));
 
 		return mayorDistancia;
-
-	}
-
-	public static Posicion posicionInvalida(){
-		return new Posicion(-1,-1);
+		
 	}
 
 	@Override
 	public String toString(){
-		return ("(" + this.coordenadaX + "," + this.coordenadaY + ")");
+		return ("(" + this.coordenadaX + "," + this.coordenadaY + ")"); 
 	}
 }
