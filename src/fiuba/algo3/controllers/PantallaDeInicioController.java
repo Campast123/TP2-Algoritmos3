@@ -4,6 +4,8 @@ import fiuba.algo3.MainApp;
 import fiuba.algo3.vistas.CajaAlerta;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class PantallaDeInicioController {
 	@FXML
@@ -15,6 +17,13 @@ public class PantallaDeInicioController {
 	
 	public PantallaDeInicioController(){
 		
+	}
+	
+	@FXML
+	private void HandleTeclaPresionada(KeyEvent tecla){
+		if (tecla.getCode() == KeyCode.ENTER){
+			this.handleInicioDePartida();
+		}
 	}
 	
 	@FXML 
