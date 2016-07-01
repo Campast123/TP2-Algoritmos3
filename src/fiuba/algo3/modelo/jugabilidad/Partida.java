@@ -146,9 +146,29 @@ public class Partida {
 	public void finalizarTurno(){
 		Jugador jugadorActual = this.obtenerJugadorDelTurno();
 		jugadorActual.finalizarTurno();
+		this.verificarSaludDePersonajes(this.getJugadorEnEspera());
 		this.turno.cambioDeTurno();
 
 	}
+
+	private void verificarSaludDePersonajes(Jugador jugadorActual){
+		if (jugadorActual.getPersonajeModoUnico() != null){
+			this.retirarPersonajeSiEstaMuerto(jugadorActual.getPersonajeModoUnico());
+		} else {
+			this.retirarPersonajeSiEstaMuerto(jugadorActual.getPersonaje1());
+			this.retirarPersonajeSiEstaMuerto(jugadorActual.getPersonaje2());
+			this.retirarPersonajeSiEstaMuerto(jugadorActual.getPersonaje3());
+		}
+	}
+
+	private void retirarPersonajeSiEstaMuerto(Personaje personaje){
+		if (!personaje.estaVivo()){
+			Casillero casilleroPersonajeModoUnico = this.juego.obtenerCasillero(personaje.getPosicion());
+			casilleroPersonajeModoUnico.retirarPersonaje();
+		}
+	}
+
+
 
 	public void transformarAlgoformerAModoUnico(Jugador jugador){
 
