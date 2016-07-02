@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
+import fiuba.algo3.modelo.excepciones.AlgoformerNoPuedeAtacarException;
 
 public abstract class Decepticon extends Personaje {
 	
@@ -7,6 +8,8 @@ public abstract class Decepticon extends Personaje {
 	public void atacar (Personaje personaje){
 		if (this.puedeAtacar(personaje.getPosicion())){
 			personaje.recibirAtaqueDe(this);
+		}else{
+			throw new AlgoformerNoPuedeAtacarException();
 		}
 	}
 	
