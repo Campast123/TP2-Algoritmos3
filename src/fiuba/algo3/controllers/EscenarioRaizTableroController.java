@@ -85,6 +85,9 @@ public class EscenarioRaizTableroController {
 		}else if (personaje.esUnico()){
 			DropShadow efecto = (DropShadow) autobotVisual.getEffect();
 			efecto.setInput(new Glow(1.00));
+		}else{
+			DropShadow efecto = (DropShadow) autobotVisual.getEffect();
+			efecto.setInput(null);
 		}
 		
 		Posicion posicion = personaje.getPosicion();
