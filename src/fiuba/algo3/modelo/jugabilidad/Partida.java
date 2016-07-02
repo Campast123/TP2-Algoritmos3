@@ -109,10 +109,12 @@ public class Partida {
 	}
 
 	public boolean jugadoresEnEsperaSinVida(){
+		if (this.getJugadorEnEspera().getPersonajeModoUnico() != null){
+			return !this.getJugadorEnEspera().getPersonajeModoUnico().estaVivo();
+		}
 		boolean personajeConVida1 = this.getJugadorEnEspera().getPersonaje1().estaVivo();
 		boolean personajeConVida2 = this.getJugadorEnEspera().getPersonaje2().estaVivo();
 		boolean personajeConVida3 = this.getJugadorEnEspera().getPersonaje3().estaVivo();
-
 		if ((!personajeConVida1) && (!personajeConVida2) && (!personajeConVida3)){
 			return true;
 		}
