@@ -2,21 +2,21 @@ package fiuba.algo3;
 
 import java.io.IOException;
 
-import fiuba.algo3.controllers.EscenarioRaizTableroController;
-import fiuba.algo3.controllers.MenuDeAtacarAModoUnicoController;
-import fiuba.algo3.controllers.MenuDeAtaqueController;
-import fiuba.algo3.controllers.MenuMovimientoController;
-import fiuba.algo3.controllers.MenuSeleccionDeEnemigoAAtacarController;
-import fiuba.algo3.controllers.MenuSeleccionMovimientoController;
-import fiuba.algo3.controllers.MenuTransformarController;
-import fiuba.algo3.controllers.PantallaDeInicioController;
-import fiuba.algo3.controllers.PantallaDeVictoriaController;
-import fiuba.algo3.controllers.VentanaDeAccionesController;
 import fiuba.algo3.modelo.jugabilidad.Jugador;
 import fiuba.algo3.modelo.jugabilidad.Partida;
 import fiuba.algo3.modelo.jugabilidad.TipoTransformer;
 import fiuba.algo3.modelo.personajes.Personaje;
 import fiuba.algo3.vistas.CajaAlerta;
+import fiuba.algo3.vistas.controllers.EscenarioRaizTableroController;
+import fiuba.algo3.vistas.controllers.MenuDeAtacarAModoUnicoController;
+import fiuba.algo3.vistas.controllers.MenuDeAtaqueController;
+import fiuba.algo3.vistas.controllers.MenuMovimientoController;
+import fiuba.algo3.vistas.controllers.MenuSeleccionDeEnemigoAAtacarController;
+import fiuba.algo3.vistas.controllers.MenuSeleccionMovimientoController;
+import fiuba.algo3.vistas.controllers.MenuTransformarController;
+import fiuba.algo3.vistas.controllers.PantallaDeInicioController;
+import fiuba.algo3.vistas.controllers.PantallaDeVictoriaController;
+import fiuba.algo3.vistas.controllers.VentanaDeAccionesController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -49,7 +49,7 @@ public class MainApp extends Application {
 	public void showPantallaDeVictoria(Jugador jugadorGanador){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/PantallaDeVictoria.fxml"));
+			loader.setLocation(getClass().getResource("vistas/controllers/PantallaDeVictoria.fxml"));
 	        Pane pantallaVictoria = (Pane) loader.load();
 
 	        PantallaDeVictoriaController pantallaDeVictoria = loader.getController();
@@ -73,7 +73,7 @@ public class MainApp extends Application {
 			window.setTitle("Iniciar Partida Battle Algoformers");
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("controllers/PantallaDeInicio.fxml"));
+			loader.setLocation(MainApp.class.getResource("vistas/controllers/PantallaDeInicio.fxml"));
 			AnchorPane inicio = (AnchorPane) loader.load();
 
             Scene scene = new Scene(inicio);
@@ -92,7 +92,7 @@ public class MainApp extends Application {
 	public void showTableroRaiz(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/EscenarioRaizTablero.fxml"));
+			loader.setLocation(getClass().getResource("vistas/controllers/EscenarioRaizTablero.fxml"));
 			this.escenarioRaiz = (BorderPane) loader.load();
 
 			this.controladorTablero = loader.getController();
@@ -114,7 +114,7 @@ public class MainApp extends Application {
 			String nombreJugador = this.partida.getJugadorActual().getNombre();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("vistas/recursos/MenuDeOpciones.fxml"));
+			loader.setLocation(getClass().getResource("vistas/controllers/MenuDeOpciones.fxml"));
 			VBox menuOpciones = (VBox) loader.load();
 
 			VentanaDeAccionesController controladorDeAcciones = loader.getController();
@@ -136,10 +136,10 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 
 			if (esModoUnico){
-				loader.setLocation(getClass().getResource("controllers/MenuAutobotsModoUnico.fxml"));
+				loader.setLocation(getClass().getResource("vistas/controllers/MenuAutobotsModoUnico.fxml"));
 			}else{
 
-				loader.setLocation(getClass().getResource("controllers/MenuAutobots.fxml"));
+				loader.setLocation(getClass().getResource("vistas/controllers/MenuAutobots.fxml"));
 			}
 
 			AnchorPane menuAutobots = (AnchorPane) loader.load();
@@ -157,9 +157,9 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 
 			if (esModoUnico){
-				loader.setLocation(getClass().getResource("controllers/MenuDecepticonsModoUnico.fxml"));
+				loader.setLocation(getClass().getResource("vistas/controllers/MenuDecepticonsModoUnico.fxml"));
 			}else{
-				loader.setLocation(getClass().getResource("controllers/MenuDecepticons.fxml"));
+				loader.setLocation(getClass().getResource("vistas/controllers/MenuDecepticons.fxml"));
 			}
 
 			AnchorPane menuDecepticons = (AnchorPane) loader.load();
@@ -173,7 +173,7 @@ public class MainApp extends Application {
 	public void showSeleccionPersonajeMovimiento(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/MenuMovimientoInicial.fxml"));
+			loader.setLocation(getClass().getResource("vistas/controllers/MenuMovimientoInicial.fxml"));
 			VBox seleccPersonajeAMover = (VBox) loader.load();
 
 			MenuMovimientoController menuDeMovController = loader.getController();
@@ -190,13 +190,13 @@ public class MainApp extends Application {
 	public void showMovimientoDePersonaje(Personaje personaje){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/MenuSeleccionMovimiento.fxml"));
+			loader.setLocation(getClass().getResource("vistas/controllers/MenuSeleccionMovimiento.fxml"));
 			VBox movimientoPersonaje = (VBox) loader.load();
 
 			MenuSeleccionMovimientoController menuSeleccionMovController = loader.getController();
 			menuSeleccionMovController.setMainApp(this);
 			menuSeleccionMovController.setPartida(this.partida);
-			menuSeleccionMovController.setPersonajeAtacante(personaje);
+			menuSeleccionMovController.setPersonajeAMover(personaje);
 
 			this.escenarioRaiz.setLeft(movimientoPersonaje);
 
@@ -209,7 +209,7 @@ public class MainApp extends Application {
 	public void showSeleccionPersonajeAtaque(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/MenuDeAtaqueInicial.fxml"));
+			loader.setLocation(getClass().getResource("vistas/controllers/MenuDeAtaqueInicial.fxml"));
 			VBox seleccPersonajeAtacante = (VBox) loader.load();
 
 			MenuDeAtaqueController menuDeAtaqueController = loader.getController();
@@ -228,14 +228,14 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			VBox ataqueDePersonaje;
 			if (this.partida.getJugadorEnEspera().getPersonajeModoUnico() != null){
-				loader.setLocation(getClass().getResource("controllers/MenuDeAtacarAModoUnico.fxml"));
+				loader.setLocation(getClass().getResource("vistas/controllers/MenuDeAtacarAModoUnico.fxml"));
 				ataqueDePersonaje = (VBox) loader.load();
 				MenuDeAtacarAModoUnicoController menuSeleccionMovController = loader.getController();
 				menuSeleccionMovController.setMainApp(this);
 				menuSeleccionMovController.setPartida(this.partida);
 				menuSeleccionMovController.setPersonajeAtacante(personaje);
 			}else{
-				loader.setLocation(getClass().getResource("controllers/MenuSeleccionDeEnemigoAAtacar.fxml"));
+				loader.setLocation(getClass().getResource("vistas/controllers/MenuSeleccionDeEnemigoAAtacar.fxml"));
 				ataqueDePersonaje = (VBox) loader.load();
 				MenuSeleccionDeEnemigoAAtacarController menuSeleccionMovController = loader.getController();
 				menuSeleccionMovController.setMainApp(this);
@@ -260,7 +260,7 @@ public class MainApp extends Application {
 	public void showSeleccionPersonajeTransformacion(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("controllers/MenuTransformar.fxml"));
+			loader.setLocation(getClass().getResource("vistas/controllers/MenuTransformar.fxml"));
 			VBox menuTransformar = (VBox) loader.load();
 
 			MenuTransformarController menuTransformarController = loader.getController();
