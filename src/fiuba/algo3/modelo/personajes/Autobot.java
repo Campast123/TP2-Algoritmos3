@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.personajes;
 
 
-import fiuba.algo3.modelo.excepciones.AlgoformerNoPuedeAtacarException;
 import fiuba.algo3.modelo.tablero.Posicion;
 
 public abstract class Autobot extends Personaje{
@@ -21,8 +20,6 @@ public abstract class Autobot extends Personaje{
 	public void atacar (Personaje personaje){
 		if (this.puedeAtacar(personaje.getPosicion())){
 			personaje.recibirAtaqueDe(this);
-		}else{
-			throw new AlgoformerNoPuedeAtacarException();
 		}
 	}
 

@@ -176,5 +176,20 @@ public class IntegrationTests {
 		decepticon.atacar(autobot);
 		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
 
+
+		Posicion posicionDestinoAutobot = new Posicion(10,10);
+		Assert.assertFalse(tablero.estaOcupado(posicionDestinoAutobot));
+		tablero.moverPersonaje(autobot, posicionDestinoAutobot);
+		Assert.assertTrue(tablero.estaOcupado(posicionDestinoAutobot));
+
+
+		//optimus no ataca megatron (no tiene alcance)
+		autobot.atacar(decepticon);
+		Assert.assertTrue(decepticon.getPuntosDeVida() == 500);
+
+		//megatron no ataca optimus (no tiene alcance)
+		decepticon.atacar(autobot);
+		Assert.assertTrue(autobot.getPuntosDeVida() == 490);
+
 	}
 }
