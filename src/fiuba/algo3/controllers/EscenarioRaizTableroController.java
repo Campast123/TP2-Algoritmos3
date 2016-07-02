@@ -20,7 +20,6 @@ import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -44,7 +43,7 @@ public class EscenarioRaizTableroController {
 	private MainApp mainApp;
 	private HashMap<Posicion,Circle> mapaDeBonus;
 	
-	private String colorDorado = "-fx-background-color: GOLD";
+	private Image imagenChispa = new Image("fiuba/algo3/vistas/imagenes/ImagenChispa.png",74,65,false,true);
 	private Image imagenRocosaNube = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosa.jpg",74,65,false,true);
 	private Image imagenRocosaNebulosa = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosaNebulosa.png",74,65,false,true);
 	private Image imagenRocosaTormenta = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosaTormenta.png",74,65,false,true);
@@ -79,6 +78,10 @@ public class EscenarioRaizTableroController {
 			autobotVisual.setOpacity(0.40);
 		}else if(!personaje.estaVivo()){
 			autobotVisual.setOpacity(0.00);
+		} 
+		
+		if (personaje.esUnidadAerea()){
+			this.personajeAereo(autobotVisual);
 		}else if (personaje.esUnico()){
 			DropShadow efecto = (DropShadow) autobotVisual.getEffect();
 			efecto.setInput(new Glow(1.00));
@@ -142,7 +145,9 @@ public class EscenarioRaizTableroController {
 				Tablero tablero = this.mainApp.getPartida().getTablero();
 				Casillero casillero = tablero.obtenerCasillero(posicionActual);
 				
-				if (casillero.getSuperficies().equals(campoNubeRoca)){
+				if (casillero.getChispaSuprema() != null){
+					imagen.setImage(this.imagenChispa);
+				}else if (casillero.getSuperficies().equals(campoNubeRoca)){
 					imagen.setImage(this.imagenRocosaNube);
 				}else if (casillero.getSuperficies().equals(campoNubePantano)){
 					imagen.setImage(this.imagenPantanoNube);
@@ -183,12 +188,6 @@ public class EscenarioRaizTableroController {
 					circleBonus.setOpacity(0.80);
 					circleBonus.setTranslateX(10);
 				}
-				
-				if (casillero.getChispaSuprema() != null){
-					Pane pane = new Pane();
-					pane.setStyle(this.colorDorado);
-					this.tablero.add(pane, i, j);
-				}
 			}
 		}
 	}
@@ -200,12 +199,22 @@ public class EscenarioRaizTableroController {
 		}
 	}
 	
+	public void personajeAereo(ImageView imagenPersonaje){
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(Color.BLACK);
+		shadow.setOffsetX(8f);
+		shadow.setOffsetY(8f);
+		
+		DropShadow efecto = (DropShadow) imagenPersonaje.getEffect();
+		efecto.setInput(shadow);
+	}
+	
 	public void crearBordesDeColores(ImageView imagenPersonaje, Color color){
 
-		int depth = 70;
+		int depth = 50;
 		DropShadow borderGlow= new DropShadow();
-		borderGlow.setOffsetY(0f);
-		borderGlow.setOffsetX(0f);
+		borderGlow.setOffsetY(1f);
+		borderGlow.setOffsetX(1f);
 		borderGlow.setWidth(depth);
 		borderGlow.setHeight(depth);
 		borderGlow.setColor(color);
