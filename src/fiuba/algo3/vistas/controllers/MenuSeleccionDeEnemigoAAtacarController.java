@@ -12,6 +12,10 @@ import javafx.scene.control.Label;
 public class MenuSeleccionDeEnemigoAAtacarController {
 	@FXML
 	private Label nombrePersonajeAtacante;
+	@FXML
+	private Label ataquePersonajeAtacante;
+	@FXML
+	private Label distDeAtaquePersonajeAtacante;
 	
 	@FXML
 	private Button botonPersonaje1;
@@ -144,6 +148,8 @@ public class MenuSeleccionDeEnemigoAAtacarController {
 	public void setPersonajeAtacante(Personaje personajeAtacante) {
 		this.personajeAtacante = personajeAtacante;
 		this.nombrePersonajeAtacante.setText(this.personajeAtacante.toString());
+		this.ataquePersonajeAtacante.setText(String.valueOf(personajeAtacante.getAtaque()));
+		this.distDeAtaquePersonajeAtacante.setText(String.valueOf(personajeAtacante.getDistanciaDeAtaque()));
 	}
 
 	public void setMainApp(MainApp mainApp) {

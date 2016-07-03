@@ -96,6 +96,8 @@ public class MainApp extends Application {
 			this.escenarioRaiz = (BorderPane) loader.load();
 
 			this.controladorTablero = loader.getController();
+			
+			this.controladorTablero.setDimensiones(alto, largo);
 			this.controladorTablero.setMainApp(this);
 
 			Scene escenaTablero =  new Scene(this.escenarioRaiz);

@@ -42,6 +42,8 @@ public class EscenarioRaizTableroController {
 	
 	private MainApp mainApp;
 	private HashMap<Posicion,Circle> mapaDeBonus;
+	private int dimensionEnAlto;
+	private int dimensionEnLargo;
 	
 	private Image imagenChispa = new Image("fiuba/algo3/vistas/imagenes/ImagenChispa.png",74,65,false,true);
 	private Image imagenRocosaNube = new Image("fiuba/algo3/vistas/imagenes/ImagenRocosa.jpg",74,65,false,true);
@@ -140,8 +142,8 @@ public class EscenarioRaizTableroController {
 		SuperficieDeCampo campoTormentaEspinas = new SuperficieDeCampo(tormenta,espinas);
 		
 		
-		for (int i= 0; i <= 23; i++){
-			for (int j=0; j <=23; j++){
+		for (int i= 0; i <= this.dimensionEnAlto; i++){
+			for (int j=0; j <= this.dimensionEnLargo; j++){
 				
 				ImageView imagen = new ImageView();
 				Posicion posicionActual = new Posicion(j,i);
@@ -258,6 +260,11 @@ public class EscenarioRaizTableroController {
 		if (about.getResult() == ButtonType.OK){
 			about.close();
 		}
+	}
+	
+	public void setDimensiones(int alto, int largo){
+		this.dimensionEnAlto = alto;
+		this.dimensionEnLargo = largo;
 	}
 	
 	public void setMainApp(MainApp mainApp){
